@@ -21,7 +21,7 @@ Feedback received
 |---|---|---|---|---|---|
 | `FB-EFIELD-01` | Should the E-field be evaluated in the actual BTBT/GIDL critical region, and can spatial E-field / BTBT behavior explain the large GIDL-vs-field sensitivity mismatch? | Run 3–5 | `T-EFIELD-01` | **Resolved — feedback level** | 31/36/41 hotspot-following Phase A + conditional Phase B completed. Evidence: [`feedback_efield_hotspot_validation_20260911.md`](evidence/feedback_efield_hotspot_validation_20260911.md) |
 | `FB-MESH-01` | If MEB changes hotspot position, is the common Mesh-GIDL refinement still valid for each MEB case, and how should the per-MEB mesh-setting evidence be shown? | Run 3–4 | `T-MESH-01` | **Resolved — feedback level** | 31/36/41 nm independently extracted BTBT hotspots are all covered by the same Mesh-Code 3 ROI with ≥9.875 nm nearest-edge margin; Run-4 per-MEB mesh / hotspot 6-panel evidence committed. Evidence: [`feedback_mesh_common_roi_validation_20260911.md`](evidence/feedback_mesh_common_roi_validation_20260911.md) |
-| `FB-BASELINE-01` | How closely does the simplified 2-D B0 reproduce the literature 3-D BCAT electrical characteristics? | Run 0–1 + dedicated 3-D reconstruction | `T-BASELINE-01` | **In Progress — 3D reconstruction / G2 running** | Literature-consistent `3D-Sun-B0` built through frozen geometry/contact/doping, G0/G1 electrical runs completed, G2 low-Vd full ID–VG running. Evidence: [`feedback_baseline_3d_reconstruction_20260911.md`](evidence/feedback_baseline_3d_reconstruction_20260911.md) |
+| `FB-BASELINE-01` | How closely does the simplified 2-D B0 reproduce the literature 3-D BCAT electrical characteristics? | Run 0–1 + dedicated 3-D reconstruction | `T-BASELINE-01` | **In Progress — G2 result pending ingestion** | Literature-consistent `3D-Sun-B0` built through frozen geometry/contact/doping; G0/G1 PASS; curated visual archive, raw log/data archive, and browsable G0/G1/junction CSV evidence committed. G2 was launched but no completed G2 result has yet been ingested. Evidence: [`feedback_baseline_3d_reconstruction_20260911.md`](evidence/feedback_baseline_3d_reconstruction_20260911.md), [`baseline_3d_evidence_manifest_20260912.md`](evidence/baseline_3d_evidence_manifest_20260912.md) |
 | `FB-RET-01` | What exactly is the 1T1C retention measurement definition? | Run 7; downstream Run 8–9 | `T-RET-01` | **Checkpoint reached — feasibility; metric freeze still open** | Write quantified, 100 ns floating-Hold stability verified on processed subset, independent D0/D1 read window = 102.67 mV. Evidence: [`feedback_retention_operation_checkpoint_20260911.md`](evidence/feedback_retention_operation_checkpoint_20260911.md). Next: integrated Write→Hold→Read, longer Hold, `T_RET,5%`, final metric freeze. |
 | `FB-RC-01` | Does deeper metal etch-back introduce a practical DRAM trade-off such as increased word-line resistance / RC delay? | Run 6.5 interpretation; downstream synthesis | future synthesis | **Open / literature-supported consideration** | keep as an unmodeled practical trade-off unless directly simulated |
 
@@ -184,6 +184,9 @@ Detailed evidence:
 
 ```text
 docs/evidence/feedback_baseline_3d_reconstruction_20260911.md
+docs/evidence/baseline_3d_evidence_manifest_20260912.md
+assets/images/feedback/20260911_baseline/
+data/baseline_3d_sun_b0/
 ```
 
 ### 5.1 What has been completed
@@ -219,7 +222,7 @@ F0  doping-QA mesh                  PASS
 F1  nominal electrical mesh         BUILD PASS / CANDIDATE
 G0  low-Vd SDevice bring-up         PASS
 G1  high-Vd full ID-VG              PASS
-G2  low-Vd full ID-VG               RUNNING
+G2  low-Vd full ID-VG               LAUNCHED / RESULT PENDING INGESTION
 ```
 
 ### 5.2 Quantitative reconstruction checks already passed
@@ -265,7 +268,7 @@ Therefore the current conclusion is **not** that the paper has been reproduced. 
 
 The main unresolved items are:
 
-- G2 low-Vd full ID–VG and consistent DIBL extraction;
+- ingestion of the launched G2 low-Vd full ID–VG result and consistent DIBL extraction;
 - freezing the paper-equivalent Vth / Ion-Ioff extraction convention;
 - verifying the paper’s Canali wording against the exact Sentaurus T-2022.03 high-field implementation (the current log reports Caughey-Thomas saturation with gradient quasi-Fermi potential);
 - evaluating whether the assumed `GaussFactor=0.0` lateral S/D profile is contributing to the high Vth / degraded SS;
@@ -275,7 +278,7 @@ No work-function or doping tuning should be used merely to force agreement befor
 
 ### 5.5 Feedback-level interpretation
 
-> The literature-consistent 3-D baseline has now been rebuilt far enough to separate “numerically working reconstruction” from “electrical reproduction.” Geometry, contacts, and vertical doping are validated and frozen, while the first high-Vd ID–VG result shows that the current reconstruction does not yet reproduce the reported Sun et al. nominal electrical metrics. DIBL remains pending G2. This discrepancy is being retained as evidence and investigated through extraction-definition, physics-mapping, lateral-doping, and mesh-convergence checks rather than hidden by parameter fitting.
+> The literature-consistent 3-D baseline has now been rebuilt far enough to separate “numerically working reconstruction” from “electrical reproduction.” Geometry, contacts, and vertical doping are validated and frozen, while the first high-Vd ID–VG result shows that the current reconstruction does not yet reproduce the reported Sun et al. nominal electrical metrics. DIBL remains pending ingestion of the launched G2 result. This discrepancy is being retained as evidence and investigated through extraction-definition, physics-mapping, lateral-doping, and mesh-convergence checks rather than hidden by parameter fitting.
 
 The final answer to `FB-BASELINE-01` will compare:
 
