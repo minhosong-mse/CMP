@@ -1,0 +1,1 @@
+Binary screenshot assets are tracked as curated composites. Primary 2x3 evidence and backup views are referenced by the mesh evidence document. If an image path is absent, treat the numerical/markdown evidence as authoritative until the binary asset is committed.
