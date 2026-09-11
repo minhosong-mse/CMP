@@ -1,7 +1,8 @@
 # FB-BASELINE-01 — 3D BCAT baseline reconstruction checkpoint
 
 > Date: 2026-09-11  
-> Status: **In Progress — G2 low-Vd full ID–VG running**  
+> Last synchronized: 2026-09-12  
+> Status: **In Progress — G2 launched / result pending ingestion**  
 > Scope: feedback item `FB-BASELINE-01` / task `T-BASELINE-01`
 
 ## 1. Purpose
@@ -110,7 +111,7 @@ The exact STI depth interpretation, terminal-contact face definitions, lateral G
 | F1 | Nominal electrical mesh | **BUILD PASS / CANDIDATE** |
 | G0 | SDevice bring-up, low-Vd sanity sweep | **PASS** |
 | G1 | High-Vd paper-condition ID–VG | **PASS** |
-| G2 | Low-Vd full ID–VG for DIBL | **RUNNING** |
+| G2 | Low-Vd full ID–VG for DIBL | **LAUNCHED / RESULT PENDING INGESTION** |
 
 Geometry / contacts / doping are frozen. F1 mesh is intentionally **not** yet frozen because final acceptance requires an electrical mesh-convergence study.
 
@@ -404,7 +405,7 @@ Do not tune work function, doping concentration, or geometry merely to force agr
 
 ---
 
-## 14. G2 currently running
+## 14. G2 launched — result pending ingestion
 
 Purpose:
 
@@ -421,25 +422,65 @@ Vd      = 0.05 V
 Vg      = 0 → 2.0 V
 ```
 
-After G2:
+The G2 job was launched, but no completed G2 log / PLT / CSV has yet been returned to this workflow. Until those files are ingested and checked, G2 must not be marked `PASS` and no DIBL value is claimed.
 
-1. extract low-Vd threshold using the same criterion as G1;
-2. calculate DIBL from low- and high-drain thresholds;
-3. compare against `23.6 mV/V` paper nominal;
-4. freeze a consistent extraction definition;
-5. only then diagnose the remaining electrical mismatch;
-6. separately verify the Canali / high-field model mapping;
-7. later perform coarse / nominal / fine electrical mesh convergence.
+After G2 evidence is returned:
+
+1. validate numerical completion and the full low-Vd sweep;
+2. extract low-Vd threshold using the same criterion as G1;
+3. calculate DIBL from low- and high-drain thresholds;
+4. compare against `23.6 mV/V` paper nominal;
+5. freeze a consistent extraction definition;
+6. only then diagnose the remaining electrical mismatch;
+7. separately verify the Canali / high-field model mapping;
+8. later perform coarse / nominal / fine electrical mesh convergence.
 
 ---
 
-## 15. Feedback-level interpretation at this checkpoint
+## 15. Repository evidence package
+
+The baseline-feedback artifacts produced up to G1 are now committed separately from this interpretation document.
+
+Evidence manifest:
+
+```text
+docs/evidence/baseline_3d_evidence_manifest_20260912.md
+```
+
+Curated visual archive:
+
+```text
+assets/images/feedback/20260911_baseline/baseline_visual_evidence_20260911.zip
+```
+
+The visual archive contains the selected 3-D geometry overview, XZ/YZ validation cuts, contact view, doping/junction-cut view, F1 mesh view, and source/drain junction-depth profile screenshots.
+
+Raw log/data archive:
+
+```text
+data/baseline_3d_sun_b0/baseline_raw_text_data_20260911.zip
+```
+
+Directly browsable CSV evidence:
+
+```text
+data/baseline_3d_sun_b0/g0_idvg_lowvd_0p05V_to_1p2V.csv
+data/baseline_3d_sun_b0/g1_idvg_highvd_1p2V_to_2p0V.csv
+data/baseline_3d_sun_b0/junction_source_C1.csv
+data/baseline_3d_sun_b0/junction_drain_C2.csv
+```
+
+The raw archive also contains the G0/G1 full SDevice logs and F1 SDE build log available from the completed workflow. G2 is deliberately excluded until a completed G2 result is returned and validated.
+
+---
+
+## 16. Feedback-level interpretation at this checkpoint
 
 The baseline feedback is **not closed yet**.
 
 Current defensible statement:
 
-> A literature-consistent 3-D BCAT reconstruction has been completed through frozen geometry, contacts, and vertical doping validation. The nominal electrical mesh successfully supports 3-D SDevice operation, and both low-Vd bring-up and high-Vd full ID–VG simulations converge. However, the first high-Vd electrical extraction does not yet reproduce the Sun et al. nominal Vth, SS, and Ion/Ioff values. DIBL is pending the G2 low-Vd full sweep. The remaining mismatch is therefore being treated as a reconstruction / extraction / physics-mapping problem rather than hidden by parameter fitting.
+> A literature-consistent 3-D BCAT reconstruction has been completed through frozen geometry, contacts, and vertical doping validation. The nominal electrical mesh successfully supports 3-D SDevice operation, and both low-Vd bring-up and high-Vd full ID–VG simulations converge. However, the first high-Vd electrical extraction does not yet reproduce the Sun et al. nominal Vth, SS, and Ion/Ioff values. DIBL is pending ingestion and validation of the launched G2 low-Vd full sweep. The remaining mismatch is therefore being treated as a reconstruction / extraction / physics-mapping problem rather than hidden by parameter fitting.
 
 This result is directly useful to the original feedback question because it establishes a clean distinction between:
 
@@ -455,7 +496,7 @@ Only after the 3-D reconstruction metrics are stabilized should the simplified 2
 
 ---
 
-## 16. Guardrails
+## 17. Guardrails
 
 Do not claim:
 
@@ -468,6 +509,7 @@ GaussFactor = 0 is a paper value.
 The current high-field keyword is proven to be exactly Canali.
 The F1 mesh is convergence-frozen.
 The lateral doping assumption is proven to be the cause of the mismatch.
+G2 is complete before its returned result files are ingested and checked.
 ```
 
 Use:
@@ -479,7 +521,7 @@ Use:
 
 ---
 
-## 17. README integration rule
+## 18. README integration rule
 
 This evidence is intentionally stored under the feedback/evidence workflow first.
 
