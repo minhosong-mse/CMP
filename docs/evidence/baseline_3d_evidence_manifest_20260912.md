@@ -18,7 +18,7 @@ Archive:
 assets/images/feedback/20260911_baseline/baseline_visual_evidence_20260911.zip
 ```
 
-The archive contains selected SVisual screenshots covering:
+The archive contains eight selected SVisual screenshots covering:
 
 1. 3-D baseline geometry overview;
 2. along-channel XZ buried-gate / oxide / nitride cross-section;
@@ -37,9 +37,9 @@ Archive SHA-256 recorded at packaging time:
 
 These images document the reconstruction / QA checkpoints; they do not by themselves prove electrical agreement with the paper.
 
-## 3. Raw text / data evidence package
+## 3. Raw text / data evidence
 
-Archive:
+### 3.1 Raw log/data archive
 
 ```text
 data/baseline_3d_sun_b0/baseline_raw_text_data_20260911.zip
@@ -58,13 +58,13 @@ f1_sde_build_full.log
 README.txt
 ```
 
-Archive SHA-256 recorded at packaging time:
+Archive SHA-256:
 
 ```text
 a59388796ce04679c042a7eeed686e1a1c6185e8391c57969b7e1bbbf0b5ecde
 ```
 
-For direct review without opening the archive, the four principal CSVs are also stored as separate repository files:
+For direct review without opening the archive, the four principal CSVs are also stored separately:
 
 ```text
 data/baseline_3d_sun_b0/g0_idvg_lowvd_0p05V_to_1p2V.csv
@@ -73,7 +73,67 @@ data/baseline_3d_sun_b0/junction_source_C1.csv
 data/baseline_3d_sun_b0/junction_drain_C2.csv
 ```
 
-## 4. Evidence represented by these files
+### 3.2 Native G0/G1 curve output archive
+
+```text
+data/baseline_3d_sun_b0/baseline_curve_plt_20260911.zip
+```
+
+Contains the original uploaded current-curve outputs:
+
+```text
+IdVg_LowVd_n5_des.plt
+IdVg_HighVd_n5_des.plt
+```
+
+Archive SHA-256:
+
+```text
+d094ae4f6f10d1ce61b963d592ccbc6a963879605be24e6b0c528393c5de8d63
+```
+
+This preserves the native Sentaurus curve data in addition to the CSV exports.
+
+## 4. Executable SDevice decks now committed
+
+Current reconstruction SDevice decks are stored under:
+
+```text
+code/sdevice/baseline_3d_sun_b0/
+```
+
+Files:
+
+```text
+G0_bringup.cmd
+G1_highVd_full_idvg.cmd
+G2_lowVd_full_idvg.cmd
+README.md
+```
+
+Status:
+
+```text
+G0 deck  = executed / PASS
+G1 deck  = executed / PASS
+G2 deck  = launched; completed result not yet ingested
+```
+
+The deck README also records the current physics-model claim boundary and SWB placeholder behavior.
+
+### Exact SDE source availability
+
+The final F1 SDE **build log** is preserved in the raw archive, but the exact final standalone SDE source command file was not available as an independently uploaded conversation artifact during this audit. It is therefore intentionally **not reconstructed from the execution log and mislabeled as exact source**.
+
+Remaining repository action when the original file is exported from the Sentaurus workspace:
+
+```text
+add exact final 3D-Sun-B0 SDE source CMD
+```
+
+Until then, the build log plus visual/doping/mesh evidence are retained as traceability evidence, not as a substitute for the original source file.
+
+## 5. Evidence represented by these files
 
 ### Geometry / contact
 
@@ -145,7 +205,7 @@ DIBL      = 23.6 mV/V
 
 Therefore the current 3-D deck is numerically operational but electrical reproduction is not yet demonstrated.
 
-## 5. G2 status at this audit
+## 6. G2 status at this audit
 
 A full low-drain G2 run was launched with:
 
@@ -171,7 +231,7 @@ IdVg_LowVd_Full_*.plt
 gate OuterVoltage vs drain TotalCurrent CSV
 ```
 
-## 6. Remaining baseline work
+## 7. Remaining baseline work
 
 Before `FB-BASELINE-01` can be closed:
 
@@ -180,34 +240,37 @@ Before `FB-BASELINE-01` can be closed:
 3. verify the paper `Canali` wording against the exact T-2022.03 high-field implementation currently logged as Caughey-Thomas saturation with gradient quasi-Fermi potential;
 4. test the reconstruction sensitivity to the unpublished lateral S/D Gaussian assumption (`GaussFactor=0.0`) without arbitrary parameter fitting;
 5. perform coarse / nominal / fine electrical mesh convergence before freezing F1;
-6. compare the stabilized `3D-Sun-B0` metrics directly with the simplified 2-D CMP B0 to answer the original feedback question.
+6. compare the stabilized `3D-Sun-B0` metrics directly with the simplified 2-D CMP B0 to answer the original feedback question;
+7. add the original final SDE source CMD once exported from the Sentaurus workspace.
 
-## 7. Repository synchronization audit
+## 8. Repository synchronization audit
 
-At this audit, the intended synchronization state is:
+At this audit, the synchronized state is:
 
 ```text
 docs/FEEDBACK_LOG.md
-  → baseline row points to dedicated 3-D reconstruction and should state G2 result pending
+  → dedicated 3-D reconstruction; G2 result pending ingestion
 
 docs/TASK_HUB.md
-  → baseline task should point to the dedicated 3-D workflow and current next action
+  → dedicated 3-D task, latest checkpoint and next actions
 
 docs/evidence/feedback_baseline_3d_reconstruction_20260911.md
-  → scientific checkpoint / assumptions / G0-G1 mismatch / G2-pending state
+  → assumptions / validation / G0-G1 mismatch / G2-pending scientific checkpoint
 
 docs/evidence/baseline_3d_evidence_manifest_20260912.md
-  → artifact inventory and audit trail
+  → artifact inventory, source-availability audit and repository traceability
 assets/images/feedback/20260911_baseline/
   → curated visual evidence archive
 data/baseline_3d_sun_b0/
-  → raw logs/data archive + directly browsable CSV evidence
+  → raw log/data archive + native PLT archive + directly browsable CSV evidence
+code/sdevice/baseline_3d_sun_b0/
+  → exact G0/G1/G2 SDevice decks used in the workflow
 ```
 
 The main `README.md` is intentionally **not** updated at this stage. Existing project policy defers final README integration until the principal presentation-feedback set is ready for one consistent synthesis.
 
-## 8. Claim guardrail
+## 9. Claim guardrail
 
 Do not state that the Sun 2022 3-D BCAT has already been exactly reproduced. Current supported wording is:
 
-> `3D-Sun-B0` is a literature-consistent 3-D reconstruction with frozen geometry/contact/vertical-doping checkpoints and numerically converged G0/G1 operation. The first electrical comparison remains mismatched to the reported paper nominal metrics, while G2/DIBL, extraction convention, high-field-model mapping, lateral-doping sensitivity, and electrical mesh convergence remain open.
+> `3D-Sun-B0` is a literature-consistent 3-D reconstruction with frozen geometry/contact/vertical-doping checkpoints and numerically converged G0/G1 operation. The first electrical comparison remains mismatched to the reported paper nominal metrics, while G2/DIBL, extraction convention, high-field-model mapping, lateral-doping sensitivity, electrical mesh convergence, and final exact-SDE-source archival remain open.
