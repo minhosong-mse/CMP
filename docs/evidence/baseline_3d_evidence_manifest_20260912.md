@@ -58,7 +58,9 @@ This validates the nominal **vertical** `Djunction = 0.40 × 120 nm` reconstruct
 
 ## 4. Compact execution / log evidence
 
-Because the original SDE/SDevice logs are large, the repository stores compact audit-relevant summaries while the full originals remain preserved in the conversation/workspace evidence:
+The repository follows the same lightweight pattern already used in the CMP run data: executable source decks, CSV data, compact summaries, and curated figures/docs are committed; full Sentaurus logs and native `.plt` files remain workspace/debug evidence unless they are later needed for a specific reproducibility check.
+
+Current compact summaries:
 
 ```text
 data/baseline_3d_sun_b0/f1_sde_build_summary.txt
@@ -66,7 +68,7 @@ data/baseline_3d_sun_b0/g0_sdevice_run_summary.txt
 data/baseline_3d_sun_b0/g1_sdevice_run_summary.txt
 ```
 
-The repository audit removed incomplete archive-transfer attempts instead of leaving truncated binary ZIP/PLT artifacts as if they were authoritative evidence.
+Incomplete archive-transfer attempts were removed instead of leaving truncated binary ZIP/PLT artifacts as authoritative repository evidence.
 
 ### F1 build checkpoint
 
@@ -156,7 +158,7 @@ The code README records the current physics-model claim boundary and the fact th
 
 ## 6. Exact SDE source status
 
-The final F1 SDE build **execution evidence** is preserved, but the exact final standalone SDE source CMD was not available as a separately uploaded artifact during this audit.
+The final F1 SDE build **execution evidence** is preserved through the compact checkpoint summary, but the exact final standalone SDE source CMD was not available as a separately uploaded artifact during this audit.
 
 It is intentionally **not reconstructed from the execution log and mislabeled as exact source**.
 
@@ -167,7 +169,9 @@ export the original final 3D-Sun-B0 SDE source CMD from the Sentaurus workspace
 → commit it under a dedicated 3-D baseline SDE directory
 ```
 
-## 7. G2 status
+This is the one source artifact still worth adding later because existing CMP runs normally keep the executed SDE/SDevice decks themselves.
+
+## 7. G2 status and return policy
 
 A full low-drain run has been launched with:
 
@@ -177,7 +181,7 @@ Vd = 0.05 V
 Vg = 0 → 2.0 V
 ```
 
-No completed G2 log / PLT / CSV has yet been returned to the baseline workflow for validation. The only correct current repository wording is:
+No completed G2 result has yet been returned to the baseline workflow for validation. The only correct current repository wording is:
 
 ```text
 G2 = LAUNCHED / RESULT PENDING INGESTION
@@ -185,13 +189,18 @@ G2 = LAUNCHED / RESULT PENDING INGESTION
 
 Do not mark G2 PASS or publish a DIBL value before the returned data are checked.
 
-Required G2 return set:
+For the **analysis step**, the Sentaurus log / native PLT may be shared in chat or kept in the workspace if needed to diagnose convergence. They do not need to be committed to GitHub by default.
+
+After G2 is validated, the normal repository commit set should be limited to the same artifact types used elsewhere in CMP:
 
 ```text
-full SDevice log
-IdVg_LowVd_Full_*.plt
-gate OuterVoltage vs drain TotalCurrent CSV
+validated low-Vd ID–VG CSV
+compact G2 run summary
+updated evidence / feedback docs
+comparison figure only if it becomes presentation evidence
 ```
+
+The already committed `G2_lowVd_full_idvg.cmd` remains the executable deck record.
 
 ## 8. Remaining work before `FB-BASELINE-01` closes
 
@@ -205,7 +214,7 @@ gate OuterVoltage vs drain TotalCurrent CSV
 
 ## 9. Feedback-hub synchronization state
 
-The latest intended state is now synchronized across:
+The latest intended state is synchronized across:
 
 ```text
 docs/FEEDBACK_LOG.md
