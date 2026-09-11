@@ -1,0 +1,32 @@
+3D-Sun-B0 F1 SDE build evidence summary
+Date: 2026-09-11
+Sentaurus Structure Editor: T-2022.03 workflow
+Status: BUILD PASS / CANDIDATE
+
+Frozen geometry / contact / doping checks in execution log
+- geometry overlap check returned ()
+- source contact assignment -> #t
+- drain contact assignment -> #t
+- substrate contact assignment -> #t
+- gate body-to-contact assignment -> #t
+- post-contact overlap check returned ()
+- body constant boron profile definition / placements -> #t
+- source Gaussian arsenic profile definition / placement -> #t
+- drain Gaussian arsenic profile definition / placement -> #t
+- all F1 refinement definitions / placements -> #t
+- final overlap check returned ()
+- sde:save-model n4 -> #t
+- sde:build-mesh snmesh n4 -> #t
+
+F1 mesh checkpoint
+- SVisual displayed about 2.90 M elements
+- SVisual points = 473004
+- SDevice later loaded 473004 grid points / 2773380 tetrahedrons
+
+Execution
+- Start: 2026-09-11 17:11:48 KST
+- End:   2026-09-11 17:14:51 KST
+- Total Execution Time: 183 s
+
+F1 is not convergence-frozen. Final acceptance still requires coarse / nominal / fine electrical convergence.
+The exact final standalone SDE source CMD was not available as a separate uploaded artifact during the repository audit; this summary preserves the validated build checkpoint without fabricating source code from the execution log.
