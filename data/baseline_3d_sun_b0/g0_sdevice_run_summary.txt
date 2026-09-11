@@ -1,0 +1,34 @@
+3D-Sun-B0 G0 SDevice evidence summary
+Date: 2026-09-11
+Sentaurus Device: T-2022.03
+Status: PASS
+
+Grid / contacts
+- Grid points: 473004
+- Elements: 2773380
+- Obtuse elements: 957779 (34.53%)
+- Non-Delaunay elements: 33
+- gate recognized with WorkFunction = 4.8 eV
+- source / drain / gate / substrate recognized
+
+Activated Silicon models reported by log
+- Band-to-Band Tunneling: Hurkx
+- Philips unified mobility
+- E_normal dependence: Lombardi
+- High-field mobility: Caughey-Thomas saturation model, gradient quasi-Fermi potential
+
+Sweep
+- drain goal: 0.05 V -> Curve trace finished
+- gate goal: 1.2 V -> Curve trace finished
+- T = 300 K
+
+Result checkpoint
+- Id @ Vg=1.2 V, Vd=0.05 V = 7.769e-8 A
+- purpose: numerical / turn-on sanity validation only
+
+Run completion
+- peak memory: 16.52 GB
+- wallclock: 3151.97 s = 52 min 31 s
+- Sentaurus Device simulation finished normally
+
+Full original log remains preserved in the conversation/workspace evidence; this compact repository summary contains the audit-relevant lines used for feedback validation.
