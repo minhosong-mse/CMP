@@ -422,7 +422,9 @@ Vd      = 0.05 V
 Vg      = 0 → 2.0 V
 ```
 
-The G2 job was launched, but no completed G2 log / PLT / CSV has yet been returned to this workflow. Until those files are ingested and checked, G2 must not be marked `PASS` and no DIBL value is claimed.
+The G2 job was launched, but no completed G2 result has yet been returned to this workflow. Until the result is ingested and checked, G2 must not be marked `PASS` and no DIBL value is claimed.
+
+For analysis, the log / native PLT may be shared in chat if needed to verify convergence or diagnose a problem. They are not required GitHub artifacts under the normal CMP repository pattern.
 
 After G2 evidence is returned:
 
@@ -437,9 +439,9 @@ After G2 evidence is returned:
 
 ---
 
-## 15. Repository evidence package
+## 15. Repository evidence checkpoint
 
-The baseline-feedback artifacts produced up to G1 are now committed separately from this interpretation document.
+The baseline-feedback repository now follows the same artifact pattern used in the existing CMP runs rather than storing full simulator logs by default.
 
 Evidence manifest:
 
@@ -447,30 +449,35 @@ Evidence manifest:
 docs/evidence/baseline_3d_evidence_manifest_20260912.md
 ```
 
-Curated visual archive:
+Curated visual evidence:
 
 ```text
-assets/images/feedback/20260911_baseline/baseline_visual_evidence_20260911.zip
+assets/images/feedback/20260911_baseline/00_baseline_visual_contact_sheet.svg
 ```
 
-The visual archive contains the selected 3-D geometry overview, XZ/YZ validation cuts, contact view, doping/junction-cut view, F1 mesh view, and source/drain junction-depth profile screenshots.
-
-Raw log/data archive:
-
-```text
-data/baseline_3d_sun_b0/baseline_raw_text_data_20260911.zip
-```
-
-Directly browsable CSV evidence:
+Directly browsable data / compact summaries:
 
 ```text
 data/baseline_3d_sun_b0/g0_idvg_lowvd_0p05V_to_1p2V.csv
 data/baseline_3d_sun_b0/g1_idvg_highvd_1p2V_to_2p0V.csv
 data/baseline_3d_sun_b0/junction_source_C1.csv
 data/baseline_3d_sun_b0/junction_drain_C2.csv
+data/baseline_3d_sun_b0/f1_sde_build_summary.txt
+data/baseline_3d_sun_b0/g0_sdevice_run_summary.txt
+data/baseline_3d_sun_b0/g1_sdevice_run_summary.txt
 ```
 
-The raw archive also contains the G0/G1 full SDevice logs and F1 SDE build log available from the completed workflow. G2 is deliberately excluded until a completed G2 result is returned and validated.
+Executable SDevice decks:
+
+```text
+code/sdevice/baseline_3d_sun_b0/G0_bringup.cmd
+code/sdevice/baseline_3d_sun_b0/G1_highVd_full_idvg.cmd
+code/sdevice/baseline_3d_sun_b0/G2_lowVd_full_idvg.cmd
+```
+
+Full SDE/SDevice logs, native `.plt`, and high-resolution screenshots remain workspace/debug evidence unless a later reproducibility need specifically requires them. Incomplete ZIP/PLT transfer attempts were removed rather than retained as repository evidence.
+
+The one source artifact still worth adding later is the **original final F1 SDE source CMD**, because existing CMP runs normally preserve the executed SDE/SDevice decks themselves. It should be exported from the Sentaurus workspace, not reconstructed from a log and mislabeled as exact source.
 
 ---
 
