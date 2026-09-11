@@ -18,7 +18,13 @@ The current model deck uses `PhuMob`, `Enormal(Lombardi)`, high-field saturation
 
 ## Upstream geometry / mesh source
 
-The final F1 SDE build log is preserved in the raw baseline evidence package under `data/baseline_3d_sun_b0/`. The exact final SDE source command file itself was not available as a standalone uploaded artifact during this repository audit, so it is **not reconstructed from the log and presented as exact source**. Add the original SDE source file later when exported from the Sentaurus workspace.
+The final F1 SDE build **checkpoint summary** is stored at:
+
+- `data/baseline_3d_sun_b0/f1_sde_build_summary.txt`
+
+The exact final SDE source command file itself was not available as a standalone uploaded artifact during this repository audit, so it is **not reconstructed from the execution log and presented as exact source**. Add the original SDE source file later when exported from the Sentaurus workspace.
+
+Repository convention for this baseline follows the existing CMP pattern: keep executable decks, CSV results, compact summaries, and curated figures/docs in GitHub; full Sentaurus logs and native `.plt` files are workspace/debug evidence unless a later reproducibility need specifically requires them.
 
 Primary documentation:
 
