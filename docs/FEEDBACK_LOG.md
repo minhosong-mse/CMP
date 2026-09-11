@@ -22,7 +22,7 @@ Feedback received
 | `FB-EFIELD-01` | Should the E-field be evaluated in the actual BTBT/GIDL critical region, and can spatial E-field / BTBT behavior explain the large GIDL-vs-field sensitivity mismatch? | Run 3–5 | `T-EFIELD-01` | **Resolved — feedback level** | 31/36/41 hotspot-following Phase A + conditional Phase B completed. Evidence: [`feedback_efield_hotspot_validation_20260911.md`](evidence/feedback_efield_hotspot_validation_20260911.md) |
 | `FB-MESH-01` | If MEB changes hotspot position, is the common Mesh-GIDL refinement still valid for each MEB case, and how should the per-MEB mesh-setting evidence be shown? | Run 3–4 | `T-MESH-01` | **In Progress — next task** | ROI-coverage checkpoint already obtained from E-field validation. Next: per-MEB mesh screenshots / refinement-setting evidence / presentation backup |
 | `FB-BASELINE-01` | How closely does the simplified 2-D B0 reproduce the literature 3-D BCAT electrical characteristics? | Run 0–1 + dedicated 3-D reconstruction | `T-BASELINE-01` | **In Progress — 3D reconstruction / G2 running** | Literature-consistent `3D-Sun-B0` built through frozen geometry/contact/doping, G0/G1 electrical runs completed, G2 low-Vd full ID–VG running. Evidence: [`feedback_baseline_3d_reconstruction_20260911.md`](evidence/feedback_baseline_3d_reconstruction_20260911.md) |
-| `FB-RET-01` | What exactly is the 1T1C retention measurement definition? | Run 7; downstream Run 8–9 | `T-RET-01` | **In Progress elsewhere** | Write → floating Hold → VSN decay → pre-frozen retention criterion → optional Read |
+| `FB-RET-01` | What exactly is the 1T1C retention measurement definition? | Run 7; downstream Run 8–9 | `T-RET-01` | **Checkpoint reached — feasibility; metric freeze still open** | Write quantified, 100 ns floating-Hold stability verified on processed subset, independent D0/D1 read window = 102.67 mV. Evidence: [`feedback_retention_operation_checkpoint_20260911.md`](evidence/feedback_retention_operation_checkpoint_20260911.md). Next: integrated Write→Hold→Read, longer Hold, `T_RET,5%`, final metric freeze. |
 | `FB-RC-01` | Does deeper metal etch-back introduce a practical DRAM trade-off such as increased word-line resistance / RC delay? | Run 6.5 interpretation; downstream synthesis | future synthesis | **Open / literature-supported consideration** | keep as an unmodeled practical trade-off unless directly simulated |
 
 ## 3. Resolved feedback — E-field / BTBT critical-region validation
@@ -263,14 +263,43 @@ literature nominal 3-D metrics
 
 Only then should the role and limits of the simplified 2-D model be stated in the final presentation / README.
 
-## 6. Other feedback still open
+## 6. Retention-feedback checkpoint — Run 7
 
-### 1T1C retention definition
-Current wording remains limited to MixedMode / write feasibility. Required direction:
+The prior wording was limited to MixedMode / write feasibility. The current checkpoint has now advanced to:
 
 ```text
-Write → floating Hold → VSN(t) decay → pre-frozen retention criterion → optional Read
+Write feasibility
+→ floating-SN 100 ns Hold stability
+→ independent D0/D1 charge-sharing Read
 ```
+
+Quantitative checkpoint:
+
+```text
+strongest screened write VSN = 0.948118 V
+100 ns Hold DeltaVSN         ≈ 1e-13 ~ 1e-12 V (processed subset)
+D0 DeltaVBL                  = -72.12 mV
+D1 DeltaVBL                  = +30.55 mV
+D0/D1 final BL separation    = 102.67 mV
+```
+
+This supports the presentation-safe statement:
+
+> **B0 1T1C MixedMode에서 Write 후 floating storage node의 100 ns 단기 유지 안정성을 확인했고, 별도 D0/D1 read test에서 약 102.7 mV의 bitline separation을 확보하여 1차 retention-operation feasibility를 검증하였다.**
+
+Still open before `FB-RET-01` is fully resolved:
+
+1. integrated `Write → Hold → Read`;
+2. Hold extension beyond 100 ns;
+3. Synopsys-compatible `T_RET,5% = ∫ C/|I| dV` extraction;
+4. final retention criterion / standby-bias freeze;
+5. Mesh1/3 and BTBT attribution before formal Run-7 close-out.
+
+Primary evidence:
+
+- `docs/evidence/feedback_retention_operation_checkpoint_20260911.md`
+- `docs/progress/run07_1t1c_retention_feasibility.md`
+- `docs/methodology/run07_methodology_traceability.md`
 
 ### Practical WL resistance / RC trade-off
 Keep as a literature-supported practical consideration unless directly simulated.
@@ -283,7 +312,7 @@ Avoid:
 48 nm is the global optimum MEB.
 51 nm is physically bad.
 Cgd reduction directly proves GIDL reduction causality.
-1T1C retention has already been validated.
+Final retention time / full integrated retention has already been validated.
 Word-line resistance increase was directly simulated.
 The literature 3-D BCAT was fully reproduced electrically.
 The current 3-D baseline already matches Sun et al.
@@ -297,6 +326,7 @@ Use scoped wording:
 - `3D-Sun-B0` is a literature-consistent reconstruction with explicit assumptions, not an exact reverse-engineered CAD/process deck;
 - completed E-field validation supports critical-region spatial E-field / BTBT interpretation rather than one peak-field scalar;
 - ROI coverage is only a mesh-feedback checkpoint, not final mesh validation;
+- Run 7 currently supports **first-pass retention-operation feasibility**, not a final retention-time claim;
 - the final objective remains an effective / defensible MEB design range.
 
 ## 8. README integration rule

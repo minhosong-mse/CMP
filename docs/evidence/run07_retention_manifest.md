@@ -1,82 +1,94 @@
 # Run 07 Evidence Manifest — 1T1C / Retention Feasibility
 
-Status: **protocol prepared; no executed Run 7 evidence yet**.
+Status: **first-pass feasibility evidence executed and curated; final retention metric still open**.
 
-This manifest follows `D-005`: GitHub keeps code, conditions, CSV/processed summaries and selected evidence; `.tdr`, `.plt` and full solver logs remain in the TCAD/local archive unless a provenance problem requires a specific artifact.
+This manifest follows the existing repository evidence rule: GitHub keeps code, conditions, processed summaries and selected evidence; full `.tdr`, `.plt` and solver logs remain in the TCAD/local archive unless a provenance problem requires a specific artifact.
 
-## 1. Source Commands
+## 1. Source commands
 
-| Branch | Command | Status |
+| Branch | Command | Current status |
 |---|---|---|
-| R7A/R7B | `code/sdevice/run07/bcat_1t1c_r7_write_screen.cmd` | prepared / unexecuted |
-| R7C | `code/sdevice/run07/bcat_1t1c_r7_cell_transient.cmd` | prepared / unexecuted |
-| R7D ON | `code/sdevice/run07/bcat_retention_r7_ivsn_integral_on.cmd` | prepared / unexecuted |
-| R7D OFF | `code/sdevice/run07/bcat_retention_r7_ivsn_integral_off.cmd` | prepared / unexecuted |
-| R7E | `code/sdevice/run07/bcat_1t1c_r7_read_guardrail.cmd` | prepared / unexecuted |
-| Postprocess | `code/scripts/extraction/run07_retention_integral.py` | prepared / unexecuted |
+| R7B Write | `code/sdevice/run07/bcat_1t1c_r7_write_screen.cmd` | executed / quantified for AF=0.017 screen |
+| R7C Hold | `code/sdevice/run07/bcat_1t1c_r7_hold100_screen.cmd` | executed / partial processed subset accepted |
+| R7D Retention ON | `code/sdevice/run07/bcat_retention_r7_ivsn_integral_on.cmd` | prepared / not yet executed for current closure |
+| R7D Retention OFF | `code/sdevice/run07/bcat_retention_r7_ivsn_integral_off.cmd` | prepared / not yet executed |
+| R7E Read | `code/sdevice/run07/bcat_1t1c_r7_read_window.cmd` | executed / D0-D1 independent read accepted |
 
-SDE provenance: `code/sde/run06_5/bcat_sde_r65_deeper_meb_boundary.cmd`, fixed to `MEB_Depth=0.036 um` for Run 7.
+SDE provenance remains the B0 Run-6.5 geometry source fixed to `MEB_Depth=0.036 um` for Run 7.
 
-## 2. Execution Evidence Table
+## 2. Execution evidence table
 
-Fill one row per accepted SWB branch/node or grouped matrix after execution.
+| R7 branch | Accepted node(s) / set | Parameter snapshot | Processed summary | Evidence | Status |
+|---|---|---|---|---|---|
+| R7B Write | AF=0.017 nodes 182–185, 194–197, 206–209 | `VBL=1.2 V`, `VWL=1.5–3.0 V`, `Twrite=100/200/300 ns`, `Ccell=10 fF` | `data/run07/processed/write_screen_af0017.csv` | `docs/evidence/run07_write_screen_20260911.md` | **PASS — feasibility** |
+| R7C Hold Mesh1 | 179, 191, 203, 183, 194, 195 processed subset | `Thold=100 ns`, SN floating after `Unset(sn)` | `data/run07/processed/hold100_partial.csv` | `docs/evidence/run07_hold100_partial_20260911.md` | **PASS — short-hold subset** |
+| R7D Retention ON | Pending | Synopsys-compatible 5% leakage-integration path | Pending | methodology traceability only | **Not run** |
+| R7D Retention OFF | Pending | BTBT attribution branch | Pending | Pending | **Not run** |
+| R7E Read | n136 D0, n138 D1 | `Ccell=10 fF`, `CBL=45 fF`, `VBL=0.5 V`, `WL=-0.7→3.0 V`, `Tread=10 ns` | `data/run07/processed/read_window.csv` | `docs/evidence/run07_read_window_20260911.md` | **PASS — independent read** |
+| Integrated W-H-R | Pending | representative D1 | Pending | Pending | **Not run** |
+| Mesh1 vs Mesh3 | Pending | final verification | Pending | Pending | **Not run** |
 
-| R7 branch | SWB project / node(s) | Parameter snapshot | Raw CSV | Processed CSV | Key image | Local log/TDR/PLT reference | SHA-256 / archive | Status |
-|---|---|---|---|---|---|---|---|---|
-| R7A Scaling | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Not run |
-| R7B Write | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Not run |
-| R7C Hold Mesh1 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Not run |
-| R7C Hold Mesh3 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Not run |
-| R7D Retention ON | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Not run |
-| R7D Retention OFF | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Not run |
-| R7E Read | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Not run |
-| R7F Repeat | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Not run |
+## 3. Current quantitative checkpoint
 
-## 3. Raw CSV Minimum Set
-
-Commit only after execution and header/unit audit:
+### Write
 
 ```text
-data/run07/raw/
-  r7a_scaling_transient_*.csv
-  r7b_write_transient_*.csv
-  r7c_hold_transient_*.csv
-  r7d_ivsn_on_*.csv
-  r7d_ivsn_off_*.csv
-  r7e_read_transient_*.csv
-  r7_parameter_manifest.csv
+max screened VSN = 0.948118 V
+at AreaFactor=0.017, VWL_ON=3.0 V, Twrite=300 ns
 ```
 
-## 4. Processed Summary Minimum Set
+### Hold
+
+Processed 100 ns subset:
+
+```text
+DeltaVSN_100ns ≈ 1e-13 ~ 1e-12 V
+```
+
+Interpretation: numerical-floor-level change; short-hold stability only.
+
+### Read
+
+```text
+D0 DeltaVBL = -72.12 mV
+D1 DeltaVBL = +30.55 mV
+D0/D1 final BL separation = 102.67 mV
+```
+
+## 4. Processed summary files
 
 ```text
 data/run07/processed/
-  r7_scaling_summary.csv
-  r7_write_summary.csv
-  r7_hold_summary.csv
-  r7_retention_summary.csv
-  r7_read_summary.csv
-  r7_mesh_summary.csv
-  r7_btbt_attribution_summary.csv
+  write_screen_af0017.csv
+  hold100_partial.csv
+  read_window.csv
 ```
 
-At minimum record:
+## 5. Evidence rules / claim boundary
 
-- `AreaFactor`, mesh, temperature and selected circuit values;
-- write-end `VSN` and write duration;
-- short-hold `DeltaVSN` and sampled `VSN(t)`;
-- `Ileak(VSN)` definition/sign convention;
-- `RT_1p0_0p8,int`;
-- direct `dVSN/dt` versus `|I|/Ccell` consistency check;
-- read `DeltaVBL`;
-- Mesh1/3 difference;
-- NonlocalPath ON/OFF difference;
-- solver convergence/rejected-step notes.
+- A graph without the corresponding exported/processed data and parameter snapshot is not a formal Run 7 metric source.
+- `T_RET,5%` is kept distinct from direct threshold-crossing time.
+- Liu-compatible `t_1.0→0.8` is not reported unless the written state actually begins near 1.0 V.
+- Literature read thresholds are context only unless a CMP-specific criterion is derived.
+- `AreaFactor=0.017` remains an effective-width proxy, not production calibration.
+- The 100 ns Hold result is **stability evidence**, not a retention-time number.
+- The n136/n138 test is **independent read feasibility**, not `Read-after-Hold`.
+- No MEB-dependent retention conclusion is entered during this B0 Run 7 checkpoint.
 
-## 5. Evidence Rules
+## 6. Next required evidence
 
-- A graph without the corresponding exported data and parameter snapshot is not a formal Run 7 metric source.
-- `RT_1p0_0p8,int` is kept distinct from a directly observed threshold-crossing time.
-- The 0.698 V value from Cho et al. is literature context unless a CMP-specific charge-sharing criterion is explicitly derived.
-- `AreaFactor=0.017` is an effective-width proxy and must never be described as production calibration.
-- No MEB-dependent retention conclusion is entered here during Run 7; that begins in Run 8.
+```text
+integrated Write → Hold → Read
+→ longer Hold window
+→ T_RET,5% leakage integration
+→ Mesh1/3 check
+→ NonlocalPath ON/OFF attribution
+```
+
+Main progress document:
+
+- `docs/progress/run07_1t1c_retention_feasibility.md`
+
+Methodology traceability:
+
+- `docs/methodology/run07_methodology_traceability.md`

@@ -17,7 +17,7 @@
 | `T-EFIELD-01` | Literature-grounded hotspot E-field / BTBT validation | Run 4–5, 31/36/41 nm, 300 K GIDL ON | **Completed — feedback level** | Phase A + conditional Phase B complete; hotspot coordinates, threshold sensitivity, integrated field / BTBT trend and figures committed | Use the evidence package for presentation; reopen only for thesis-level extension | `docs/evidence/feedback_efield_hotspot_validation_20260911.md` + `data/run05/feedback_efield_20260911/` |
 | `T-MESH-01` | Per-MEB mesh-setting / common-ROI feedback evidence | Run 3–4 Mesh-GIDL | **In Progress — next task** | E-field work confirmed 31/36/41 BTBT hotspots are inside the common ROI with comfortable margins; 41 nm X shift ≈ 0.781 nm | Collect per-MEB mesh screenshots / refinement settings, confirm same rule and prepare backup-slide proof | mesh-feedback evidence document + selected mesh figures |
 | `T-BASELINE-01` | Baseline recalibration / literature comparison | Run 0–1 | **In Progress elsewhere** | B0 scope / limitations documented | Continue paper vs B0-v1 vs recalibrated B0-v2 comparison | baseline validation slide + progress / decision update |
-| `T-RET-01` | 1T1C retention protocol freeze | Run 7 | **In Progress elsewhere** | MixedMode / write feasibility verified | Freeze Write → floating Hold → VSN decay → retention criterion | Run 7 progress / evidence + methodology slide |
+| `T-RET-01` | 1T1C retention protocol freeze | Run 7 | **Checkpoint reached — feedback-level feasibility** | Write screen quantified; floating-SN 100 ns Hold stable for processed subset; independent D0/D1 Read window = **102.67 mV** | Integrated `Write → Hold → Read`, longer Hold, `T_RET,5%`, final retention-metric freeze | `docs/progress/run07_1t1c_retention_feasibility.md` + `docs/evidence/feedback_retention_operation_checkpoint_20260911.md` + methodology traceability |
 
 ## 3. T-EFIELD-01 close-out checkpoint
 
@@ -117,6 +117,35 @@ Dedicated baseline workflow.
 
 ### T-RET-01
 Dedicated Run-7 workflow.
+
+Current feedback-level checkpoint:
+
+```text
+Write screen                      PASS — feasibility
+100 ns floating-SN Hold subset    PASS — stability
+Independent D0/D1 read            PASS
+D0/D1 BL separation               102.67 mV
+physical retention time           NOT YET
+integrated Write→Hold→Read         NOT YET
+```
+
+Presentation-safe wording:
+
+> B0 1T1C MixedMode에서 Write 후 floating storage node의 100 ns 단기 유지 안정성을 확인했고, 별도 D0/D1 read test에서 약 102.7 mV의 bitline separation을 확보하여 1차 retention-operation feasibility를 검증하였다.
+
+Resume from:
+
+1. integrated `Write → Hold → Read`;
+2. longer Hold;
+3. Synopsys-compatible `T_RET,5%`;
+4. final metric / bias freeze;
+5. Mesh1/3 and BTBT attribution before formal Run-7 close-out.
+
+Primary links:
+
+- `docs/progress/run07_1t1c_retention_feasibility.md`
+- `docs/evidence/feedback_retention_operation_checkpoint_20260911.md`
+- `docs/methodology/run07_methodology_traceability.md`
 
 ## 6. README integration rule
 
