@@ -21,7 +21,7 @@ Feedback received
 |---|---|---|---|---|---|
 | `FB-EFIELD-01` | Should the E-field be evaluated in the actual BTBT/GIDL critical region, and can spatial E-field / BTBT behavior explain the large GIDL-vs-field sensitivity mismatch? | Run 3–5 | `T-EFIELD-01` | **Resolved — feedback level** | 31/36/41 hotspot-following Phase A + conditional Phase B completed. Evidence: [`feedback_efield_hotspot_validation_20260911.md`](evidence/feedback_efield_hotspot_validation_20260911.md) |
 | `FB-MESH-01` | If MEB changes hotspot position, is the common Mesh-GIDL refinement still valid for each MEB case, and how should the per-MEB mesh-setting evidence be shown? | Run 3–4 | `T-MESH-01` | **In Progress — next task** | ROI-coverage checkpoint already obtained from E-field validation. Next: per-MEB mesh screenshots / refinement-setting evidence / presentation backup |
-| `FB-BASELINE-01` | How closely does the simplified 2-D B0 reproduce the literature 3-D BCAT electrical characteristics? | Run 0–1 | `T-BASELINE-01` | **In Progress elsewhere** | Paper vs B0-v1 vs recalibrated B0-v2 comparison + explicit model-scope statement |
+| `FB-BASELINE-01` | How closely does the simplified 2-D B0 reproduce the literature 3-D BCAT electrical characteristics? | Run 0–1 + dedicated 3-D reconstruction | `T-BASELINE-01` | **In Progress — 3D reconstruction / G2 running** | Literature-consistent `3D-Sun-B0` built through frozen geometry/contact/doping, G0/G1 electrical runs completed, G2 low-Vd full ID–VG running. Evidence: [`feedback_baseline_3d_reconstruction_20260911.md`](evidence/feedback_baseline_3d_reconstruction_20260911.md) |
 | `FB-RET-01` | What exactly is the 1T1C retention measurement definition? | Run 7; downstream Run 8–9 | `T-RET-01` | **In Progress elsewhere** | Write → floating Hold → VSN decay → pre-frozen retention criterion → optional Read |
 | `FB-RC-01` | Does deeper metal etch-back introduce a practical DRAM trade-off such as increased word-line resistance / RC delay? | Run 6.5 interpretation; downstream synthesis | future synthesis | **Open / literature-supported consideration** | keep as an unmodeled practical trade-off unless directly simulated |
 
@@ -152,10 +152,118 @@ Next mesh-feedback work:
 - prepare a concise explanation of why a common ROI is preferable for fair comparison;
 - add case-specific refinement only if a hotspot leaves the common ROI or evidence shows numerical inconsistency.
 
-## 5. Other feedback still open
+## 5. Baseline-feedback checkpoint — literature-consistent 3-D reconstruction
 
-### Baseline validation
-Handled in the dedicated baseline workflow. Separate absolute 3-D reproduction limits from relative MEB-trend use of the common simplified 2-D model.
+A separate `3D-Sun-B0` workflow is now being used to answer `FB-BASELINE-01` before judging the simplified 2-D CMP baseline.
+
+Detailed evidence:
+
+```text
+docs/evidence/feedback_baseline_3d_reconstruction_20260911.md
+```
+
+### 5.1 What has been completed
+
+The Sun et al. 2022 baseline was reconstructed in 3-D Sentaurus with an explicit distinction between literature facts and reconstruction assumptions.
+
+Literature-explicit nominal inputs currently carried into the deck include:
+
+```text
+Lgate    = 20 nm
+Drecess  = 120 nm
+DBCAT    = 36 nm
+Tox      = 5 nm
+Wfin     = 17 nm
+Hfin     = 48 nm
+Rfillet  = 1.0
+W gate WF = 4.8 eV
+Body B    = 1e17 cm^-3
+S/D As    = 1e20 cm^-3
+Gaussian doping
+Djunction = 0.40 × Drecess = 48 nm
+```
+
+Current phase status:
+
+```text
+A   literature truth table          DONE
+B   coordinate system               PASS / FROZEN
+C   geometry v05                    PASS / FROZEN
+D   contacts                        PASS / FROZEN
+E   doping                          PASS / FROZEN
+F0  doping-QA mesh                  PASS
+F1  nominal electrical mesh         BUILD PASS / CANDIDATE
+G0  low-Vd SDevice bring-up         PASS
+G1  high-Vd full ID-VG              PASS
+G2  low-Vd full ID-VG               RUNNING
+```
+
+### 5.2 Quantitative reconstruction checks already passed
+
+The source and drain vertical net-doping cuts both cross zero at approximately 48.0 nm, matching the nominal vertical `Djunction` target.
+
+The nominal electrical mesh also successfully runs the 3-D SDevice deck. SDevice recognizes all four contacts and the 4.8 eV gate work function, and the current model set activates Philips unified mobility, Lombardi interface mobility degradation, Hurkx tunneling, and a high-field saturation model.
+
+### 5.3 First electrical comparison
+
+The high-drain G1 sweep completed at:
+
+```text
+T    = 300 K
+Vd   = 1.2 V
+Vg   = 0 → 2.0 V
+Vs   = 0 V
+Vsub = 0 V
+```
+
+Key current checkpoint:
+
+```text
+Id @ Vg=2.0 V = 1.063e-5 A
+provisional SS ≈ 91.2 mV/dec
+provisional max(Id)/min(Id) ≈ 3.04e9
+```
+
+If the paper’s constant-current threshold expression is provisionally evaluated with `W=Wfin=17 nm` and `L=Lgate=20 nm`, the high-Vd threshold is approximately 1.147 V. This is **not frozen as a paper-equivalent Vth** because the exact 3-D channel-width convention used by the paper still needs to be fixed.
+
+Paper nominal targets remain:
+
+```text
+Vth       = 0.656 V
+SS        = 76 mV/dec
+Ion/Ioff  = 3.4e10
+DIBL      = 23.6 mV/V
+```
+
+Therefore the current conclusion is **not** that the paper has been reproduced. The current conclusion is that the 3-D reconstruction is numerically stable but still electrically mismatched.
+
+### 5.4 Open baseline issues
+
+The main unresolved items are:
+
+- G2 low-Vd full ID–VG and consistent DIBL extraction;
+- freezing the paper-equivalent Vth / Ion-Ioff extraction convention;
+- verifying the paper’s Canali wording against the exact Sentaurus T-2022.03 high-field implementation (the current log reports Caughey-Thomas saturation with gradient quasi-Fermi potential);
+- evaluating whether the assumed `GaussFactor=0.0` lateral S/D profile is contributing to the high Vth / degraded SS;
+- electrical coarse / nominal / fine mesh convergence before F1 is frozen.
+
+No work-function or doping tuning should be used merely to force agreement before those checks are completed.
+
+### 5.5 Feedback-level interpretation
+
+> The literature-consistent 3-D baseline has now been rebuilt far enough to separate “numerically working reconstruction” from “electrical reproduction.” Geometry, contacts, and vertical doping are validated and frozen, while the first high-Vd ID–VG result shows that the current reconstruction does not yet reproduce the reported Sun et al. nominal electrical metrics. DIBL remains pending G2. This discrepancy is being retained as evidence and investigated through extraction-definition, physics-mapping, lateral-doping, and mesh-convergence checks rather than hidden by parameter fitting.
+
+The final answer to `FB-BASELINE-01` will compare:
+
+```text
+literature nominal 3-D metrics
+↔ stabilized 3D-Sun-B0 reconstruction
+↔ simplified 2-D CMP baseline
+```
+
+Only then should the role and limits of the simplified 2-D model be stated in the final presentation / README.
+
+## 6. Other feedback still open
 
 ### 1T1C retention definition
 Current wording remains limited to MixedMode / write feasibility. Required direction:
@@ -167,7 +275,7 @@ Write → floating Hold → VSN(t) decay → pre-frozen retention criterion → 
 ### Practical WL resistance / RC trade-off
 Keep as a literature-supported practical consideration unless directly simulated.
 
-## 6. Current guardrails
+## 7. Current guardrails
 
 Avoid:
 
@@ -178,15 +286,19 @@ Cgd reduction directly proves GIDL reduction causality.
 1T1C retention has already been validated.
 Word-line resistance increase was directly simulated.
 The literature 3-D BCAT was fully reproduced electrically.
+The current 3-D baseline already matches Sun et al.
+GaussFactor = 0 is a literature value.
+The F1 3-D mesh is convergence-frozen.
 ```
 
 Use scoped wording:
 
-- current baseline supports relative MEB-trend analysis under a common simplified 2-D model;
+- current simplified 2-D baseline supports relative MEB-trend analysis under a common model, but its absolute fidelity must be judged against the stabilized 3-D reconstruction;
+- `3D-Sun-B0` is a literature-consistent reconstruction with explicit assumptions, not an exact reverse-engineered CAD/process deck;
 - completed E-field validation supports critical-region spatial E-field / BTBT interpretation rather than one peak-field scalar;
 - ROI coverage is only a mesh-feedback checkpoint, not final mesh validation;
 - the final objective remains an effective / defensible MEB design range.
 
-## 7. README integration rule
+## 8. README integration rule
 
 Do **not** rewrite the main README after each individual feedback item. Final README integration is deferred until the principal first-presentation feedback set is complete so baseline, E-field/mesh, retention, and practical-trade-off wording can be synthesized consistently in one pass.
