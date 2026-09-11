@@ -13,102 +13,47 @@ Use each layer for a different purpose:
 - **DECISIONS**: decisions that change interpretation, metrics, scope, or downstream work.
 - **progress / evidence**: finalized scientific results and curated evidence.
 
-Do **not** commit every exploratory screenshot or click-level step. Promote only material that must be reused, audited, cited, or presented.
+Do **not** commit every exploratory screenshot or click-level step. Promote material that must be reused, audited, cited, or presented.
 
 ---
 
-## 2. Active tasks
+## 2. Active / completed feedback tasks
 
 | Task ID | Task | Source run / data | Status | Completed checkpoint | Next action | Final destination |
 |---|---|---|---|---|---|---|
-| T-EFIELD-01 | Literature-grounded hotspot E-field / BTBT validation | Run 4–5 formal 31/36/41 nm, 300 K GIDL ON | **In Progress** | Five-paper methodology audit completed; feedback-level Measurement Protocol v1 scope frozen | Phase A: extract 31/36/41 nm BTBT hotspot coordinates and hotspot-following `|Ex|`, `|E|`, BTBT profiles; compare with old `E_wall,max` and terminal GIDL | Run 4/5 progress/evidence + presentation backup/main slide |
-| T-MESH-01 | MEB-dependent hotspot / mesh validation | Run 3–4 Mesh-GIDL | **Pending after T-EFIELD-01 Phase A** | Common refinement ROI already defined | Verify 31/36/41 hotspot coordinates remain inside common ROI and record boundary margins; re-mesh only if coverage is insufficient | Run 4/5 evidence + mesh-validation backup slide |
-| T-BASELINE-01 | Baseline recalibration / literature comparison | Run 0–1 | **In Progress elsewhere** | Existing B0 scope and limitations already documented | Continue Paper vs B0-v1 vs recalibrated B0-v2 comparison in the dedicated baseline workflow | Baseline validation slide + progress/decision update |
+| T-EFIELD-01 | Literature-grounded hotspot E-field / BTBT validation | Run 4–5 formal 31/36/41 nm, 300 K GIDL ON | **Completed — feedback level** | Phase A + conditional Phase B completed; hotspot profiles, 10/20/50% threshold sensitivity, field / BTBT integrals and terminal-GIDL comparison recorded | Use curated figures/table for presentation; reopen only if thesis-level extension needs broader MEB or 2-D integration | [`docs/evidence/feedback_efield_hotspot_validation_20260911.md`](evidence/feedback_efield_hotspot_validation_20260911.md) + `data/run05/feedback_efield_20260911/` |
+| T-MESH-01 | MEB-dependent hotspot / common-ROI validation | Run 3–4 Mesh-GIDL | **Completed — feedback level** | 31/36/41 BTBT hotspots all remain comfortably inside common Mesh-GIDL ROI; 41 nm hotspot shifts only ~0.781 nm in X | No re-mesh for this feedback set; reopen only if later cases approach/exit ROI or show numerical inconsistency | same E-field feedback evidence + hotspot-ROI figure |
+| T-BASELINE-01 | Baseline recalibration / literature comparison | Run 0–1 | **In Progress elsewhere** | Existing B0 scope and limitations documented | Continue Paper vs B0-v1 vs recalibrated B0-v2 comparison in dedicated baseline workflow | Baseline validation slide + progress/decision update |
 | T-RET-01 | 1T1C retention protocol freeze | Run 7 | **In Progress elsewhere** | MixedMode / write feasibility verified | Freeze Write → floating Hold → VSN decay → retention criterion before MEB retention sweep | Run 7 progress/evidence + methodology slide |
 
 ---
 
-## 3. T-EFIELD-01 — Literature-grounded hotspot E-field / BTBT validation
+## 3. T-EFIELD-01 close-out checkpoint
 
-### 3.1 Why this task exists
+### Why this task existed
 
-The formal Run 5 field metric was a reproducible fixed cut:
+Formal Run 5 showed:
 
 ```text
-Field    = Abs(ElectricField-V)
-Cutline  = Y = 0.116 um
-X range  = 0.032–0.070 um
-Metric   = E_wall,max
+MEB 31 → 41 nm
+GIDL endpoint decrease          ≈ 60.42%
+fixed-cut E_wall,max decrease   ≈ 1.69%
 ```
 
-Across MEB 31→41 nm, the existing formal results show approximately:
+The presentation question was whether the much larger terminal-GIDL sensitivity could be interpreted more defensibly from the actual GIDL / BTBT critical region rather than one fixed field peak.
+
+This task was deliberately kept as a **supporting validation**, not a new main research axis and not a reopening of the 43–51 nm MEB design-range search.
+
+### Frozen validation set / condition
 
 ```text
-GIDL endpoint decrease     ≈ 60.42%
-fixed-cut E_wall,max drop  ≈ 1.69%
-```
-
-Presentation feedback raised two related questions:
-
-1. should electric field be evaluated in the **actual GIDL / BTBT critical region** rather than only at one fixed wall cut?
-2. if MEB changes the hotspot position, does the existing common Mesh-GIDL refinement remain valid?
-
-The purpose of this task is **not** to find an electric-field metric that numerically matches the GIDL percentage change. The goal is to determine whether the much larger terminal-GIDL sensitivity can be explained plausibly by the spatial E-field / BTBT behavior in the actual GIDL-critical region.
-
-This is a **supporting validation task**, not a new main research axis and not a reopening of the full 43–51 nm MEB search.
-
-### 3.2 Literature-methodology checkpoint
-
-A five-paper methodology audit was completed before restarting extraction. The recurring literature pattern was summarized as:
-
-```text
-physical GIDL / leakage critical region
-→ spatial E-field profile / distribution
-→ representative scalar metric if needed
-→ terminal leakage / retention comparison
-```
-
-Important method-specific lessons carried forward:
-
-- MEB / gate-structure changes can move or redistribute the electric-field peak, so a fixed spatial point alone may miss part of the mechanism.
-- Peak field can remain similar while the BTBT-active spatial extent differs; width / integrated-field analysis is therefore a justified **conditional** follow-up when peak/profile evidence remains insufficient.
-- Whole-device global Emax is not promoted as the formal GIDL mechanism metric.
-- Automatic BTBT-maximum localization is a CMP reproducibility improvement, not claimed as a universal literature standard.
-
-### 3.3 Feedback-level validation set
-
-Use only the original formal three-level screening set:
-
-```text
-MEB = 31 / 36 / 41 nm
-```
-
-Rationale:
-
-- `36 nm` = nominal literature-based reference,
-- `31 nm` = shallow side (`-5 nm`),
-- `41 nm` = deeper side (`+5 nm`).
-
-These three cases were already executed under the same formal GIDL protocol and are sufficient for the present **mechanism / trend validation**. Extended 43–51 nm cases remain part of the later design-range analysis and are not reprocessed here unless a later thesis-level extension requires it.
-
-### 3.4 Frozen source condition for Phase A
-
-Use the existing formal 300 K GIDL-ON data:
-
-```text
+MEB       = 31 / 36 / 41 nm
 Mesh_Code = 3
 T         = 300 K
 VD        = 1.2 V
 VG final  = -0.7 V
 BTBT      = Band2Band(Model=NonlocalPath)
 terminal  = |Idrain| @ VG=-0.7 V
-```
-
-The source decks store:
-
-```text
-ElectricField/Vector
-Band2BandGeneration
 ```
 
 Coordinate convention:
@@ -118,159 +63,93 @@ X = wafer depth
 Y = source-to-drain lateral direction
 ```
 
-### 3.5 Common Mesh-GIDL region
-
-Existing common local refinement ROI:
+Common Mesh-GIDL ROI:
 
 ```text
 X = 0.032–0.070 um
 Y = 0.112–0.133 um
-local max/min = 1.0 / 0.25 nm
 ```
 
-This ROI was originally placed with margin around the observed drain-side BTBT-sensitive region.
+### Completed protocol
 
-Before using it as the formal hotspot search domain, confirm from the 31/36/41 spatial maps that the dominant drain-side BTBT lobe lies within the common refined region. Do **not** assign different manually chosen hotspot search windows to individual MEB cases.
+For each 31/36/41 nm case:
 
-The formal rule is:
+1. full-Si `Band2BandGeneration` maximum automatically located;
+2. `X_hot`, `Y_hot`, `BTBT_max` recorded;
+3. hotspot coverage inside common Mesh-GIDL ROI checked;
+4. hotspot-following X-cut generated at `Y_hot`;
+5. `Band2BandGeneration`, `ElectricField-X`, and `Abs(ElectricField-V)` profiles exported;
+6. profile / peak results compared with old `E_wall,max` and terminal GIDL;
+7. because the directional field peak did not decrease with GIDL, conditional Phase B was activated;
+8. `G/Gmax >= 10%, 20%, 50%` active-region width and `integral(|E| dx)` sensitivity were evaluated;
+9. 1-D `integral(G_BTBT dx)` was retained as a spatial-generation trend cross-check, not as a terminal-current calculation.
+
+All three extracted hotspots had:
 
 ```text
-common search / refinement domain
-→ case-specific automatically extracted hotspot coordinate
-→ case-specific hotspot-following cut
+Y_hot = 0.121875 um
 ```
 
-### 3.6 Measurement Protocol v1 — Phase A
+### Key close-out result
 
-For each MEB = 31 / 36 / 41 nm:
-
-1. inspect the drain-side `Band2BandGeneration` spatial map and confirm the dominant BTBT lobe is covered by the common ROI;
-2. automatically extract:
+31 → 41 nm:
 
 ```text
-BTBT_max
-X_hot
-Y_hot
+GIDL endpoint                  -60.42%
+BTBT_max                       -52.43%
+1-D integrated BTBT            -57.74%
+20% BTBT-active width          -12.68%
+20% active-region int(|E| dx)  -14.68%
+hotspot-cut |E| peak            -3.52%
+old fixed E_wall,max            -1.69%
+ElectricField-X peak            +8.16%
 ```
 
-3. create an X-direction / wafer-depth cut at:
+Supported interpretation:
 
-```text
-Y = Y_hot
-```
+> The large MEB-dependent GIDL reduction is not adequately represented by a single local E-field peak. Across 31/36/41 nm, BTBT-generation amplitude and active spatial extent decrease, and the field integrated over the BTBT-active region also decreases. The spatially integrated BTBT-generation trend is consistent with the terminal GIDL reduction. The mechanism is therefore more defensibly discussed from the **critical-region spatial E-field / BTBT distribution** than from one peak-field scalar.
 
-4. extract on the same cut:
+Guardrails:
 
-```text
-|ElectricField-X|(X)      = primary directional field profile
-Abs(ElectricField-V)(X)   = supporting field-magnitude profile
-Band2BandGeneration(X)    = BTBT spatial profile
-```
+- do not claim the 20% threshold is a universal literature standard;
+- do not claim the 1-D BTBT integral equals terminal current;
+- do not claim absolute BTBT calibration or absolute mesh independence;
+- do not promote this feedback validation into the main research objective;
+- do not claim direct `Cgd → E-field → GIDL` causality from this result alone.
 
-5. record the minimum Phase-A scalar set:
+Evidence:
 
-```text
-X_hot
-Y_hot
-BTBT_max
-E_x,peak
-X_at_E_x,peak
-|E|@BTBTmax   (low-cost cross-check when available)
-```
-
-6. compare with the existing control / electrical metrics:
-
-```text
-old E_wall,max
-terminal |Idrain| @ VG=-0.7 V
-```
-
-### 3.7 Phase-A decision gate
-
-After the 31/36/41 profiles are available, stop and classify the result before adding more metrics.
-
-#### Outcome A — profile evidence is sufficient
-
-If E-field and BTBT spatial profiles show a clear, physically interpretable redistribution / weakening consistent with the GIDL direction, close the feedback-level mechanism validation without adding unnecessary integral metrics.
-
-#### Outcome B — peak field still changes little, but BTBT spatial extent changes materially
-
-Activate conditional Phase B based on the Pi-BCAT literature precedent:
-
-```text
-BTBT-active-region width
-integral(|E_x| dx) over the frozen BTBT-active region
-```
-
-The active-region threshold must be fixed using a transparent sensitivity procedure and must **not** be selected afterward solely because it best matches the terminal-GIDL trend.
-
-#### Outcome C — E-field and BTBT spatial evidence both fail to explain the terminal trend
-
-Do not tune the metric to force agreement. Record the limited conclusion:
-
-> the present local/spatial E-field evidence is insufficient by itself to explain the full 31→41 nm terminal-GIDL sensitivity.
-
-### 3.8 Existing 36 nm exploratory checkpoint
-
-A prior exploratory automatic BTBT hotspot extraction exists for one 36 nm dataset:
-
-```text
-Band2BandGeneration_max = 8.41825e21 cm^-3 s^-1
-X_BTBT,max              = 0.0515625 um
-Y_BTBT,max              = 0.1218750 um
-```
-
-This remains a useful checkpoint, but the formal 31/36/41 Phase-A table should use one consistent source set and one frozen procedure.
-
-### 3.9 Phase-A output table
-
-Create one consolidated table:
-
-| MEB | X_hot | Y_hot | BTBT_max | E_x,peak | X_at_Epeak | |E|@BTBTmax | old E_wall,max | GIDL endpoint | ROI margin |
-|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 31 | ... | ... | ... | ... | ... | ... | 871969.09 | 1.9624468e-14 | ... |
-| 36 | ... | ... | ... | ... | ... | ... | 867936.60 | 1.3777737e-14 | ... |
-| 41 | ... | ... | ... | ... | ... | ... | 857194.93 | 7.7683012e-15 | ... |
-
-### 3.10 Current resume point
-
-```text
-Literature methodology audit : Completed
-Protocol v1 scope             : Frozen for feedback-level Phase A
-Formal extraction             : Not yet started
-Next action                   : 31 nm hotspot / profile extraction
-```
+- [`docs/evidence/feedback_efield_hotspot_validation_20260911.md`](evidence/feedback_efield_hotspot_validation_20260911.md)
+- `data/run05/feedback_efield_20260911/`
+- `assets/images/feedback/20260911_efield/`
 
 ---
 
-## 4. T-MESH-01 — Minimal hotspot / common-ROI audit
+## 4. T-MESH-01 close-out checkpoint
 
-### 4.1 Scope
+Common ROI coverage was checked using the automatically extracted BTBT hotspots.
 
-This is deliberately limited to the current presentation-feedback need.
+| MEB | Xhot (um) | Yhot (um) | X-low margin (nm) | X-high margin (nm) | Y-low margin (nm) | Y-high margin (nm) |
+|---:|---:|---:|---:|---:|---:|---:|
+| 31 | 0.051562496 | 0.121875 | 19.562 | 18.438 | 9.875 | 11.125 |
+| 36 | 0.051562496 | 0.121875 | 19.562 | 18.438 | 9.875 | 11.125 |
+| 41 | 0.052343745 | 0.121875 | 20.344 | 17.656 | 9.875 | 11.125 |
 
-For MEB 31 / 36 / 41 nm:
+Conclusion for this feedback set:
 
-- record `X_hot`, `Y_hot`,
-- confirm each hotspot lies inside the common Mesh-GIDL ROI,
-- calculate margin to each ROI boundary,
-- inspect whether the dominant BTBT lobe remains covered by the refined region.
+- all hotspots remain comfortably inside the common refinement region;
+- 41 nm moves only about `0.781 nm` deeper in X;
+- no re-mesh is required for the present 31/36/41 presentation-feedback validation.
 
-Do not launch a new deep mesh-convergence study unless:
-
-- a hotspot approaches or exits the refinement boundary,
-- the profile is visibly clipped by the ROI,
-- the extracted result shows a numerical inconsistency that makes the trend interpretation unreliable.
-
-The conclusion from this task should be limited to **common refinement coverage for the feedback-validation set**, not absolute mesh-independent BTBT accuracy.
+This is a **common-ROI coverage check**, not proof of absolute mesh-independent BTBT accuracy.
 
 ---
 
-## 5. Cross-chat feedback tasks
+## 5. Cross-chat tasks still open
 
 ### T-BASELINE-01
 
-Handled in a dedicated parallel workflow. Key presentation issue:
+Handled in a dedicated parallel workflow. Main issue:
 
 ```text
 literature 3-D BCAT
@@ -278,11 +157,11 @@ vs
 simplified 2-D B0
 ```
 
-Need to separate absolute reproduction limits from the current use of a common model for relative MEB trends.
+Need to separate absolute reproduction limits from the present use of a common model for relative MEB trends.
 
 ### T-RET-01
 
-Handled in the dedicated Run-7 workflow. Current status remains:
+Handled in the Run-7 workflow. Current wording remains limited to:
 
 ```text
 MixedMode / write feasibility : verified
@@ -291,7 +170,7 @@ retention criterion           : not yet frozen
 full retention validation     : not yet complete
 ```
 
-Required direction remains:
+Required direction:
 
 ```text
 Write → floating Hold → VSN(t) decay → pre-frozen retention criterion → optional Read
@@ -299,33 +178,17 @@ Write → floating Hold → VSN(t) decay → pre-frozen retention criterion → 
 
 ---
 
-## 6. Presentation-image staging policy
+## 6. README integration rule
 
-Presentation work may require several screenshots. Keep them **in chat / local workspace first** while the extraction protocol is still being executed.
-
-Promote images to GitHub only when one of the following is true:
-
-- selected for a main or backup slide,
-- needed to prove hotspot location or mesh coverage,
-- needed for a formal evidence manifest,
-- needed to reproduce a published numerical claim.
-
-Suggested later destination after curation:
-
-```text
-assets/images/feedback/<review-date-or-topic>/
-docs/evidence/<matching_manifest>.md
-```
-
-Do not upload many nearly identical raw screenshots simply because they were generated. Prefer a consolidated numeric table plus representative images when that preserves the same evidence.
+Do **not** update the project README for each individual feedback item. The final README synthesis is deferred until the main post-presentation feedback set is completed so that baseline, E-field/mesh, retention, and practical trade-off wording can be integrated consistently in one pass.
 
 ---
 
 ## 7. Task completion rule
 
-When a task closes:
+When another feedback task closes:
 
-1. move scientific results into the relevant `docs/progress/` and `docs/evidence/` files,
-2. record any interpretation-changing choice in `DECISIONS.md`,
-3. update `RUN_SHEET.md` only if an official stage status / exit criterion changes,
+1. move scientific results into the relevant `docs/progress/` and `docs/evidence/` files;
+2. record interpretation-changing choices in `DECISIONS.md` when necessary;
+3. update `RUN_SHEET.md` only if an official stage status / exit criterion changes;
 4. mark the TASK_HUB row Completed and retain only a concise checkpoint / link.
