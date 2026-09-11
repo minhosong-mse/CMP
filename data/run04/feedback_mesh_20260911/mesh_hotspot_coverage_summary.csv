@@ -1,0 +1,4 @@
+MEB_nm,mesh_node,Points,Elements,Xhot_um,Yhot_um,X_low_margin_nm,X_high_margin_nm,Y_low_margin_nm,Y_high_margin_nm,nearest_edge_margin_nm,Mesh_Code,ROI_X_low_um,ROI_X_high_um,ROI_Y_low_um,ROI_Y_high_um,local_max_nm,local_min_nm
+31,n53_msh,5739,12063,0.051562496,0.121875,19.562496,18.437504,9.875,11.125,9.875,3,0.032,0.070,0.112,0.133,1.0,0.25
+36,n29_msh,5789,12175,0.051562496,0.121875,19.562496,18.437504,9.875,11.125,9.875,3,0.032,0.070,0.112,0.133,1.0,0.25
+41,n58_msh,5830,12273,0.052343745,0.121875,20.343745,17.656255,9.875,11.125,9.875,3,0.032,0.070,0.112,0.133,1.0,0.25
