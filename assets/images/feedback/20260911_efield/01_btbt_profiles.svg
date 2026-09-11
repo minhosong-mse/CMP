@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="480" viewBox="0 0 760 480">
+<rect width="100%" height="100%" fill="white"/>
+<text x="380.0" y="28" text-anchor="middle" font-family="sans-serif" font-size="18">Hotspot-following BTBT profiles</text>
+<line x1="90" y1="415" x2="730" y2="415" stroke="black"/>
+<line x1="90" y1="55" x2="90" y2="415" stroke="black"/>
+<line x1="90.0" y1="415" x2="90.0" y2="421" stroke="black"/>
+<text x="90.0" y="437" text-anchor="middle" font-family="sans-serif" font-size="11">45</text>
+<line x1="218.0" y1="415" x2="218.0" y2="421" stroke="black"/>
+<text x="218.0" y="437" text-anchor="middle" font-family="sans-serif" font-size="11">49</text>
+<line x1="346.0" y1="415" x2="346.0" y2="421" stroke="black"/>
+<text x="346.0" y="437" text-anchor="middle" font-family="sans-serif" font-size="11">53</text>
+<line x1="474.0" y1="415" x2="474.0" y2="421" stroke="black"/>
+<text x="474.0" y="437" text-anchor="middle" font-family="sans-serif" font-size="11">57</text>
+<line x1="602.0" y1="415" x2="602.0" y2="421" stroke="black"/>
+<text x="602.0" y="437" text-anchor="middle" font-family="sans-serif" font-size="11">61</text>
+<line x1="730.0" y1="415" x2="730.0" y2="421" stroke="black"/>
+<text x="730.0" y="437" text-anchor="middle" font-family="sans-serif" font-size="11">65</text>
+<line x1="90" y1="415.0" x2="730" y2="415.0" stroke="#ddd"/>
+<text x="80" y="419.0" text-anchor="end" font-family="sans-serif" font-size="11">1e15</text>
+<line x1="90" y1="316.4" x2="730" y2="316.4" stroke="#ddd"/>
+<text x="80" y="320.4" text-anchor="end" font-family="sans-serif" font-size="11">1e17</text>
+<line x1="90" y1="217.8" x2="730" y2="217.8" stroke="#ddd"/>
+<text x="80" y="221.8" text-anchor="end" font-family="sans-serif" font-size="11">1e19</text>
+<line x1="90" y1="119.2" x2="730" y2="119.2" stroke="#ddd"/>
+<text x="80" y="123.2" text-anchor="end" font-family="sans-serif" font-size="11">1e21</text>
+<text x="410.0" y="462" text-anchor="middle" font-family="sans-serif" font-size="13">Depth X (nm)</text>
+<text x="20" y="235.0" transform="rotate(-90 20 235.0)" text-anchor="middle" font-family="sans-serif" font-size="13">Band2BandGeneration (cm^-3 s^-1)</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="125.00,415.00 150.00,415.00 150.00,415.00 175.00,415.00 175.00,391.06 200.00,178.22 200.00,178.22 225.00,122.91 225.00,122.91 250.00,91.15 250.00,91.15 275.00,73.18 275.00,73.18 300.00,66.53 300.00,66.53 325.00,71.12 325.00,71.12 350.00,90.22 350.00,90.22 375.00,120.27 375.00,120.27 400.00,149.35 400.00,149.35 425.00,172.69 425.00,172.70 450.00,195.49 450.00,195.49 475.00,217.72 475.00,217.72 500.00,239.85 500.00,239.85 525.00,261.42 525.00,261.42 550.00,282.91 550.00,282.91 575.00,303.58 575.00,303.58 600.00,324.66 600.00,324.66 625.00,346.26 625.00,346.26 650.00,367.95 650.00,367.95 675.00,388.61 700.00,409.21 725.00,415.00"/>
+<line x1="565" y1="73" x2="589" y2="73" stroke="#d62728" stroke-width="2"/>
+<text x="595" y="77" font-family="sans-serif" font-size="11">31 nm</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="150.00,415.00 175.00,415.00 175.00,415.00 200.00,248.70 200.00,248.68 225.00,156.12 225.00,156.12 250.00,111.25 250.00,111.25 275.00,85.38 275.00,85.38 300.00,73.53 300.00,73.53 325.00,73.89 325.00,73.89 350.00,88.37 350.00,88.37 375.00,116.99 375.00,116.99 400.00,146.85 400.00,146.85 425.00,171.33 425.00,171.33 450.00,194.19 450.00,194.19 475.00,216.52 475.00,216.52 500.00,238.69 500.00,238.69 525.00,260.37 525.00,260.37 550.00,281.90 550.00,281.90 575.00,302.66 575.00,302.66 600.00,323.62 600.00,323.62 625.00,345.14 625.00,345.14 650.00,366.87 650.00,366.87 675.00,387.70 700.00,408.20 725.00,415.00"/>
+<line x1="565" y1="91" x2="589" y2="91" stroke="#2ca02c" stroke-width="2"/>
+<text x="595" y="95" font-family="sans-serif" font-size="11">36 nm</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="175.00,415.00 200.00,415.00 200.00,415.00 225.00,282.29 225.00,282.22 250.00,162.22 250.00,162.21 275.00,115.54 275.00,115.54 300.00,91.05 300.00,91.05 325.00,82.44 325.00,82.44 350.00,88.69 350.00,88.69 375.00,111.45 375.00,111.45 400.00,141.79 400.00,141.79 425.00,168.98 425.00,168.98 450.00,191.95 450.00,191.95 475.00,214.46 475.00,214.46 500.00,236.63 500.00,236.64 525.00,258.51 525.00,258.51 550.00,279.96 550.00,279.96 575.00,301.06 575.00,301.06 600.00,321.83 600.00,321.83 625.00,343.18 625.00,343.18 650.00,364.87 650.00,364.87 675.00,386.05 700.00,406.42 725.00,415.00"/>
+<line x1="565" y1="109" x2="589" y2="109" stroke="#1f77b4" stroke-width="2"/>
+<text x="595" y="113" font-family="sans-serif" font-size="11">41 nm</text>
+</svg>

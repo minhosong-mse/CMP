@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="480" viewBox="0 0 760 480">
+<rect width="100%" height="100%" fill="white"/>
+<text x="380.0" y="28" text-anchor="middle" font-family="sans-serif" font-size="18">BTBT-active width sensitivity</text>
+<line x1="90" y1="415" x2="730" y2="415" stroke="black"/>
+<line x1="90" y1="55" x2="90" y2="415" stroke="black"/>
+<text x="90.0" y="437" text-anchor="middle" font-family="sans-serif" font-size="11">31</text>
+<text x="410.0" y="437" text-anchor="middle" font-family="sans-serif" font-size="11">36</text>
+<text x="730.0" y="437" text-anchor="middle" font-family="sans-serif" font-size="11">41</text>
+<text x="410.0" y="462" text-anchor="middle" font-family="sans-serif" font-size="13">MEB depth (nm)</text>
+<text x="20" y="235.0" transform="rotate(-90 20 235.0)" text-anchor="middle" font-family="sans-serif" font-size="13">Active width (nm)</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="90.00,110.29 410.00,111.78 730.00,148.07"/>
+<text x="570" y="77" font-family="sans-serif" font-size="11">10% criterion</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="90.00,186.17 410.00,210.25 730.00,245.61"/>
+<text x="570" y="95" font-family="sans-serif" font-size="11">20% criterion</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="90.00,354.59 410.00,356.27 730.00,385.39"/>
+<text x="570" y="113" font-family="sans-serif" font-size="11">50% criterion</text>
+</svg>
