@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+<rect width="100%" height="100%" fill="white"/>
+<text x="450" y="32" text-anchor="middle" font-family="Arial" font-size="24" font-weight="700">R6.5 Hotspot Coverage inside Common Mesh-GIDL ROI</text>
+<line x1="90" y1="430" x2="850" y2="430" stroke="black"/><line x1="90" y1="60" x2="90" y2="430" stroke="black"/>
+<rect x="126.2" y="89.6" width="687.6" height="310.8" fill="#e8f0fe" stroke="#174ea6" stroke-width="3"/>
+<text x="470" y="113.6" text-anchor="middle" font-family="Arial" font-size="16" fill="#174ea6">Common ROI: X 0.032–0.070 µm, Y 0.112–0.133 µm</text>
+<g fill="#d93025" font-family="Arial" font-size="14" text-anchor="middle">
+<circle cx="480.2" cy="254.3" r="7"/><text x="480.2" y="242.3" fill="black">36</text>
+<circle cx="494.3" cy="254.3" r="7"/><text x="494.3" y="228.3" fill="black">41 / 43</text>
+<circle cx="508.5" cy="254.3" r="7"/><text x="508.5" y="278.3" fill="black">45 / 47</text>
+<circle cx="522.6" cy="254.3" r="7"/><text x="522.6" y="242.3" fill="black">48 / 49 / 51</text>
+</g>
+<g font-family="Arial" font-size="15" fill="black">
+<text x="90" y="458" text-anchor="middle">0.03</text><text x="271" y="458" text-anchor="middle">0.04</text><text x="451.9" y="458" text-anchor="middle">0.05</text><text x="632.9" y="458" text-anchor="middle">0.06</text><text x="813.8" y="458" text-anchor="middle">0.07</text>
+<text x="78" y="435" text-anchor="end">0.110</text><text x="78" y="361" text-anchor="end">0.115</text><text x="78" y="287" text-anchor="end">0.120</text><text x="78" y="213" text-anchor="end">0.125</text><text x="78" y="139" text-anchor="end">0.130</text><text x="78" y="65" text-anchor="end">0.135</text>
+</g>
+<text x="450" y="482" text-anchor="middle" font-family="Arial" font-size="18">X (µm)</text><text x="24" y="250" text-anchor="middle" font-family="Arial" font-size="18" transform="rotate(-90 24 250)">Y (µm)</text>
+<text x="575" y="455" font-family="Arial" font-size="16" font-weight="700">8/8 PASS · min edge margin = 9.875 nm</text>
+</svg>
