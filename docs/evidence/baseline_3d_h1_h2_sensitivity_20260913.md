@@ -65,6 +65,13 @@ Id(2 V) ≈ -22.6%
 
 **H1 rejected as an explanation of the paper mismatch.** The alternative mapping moves Vth and SS farther away from the reported nominal values. This does not prove the nominal CAD mapping is exact; it only shows that this specific alternative interpretation is not an improvement.
 
+Evidence:
+
+```text
+data/baseline_3d_sun_b0/h1_idvg_highvd_lgate_outer20nm.csv
+data/baseline_3d_sun_b0/h1_lgate_mapping_validation_summary.txt
+```
+
 ## 3. H2 — lateral S/D Gaussian sensitivity
 
 ### Variant
@@ -115,10 +122,11 @@ Compared with nominal G1:
 
 **H2 rejected as the main cause of the large electrical mismatch.** A substantial nonzero lateral Gaussian factor produces an almost indistinguishable high-Vd ID–VG curve under the present reconstruction.
 
-Committed data:
+Evidence:
 
 ```text
 data/baseline_3d_sun_b0/h2_gaussfactor0p8_idvg_highvd.csv
+data/baseline_3d_sun_b0/h1_h2_sensitivity_summary_20260913.csv
 ```
 
 ## 4. What these checks imply
@@ -129,16 +137,34 @@ Current supported interpretation:
 
 > The 3D-Sun-B0 deck is a numerically stable, literature-consistent reconstruction, but the paper's absolute electrical calibration is not reproduced. H1 and H2 show that two plausible unpublished mapping assumptions do not account for the discrepancy. Unpublished process/device-calibration details or a more fundamental 3-D geometry/process mapping difference remain possible.
 
-## 5. Next rigorous step
+## 5. Active next step — electrical mesh convergence
 
 Do **not** start another parameter-fitting sweep yet.
 
-Recommended sequence:
+The active validation has now moved to Coarse / Nominal / Fine electrical mesh convergence using the nominal geometry and nominal `GaussFactor=0.0` reconstruction.
 
-1. electrical mesh convergence around the current nominal 3-D baseline (Coarse / Nominal / Fine);
-2. verify that Vth / SS / high-Vd ID–VG are numerically stable;
-3. freeze the literature-consistent 3-D reconstruction with an explicit absolute-calibration limitation;
-4. compare stabilized 3-D metrics directly with the simplified 2-D B0, which is the original feedback question;
-5. reopen additional 3-D rounding/process sensitivity only if the 2-D fidelity comparison or reviewer feedback specifically requires it.
+```text
+F1C Coarse = 1.25 × nominal spacing  -> launched / result pending
+F1  Nominal = current reference       -> completed / candidate
+F1F Fine   = 0.80 × nominal spacing  -> launched / result pending
+```
 
-This avoids turning unpublished geometry/process assumptions into fitted parameters merely to force agreement with one reported Vth value.
+Both new branches use the unchanged G1 high-drain electrical run:
+
+```text
+T = 300 K
+Vd = 1.2 V
+Vg = 0 → 2.0 V
+WF = 4.8 eV
+```
+
+Exact variant definitions and the result-ingestion protocol are recorded at:
+
+```text
+code/sde/baseline_3d_sun_b0/VARIANTS.md
+docs/evidence/baseline_3d_mesh_convergence_plan_20260913.md
+```
+
+After both runs finish, compare `Vth`, `SS`, `Id@2V`, full ID–VG shift, and Points/Elements. If Nominal and Fine are stable, freeze the literature-consistent 3-D baseline with an explicit absolute-calibration limitation and proceed to the simplified 2-D B0 fidelity comparison.
+
+This sequence avoids turning unpublished geometry/process assumptions into fitted parameters merely to force agreement with one reported Vth value.
