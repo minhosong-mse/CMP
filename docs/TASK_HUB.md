@@ -16,7 +16,7 @@
 |---|---|---|---|---|---|---|
 | `T-EFIELD-01` | Literature-grounded hotspot E-field / BTBT validation | Run 4–5, 31/36/41 nm, 300 K GIDL ON | **Completed — feedback level** | Phase A + conditional Phase B complete; hotspot coordinates, threshold sensitivity, integrated field / BTBT trend and figures committed | Use the evidence package for presentation; reopen only for thesis-level extension | `docs/evidence/feedback_efield_hotspot_validation_20260911.md` + `data/run05/feedback_efield_20260911/` |
 | `T-MESH-01` | Per-MEB mesh-setting / common-ROI feedback evidence | Run 3–4 Mesh-GIDL | **Completed — feedback level** | 31/36/41 nm all use the same Mesh-Code 3 rule; independently extracted BTBT hotspots remain inside the common ROI with ≥9.875 nm nearest-edge margin; 6-panel hotspot/mesh evidence committed | Use for presentation / backup; reopen only if later MEB cases approach/leave the ROI or numerical inconsistency appears | `docs/evidence/feedback_mesh_common_roi_validation_20260911.md` + `data/run04/feedback_mesh_20260911/` + `assets/images/feedback/20260911_mesh/` |
-| `T-BASELINE-01` | Literature-consistent 3-D BCAT baseline reconstruction and 2-D fidelity comparison | Run 0–1 + dedicated `3D-Sun-B0` workflow | **In Progress — post-G2 extraction / model-mapping stage** | Literature truth table complete; coordinate/geometry/contact/doping frozen; source/drain vertical junction = 48.0 nm validated; F1 nominal electrical mesh built; G0/G1/G2 curves completed; provisional low/high-Vd thresholds and reconstruction-defined DIBL extracted; SDevice decks, CSVs, compact summaries, and curated visual evidence committed | Freeze paper-equivalent extraction convention / DIBL bias limitation → verify Canali/high-field mapping → test lateral-Gaussian reconstruction sensitivity → electrical mesh convergence → compare stabilized 3-D baseline with simplified 2-D B0 | `docs/evidence/feedback_baseline_3d_reconstruction_20260911.md` + `docs/evidence/baseline_3d_evidence_manifest_20260912.md` + `assets/images/feedback/20260911_baseline/` + `data/baseline_3d_sun_b0/` + `code/sdevice/baseline_3d_sun_b0/` |
+| `T-BASELINE-01` | Literature-consistent 3-D BCAT baseline reconstruction and 2-D fidelity comparison | Run 0–1 + dedicated `3D-Sun-B0` workflow | **In Progress — S/D reconstruction sensitivity stage** | G0/G1/G2 curves complete; provisional Vth/DIBL extracted; threshold-width artifact check completed; Canali/Caughey-Thomas mapping resolved at model-family level; evidence/data/figure committed | Export exact final F1 SDE source CMD → run isolated lateral S/D Gaussian sensitivity → if needed test S/D-side 3-D rounding → mesh convergence → compare stabilized 3-D baseline with simplified 2-D B0 | `docs/evidence/feedback_baseline_3d_reconstruction_20260911.md` + `docs/evidence/baseline_3d_evidence_manifest_20260912.md` + `docs/evidence/baseline_3d_extraction_physics_verification_20260913.md` |
 | `T-RET-01` | 1T1C retention protocol freeze | Run 7 | **Checkpoint reached — feedback-level feasibility** | Write screen quantified; floating-SN 100 ns Hold stable for processed subset; independent D0/D1 Read window = **102.67 mV** | Integrated `Write → Hold → Read`, longer Hold, `T_RET,5%`, final retention-metric freeze | `docs/progress/run07_1t1c_retention_feasibility.md` + `docs/evidence/feedback_retention_operation_checkpoint_20260911.md` + methodology traceability |
 
 ## 3. T-EFIELD-01 close-out checkpoint
@@ -145,11 +145,13 @@ Vertical Djunction              48.0 nm source + drain PASS
 F1 electrical mesh             BUILD PASS / CANDIDATE
 G0 low-Vd bring-up              PASS
 G1 high-Vd full ID-VG           PASS
-G2 low-Vd full ID-VG            PASS — curve ingested
+G2 low-Vd full ID-VG            PASS
+Vth-width artifact check        PASS — cannot explain mismatch
+Canali / CT model-family map    PASS — compatible
 Electrical paper match          NOT YET
 ```
 
-G1/G2 now provide a consistent reconstruction-defined low/high drain comparison. Under the current provisional constant-current interpretation (`W=Wfin=17 nm`, `L=Lgate=20 nm`, `Icrit=8.5e-8 A`) and log-current interpolation:
+G1/G2 provide a consistent reconstruction-defined low/high drain comparison. Under the current provisional constant-current interpretation (`W=Wfin=17 nm`, `L=Lgate=20 nm`, `Icrit=8.5e-8 A`) and log-current interpolation:
 
 ```text
 Vth_high @ Vd=1.20 V = 1.14659 V
@@ -159,15 +161,22 @@ SS_high                 ≈ 91.17 mV/dec
 SS_low                  ≈ 92.83 mV/dec
 ```
 
-Paper nominal values remain `Vth=0.656 V`, `SS=76 mV/dec`, `Ion/Ioff=3.4e10`, and `DIBL=23.6 mV/V`. The paper text does not explicitly publish the exact low/high drain-bias pair used for DIBL extraction, so `51.75 mV/V` is retained as a **reconstruction-defined provisional DIBL**, not yet a strict paper-equivalent value.
+Paper nominal values remain `Vth=0.656 V`, `SS=76 mV/dec`, `Ion/Ioff=3.4e10`, and `DIBL=23.6 mV/V`.
+
+Post-G2 verification conclusions:
+
+1. **Width convention is not the main Vth problem.** Using a larger saddle-fin width interpretation moves the extracted Vth even higher. Matching the paper `Vth=0.656 V` on the current G1 curve would require an unphysical equivalent width of about `1.87e-4 nm` under the constant-current formula.
+2. **Canali vs. Caughey-Thomas naming is not a model-family mismatch.** Sentaurus documentation/training describes the built-in high-field saturation model as Canali and also describes its Caughey-Thomas basis; the current `e/hHighFieldSaturation(GradQuasiFermi)` setup is therefore consistent at model-family/activation level. Exact paper parameter overrides remain unpublished.
+3. The paper text still does not explicitly publish the exact low/high drain-bias pair used for its DIBL value, so `51.75 mV/V` remains a **reconstruction-defined provisional DIBL**.
 
 Resume from:
 
-1. freeze / document the paper-equivalent Vth and Ion/Ioff extraction convention and the DIBL bias-pair limitation;
-2. verify the paper `Canali` wording against the T-2022.03 high-field implementation;
-3. evaluate the unpublished lateral S/D Gaussian assumption (`GaussFactor=0.0`) without arbitrary fitting;
-4. perform coarse / nominal / fine electrical mesh convergence;
-5. compare stabilized `3D-Sun-B0` directly with simplified 2-D B0 and close the original feedback question.
+1. **export the exact final F1 SDE source CMD from Sentaurus** — do not reconstruct it from a log;
+2. create an isolated **lateral S/D Gaussian sensitivity** variant while keeping geometry, vertical `Djunction`, work function, mesh policy, and SDevice physics fixed;
+3. treat any nonzero `GaussFactor` as a sensitivity bracket, not as a literature value;
+4. if lateral spread does not explain the direction/magnitude of mismatch, separately test S/D-side 3-D rounding / effective-channel geometry;
+5. perform coarse / nominal / fine electrical mesh convergence;
+6. compare stabilized `3D-Sun-B0` directly with simplified 2-D B0 and close the original feedback question.
 
 Repository evidence policy for this task:
 
@@ -185,14 +194,13 @@ KEEP in chat/workspace unless specifically needed:
   temporary screenshots / failed attempts
 ```
 
-One source artifact still worth adding later is the original final F1 SDE source CMD exported directly from Sentaurus. Do not reconstruct it from a log and label it as exact source.
-
 Primary links:
 
 - `docs/evidence/feedback_baseline_3d_reconstruction_20260911.md`
 - `docs/evidence/baseline_3d_evidence_manifest_20260912.md`
-- `assets/images/feedback/20260911_baseline/`
-- `data/baseline_3d_sun_b0/`
+- `docs/evidence/baseline_3d_extraction_physics_verification_20260913.md`
+- `assets/images/feedback/20260911_baseline/01_g1_g2_idvg_comparison.svg`
+- `data/baseline_3d_sun_b0/extraction_width_sensitivity_20260913.csv`
 - `code/sdevice/baseline_3d_sun_b0/`
 
 ### T-RET-01
