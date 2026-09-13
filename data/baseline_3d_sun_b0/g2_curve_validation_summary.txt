@@ -1,0 +1,44 @@
+3D-Sun-B0 — G2 low-Vd full ID-VG curve validation summary
+Date ingested: 2026-09-13
+
+Returned evidence
+- SVisual dataset: IdVg_LowVd_Full_n5_des
+- CSV: gate OuterVoltage vs drain TotalCurrent
+- Sweep reaches Vg = 2.0 V without truncation.
+- Returned curve is smooth through subthreshold and strong inversion.
+
+Bias / deck condition
+T       = 300 K
+Vd      = 0.05 V
+Vg      = 0 -> 2.0 V
+Vs      = 0 V
+Vsub    = 0 V
+Gate WF = 4.8 eV
+Geometry / doping / F1 mesh / physics = same baseline reconstruction used for G1
+
+Curve checkpoints
+Id minimum            = 1.0147335e-17 A at Vg = 0.1395599 V
+Id @ Vg = 2.0 V       = 2.48569e-6 A
+SS fit, 1e-13~1e-10 A = 92.83 mV/dec
+
+Provisional constant-current extraction
+Paper criterion: Icrit = 1e-7 A * W/L
+Reconstruction convention currently used: W = Wfin = 17 nm, L = Lgate = 20 nm
+Icrit = 8.5e-8 A
+
+Using log(Id)-interpolation between adjacent sweep samples:
+Vth_low(Vd=0.05 V)  = 1.20610 V
+Vth_high(Vd=1.20 V) = 1.14659 V  [from committed G1 curve]
+
+Reconstruction-defined DIBL:
+(Vth_low - Vth_high)/(1.20 - 0.05)
+= 51.75 mV/V
+
+Paper nominal DIBL = 23.6 mV/V.
+
+IMPORTANT CLAIM BOUNDARY
+- G2 curve ingestion / extraction is PASS at the curve level.
+- The paper text reports nominal DIBL = 23.6 mV/V but does not explicitly publish the exact low/high drain-bias pair used for DIBL extraction.
+- Therefore 51.75 mV/V is a reconstruction-defined provisional DIBL, not yet a strict paper-equivalent value.
+- The present 3-D reconstruction remains electrically mismatched; no parameter tuning should be used simply to force agreement.
+- Full Sentaurus logs and native .plt files remain workspace/debug evidence unless later diagnosis requires them.
