@@ -1,0 +1,3 @@
+width_interpretation,W_nm,Icrit_A,Vth_high_V,Vth_low_V,DIBL_mV_per_V
+Wfin,17,8.5e-08,1.14659315,1.20610296,51.7476608
+saddle_perimeter_2Hfin_plus_Wfin,113,5.65e-07,1.27410112,1.36561804,79.5799309
