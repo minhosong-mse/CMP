@@ -18,6 +18,7 @@
 | `T-MESH-01` | Per-MEB mesh-setting / common-ROI feedback evidence | Run 3–4 + full Run 6.5 extension | **Completed — full R6.5 coverage / comparison-consistency level** | All 8 R6.5 MEB cases `36/41/43/45/47/48/49/51 nm` use the same Mesh-Code 3 policy; independently extracted BTBT hotspots remain inside the common ROI with ≥9.875 nm nearest-edge margin; full raw/ROI tables and screenshot provenance committed | Use the full-R6.5 evidence package for presentation; reopen only for an absolute mesh-convergence study or if a future geometry leaves the ROI | `docs/evidence/feedback_mesh_run65_full_validation_20260913.md` + `data/run06_5/feedback_mesh_20260913/` + `assets/images/feedback/20260913_mesh/` |
 | `T-BASELINE-01` | Literature-consistent 3-D BCAT baseline reconstruction and 2-D fidelity comparison | Run 0–1 + dedicated `3D-Sun-B0` workflow | **In Progress — S/D reconstruction sensitivity stage** | G0/G1/G2 curves complete; provisional Vth/DIBL extracted; threshold-width artifact check completed; Canali/Caughey-Thomas mapping resolved at model-family level; evidence/data/figure committed | Export exact final F1 SDE source CMD → run isolated lateral S/D Gaussian sensitivity → if needed test S/D-side 3-D rounding → mesh convergence → compare stabilized 3-D baseline with simplified 2-D B0 | `docs/evidence/feedback_baseline_3d_reconstruction_20260911.md` + `docs/evidence/baseline_3d_evidence_manifest_20260912.md` + `docs/evidence/baseline_3d_extraction_physics_verification_20260913.md` |
 | `T-RET-01` | 1T1C retention protocol freeze | Run 7 | **Checkpoint reached — feedback-level feasibility** | Write screen quantified; floating-SN 100 ns Hold stable for processed subset; independent D0/D1 Read window = **102.67 mV** | Integrated `Write → Hold → Read`, longer Hold, `T_RET,5%`, final retention-metric freeze | `docs/progress/run07_1t1c_retention_feasibility.md` + `docs/evidence/feedback_retention_operation_checkpoint_20260911.md` + methodology traceability |
+| `T-RC-01` | Practical MEB-depth trade-off: W cross-section / normalized RWL proxy | Run 6.5 GIDL + frozen `3D-Sun-B0` geometry branch | **Checkpoint reached — proxy complete; waiting retention synthesis** | `36/41/43/45/47/48/49/51 nm` geometry sweep completed; normalized `1/A_W` proxy quantified; `47–49 nm` shows diminishing GIDL return while RWL proxy continues to rise | Do not add more TCAD to this branch yet; combine with MEB-dependent retention after Run-7 metric freeze. Optional WL-RC MixedMode only if stronger speed evidence becomes necessary | `docs/evidence/feedback_rwl_tradeoff_proxy_20260913.md` + `data/tradeoff/rwl_proxy_tradeoff_20260913.csv` + `assets/images/feedback/20260913_tradeoff/01_gidl_rwl_tradeoff.svg` |
 
 ## 3. T-EFIELD-01 close-out checkpoint
 
@@ -262,6 +263,48 @@ Primary links:
 - `docs/progress/run07_1t1c_retention_feasibility.md`
 - `docs/evidence/feedback_retention_operation_checkpoint_20260911.md`
 - `docs/methodology/run07_methodology_traceability.md`
+
+### T-RC-01
+Dedicated practical trade-off branch.
+
+Current checkpoint:
+
+```text
+36/41/43/45/47/48/49/51 nm geometry sweep   PASS
+W x-z conducting cross-section extraction    PASS
+normalized RWL proxy = A_W(36)/A_W(d)         PASS
+GIDL + RWL-proxy synthesis                    PASS
+actual distributed WL resistance              NOT SIMULATED
+actual WL RC delay                             NOT SIMULATED
+final optimum / effective range                PENDING RETENTION
+```
+
+Key result:
+
+```text
+Depth    GIDL suppression vs 36 nm    RWL proxy penalty
+47 nm          85.39%                       16.70%
+48 nm          85.94%                       18.50%
+49 nm          86.31%                       20.36%
+```
+
+Supported interpretation:
+
+> The 47–49 nm region is a diminishing-return candidate: incremental GIDL benefit becomes small while the geometry-derived normalized RWL penalty continues to rise. This is sufficient for the current feedback-level trade-off argument, but not sufficient to declare a final optimum.
+
+Resume from:
+
+1. wait for Run-7 retention metric freeze;
+2. add MEB-dependent retention results for `36/41/48` and `49` if challenger evidence is needed;
+3. combine `GIDL + retention + DC/cell guardrails + RWL proxy` into the effective MEB-range decision;
+4. add MixedMode/circuit WL-RC sensitivity only if the final conclusion requires stronger speed evidence.
+
+Primary links:
+
+- `docs/evidence/feedback_rwl_tradeoff_proxy_20260913.md`
+- `data/tradeoff/rwl_proxy_tradeoff_20260913.csv`
+- `assets/images/feedback/20260913_tradeoff/01_gidl_rwl_tradeoff.svg`
+- `code/sde/tradeoff/bcat_3d_rwl_proxy_sweep.cmd`
 
 ## 6. README integration rule
 
