@@ -6,6 +6,21 @@
 
 This file records every controlled SDE variant used after the nominal F1 build. The variants are defined relative to `F1_nominal.cmd` so the reconstruction assumptions remain auditable even when the complete working CMD is kept in the Sentaurus workspace during execution.
 
+The deterministic generator used to reproduce the working sensitivity / convergence decks from the committed nominal source is:
+
+```text
+code/sde/baseline_3d_sun_b0/generate_variants.py
+```
+
+Running it beside `F1_nominal.cmd` generates:
+
+```text
+H1_Lgate_outer20nm_sensitivity.cmd
+H2_GaussFactor_0p8_sensitivity.cmd
+F1C_coarse_mesh.cmd
+F1F_fine_mesh.cmd
+```
+
 ## Nominal F1 reference
 
 ```text
