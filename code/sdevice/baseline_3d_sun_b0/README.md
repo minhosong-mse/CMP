@@ -8,9 +8,18 @@ These decks belong to the dedicated literature-consistent 3-D baseline reconstru
 |---|---|---|
 | `G0_bringup.cmd` | 300 K, Vd=0.05 V, Vg 0→1.2 V numerical / turn-on sanity run | PASS |
 | `G1_highVd_full_idvg.cmd` | 300 K, Vd=1.2 V, Vg 0→2.0 V high-drain baseline comparison | PASS |
-| `G2_lowVd_full_idvg.cmd` | 300 K, Vd=0.05 V, Vg 0→2.0 V low-drain curve for consistent DIBL extraction | launched; result pending ingestion |
+| `G2_lowVd_full_idvg.cmd` | 300 K, Vd=0.05 V, Vg 0→2.0 V low-drain curve for consistent DIBL extraction | PASS — returned curve ingested |
 
 SWB custom parameters are not required for these current decks; the bias, temperature, work function, and thread count are hard-coded, while `@tdr@`, `@plot@`, `@tdrdat@`, and `@log@` are SWB placeholders.
+
+## G2 extraction checkpoint
+
+The returned G2 dataset reaches the full `Vg=2.0 V` endpoint and was ingested as:
+
+- `data/baseline_3d_sun_b0/g2_idvg_lowvd_0p05V_to_2p0V.csv`
+- `data/baseline_3d_sun_b0/g2_curve_validation_summary.txt`
+
+Using the same **provisional** threshold convention already used for G1 (`W=Wfin=17 nm`, `L=Lgate=20 nm`) gives a reconstruction-defined DIBL of approximately `51.75 mV/V`. The paper reports `23.6 mV/V`, but its exact low/high drain-bias pair is not explicitly stated in the text, so this is not yet claimed as a strict paper-equivalent DIBL extraction.
 
 ## Claim boundary
 
