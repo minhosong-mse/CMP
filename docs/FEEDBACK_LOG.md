@@ -23,7 +23,7 @@ Feedback received
 | `FB-MESH-01` | If MEB changes hotspot position, is the common Mesh-GIDL refinement still valid for each MEB case, and how should the per-MEB mesh-setting evidence be shown? | Run 3–4 + Run 6.5 extension | `T-MESH-01` | **Resolved — full R6.5 coverage / comparison-consistency level** | Full R6.5 set `36/41/43/45/47/48/49/51 nm` independently checked: 8/8 BTBT hotspots remain inside the same Mesh-Code 3 ROI with ≥9.875 nm nearest-edge margin. Evidence: [`feedback_mesh_run65_full_validation_20260913.md`](evidence/feedback_mesh_run65_full_validation_20260913.md) |
 | `FB-BASELINE-01` | How closely does the simplified 2-D B0 reproduce the literature 3-D BCAT electrical characteristics? | Run 0–1 + dedicated 3-D reconstruction | `T-BASELINE-01` | **In Progress — post-G2 extraction / model-mapping stage** | `3D-Sun-B0` built through frozen geometry/contact/doping; G0/G1/G2 curves completed; provisional low/high-Vd thresholds and reconstruction-defined DIBL extracted; executable decks, CSVs, compact summaries, and curated visual evidence committed. Evidence: [`feedback_baseline_3d_reconstruction_20260911.md`](evidence/feedback_baseline_3d_reconstruction_20260911.md), [`baseline_3d_evidence_manifest_20260912.md`](evidence/baseline_3d_evidence_manifest_20260912.md) |
 | `FB-RET-01` | What exactly is the 1T1C retention measurement definition? | Run 7; downstream Run 8–9 | `T-RET-01` | **Checkpoint reached — feasibility; metric freeze still open** | Write quantified, 100 ns floating-Hold stability verified on processed subset, independent D0/D1 read window = 102.67 mV. Evidence: [`feedback_retention_operation_checkpoint_20260911.md`](evidence/feedback_retention_operation_checkpoint_20260911.md). Next: integrated Write→Hold→Read, longer Hold, `T_RET,5%`, final metric freeze. |
-| `FB-RC-01` | Does deeper metal etch-back introduce a practical DRAM trade-off such as increased word-line resistance / RC delay? | Run 6.5 interpretation; downstream synthesis | future synthesis | **Open / literature-supported consideration** | keep as an unmodeled practical trade-off unless directly simulated |
+| `FB-RC-01` | Does deeper metal etch-back introduce a practical DRAM trade-off such as increased word-line resistance / RC delay? | Run 6.5 interpretation + `3D-Sun-B0` geometry branch | `T-RC-01` | **Checkpoint reached — geometry proxy; retention synthesis pending** | Frozen 3-D geometry swept over `36/41/43/45/47/48/49/51 nm`; remaining W cross-section and normalized `1/A_W` RWL proxy quantified. `47–49 nm` shows diminishing GIDL return while RWL proxy keeps rising. Evidence: [`feedback_rwl_tradeoff_proxy_20260913.md`](evidence/feedback_rwl_tradeoff_proxy_20260913.md) |
 
 ## 3. Resolved feedback — E-field / BTBT critical-region validation
 
@@ -303,9 +303,46 @@ docs/progress/run07_1t1c_retention_feasibility.md
 docs/methodology/run07_methodology_traceability.md
 ```
 
-### Practical WL resistance / RC trade-off
+### Practical WL resistance / RC trade-off — checkpoint
 
-Keep as a literature-supported practical consideration unless directly simulated.
+A dedicated `T-RC-01` geometry-only branch now quantifies the practical penalty using the frozen `3D-Sun-B0` geometry. Only the MEB-related gate-top / `DBCAT` depth is swept over `36/41/43/45/47/48/49/51 nm`.
+
+With the word-line direction along `y`, the tungsten `x-z` conducting cross-section is used to define
+
+```text
+RWL_proxy(d) = A_W(36 nm) / A_W(d)
+```
+
+under the controlled assumption of identical W resistivity and WL length.
+
+Key checkpoint:
+
+```text
+Depth    GIDL suppression vs 36 nm    RWL proxy penalty
+47 nm          85.39%                       16.70%
+48 nm          85.94%                       18.50%
+49 nm          86.31%                       20.36%
+```
+
+The `47–49 nm` region therefore shows diminishing incremental GIDL benefit while the geometry-derived RWL proxy continues to rise. This supports the design argument that `minimum GIDL != final optimum`.
+
+Important scope boundary:
+
+- the proxy is geometry-derived, not an absolute resistance extraction;
+- actual distributed WL resistance / RC delay was not directly simulated;
+- no final optimum depth is claimed before MEB-dependent retention evidence is available;
+- 51 nm remains a background-sensitive boundary reference and is excluded from the main ranking interpretation.
+
+Evidence:
+
+```text
+docs/evidence/feedback_rwl_tradeoff_proxy_20260913.md
+code/sde/tradeoff/bcat_3d_rwl_proxy_sweep.cmd
+data/tradeoff/rwl_proxy_tradeoff_20260913.csv
+assets/images/feedback/20260913_tradeoff/01_gidl_rwl_tradeoff.svg
+```
+
+No additional TCAD work is required on this proxy branch before retention synthesis. A circuit/MixedMode WL-RC sensitivity study remains optional if later needed to support a stronger read/write-delay claim.
 
 ## 7. Current guardrails
 
@@ -316,7 +353,7 @@ Avoid:
 51 nm is physically bad.
 Cgd reduction directly proves GIDL reduction causality.
 Final retention time / full integrated retention has already been validated.
-Word-line resistance increase was directly simulated.
+Absolute word-line resistance or WL RC delay was directly simulated.
 The literature 3-D BCAT was fully reproduced electrically.
 The current 3-D baseline already matches Sun et al.
 GaussFactor = 0 is a literature value.
@@ -332,6 +369,7 @@ Use scoped wording:
 - completed E-field validation supports critical-region spatial E-field / BTBT interpretation rather than one peak-field scalar;
 - completed mesh feedback verifies common-ROI hotspot coverage / comparison consistency across the full R6.5 MEB set, not absolute mesh independence;
 - Run 7 currently supports first-pass retention-operation feasibility, not a final retention-time claim;
+- the RWL result is a geometry-derived normalized `1/A_W` proxy and supports a practical trade-off argument, not an absolute RC-delay claim;
 - the final objective remains an effective / defensible MEB design range.
 
 ## 8. README integration rule
