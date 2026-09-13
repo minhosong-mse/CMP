@@ -3,7 +3,7 @@
 > Scope: `FB-BASELINE-01` / `T-BASELINE-01`  
 > Reconstruction: `3D-Sun-B0`  
 > Last synchronized: 2026-09-13  
-> Audit status: **G0 PASS / G1 PASS / G2 curve ingested PASS**
+> Audit status: **G0/G1/G2 PASS; extraction-width and Canali/Caughey-Thomas mapping verification completed**
 
 ## 1. Purpose
 
@@ -13,13 +13,19 @@ The target is a literature-consistent reconstruction of Sun et al. (Micromachine
 
 ## 2. Visual evidence now committed
 
-Browsable contact sheet:
+Browsable reconstruction contact sheet:
 
 ```text
 assets/images/feedback/20260911_baseline/00_baseline_visual_contact_sheet.svg
 ```
 
-It summarizes the reconstruction checkpoints used for geometry, XZ/YZ sections, contacts, doping / junction cuts, F1 mesh, and source/drain junction-depth verification.
+G1/G2 transfer-curve comparison generated from validated CSV data:
+
+```text
+assets/images/feedback/20260911_baseline/01_g1_g2_idvg_comparison.svg
+```
+
+The contact sheet summarizes the reconstruction checkpoints used for geometry, XZ/YZ sections, contacts, doping / junction cuts, F1 mesh, and source/drain junction-depth verification.
 
 The original higher-resolution screenshots remain workspace evidence and can be re-exported later if needed.
 
@@ -31,7 +37,7 @@ Repository directory:
 data/baseline_3d_sun_b0/
 ```
 
-Committed curve / junction data:
+Committed curve / junction / extraction data:
 
 ```text
 g0_idvg_lowvd_0p05V_to_1p2V.csv
@@ -39,6 +45,7 @@ g1_idvg_highvd_1p2V_to_2p0V.csv
 g2_idvg_lowvd_0p05V_to_2p0V.csv
 junction_source_C1.csv
 junction_drain_C2.csv
+extraction_width_sensitivity_20260913.csv
 ```
 
 The source and drain vertical net-doping profiles both cross the signed net-doping zero point at approximately:
@@ -60,6 +67,12 @@ data/baseline_3d_sun_b0/f1_sde_build_summary.txt
 data/baseline_3d_sun_b0/g0_sdevice_run_summary.txt
 data/baseline_3d_sun_b0/g1_sdevice_run_summary.txt
 data/baseline_3d_sun_b0/g2_curve_validation_summary.txt
+```
+
+Detailed post-G2 verification:
+
+```text
+docs/evidence/baseline_3d_extraction_physics_verification_20260913.md
 ```
 
 ### F1 build checkpoint
@@ -155,7 +168,65 @@ Important extraction boundary:
 - therefore `51.75 mV/V` is a **reconstruction-defined provisional DIBL**, not yet a strict paper-equivalent value;
 - the present 3-D deck is numerically operational but electrical reproduction is not yet demonstrated.
 
-## 5. Executable SDevice decks committed
+## 5. Post-G2 extraction-width verification
+
+The paper states `Icrit = 1e-7 A × W/L` but does not explicitly define the numerical channel-width convention for the 3-D saddle-fin extraction.
+
+A sensitivity check was performed using the same validated G1/G2 curves.
+
+Primary interpretation:
+
+```text
+W = Wfin = 17 nm
+Vth_high = 1.14659 V
+Vth_low  = 1.20610 V
+```
+
+Larger three-surface fin-width sensitivity bound:
+
+```text
+W = 2Hfin + Wfin = 113 nm
+Vth_high = 1.27410 V
+Vth_low  = 1.36562 V
+```
+
+A larger width raises the constant-current threshold criterion and therefore moves the extracted Vth even farther from the paper nominal `0.656 V`.
+
+At `Vg = 0.656 V`, the G1 current is approximately `9.34e-13 A`. For that current to satisfy the paper constant-current formula with `L=20 nm`, the implied width would be approximately `1.87e-4 nm`, which is not a physically meaningful channel-width interpretation.
+
+Therefore:
+
+> **channel-width extraction ambiguity cannot plausibly explain the present ~0.49 V Vth mismatch.**
+
+The exact paper convention is still unresolved for formal reporting, but it is no longer treated as a leading mismatch cause.
+
+## 6. Canali / Caughey-Thomas high-field mapping checkpoint
+
+Sun et al. explicitly state that the Canali model was used for carrier velocity saturation.
+
+The current T-2022.03 SDevice run log reports the activated electron/hole high-field model as:
+
+```text
+Caughey-Thomas saturation model,
+using gradient quasi-Fermi potential
+```
+
+Sentaurus documentation/training describes the built-in high-field saturation model as the **Canali** model, uses `HighFieldSaturation(GradQuasiFermi)` for it, and documents the carrier-specific `eHighFieldSaturation` / `hHighFieldSaturation` forms used in the current deck. Sentaurus documentation also describes the default Canali implementation as being based on the Caughey-Thomas formulation.
+
+Therefore:
+
+> **the Caughey-Thomas wording in the log is compatible with the Sentaurus Canali high-field model family and is not evidence of a different physics model being selected.**
+
+This item is considered **resolved at model-family / activation level**.
+
+Remaining limitation:
+
+- the paper does not publish its exact Sentaurus release or numerical high-field parameter overrides;
+- exact parameter-by-parameter equivalence therefore cannot be proven.
+
+The Canali/Caughey-Thomas naming issue is no longer a leading explanation for the electrical mismatch.
+
+## 7. Executable SDevice decks committed
 
 ```text
 code/sdevice/baseline_3d_sun_b0/
@@ -178,9 +249,7 @@ G1 deck = executed / PASS
 G2 deck = executed / returned curve ingested PASS
 ```
 
-The code README records the current physics-model claim boundary and the fact that current decks require no custom SWB parameters.
-
-## 6. Exact SDE source status
+## 8. Exact SDE source status
 
 The final F1 SDE build execution evidence is preserved through the compact checkpoint summary, but the exact final standalone SDE source CMD was not available as a separately uploaded artifact during this audit.
 
@@ -193,40 +262,47 @@ export the original final 3D-Sun-B0 SDE source CMD from the Sentaurus workspace
 → commit it under a dedicated 3-D baseline SDE directory
 ```
 
-This is the one source artifact still worth adding later because existing CMP runs normally keep the executed SDE/SDevice decks themselves.
+This source file is now the immediate prerequisite for a controlled S/D reconstruction sensitivity study.
 
-## 7. Remaining work before `FB-BASELINE-01` closes
+## 9. Revised remaining work before `FB-BASELINE-01` closes
 
-1. freeze the paper-equivalent Vth / Ion-Ioff extraction definitions and document the DIBL bias-pair limitation;
-2. verify the paper `Canali` wording against the exact T-2022.03 high-field implementation;
-3. test sensitivity to the unpublished lateral S/D Gaussian assumption (`GaussFactor=0.0`) without arbitrary parameter fitting;
-4. perform coarse / nominal / fine electrical mesh convergence before freezing F1;
-5. compare stabilized `3D-Sun-B0` metrics directly with the simplified 2-D CMP B0;
-6. archive the original final SDE source CMD once exported from Sentaurus.
+1. archive the exact final F1 SDE source CMD;
+2. run a controlled **lateral S/D Gaussian sensitivity** test with geometry, vertical junction target, work function, mesh policy, and SDevice physics otherwise fixed;
+3. if lateral spread alone does not resolve the direction/magnitude of mismatch, test source/drain-side **3-D corner rounding / effective-channel geometry** as a separate variable;
+4. freeze the final reporting convention for Ion/Ioff and retain the published-DIBL bias-pair limitation explicitly;
+5. perform coarse / nominal / fine electrical mesh convergence before freezing F1;
+6. compare stabilized `3D-Sun-B0` metrics directly with the simplified 2-D CMP B0.
 
-## 8. Resume point
+Do not tune work function or nominal doping merely to force agreement.
 
-Next session should **not** rerun G2. Resume from the post-G2 interpretation stage:
+Any nonzero `GaussFactor` value is a **reconstruction sensitivity parameter**, not a Sun-2022 literature value. Sentaurus training examples use nonzero lateral diffusion factors (for example 0.8), but those examples are not evidence for the BCAT device under study.
+
+## 10. Resume point
+
+Next session should resume from:
 
 ```text
-G2 curve validation                         DONE
+G0/G1/G2 ID-VG                              DONE
 provisional low/high Vth + DIBL             DONE
-paper-equivalent extraction definition      OPEN
-Canali / high-field implementation mapping  OPEN
-lateral Gaussian sensitivity                OPEN
-mesh convergence                             OPEN
+Vth width-artifact check                    DONE — cannot explain mismatch
+Canali/Caughey-Thomas model-family mapping  DONE — compatible
+exact F1 SDE source archival                OPEN — immediate prerequisite
+lateral S/D Gaussian sensitivity            OPEN — next simulation
+S/D-side 3-D geometry sensitivity           OPEN — conditional next
+mesh convergence                            OPEN
 2-D vs stabilized 3-D fidelity comparison   OPEN
 ```
 
-## 9. Feedback-hub synchronization state
+## 11. Feedback-hub synchronization state
 
-This checkpoint should remain synchronized across:
+Current baseline evidence is distributed across:
 
 ```text
 docs/FEEDBACK_LOG.md
 docs/TASK_HUB.md
 docs/evidence/feedback_baseline_3d_reconstruction_20260911.md
 docs/evidence/baseline_3d_evidence_manifest_20260912.md
+docs/evidence/baseline_3d_extraction_physics_verification_20260913.md
 assets/images/feedback/20260911_baseline/
 data/baseline_3d_sun_b0/
 code/sdevice/baseline_3d_sun_b0/
@@ -234,8 +310,8 @@ code/sdevice/baseline_3d_sun_b0/
 
 The main `README.md` remains intentionally untouched under the existing rule to integrate all principal presentation feedback in one final synthesis.
 
-## 10. Claim guardrail
+## 12. Claim guardrail
 
 Current supported wording:
 
-> `3D-Sun-B0` is a literature-consistent 3-D reconstruction with frozen geometry/contact/vertical-doping checkpoints and completed G0/G1/G2 ID–VG operation. Under the current provisional `W=Wfin`, `L=Lgate` constant-current interpretation, the reconstruction gives `Vth_high ≈ 1.1466 V`, `Vth_low ≈ 1.2061 V`, and a reconstruction-defined DIBL of about `51.75 mV/V`. The exact paper-equivalent extraction convention, high-field-model mapping, lateral-doping sensitivity, electrical mesh convergence, and direct 2-D fidelity comparison remain open; therefore exact electrical reproduction is not claimed.
+> `3D-Sun-B0` is a literature-consistent 3-D reconstruction with frozen geometry/contact/vertical-doping checkpoints and completed G0/G1/G2 ID–VG operation. The current electrical mismatch is real under reasonable threshold-width interpretations: width-convention ambiguity cannot plausibly account for the ~0.49 V threshold shift. The active Sentaurus high-field setup is consistent with the Canali/Caughey-Thomas model family, although exact paper parameterization is unpublished. The next controlled uncertainty to test is the unpublished source/drain lateral profile, followed by source/drain-side 3-D geometry if needed. Exact electrical reproduction is not yet claimed.
