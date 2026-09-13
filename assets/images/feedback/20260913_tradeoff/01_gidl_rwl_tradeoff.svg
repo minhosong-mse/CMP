@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+  <rect width="1000" height="620" fill="white"/>
+  <text x="500" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700">MEB-Related Depth Trade-off: GIDL Benefit vs RWL Proxy Penalty</text>
+  <text x="500" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="13">36 nm reference; 51 nm boundary excluded from main ranking</text>
+
+  <rect x="776.9" y="80" width="123.1" height="420" fill="#eeeeee" opacity="0.55"/>
+  <text x="838" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">47–49 nm</text>
+  <text x="838" y="121" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">diminishing-return candidate</text>
+
+  <line x1="100" y1="500" x2="920" y2="500" stroke="#222" stroke-width="1.5"/>
+  <line x1="100" y1="80" x2="100" y2="500" stroke="#222" stroke-width="1.5"/>
+
+  <g font-family="Arial, sans-serif" font-size="12" fill="#333">
+    <line x1="100" y1="416" x2="920" y2="416" stroke="#cccccc"/><text x="88" y="420" text-anchor="end">20</text>
+    <line x1="100" y1="332" x2="920" y2="332" stroke="#cccccc"/><text x="88" y="336" text-anchor="end">40</text>
+    <line x1="100" y1="248" x2="920" y2="248" stroke="#cccccc"/><text x="88" y="252" text-anchor="end">60</text>
+    <line x1="100" y1="164" x2="920" y2="164" stroke="#cccccc"/><text x="88" y="168" text-anchor="end">80</text>
+    <line x1="100" y1="80" x2="920" y2="80" stroke="#cccccc"/><text x="88" y="84" text-anchor="end">100</text>
+    <text x="88" y="504" text-anchor="end">0</text>
+
+    <text x="100" y="523" text-anchor="middle">36</text>
+    <text x="407.7" y="523" text-anchor="middle">41</text>
+    <text x="530.8" y="523" text-anchor="middle">43</text>
+    <text x="653.8" y="523" text-anchor="middle">45</text>
+    <text x="776.9" y="523" text-anchor="middle">47</text>
+    <text x="838.5" y="523" text-anchor="middle">48</text>
+    <text x="900" y="523" text-anchor="middle">49</text>
+  </g>
+
+  <text x="510" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">MEB-related Gate-Top Depth (nm)</text>
+  <text x="28" y="292" text-anchor="middle" transform="rotate(-90 28 292)" font-family="Arial, sans-serif" font-size="14">Change relative to 36 nm (%)</text>
+
+  <polyline points="100,500 407.7,316.8 530.8,253.2 653.8,199.9 776.9,141.4 838.5,139.1 900,137.5" fill="none" stroke="#1f77b4" stroke-width="3"/>
+  <polyline points="100,500 407.7,470.8 530.8,457.9 653.8,444.3 776.9,429.8 838.5,422.3 900,414.5" fill="none" stroke="#d07a00" stroke-width="3"/>
+
+  <g fill="#1f77b4">
+    <circle cx="100" cy="500" r="5"/><circle cx="407.7" cy="316.8" r="5"/><circle cx="530.8" cy="253.2" r="5"/><circle cx="653.8" cy="199.9" r="5"/><circle cx="776.9" cy="141.4" r="5"/><circle cx="838.5" cy="139.1" r="5"/><circle cx="900" cy="137.5" r="5"/>
+  </g>
+  <g fill="#d07a00">
+    <rect x="95" y="495" width="10" height="10"/><rect x="402.7" y="465.8" width="10" height="10"/><rect x="525.8" y="452.9" width="10" height="10"/><rect x="648.8" y="439.3" width="10" height="10"/><rect x="771.9" y="424.8" width="10" height="10"/><rect x="833.5" y="417.3" width="10" height="10"/><rect x="895" y="409.5" width="10" height="10"/>
+  </g>
+
+  <line x1="610" y1="585" x2="642" y2="585" stroke="#1f77b4" stroke-width="3"/><circle cx="626" cy="585" r="5" fill="#1f77b4"/>
+  <text x="651" y="590" font-family="Arial, sans-serif" font-size="13">GIDL suppression vs 36 nm</text>
+  <line x1="610" y1="606" x2="642" y2="606" stroke="#d07a00" stroke-width="3"/><rect x="621" y="601" width="10" height="10" fill="#d07a00"/>
+  <text x="651" y="611" font-family="Arial, sans-serif" font-size="13">Geometry-derived RWL proxy penalty</text>
+</svg>
