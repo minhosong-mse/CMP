@@ -20,7 +20,7 @@ Feedback received
 | Feedback ID | Feedback / question | Affected Run(s) | Task | Status | Resolution / target |
 |---|---|---|---|---|---|
 | `FB-EFIELD-01` | Should the E-field be evaluated in the actual BTBT/GIDL critical region, and can spatial E-field / BTBT behavior explain the large GIDL-vs-field sensitivity mismatch? | Run 3–5 | `T-EFIELD-01` | **Resolved — feedback level** | 31/36/41 hotspot-following Phase A + conditional Phase B completed. Evidence: [`feedback_efield_hotspot_validation_20260911.md`](evidence/feedback_efield_hotspot_validation_20260911.md) |
-| `FB-MESH-01` | If MEB changes hotspot position, is the common Mesh-GIDL refinement still valid for each MEB case, and how should the per-MEB mesh-setting evidence be shown? | Run 3–4 | `T-MESH-01` | **Resolved — feedback level** | 31/36/41 nm independently extracted BTBT hotspots are all covered by the same Mesh-Code 3 ROI with ≥9.875 nm nearest-edge margin; Run-4 per-MEB mesh / hotspot 6-panel evidence committed. Evidence: [`feedback_mesh_common_roi_validation_20260911.md`](evidence/feedback_mesh_common_roi_validation_20260911.md) |
+| `FB-MESH-01` | If MEB changes hotspot position, is the common Mesh-GIDL refinement still valid for each MEB case, and how should the per-MEB mesh-setting evidence be shown? | Run 3–4 + Run 6.5 extension | `T-MESH-01` | **Resolved — full R6.5 coverage / comparison-consistency level** | Full R6.5 set `36/41/43/45/47/48/49/51 nm` independently checked: 8/8 BTBT hotspots remain inside the same Mesh-Code 3 ROI with ≥9.875 nm nearest-edge margin. Evidence: [`feedback_mesh_run65_full_validation_20260913.md`](evidence/feedback_mesh_run65_full_validation_20260913.md) |
 | `FB-BASELINE-01` | How closely does the simplified 2-D B0 reproduce the literature 3-D BCAT electrical characteristics? | Run 0–1 + dedicated 3-D reconstruction | `T-BASELINE-01` | **In Progress — post-G2 extraction / model-mapping stage** | `3D-Sun-B0` built through frozen geometry/contact/doping; G0/G1/G2 curves completed; provisional low/high-Vd thresholds and reconstruction-defined DIBL extracted; executable decks, CSVs, compact summaries, and curated visual evidence committed. Evidence: [`feedback_baseline_3d_reconstruction_20260911.md`](evidence/feedback_baseline_3d_reconstruction_20260911.md), [`baseline_3d_evidence_manifest_20260912.md`](evidence/baseline_3d_evidence_manifest_20260912.md) |
 | `FB-RET-01` | What exactly is the 1T1C retention measurement definition? | Run 7; downstream Run 8–9 | `T-RET-01` | **Checkpoint reached — feasibility; metric freeze still open** | Write quantified, 100 ns floating-Hold stability verified on processed subset, independent D0/D1 read window = 102.67 mV. Evidence: [`feedback_retention_operation_checkpoint_20260911.md`](evidence/feedback_retention_operation_checkpoint_20260911.md). Next: integrated Write→Hold→Read, longer Hold, `T_RET,5%`, final metric freeze. |
 | `FB-RC-01` | Does deeper metal etch-back introduce a practical DRAM trade-off such as increased word-line resistance / RC delay? | Run 6.5 interpretation; downstream synthesis | future synthesis | **Open / literature-supported consideration** | keep as an unmodeled practical trade-off unless directly simulated |
@@ -53,7 +53,7 @@ Completed flow:
 
 1. full-Si `BTBT_max`, `X_hot`, `Y_hot` automatically extracted;
 2. common Mesh-GIDL ROI coverage checked;
-3. hotspot-following X-cut created at `Y_hot`;
+3. hotspot-following Y-cut created at `Y_hot` and profiled along X;
 4. `Band2BandGeneration`, `ElectricField-X`, `Abs(ElectricField-V)` profiles exported;
 5. profile / peak behavior compared with old `E_wall,max` and terminal GIDL;
 6. 10/20/50% BTBT-active widths and `int(|E| dx)` evaluated because peak-only behavior was insufficient;
@@ -99,7 +99,7 @@ assets/images/feedback/20260911_efield/
 
 ## 4. Resolved feedback — per-MEB Mesh / hotspot coverage
 
-Frozen common Mesh-GIDL rule:
+### 4.1 Frozen common refinement rule
 
 ```text
 Mesh_Code = 3
@@ -110,30 +110,59 @@ Y = 0.112–0.133 um
 local max/min = 1.0 / 0.25 nm
 ```
 
-| MEB | Run-4 mesh node | Points | Elements | Xhot (um) | Yhot (um) | Nearest ROI-edge margin (nm) |
-|---:|---|---:|---:|---:|---:|---:|
-| 31 | `n53_msh` | 5739 | 12063 | 0.051562496 | 0.121875 | 9.875 |
-| 36 | `n29_msh` | 5789 | 12175 | 0.051562496 | 0.121875 | 9.875 |
-| 41 | `n58_msh` | 5830 | 12273 | 0.052343745 | 0.121875 | 9.875 |
+The first feedback package checked the formal Run-4 `31/36/41 nm` set. Because the final transistor-level MEB sweep was extended in Run 6.5, the mesh check was subsequently repeated across **every R6.5 MEB geometry** rather than leaving the conclusion limited to the earlier three points.
 
-Observed hotspot motion over 31→41 nm is only about `+0.781 nm` in X and `0 nm` in Y at the extracted mesh-node resolution. All hotspots remain comfortably inside the common ROI.
+### 4.2 Full Run 6.5 audit
+
+| MEB | BTBT node | Mesh node | Points | Elements | BTBTmax (cm^-3 s^-1) | Xhot (um) | Yhot (um) | Nearest ROI-edge margin (nm) | Result |
+|---:|---|---|---:|---:|---:|---:|---:|---:|---|
+| 36 | `n119_des` | `n2_msh` | 5789 | 12175 | 8.41825e21 | 0.0515625 | 0.121875 | 9.875 | PASS |
+| 41 | `n120_des` | `n33_msh` | 5830 | 12273 | 5.55270e21 | 0.0523437 | 0.121875 | 9.875 | PASS |
+| 43 | `n121_des` | `n108_msh` | 5843 | 12303 | 3.92200e21 | 0.0523437 | 0.121875 | 9.875 | PASS |
+| 45 | `n122_des` | `n110_msh` | 5856 | 12333 | 2.95585e21 | 0.0531250 | 0.121875 | 9.875 | PASS |
+| 47 | `n123_des` | `n112_msh` | 5880 | 12385 | 1.90750e21 | 0.0531250 | 0.121875 | 9.875 | PASS |
+| 48 | `n124_des` | `n114_msh` | 5882 | 12393 | 1.42817e21 | 0.0539063 | 0.121875 | 9.875 | PASS |
+| 49 | `n125_des` | `n116_msh` | 5895 | 12423 | 1.17656e21 | 0.0539063 | 0.121875 | 9.875 | PASS |
+| 51 | `n126_des` | `n118_msh` | 5908 | 12453 | 5.94400e20 | 0.0539063 | 0.121875 | 9.875 | PASS |
+
+Observed motion over the complete R6.5 sweep:
+
+```text
+Xhot range              = 0.0515625–0.0539063 um
+Delta Xhot, 36→51 nm    ≈ +2.344 nm
+Yhot                    = 0.121875 um for 8/8 cases
+ROI coverage            = 8/8 PASS
+minimum nearest margin  = 9.875 nm
+```
+
+The point / element counts increase gradually as geometry changes; identical counts are not required. The comparison-control condition is that the same `Mesh_Code=3` rule and same common local-refinement window are retained.
 
 Resolved interpretation:
 
-> For the present 31/36/41 nm validation set, the same `Mesh_Code = 3` policy and common refinement ROI cover the BTBT critical region with sufficient margin. The hotspot motion does not require case-specific ROI relocation, so the common mesh policy is defensible for fair comparison.
+> Across the full Run 6.5 MEB set, independently extracted BTBT hotspots remain inside the same `Mesh_Code = 3` common refinement ROI with at least 9.875 nm nearest-edge margin. The total hotspot motion is small relative to the ROI dimensions, so case-specific refinement-window relocation is not required by the observed R6.5 hotspot movement. The common policy therefore supports hotspot coverage and fair case-to-case comparison consistency throughout R6.5.
 
 Scope boundary:
 
-- closes `FB-MESH-01` at the feedback / comparison-consistency level;
+- closes `FB-MESH-01` at the **full-R6.5 coverage / comparison-consistency level**;
 - does not prove absolute mesh independence;
-- `0.25 nm` is not claimed as a universal converged BTBT mesh size.
+- `0.25 nm` is not claimed as a universal converged BTBT mesh size;
+- a separate spacing / coarse-medium-fine convergence study would be required for an absolute mesh-independence claim.
 
-Evidence:
+Primary evidence:
+
+```text
+docs/evidence/feedback_mesh_run65_full_validation_20260913.md
+docs/evidence/feedback_mesh_presentation_extract_20260913.md
+data/run06_5/feedback_mesh_20260913/
+assets/images/feedback/20260913_mesh/
+```
+
+Historical 31/36/41 evidence remains available at:
 
 ```text
 docs/evidence/feedback_mesh_common_roi_validation_20260911.md
 data/run04/feedback_mesh_20260911/
-assets/images/feedback/20260911_mesh/01_mesh_feedback_6panel.jpg
+assets/images/feedback/20260911_mesh/
 ```
 
 ## 5. Baseline-feedback checkpoint — literature-consistent 3-D reconstruction
@@ -301,7 +330,7 @@ Use scoped wording:
 - `3D-Sun-B0` is a literature-consistent reconstruction with explicit assumptions, not an exact reverse-engineered CAD/process deck;
 - G0/G1/G2 show numerically operational ID–VG behavior, not complete electrical reproduction;
 - completed E-field validation supports critical-region spatial E-field / BTBT interpretation rather than one peak-field scalar;
-- completed mesh feedback verifies common-ROI hotspot coverage / comparison consistency for 31/36/41 nm, not absolute mesh independence;
+- completed mesh feedback verifies common-ROI hotspot coverage / comparison consistency across the full R6.5 MEB set, not absolute mesh independence;
 - Run 7 currently supports first-pass retention-operation feasibility, not a final retention-time claim;
 - the final objective remains an effective / defensible MEB design range.
 
