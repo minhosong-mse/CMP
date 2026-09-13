@@ -16,7 +16,7 @@
 |---|---|---|---|---|---|---|
 | `T-EFIELD-01` | Literature-grounded hotspot E-field / BTBT validation | Run 4–5, 31/36/41 nm, 300 K GIDL ON | **Completed — feedback level** | Phase A + conditional Phase B complete; hotspot coordinates, threshold sensitivity, integrated field / BTBT trend and figures committed | Use the evidence package for presentation; reopen only for thesis-level extension | `docs/evidence/feedback_efield_hotspot_validation_20260911.md` + `data/run05/feedback_efield_20260911/` |
 | `T-MESH-01` | Per-MEB mesh-setting / common-ROI feedback evidence | Run 3–4 Mesh-GIDL | **Completed — feedback level** | 31/36/41 nm all use the same Mesh-Code 3 rule; independently extracted BTBT hotspots remain inside the common ROI with ≥9.875 nm nearest-edge margin; 6-panel hotspot/mesh evidence committed | Use for presentation / backup; reopen only if later MEB cases approach/leave the ROI or numerical inconsistency appears | `docs/evidence/feedback_mesh_common_roi_validation_20260911.md` + `data/run04/feedback_mesh_20260911/` + `assets/images/feedback/20260911_mesh/` |
-| `T-BASELINE-01` | Literature-consistent 3-D BCAT baseline reconstruction and 2-D fidelity comparison | Run 0–1 + dedicated `3D-Sun-B0` workflow | **In Progress — G2 result pending ingestion** | Literature truth table complete; coordinate/geometry/contact/doping frozen; source/drain vertical junction = 48.0 nm validated; F1 nominal electrical mesh built; G0 and G1 PASS; first high-Vd mismatch documented; SDevice decks, CSVs, compact summaries, and curated visual evidence committed | Ingest G2 low-Vd result → freeze consistent Vth/Ion-Ioff extraction and DIBL → verify Canali/high-field mapping → test lateral-Gaussian reconstruction sensitivity → electrical mesh convergence → compare stabilized 3-D baseline with simplified 2-D B0 | `docs/evidence/feedback_baseline_3d_reconstruction_20260911.md` + `docs/evidence/baseline_3d_evidence_manifest_20260912.md` + `assets/images/feedback/20260911_baseline/` + `data/baseline_3d_sun_b0/` + `code/sdevice/baseline_3d_sun_b0/` |
+| `T-BASELINE-01` | Literature-consistent 3-D BCAT baseline reconstruction and 2-D fidelity comparison | Run 0–1 + dedicated `3D-Sun-B0` workflow | **In Progress — post-G2 extraction / model-mapping stage** | Literature truth table complete; coordinate/geometry/contact/doping frozen; source/drain vertical junction = 48.0 nm validated; F1 nominal electrical mesh built; G0/G1/G2 curves completed; provisional low/high-Vd thresholds and reconstruction-defined DIBL extracted; SDevice decks, CSVs, compact summaries, and curated visual evidence committed | Freeze paper-equivalent extraction convention / DIBL bias limitation → verify Canali/high-field mapping → test lateral-Gaussian reconstruction sensitivity → electrical mesh convergence → compare stabilized 3-D baseline with simplified 2-D B0 | `docs/evidence/feedback_baseline_3d_reconstruction_20260911.md` + `docs/evidence/baseline_3d_evidence_manifest_20260912.md` + `assets/images/feedback/20260911_baseline/` + `data/baseline_3d_sun_b0/` + `code/sdevice/baseline_3d_sun_b0/` |
 | `T-RET-01` | 1T1C retention protocol freeze | Run 7 | **Checkpoint reached — feedback-level feasibility** | Write screen quantified; floating-SN 100 ns Hold stable for processed subset; independent D0/D1 Read window = **102.67 mV** | Integrated `Write → Hold → Read`, longer Hold, `T_RET,5%`, final retention-metric freeze | `docs/progress/run07_1t1c_retention_feasibility.md` + `docs/evidence/feedback_retention_operation_checkpoint_20260911.md` + methodology traceability |
 
 ## 3. T-EFIELD-01 close-out checkpoint
@@ -145,20 +145,29 @@ Vertical Djunction              48.0 nm source + drain PASS
 F1 electrical mesh             BUILD PASS / CANDIDATE
 G0 low-Vd bring-up              PASS
 G1 high-Vd full ID-VG           PASS
-G2 low-Vd full ID-VG            LAUNCHED / RESULT PENDING INGESTION
+G2 low-Vd full ID-VG            PASS — curve ingested
 Electrical paper match          NOT YET
 ```
 
-G1 currently demonstrates a numerically stable 3-D device but not paper-level electrical reproduction. Provisional values remain approximately `SS ≈ 91.2 mV/dec`, `max(Id)/min(Id) ≈ 3.04e9`, and `Vth_high ≈ 1.147 V` under the provisional `W=Wfin`, `L=Lgate` threshold interpretation, versus the paper nominal `76 mV/dec`, `3.4e10`, and `0.656 V`.
+G1/G2 now provide a consistent reconstruction-defined low/high drain comparison. Under the current provisional constant-current interpretation (`W=Wfin=17 nm`, `L=Lgate=20 nm`, `Icrit=8.5e-8 A`) and log-current interpolation:
+
+```text
+Vth_high @ Vd=1.20 V = 1.14659 V
+Vth_low  @ Vd=0.05 V = 1.20610 V
+DIBL_reconstruction     = 51.75 mV/V
+SS_high                 ≈ 91.17 mV/dec
+SS_low                  ≈ 92.83 mV/dec
+```
+
+Paper nominal values remain `Vth=0.656 V`, `SS=76 mV/dec`, `Ion/Ioff=3.4e10`, and `DIBL=23.6 mV/V`. The paper text does not explicitly publish the exact low/high drain-bias pair used for DIBL extraction, so `51.75 mV/V` is retained as a **reconstruction-defined provisional DIBL**, not yet a strict paper-equivalent value.
 
 Resume from:
 
-1. ingest the returned G2 low-Vd result in chat/workspace; use the log/native PLT only if convergence or extraction diagnosis needs them;
-2. validate and store the low-Vd ID–VG CSV, then use one frozen extraction convention for G1/G2 and calculate DIBL;
-3. verify the paper `Canali` wording against the T-2022.03 high-field implementation;
-4. evaluate the unpublished lateral S/D Gaussian assumption (`GaussFactor=0.0`) without arbitrary fitting;
-5. perform coarse / nominal / fine electrical mesh convergence;
-6. compare stabilized `3D-Sun-B0` directly with simplified 2-D B0 and close the original feedback question.
+1. freeze / document the paper-equivalent Vth and Ion/Ioff extraction convention and the DIBL bias-pair limitation;
+2. verify the paper `Canali` wording against the T-2022.03 high-field implementation;
+3. evaluate the unpublished lateral S/D Gaussian assumption (`GaussFactor=0.0`) without arbitrary fitting;
+4. perform coarse / nominal / fine electrical mesh convergence;
+5. compare stabilized `3D-Sun-B0` directly with simplified 2-D B0 and close the original feedback question.
 
 Repository evidence policy for this task:
 
