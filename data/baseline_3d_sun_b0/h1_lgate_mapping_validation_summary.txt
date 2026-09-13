@@ -1,0 +1,71 @@
+3D-Sun-B0 H1 — Lgate mapping sensitivity
+Date: 2026-09-13
+
+Purpose
+-------
+Test alternative interpretation B in which literature Lgate=20 nm is mapped to the oxide-outer recess width rather than the W-metal width.
+
+Controlled geometry change
+--------------------------
+Baseline G1 mapping:
+  W-metal width = 20 nm
+  oxide outer recess width = 30 nm
+
+H1 mapping:
+  oxide outer recess width = 20 nm
+  W-metal width = 10 nm
+
+All other literature inputs, contacts, nominal vertical doping target, physics, temperature, work function, and high-Vd ID-VG bias are retained as closely as possible.
+
+H1 SDE / mesh checkpoint
+------------------------
+SDE build: PASS
+SVisual points: 499,995
+SVisual elements: 3,071,529
+Geometry screenshots show the intended narrower lateral gate/recess mapping without obvious structural failure.
+
+Electrical condition
+--------------------
+T = 300 K
+Vd = 1.2 V
+Vg = 0 -> 2.0 V
+
+Provisional extraction convention
+---------------------------------
+Icrit = 1e-7 A * W/L
+W = Wfin = 17 nm
+L = Lgate = 20 nm
+Icrit = 8.5e-8 A
+Vth is extracted by log(Id) interpolation between adjacent sweep points.
+SS is fitted over 1e-13 to 1e-10 A.
+
+Results
+-------
+Baseline G1:
+  Vth_high = 1.14659 V
+  SS_high  = 91.17 mV/dec
+  Id(Vg=2 V) = 1.063365e-5 A
+
+H1:
+  Vth_high = 1.24248 V
+  SS_high  = 97.39 mV/dec
+  Id(Vg=2 V) = 8.2302723e-6 A
+  Id_min = 2.4254078e-15 A @ Vg=0.3795599 V
+  max(Id)/min(Id) = 3.393e9
+
+Shift H1 vs G1:
+  Delta Vth = +95.89 mV (+8.36%)
+  Delta SS  = +6.22 mV/dec (+6.82%)
+  Id @ 2 V  = -22.60%
+
+Interpretation
+--------------
+The alternative outer-recess-width interpretation moves Vth farther away from the Sun et al. nominal 0.656 V and degrades SS relative to the baseline G1 reconstruction. Therefore H1 does not explain the original electrical mismatch and is rejected as the preferred working Lgate mapping.
+
+Claim boundary
+--------------
+This sensitivity does not prove that the baseline mapping is uniquely identical to the unpublished paper CAD geometry. It shows only that this specific alternative mapping is less consistent with the reported electrical baseline under the current reconstruction.
+
+Next controlled sensitivity
+---------------------------
+Return to baseline F1 geometry and test the unpublished lateral S/D Gaussian spread. Use GaussFactor=0.8 as a screening sensitivity point only; it is not a literature value. If the electrical shift is small or unfavorable, reject this hypothesis and move to source/drain-side rounding / effective-channel geometry sensitivity.
