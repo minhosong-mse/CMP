@@ -1,13 +1,13 @@
 # FB-BASELINE-01 — 3D BCAT baseline reconstruction checkpoint
 
 > Date: 2026-09-11  
-> Last synchronized: 2026-09-12  
-> Status: **In Progress — G2 launched / result pending ingestion**  
+> Last synchronized: 2026-09-13  
+> Status: **In Progress — G2 complete; post-G2 extraction / model-mapping stage**  
 > Scope: feedback item `FB-BASELINE-01` / task `T-BASELINE-01`
 
 ## 1. Purpose
 
-The original feedback asks how closely the simplified CMP baseline reproduces the literature 3-D BCAT electrical characteristics. To answer that question without over-claiming, a separate literature-consistent 3-D baseline reconstruction is being built and validated before any comparison is made against the simplified 2-D CMP model.
+The original feedback asks how closely the simplified CMP baseline reproduces the literature 3-D BCAT electrical characteristics. To answer that question without over-claiming, a separate literature-consistent 3-D baseline reconstruction is being built and validated before any final comparison is made against the simplified 2-D CMP model.
 
 This reconstruction is named:
 
@@ -26,11 +26,13 @@ The goal is **literature-consistent reconstruction**, not an undocumented claim 
 
 ## 2. Claim discipline
 
-All parameters and conclusions are separated into three categories.
+All parameters and conclusions are separated into three categories:
 
-### 2.1 Literature-explicit facts
+1. literature-explicit facts;
+2. reconstruction assumptions;
+3. simulation / validation results.
 
-The paper explicitly states the following nominal baseline values:
+### 2.1 Literature-explicit nominal inputs
 
 | Parameter | Literature value |
 |---|---:|
@@ -50,7 +52,7 @@ The paper explicitly states the following nominal baseline values:
 | `Hfin` | 48 nm |
 | `Rfillet` | 1.0, semi-circular saddle-fin shape |
 
-The paper also reports nominal electrical metrics:
+Paper nominal electrical metrics:
 
 ```text
 Vth       = 0.656 V
@@ -59,11 +61,11 @@ Ion/Ioff  = 3.4e10
 DIBL      = 23.6 mV/V
 ```
 
-The reported transport / leakage-model set includes Philips unified mobility, Lombardi interface mobility, Canali velocity-saturation treatment, and Hurkx tunneling.
+Reported transport / leakage models include Philips unified mobility, Lombardi interface mobility, Canali velocity saturation, and Hurkx tunneling.
 
 ### 2.2 Reconstruction assumptions
 
-The following are **not stated directly in the paper** and are therefore tracked as reconstruction assumptions:
+The paper does not publish enough detail to reverse-engineer an exact Sentaurus deck. The following are therefore tracked explicitly as reconstruction assumptions:
 
 ```text
 Coordinate system:
@@ -94,7 +96,7 @@ Gaussian lateral factor:
   GaussFactor = 0.0
 ```
 
-The exact STI depth interpretation, terminal-contact face definitions, lateral Gaussian straggle, and full 3-D process geometry are not provided by the paper and therefore cannot be presented as paper-explicit facts.
+Exact STI-depth interpretation, terminal-contact faces, lateral Gaussian straggle, full 3-D process geometry, and the exact DIBL low/high drain-bias pair are not explicitly published by the paper.
 
 ---
 
@@ -110,18 +112,16 @@ The exact STI depth interpretation, terminal-contact face definitions, lateral G
 | F0 | Doping verification mesh | **PASS** |
 | F1 | Nominal electrical mesh | **BUILD PASS / CANDIDATE** |
 | G0 | SDevice bring-up, low-Vd sanity sweep | **PASS** |
-| G1 | High-Vd paper-condition ID–VG | **PASS** |
-| G2 | Low-Vd full ID–VG for DIBL | **LAUNCHED / RESULT PENDING INGESTION** |
+| G1 | High-Vd full ID–VG | **PASS** |
+| G2 | Low-Vd full ID–VG | **PASS — returned curve ingested** |
 
-Geometry / contacts / doping are frozen. F1 mesh is intentionally **not** yet frozen because final acceptance requires an electrical mesh-convergence study.
+Geometry / contacts / doping remain frozen. F1 mesh is intentionally **not** yet frozen because final acceptance still requires an electrical mesh-convergence study.
 
 ---
 
 ## 4. Geometry checkpoint
 
-The frozen geometry uses the literature-explicit dimensions while keeping the uncertain mapping explicit.
-
-Key vertical coordinates:
+Key vertical coordinates in the frozen reconstruction:
 
 ```text
 z = 0 nm        : top reference
@@ -135,13 +135,13 @@ z = -180 nm     : simulation-domain bottom
 
 Validation performed:
 
-- along-channel B–B′ cut: buried gate / nitride / oxide / recess geometry checked;
-- across-fin A–A′ cut: 17 nm saddle-fin width and rounded cap checked;
-- top XY view: active and word-line directions cross at 90°;
+- B–B′ along-channel XZ cut: buried gate / nitride / oxide / recess checked;
+- A–A′ across-fin YZ cut: 17 nm saddle-fin width and rounded cap checked;
+- top XY view: active and word-line directions checked;
 - geometry overlap check returned empty overlap;
 - SDE model save completed successfully.
 
-The semi-circular fin cap is a reconstruction of `Rfillet = 1`; it is not claimed as an exact reverse-engineering of the unpublished CAD geometry.
+The semi-circular fin cap is a reconstruction of `Rfillet = 1`; it is not claimed as an exact unpublished CAD geometry.
 
 ---
 
@@ -163,15 +163,15 @@ Mapping:
 - substrate: bottom Si face;
 - gate: W-gate body converted to a gate contact boundary.
 
-SDevice later recognized all four electrode names correctly, including the gate with `WorkFunction = 4.8 eV`.
+SDevice recognized all four electrode names and the `4.8 eV` gate work function.
 
-Exact contact-face selection is a reconstruction choice because the paper does not publish Sentaurus contact-face IDs or boundary definitions.
+Exact contact-face selection is a reconstruction choice because the paper does not publish Sentaurus face IDs or terminal-boundary definitions.
 
 ---
 
 ## 6. Doping checkpoint
 
-Implemented doping:
+Implemented body / S-D doping:
 
 ```text
 Body:
@@ -188,9 +188,7 @@ Source / Drain:
 
 ### 6.1 Quantitative junction QA
 
-Vertical source and drain cuts were exported and the signed net-doping zero crossing was checked.
-
-Results:
+Vertical source and drain net-doping cuts give:
 
 ```text
 Source metallurgical junction = 48.0 nm
@@ -198,28 +196,22 @@ Drain metallurgical junction  = 48.0 nm
 Target                         = 0.40 × 120 nm = 48.0 nm
 ```
 
-Both sides therefore satisfy the nominal vertical `Djunction` criterion used for the reconstruction.
-
-Important limitation:
-
-> Passing the 48 nm vertical junction criterion does **not** validate the unpublished lateral S/D diffusion profile. `GaussFactor = 0.0` remains an explicit reconstruction assumption.
+This validates the nominal **vertical** junction criterion only. It does not validate the unpublished lateral S/D diffusion profile.
 
 ---
 
 ## 7. Mesh checkpoint
 
-### 7.1 F0 — doping QA mesh
-
-Purpose: verify doping fields and junction depth, not final electrical accuracy.
-
-Observed scale in SVisual:
+### F0 — doping-QA mesh
 
 ```text
 Elements ≈ 1.125 M
 Points   ≈ 183 k
 ```
 
-### 7.2 F1 — nominal electrical mesh
+Purpose: doping / junction-depth QA only.
+
+### F1 — nominal electrical mesh
 
 Refinement priorities:
 
@@ -232,28 +224,20 @@ Refinement priorities:
 Observed scale:
 
 ```text
-SVisual display:
+SVisual:
   Elements ≈ 2.90 M
   Points   = 473,004
 
-SDevice load:
-  grid points   = 473,004
-  tetrahedrons  = 2,773,380
+SDevice:
+  grid points  = 473,004
+  tetrahedrons = 2,773,380
 ```
 
-SDevice completed both G0 and G1 on this mesh. The mesh remains a **candidate**, not a convergence-frozen production mesh.
-
-Mesh-quality note from SDevice:
-
-- non-Delaunay elements were extremely few relative to total elements;
-- a substantial obtuse-element fraction exists;
-- current DD runs converge, but later local E-field / GIDL use still requires a dedicated convergence check.
+G0, G1, and G2 curves all solve on this nominal mesh, but F1 remains a **candidate**, not a convergence-frozen production mesh. The known obtuse-element / tiny-edge quality caveat remains open for later mesh-convergence and high-field validation.
 
 ---
 
-## 8. G0 — SDevice bring-up result
-
-Purpose: prove that the reconstructed 3-D structure, contacts, doping, mesh, and physics can solve through equilibrium and transistor turn-on before paper-metric comparison.
+## 8. G0 — numerical bring-up
 
 Conditions:
 
@@ -266,7 +250,7 @@ Vd      = 0 → 0.05 V
 Vg      = 0 → 1.2 V
 ```
 
-Physics enabled in the current deck:
+Physics currently active in the reconstruction:
 
 - Fermi statistics;
 - Philips unified mobility (`PhuMob`);
@@ -277,16 +261,16 @@ Physics enabled in the current deck:
 Result:
 
 ```text
-G0 numerical bring-up = PASS
+G0 = PASS
 Id @ Vg=1.2 V, Vd=0.05 V = 7.769e-8 A
 provisional SS ≈ 91.3 mV/dec
 ```
 
-This SS value is **sanity-check only** because G0 was not the final paper-condition extraction run.
+G0 is a numerical / turn-on sanity run and is not used as the final paper-metric comparison.
 
 ---
 
-## 9. G1 — high-Vd ID–VG result
+## 9. G1 — high-drain ID–VG
 
 Conditions:
 
@@ -299,117 +283,54 @@ Vd      = 1.2 V
 Vg      = 0 → 2.0 V
 ```
 
-Run status:
+Result:
 
 ```text
-Numerical convergence = PASS
-Full gate sweep        = PASS
-Final Id @ Vg=2.0 V    = 1.063e-5 A
+G1 = PASS
+Id @ Vg=2.0 V = 1.063365e-5 A
+Id @ Vg≈0 V    ≈ 1.33e-14 A
+minimum Id      ≈ 3.50e-15 A @ Vg≈0.379 V
+SS, 1e-13~1e-10 A fit ≈ 91.17 mV/dec
+max(Id)/min(Id) ≈ 3.04e9
 ```
 
-The run finished without fatal error after approximately 1 h 30 min, with peak memory around 18.1 GB.
+The max/min ratio remains a provisional curve ratio and is not yet claimed to be identical to the paper’s exact Ion/Ioff extraction convention.
 
-### 9.1 Provisional electrical extraction
+### 9.1 Provisional threshold criterion
 
-From the exported high-Vd ID–VG curve:
-
-```text
-Id @ Vg≈0 V         ≈ 1.33e-14 A
-minimum Id           ≈ 3.50e-15 A
-minimum-Id location  ≈ Vg 0.379 V
-Id @ Vg=1.2 V        ≈ 2.10e-7 A
-Id @ Vg=2.0 V        = 1.063e-5 A
-provisional SS        ≈ 91.2 mV/dec
-max(Id)/min(Id)       ≈ 3.04e9
-```
-
-The last ratio is only a provisional max/min ratio and is **not yet claimed to be identical to the paper’s Ion/Ioff extraction convention**.
-
-### 9.2 Provisional threshold check
-
-The paper defines threshold by the constant-current criterion:
+The paper defines threshold using:
 
 ```text
 Icrit = 1e-7 A × W/L
 ```
 
-If, provisionally, `W = Wfin = 17 nm` and `L = Lgate = 20 nm` are used:
+Current reconstruction interpretation:
 
 ```text
-Icrit ≈ 8.5e-8 A
-Vth_high, provisional ≈ 1.147 V
+W = Wfin  = 17 nm
+L = Lgate = 20 nm
+Icrit     = 8.5e-8 A
 ```
 
-This is far above the reported paper nominal `Vth = 0.656 V`.
-
-Because the exact 3-D BCAT channel-width convention used in the paper’s extraction is not fully documented in the text, this threshold is retained as **provisional**, not final.
-
----
-
-## 10. Current mismatch relative to paper nominal
-
-Current high-Vd reconstruction versus paper nominal:
-
-| Metric | 3D-Sun-B0 current checkpoint | Paper nominal | Status |
-|---|---:|---:|---|
-| `Vth` | ~1.147 V* | 0.656 V | mismatch; extraction definition still under review |
-| `SS` | ~91.2 mV/dec | 76 mV/dec | mismatch |
-| `Ion/Ioff` | ~3.04e9* | 3.4e10 | mismatch; current value is provisional max/min |
-| `DIBL` | pending G2 | 23.6 mV/V | not yet evaluated |
-
-`*` = provisional extraction, not yet treated as exact paper-equivalent metric.
-
-This is an important result: the 3-D deck is numerically healthy, but **electrical reproduction is not yet demonstrated**.
-
----
-
-## 11. Off-state current observation
-
-At the end of the high-drain ramp with approximately `Vg = 0 V`, the drain current is on the order of `1.3e-14 A`. The source current is much smaller while the substrate current balances most of the drain current.
-
-This indicates that, in this reconstructed deck and bias condition, the initial high-Vd off-state current is dominated by a drain/body leakage path rather than normal source-to-drain channel conduction.
-
-This observation helps explain why the high-Vd ID–VG curve first decreases to a minimum before normal MOS turn-on dominates.
-
-No stronger causal statement is made at this checkpoint.
-
----
-
-## 12. Physics-model mapping issue still open
-
-The paper explicitly describes a Canali velocity-saturation model.
-
-The current Sentaurus T-2022.03 log reports the activated high-field mobility as:
+Using log-current interpolation between adjacent sweep points:
 
 ```text
-Caughey-Thomas saturation model, using gradient quasi-Fermi potential
+Vth_high @ Vd=1.20 V = 1.14659 V
 ```
 
-Therefore the repository must **not** state that the paper’s Canali model has already been reproduced exactly. The mapping between the paper wording and the specific T-2022.03 keyword / implementation remains an open verification item.
+This is far above the reported paper nominal `Vth = 0.656 V`, but the value remains **provisional** because the paper does not fully document its 3-D channel-width convention.
 
 ---
 
-## 13. Leading reconstruction hypothesis — not yet a conclusion
+## 10. G2 — low-drain full ID–VG
 
-One plausible source of the high Vth / degraded SS is the current lateral S/D reconstruction:
+Returned SVisual dataset / CSV:
 
 ```text
-GaussFactor = 0.0
+IdVg_LowVd_Full_n5_des
+X = gate OuterVoltage
+Y = drain TotalCurrent
 ```
-
-This creates no intentional lateral Gaussian spread beyond the selected implant footprint. If the unpublished paper geometry had stronger lateral diffusion toward the recessed gate, the current reconstruction could have a longer effective electrical channel.
-
-This is **only a hypothesis** at this stage.
-
-Do not tune work function, doping concentration, or geometry merely to force agreement before the remaining extraction and mapping checks are completed.
-
----
-
-## 14. G2 launched — result pending ingestion
-
-Purpose:
-
-> obtain a full low-drain ID–VG curve using the same frozen geometry, doping, mesh, physics, and extraction flow so that DIBL can be evaluated consistently.
 
 Conditions:
 
@@ -422,49 +343,119 @@ Vd      = 0.05 V
 Vg      = 0 → 2.0 V
 ```
 
-The G2 job was launched, but no completed G2 result has yet been returned to this workflow. Until the result is ingested and checked, G2 must not be marked `PASS` and no DIBL value is claimed.
+Curve-level validation:
 
-For analysis, the log / native PLT may be shared in chat if needed to verify convergence or diagnose a problem. They are not required GitHub artifacts under the normal CMP repository pattern.
+- full gate sweep reaches `2.0 V`;
+- no truncation is visible in the exported CSV;
+- current evolves smoothly through subthreshold and strong inversion.
 
-After G2 evidence is returned:
+Quantitative checkpoints:
 
-1. validate numerical completion and the full low-Vd sweep;
-2. extract low-Vd threshold using the same criterion as G1;
-3. calculate DIBL from low- and high-drain thresholds;
-4. compare against `23.6 mV/V` paper nominal;
-5. freeze a consistent extraction definition;
-6. only then diagnose the remaining electrical mismatch;
-7. separately verify the Canali / high-field model mapping;
-8. later perform coarse / nominal / fine electrical mesh convergence.
+```text
+minimum Id = 1.0147335e-17 A @ Vg=0.1395599 V
+Id @ Vg=2.0 V = 2.48569e-6 A
+SS, 1e-13~1e-10 A fit ≈ 92.83 mV/dec
+G2 curve ingestion = PASS
+```
+
+Using the same provisional threshold criterion and log-current interpolation:
+
+```text
+Vth_low @ Vd=0.05 V = 1.20610 V
+```
+
+### 10.1 Reconstruction-defined DIBL
+
+With the G1/G2 drain biases:
+
+```text
+DIBL = (Vth_low - Vth_high)/(1.20 - 0.05)
+     = (1.20610 - 1.14659)/1.15
+     ≈ 51.75 mV/V
+```
+
+Paper nominal:
+
+```text
+DIBL = 23.6 mV/V
+```
+
+Important limitation:
+
+> The paper text reports the nominal DIBL value but does not explicitly publish the exact low/high drain-bias pair used for DIBL extraction. Therefore `51.75 mV/V` is retained as a **reconstruction-defined provisional DIBL**, not yet a strict paper-equivalent value.
+
+---
+
+## 11. Current electrical mismatch relative to paper nominal
+
+| Metric | 3D-Sun-B0 current checkpoint | Paper nominal | Status |
+|---|---:|---:|---|
+| `Vth_high` | 1.14659 V* | 0.656 V | large mismatch; width convention still provisional |
+| `SS_high` | 91.17 mV/dec | 76 mV/dec | mismatch |
+| `Ion/Ioff` | ~3.04e9* | 3.4e10 | mismatch; current value is provisional max/min |
+| `DIBL` | 51.75 mV/V** | 23.6 mV/V | mismatch under reconstruction bias pair |
+
+`*` = provisional extraction definition.  
+`**` = reconstruction-defined using `Vd=0.05 / 1.20 V`; exact paper bias pair not explicitly published.
+
+This checkpoint therefore supports:
+
+> the 3-D deck is numerically operational, but electrical reproduction of the Sun et al. nominal baseline has **not** yet been demonstrated.
+
+---
+
+## 12. Off-state current observation
+
+At high drain bias and approximately `Vg=0 V`, the drain current is on the order of `1.3e-14 A`; the source current is much smaller while the substrate current balances most of the drain current.
+
+This supports only the limited observation that the reconstructed high-Vd off-state current is dominated by a drain/body leakage path rather than ordinary source-to-drain channel conduction. No stronger causal statement is made at this checkpoint.
+
+---
+
+## 13. Physics-model mapping issue still open
+
+The paper explicitly describes a Canali velocity-saturation model.
+
+Current Sentaurus T-2022.03 logs report:
+
+```text
+Caughey-Thomas saturation model, using gradient quasi-Fermi potential
+```
+
+Therefore the repository must **not** state that the paper’s Canali implementation has been reproduced exactly. The mapping between the paper wording and the specific T-2022.03 implementation remains an open verification item.
+
+---
+
+## 14. Leading reconstruction hypothesis — not yet a conclusion
+
+One plausible source of the high Vth / degraded SS is the current lateral S/D reconstruction:
+
+```text
+GaussFactor = 0.0
+```
+
+If the unpublished paper geometry had stronger lateral diffusion toward the recessed gate, the current reconstruction could have a longer effective electrical channel.
+
+This is **only a hypothesis**. Do not tune work function, doping concentration, or geometry merely to force agreement before extraction-definition, physics-mapping, and sensitivity checks are completed.
 
 ---
 
 ## 15. Repository evidence checkpoint
 
-The baseline-feedback repository now follows the same artifact pattern used in the existing CMP runs rather than storing full simulator logs by default.
+Repository convention follows the existing CMP pattern rather than storing full simulator logs by default.
 
-Evidence manifest:
-
-```text
-docs/evidence/baseline_3d_evidence_manifest_20260912.md
-```
-
-Curated visual evidence:
-
-```text
-assets/images/feedback/20260911_baseline/00_baseline_visual_contact_sheet.svg
-```
-
-Directly browsable data / compact summaries:
+Committed data / summaries:
 
 ```text
 data/baseline_3d_sun_b0/g0_idvg_lowvd_0p05V_to_1p2V.csv
 data/baseline_3d_sun_b0/g1_idvg_highvd_1p2V_to_2p0V.csv
+data/baseline_3d_sun_b0/g2_idvg_lowvd_0p05V_to_2p0V.csv
 data/baseline_3d_sun_b0/junction_source_C1.csv
 data/baseline_3d_sun_b0/junction_drain_C2.csv
 data/baseline_3d_sun_b0/f1_sde_build_summary.txt
 data/baseline_3d_sun_b0/g0_sdevice_run_summary.txt
 data/baseline_3d_sun_b0/g1_sdevice_run_summary.txt
+data/baseline_3d_sun_b0/g2_curve_validation_summary.txt
 ```
 
 Executable SDevice decks:
@@ -475,48 +466,81 @@ code/sdevice/baseline_3d_sun_b0/G1_highVd_full_idvg.cmd
 code/sdevice/baseline_3d_sun_b0/G2_lowVd_full_idvg.cmd
 ```
 
-Full SDE/SDevice logs, native `.plt`, and high-resolution screenshots remain workspace/debug evidence unless a later reproducibility need specifically requires them. Incomplete ZIP/PLT transfer attempts were removed rather than retained as repository evidence.
+Curated visual evidence:
 
-The one source artifact still worth adding later is the **original final F1 SDE source CMD**, because existing CMP runs normally preserve the executed SDE/SDevice decks themselves. It should be exported from the Sentaurus workspace, not reconstructed from a log and mislabeled as exact source.
+```text
+assets/images/feedback/20260911_baseline/00_baseline_visual_contact_sheet.svg
+```
+
+Full Sentaurus logs, native `.plt`, temporary screenshots, and failed attempts remain workspace/debug evidence unless a later diagnosis specifically requires them.
+
+One source artifact still worth adding later is the original final **F1 SDE source CMD** exported directly from Sentaurus. It must not be reconstructed from a log and mislabeled as exact source.
 
 ---
 
-## 16. Feedback-level interpretation at this checkpoint
+## 16. Remaining work before `FB-BASELINE-01` closes
+
+1. freeze / document the paper-equivalent Vth and Ion/Ioff extraction convention and the DIBL bias-pair limitation;
+2. verify the paper `Canali` wording against the exact T-2022.03 high-field implementation;
+3. test sensitivity to the unpublished lateral S/D Gaussian assumption (`GaussFactor=0.0`) without arbitrary fitting;
+4. perform coarse / nominal / fine electrical mesh convergence before freezing F1;
+5. compare the stabilized `3D-Sun-B0` metrics directly with the simplified 2-D CMP B0;
+6. archive the original final F1 SDE source CMD once exported from Sentaurus.
+
+---
+
+## 17. Resume point
+
+Next session should **not** rerun G2.
+
+Resume from:
+
+```text
+G2 curve validation                         DONE
+provisional low/high Vth + DIBL             DONE
+paper-equivalent extraction definition      OPEN
+Canali / high-field implementation mapping  OPEN
+lateral Gaussian sensitivity                OPEN
+mesh convergence                             OPEN
+2-D vs stabilized 3-D fidelity comparison   OPEN
+```
+
+---
+
+## 18. Feedback-level interpretation
 
 The baseline feedback is **not closed yet**.
 
 Current defensible statement:
 
-> A literature-consistent 3-D BCAT reconstruction has been completed through frozen geometry, contacts, and vertical doping validation. The nominal electrical mesh successfully supports 3-D SDevice operation, and both low-Vd bring-up and high-Vd full ID–VG simulations converge. However, the first high-Vd electrical extraction does not yet reproduce the Sun et al. nominal Vth, SS, and Ion/Ioff values. DIBL is pending ingestion and validation of the launched G2 low-Vd full sweep. The remaining mismatch is therefore being treated as a reconstruction / extraction / physics-mapping problem rather than hidden by parameter fitting.
+> A literature-consistent 3-D BCAT reconstruction has been completed through frozen geometry, contacts, and vertical-doping validation, and G0/G1/G2 ID–VG operation has been obtained on the nominal electrical mesh. Under the current provisional constant-current interpretation, the reconstruction gives `Vth_high ≈ 1.1466 V`, `Vth_low ≈ 1.2061 V`, `SS ≈ 91–93 mV/dec`, and a reconstruction-defined DIBL of about `51.75 mV/V`. These values do not yet reproduce the Sun et al. nominal electrical metrics. The remaining discrepancy is being treated as an extraction-definition / physics-mapping / lateral-doping / mesh-convergence problem rather than hidden by parameter fitting.
 
-This result is directly useful to the original feedback question because it establishes a clean distinction between:
+The final answer to `FB-BASELINE-01` will compare:
 
 ```text
-literature-explicit 3-D baseline
-vs.
-reconstructed 3-D implementation
-vs.
-existing simplified 2-D CMP baseline
+literature nominal 3-D metrics
+↔ stabilized 3D-Sun-B0 reconstruction
+↔ simplified 2-D CMP baseline
 ```
 
-Only after the 3-D reconstruction metrics are stabilized should the simplified 2-D B0 be judged against it.
+Only then should the role and limits of the simplified 2-D model be stated in the final presentation / README.
 
 ---
 
-## 17. Guardrails
+## 19. Guardrails
 
 Do not claim:
 
 ```text
 The Sun 2022 device has been exactly reproduced.
 The current 3-D deck already matches the paper electrically.
-Vth = 1.147 V is final before the width convention is frozen.
+Vth ≈ 1.1466 V is final before the width convention is frozen.
 3.04e9 is necessarily the paper-equivalent Ion/Ioff.
+51.75 mV/V is necessarily the paper-equivalent DIBL.
 GaussFactor = 0 is a paper value.
 The current high-field keyword is proven to be exactly Canali.
 The F1 mesh is convergence-frozen.
 The lateral doping assumption is proven to be the cause of the mismatch.
-G2 is complete before its returned result files are ingested and checked.
 ```
 
 Use:
@@ -524,12 +548,11 @@ Use:
 - “literature-consistent reconstruction”;
 - “reconstruction assumption” where geometry/process details are unpublished;
 - “provisional extraction” until metric definitions are frozen;
-- “numerically validated / converged” separately from “electrically reproduced.”
+- “reconstruction-defined DIBL” for the current `0.05 / 1.20 V` pair;
+- “numerically validated / operational” separately from “electrically reproduced.”
 
 ---
 
-## 18. README integration rule
+## 20. README integration rule
 
-This evidence is intentionally stored under the feedback/evidence workflow first.
-
-The main README should **not** be rewritten yet. Baseline, E-field/mesh, retention, and practical-trade-off feedback should be integrated into the README together after the principal feedback set is closed.
+This evidence remains under the feedback/evidence workflow first. The main README should **not** be rewritten yet. Baseline, E-field/mesh, retention, and practical-trade-off feedback should be integrated together after the principal feedback set is closed.
