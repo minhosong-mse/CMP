@@ -31,12 +31,6 @@ Canonical raw-image set (three originals per MEB):
 51nm_mesh_zoom.png
 ```
 
-Binary-upload check on 2026-09-13:
-
-- Git data API blob upload from the archived PNG package was verified successfully.
-- `originals/36nm_btbt_hotspot.png` was committed as an actual PNG binary, not a text/base64 wrapper.
-- The remaining original PNGs can be added by the same blob/tree workflow.
-
 Node mapping and source provenance:
 
 - `data/run06_5/feedback_mesh_20260913/screenshot_manifest.csv`
@@ -50,10 +44,10 @@ Scientific interpretation:
 
 - `docs/evidence/feedback_mesh_run65_full_validation_20260913.md`
 
-Presentation figures already committed:
+Presentation figures currently committed:
 
 - `01_r65_xhot_vs_meb.svg`
 - `02_r65_hotspot_roi_coverage.svg`
 - `03_r65_btbtmax_vs_meb.svg`
 
-Presentation rule: build any composite / crop from the originals; do not use repeatedly compressed screenshots as the archival source.
+Archival source package for the 24 full-resolution screenshots is retained separately as `R65_mesh_feedback_originals_20260913.zip` in the working artifact set. Presentation rule: build any composite / crop from the original screenshots; do not use repeatedly compressed screenshots as the archival source.
