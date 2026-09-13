@@ -15,7 +15,7 @@
 | Task ID | Task | Source | Status | Completed checkpoint | Next action | Final destination |
 |---|---|---|---|---|---|---|
 | `T-EFIELD-01` | Literature-grounded hotspot E-field / BTBT validation | Run 4–5, 31/36/41 nm, 300 K GIDL ON | **Completed — feedback level** | Phase A + conditional Phase B complete; hotspot coordinates, threshold sensitivity, integrated field / BTBT trend and figures committed | Use the evidence package for presentation; reopen only for thesis-level extension | `docs/evidence/feedback_efield_hotspot_validation_20260911.md` + `data/run05/feedback_efield_20260911/` |
-| `T-MESH-01` | Per-MEB mesh-setting / common-ROI feedback evidence | Run 3–4 Mesh-GIDL | **Completed — feedback level** | 31/36/41 nm all use the same Mesh-Code 3 rule; independently extracted BTBT hotspots remain inside the common ROI with ≥9.875 nm nearest-edge margin; 6-panel hotspot/mesh evidence committed | Use for presentation / backup; reopen only if later MEB cases approach/leave the ROI or numerical inconsistency appears | `docs/evidence/feedback_mesh_common_roi_validation_20260911.md` + `data/run04/feedback_mesh_20260911/` + `assets/images/feedback/20260911_mesh/` |
+| `T-MESH-01` | Per-MEB mesh-setting / common-ROI feedback evidence | Run 3–4 + full Run 6.5 extension | **Completed — full R6.5 coverage / comparison-consistency level** | All 8 R6.5 MEB cases `36/41/43/45/47/48/49/51 nm` use the same Mesh-Code 3 policy; independently extracted BTBT hotspots remain inside the common ROI with ≥9.875 nm nearest-edge margin; full raw/ROI tables and screenshot provenance committed | Use the full-R6.5 evidence package for presentation; reopen only for an absolute mesh-convergence study or if a future geometry leaves the ROI | `docs/evidence/feedback_mesh_run65_full_validation_20260913.md` + `data/run06_5/feedback_mesh_20260913/` + `assets/images/feedback/20260913_mesh/` |
 | `T-BASELINE-01` | Literature-consistent 3-D BCAT baseline reconstruction and 2-D fidelity comparison | Run 0–1 + dedicated `3D-Sun-B0` workflow | **In Progress — S/D reconstruction sensitivity stage** | G0/G1/G2 curves complete; provisional Vth/DIBL extracted; threshold-width artifact check completed; Canali/Caughey-Thomas mapping resolved at model-family level; evidence/data/figure committed | Export exact final F1 SDE source CMD → run isolated lateral S/D Gaussian sensitivity → if needed test S/D-side 3-D rounding → mesh convergence → compare stabilized 3-D baseline with simplified 2-D B0 | `docs/evidence/feedback_baseline_3d_reconstruction_20260911.md` + `docs/evidence/baseline_3d_evidence_manifest_20260912.md` + `docs/evidence/baseline_3d_extraction_physics_verification_20260913.md` |
 | `T-RET-01` | 1T1C retention protocol freeze | Run 7 | **Checkpoint reached — feedback-level feasibility** | Write screen quantified; floating-SN 100 ns Hold stable for processed subset; independent D0/D1 Read window = **102.67 mV** | Integrated `Write → Hold → Read`, longer Hold, `T_RET,5%`, final retention-metric freeze | `docs/progress/run07_1t1c_retention_feasibility.md` + `docs/evidence/feedback_retention_operation_checkpoint_20260911.md` + methodology traceability |
 
@@ -49,7 +49,7 @@ terminal  = |Idrain| @ VG=-0.7 V
 
 1. full-Si `Band2BandGeneration` maximum localization;
 2. hotspot-coordinate / common-ROI coverage check;
-3. hotspot-following X-cut at `Y_hot`;
+3. hotspot-following **Y-cut at `Y_hot`**, with the profile evaluated along X;
 4. export `Band2BandGeneration`, `ElectricField-X`, `Abs(ElectricField-V)`;
 5. compare profiles / peaks with old `E_wall,max` and terminal GIDL;
 6. activate Phase B because peak-field behavior was insufficient;
@@ -98,35 +98,63 @@ Y = 0.112–0.133 um
 local max/min = 1.0 / 0.25 nm
 ```
 
-| MEB | Run-4 node | Points | Elements | Xhot (um) | Yhot (um) | nearest ROI-edge margin (nm) |
-|---:|---|---:|---:|---:|---:|---:|
-| 31 | `n53_msh` | 5739 | 12063 | 0.051562496 | 0.121875 | 9.875 |
-| 36 | `n29_msh` | 5789 | 12175 | 0.051562496 | 0.121875 | 9.875 |
-| 41 | `n58_msh` | 5830 | 12273 | 0.052343745 | 0.121875 | 9.875 |
+The initial feedback check used Run-4 `31/36/41 nm`. After the MEB search expanded, the task was reopened and checked against the **complete Run 6.5 MEB set**.
+
+### Full R6.5 validation set
+
+```text
+MEB = 36 / 41 / 43 / 45 / 47 / 48 / 49 / 51 nm
+T = 300 K
+VD = 1.2 V
+VG final = -0.7 V
+```
+
+| MEB | BTBT node | Mesh node | Points | Elements | BTBTmax (cm^-3 s^-1) | Xhot (um) | Yhot (um) | nearest ROI-edge margin (nm) | ROI |
+|---:|---|---|---:|---:|---:|---:|---:|---:|---|
+| 36 | `n119_des` | `n2_msh` | 5789 | 12175 | 8.41825e21 | 0.0515625 | 0.121875 | 9.875 | PASS |
+| 41 | `n120_des` | `n33_msh` | 5830 | 12273 | 5.55270e21 | 0.0523437 | 0.121875 | 9.875 | PASS |
+| 43 | `n121_des` | `n108_msh` | 5843 | 12303 | 3.92200e21 | 0.0523437 | 0.121875 | 9.875 | PASS |
+| 45 | `n122_des` | `n110_msh` | 5856 | 12333 | 2.95585e21 | 0.0531250 | 0.121875 | 9.875 | PASS |
+| 47 | `n123_des` | `n112_msh` | 5880 | 12385 | 1.90750e21 | 0.0531250 | 0.121875 | 9.875 | PASS |
+| 48 | `n124_des` | `n114_msh` | 5882 | 12393 | 1.42817e21 | 0.0539063 | 0.121875 | 9.875 | PASS |
+| 49 | `n125_des` | `n116_msh` | 5895 | 12423 | 1.17656e21 | 0.0539063 | 0.121875 | 9.875 | PASS |
+| 51 | `n126_des` | `n118_msh` | 5908 | 12453 | 5.94400e20 | 0.0539063 | 0.121875 | 9.875 | PASS |
 
 Completed evidence:
 
-1. exact Run-4 Mesh-Code 3 cases identified for 31/36/41 nm;
-2. common refinement rule and local max/min spacing documented;
-3. independently extracted BTBT hotspot coordinates compared against the common ROI;
-4. all hotspots verified to remain comfortably inside the ROI;
-5. per-MEB hotspot / mesh evidence arranged in the 2×3 comparison layout;
-6. primary 6-panel image committed to the repository;
-7. claim boundary frozen as **coverage / comparison consistency**, not absolute mesh-independence proof.
+1. exact R6.5 Mesh-Code 3 cases identified for all eight MEB geometries;
+2. full-Si `Band2BandGeneration` maximum independently extracted per case;
+3. `Xhot/Yhot`, `BTBTmax`, points and elements transcribed into a raw-data table;
+4. four ROI-edge margins calculated per case;
+5. **8/8 cases PASS** the common-ROI coverage audit;
+6. `Xhot` moves only about **+2.344 nm** from 36→51 nm;
+7. `Yhot = 0.121875 um` for **all 8 cases**;
+8. minimum nearest-edge margin remains **9.875 nm** throughout the sweep;
+9. screenshot provenance / canonical filename mapping recorded for slide extraction;
+10. claim boundary retained as **coverage / comparison consistency**, not absolute mesh-independence proof.
 
 Supported interpretation:
 
-> For the present 31/36/41 nm validation set, the same `Mesh_Code = 3` policy and common refinement ROI cover the BTBT critical region with sufficient margin. The observed hotspot motion does not require case-specific ROI relocation, so the common mesh policy is defensible for fair comparison.
+> Across the complete R6.5 MEB geometry sweep, the same `Mesh_Code = 3` policy and common refinement ROI cover the independently extracted BTBT critical region with sufficient margin. The observed hotspot motion does not require case-specific ROI relocation, so the common mesh policy is defensible for fair R6.5 comparison.
 
 Evidence:
 
+- `docs/evidence/feedback_mesh_run65_full_validation_20260913.md`
+- `docs/evidence/feedback_mesh_presentation_extract_20260913.md`
+- `data/run06_5/feedback_mesh_20260913/r65_mesh_raw_extract.csv`
+- `data/run06_5/feedback_mesh_20260913/r65_mesh_hotspot_coverage_summary.csv`
+- `data/run06_5/feedback_mesh_20260913/screenshot_manifest.csv`
+- `assets/images/feedback/20260913_mesh/`
+
+Historical 31/36/41 package remains at:
+
 - `docs/evidence/feedback_mesh_common_roi_validation_20260911.md`
 - `data/run04/feedback_mesh_20260911/`
-- `assets/images/feedback/20260911_mesh/01_mesh_feedback_6panel.jpg`
+- `assets/images/feedback/20260911_mesh/`
 
 Reopen conditions:
 
-- a later MEB hotspot approaches or leaves the current ROI;
+- a future geometry hotspot approaches or leaves the current ROI;
 - numerical inconsistency appears across cases;
 - an absolute mesh-independence claim is required, in which case a separate convergence study is needed.
 
