@@ -1,0 +1,2 @@
+AreaFactor,Twrite_s,Twrite_ns,VSN_hold_start_V,VSN_hold_end_V,DeltaVSN_100ns_V,error_from_1V_V,error_from_1V_percent,status
+0.017,6.67e-7,667,1.00001464973547,1.00001464946294,2.72529998568416e-10,1.464973547e-05,0.001464973547,PASS
