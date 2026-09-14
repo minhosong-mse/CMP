@@ -1,69 +1,87 @@
-# 3D-Sun-B0 SDevice decks
+# 3D-Sun-B0 / baseline-fidelity SDevice decks
 
-These decks belong to the dedicated literature-consistent 3-D baseline reconstruction used for `FB-BASELINE-01`.
+These decks support `FB-BASELINE-01` and the final simplified-2D-vs-3-D fidelity check.
 
 ## Decks
 
 | Deck | Purpose | Status |
 |---|---|---|
 | `G0_bringup.cmd` | 300 K, Vd=0.05 V, Vg 0→1.2 V numerical / turn-on sanity run | PASS |
-| `G1_highVd_full_idvg.cmd` | 300 K, Vd=1.2 V, Vg 0→2.0 V high-drain baseline comparison | PASS |
-| `G2_lowVd_full_idvg.cmd` | 300 K, Vd=0.05 V, Vg 0→2.0 V low-drain curve for consistent DIBL extraction | PASS — returned curve ingested |
+| `G1_highVd_full_idvg.cmd` | 300 K, Vd=1.2 V, Vg 0→2.0 V 3-D high-drain baseline curve | PASS |
+| `G2_lowVd_full_idvg.cmd` | 300 K, Vd=0.05 V, Vg 0→2.0 V 3-D low-drain baseline curve | PASS |
+| `B0_2D_parity_highVd.cmd` | simplified 2-D B0 rerun with the 3-D baseline physics family at Vd=1.2 V | PASS |
+| `B0_2D_parity_lowVd.cmd` | simplified 2-D B0 rerun with the 3-D baseline physics family at Vd=0.05 V | PASS |
 
-SWB custom parameters are not required for these current decks; the bias, temperature, work function, and thread count are hard-coded, while `@tdr@`, `@plot@`, `@tdrdat@`, and `@log@` are SWB placeholders.
+No additional custom SWB parameters are required by these SDevice decks. `@tdr@`, `@plot@`, `@tdrdat@`, and `@log@` are SWB placeholders.
 
-## G2 extraction checkpoint
-
-The returned G2 dataset reaches the full `Vg=2.0 V` endpoint and was ingested as:
-
-- `data/baseline_3d_sun_b0/g2_idvg_lowvd_0p05V_to_2p0V.csv`
-- `data/baseline_3d_sun_b0/g2_curve_validation_summary.txt`
-
-Using the same **provisional** threshold convention already used for G1 (`W=Wfin=17 nm`, `L=Lgate=20 nm`) gives a reconstruction-defined DIBL of approximately `51.75 mV/V`. The paper reports `23.6 mV/V`, but its exact low/high drain-bias pair is not explicitly stated in the text, so this is not yet claimed as a strict paper-equivalent DIBL extraction.
-
-## Post-G2 extraction / physics verification
-
-Detailed checkpoint:
-
-- `docs/evidence/baseline_3d_extraction_physics_verification_20260913.md`
-- `data/baseline_3d_sun_b0/extraction_width_sensitivity_20260913.csv`
-- `assets/images/feedback/20260911_baseline/01_g1_g2_idvg_comparison.svg`
-
-Two issues were checked before modifying the reconstructed device:
-
-1. **Threshold width convention:** using a larger saddle-fin width interpretation (`2Hfin + Wfin`) shifts the extracted Vth even higher. The current ~0.49 V Vth mismatch therefore cannot plausibly be explained by channel-width ambiguity alone.
-2. **Canali / Caughey-Thomas wording:** Sentaurus documentation/training identifies its built-in velocity high-field saturation model as Canali while also describing the implementation in Caughey-Thomas terms. The present `eHighFieldSaturation(GradQuasiFermi)` / `hHighFieldSaturation(GradQuasiFermi)` activation is therefore treated as compatible with the Canali/Caughey-Thomas model family.
-
-Exact paper-equivalent high-field parameterization is **not** claimed because Sun et al. do not publish their Sentaurus release or numerical model overrides.
-
-## Current claim boundary
-
-The current model deck uses `PhuMob`, `Enormal(Lombardi)`, carrier-specific high-field saturation with `GradQuasiFermi`, and `Band2Band(Hurkx)`. The Sun et al. paper names Philips unified mobility, Lombardi, Canali velocity saturation, and Hurkx tunneling.
-
-Supported statement:
-
-> The currently activated high-field model is consistent with the Sentaurus Canali/Caughey-Thomas model family. This resolves the earlier model-name mismatch concern at the model-family/activation level, but does not prove exact numerical parameter equivalence to the unpublished paper deck.
-
-The electrical baseline still does not match the paper nominal metrics, so no exact-reproduction claim is made.
-
-## Upstream geometry / mesh source
-
-The final F1 SDE build **checkpoint summary** is stored at:
-
-- `data/baseline_3d_sun_b0/f1_sde_build_summary.txt`
-
-The exact final SDE source command file itself was not available as a standalone uploaded artifact during this repository audit, so it is **not reconstructed from the execution log and presented as exact source**.
-
-The immediate prerequisite for the next controlled S/D reconstruction sensitivity study is therefore:
+For the 2-D parity runs, the upstream Run-0 SDE branch keeps the existing:
 
 ```text
-export the original final F1 SDE source CMD from the Sentaurus workspace
+MEB_Depth = 0.036
 ```
 
-Repository convention for this baseline follows the existing CMP pattern: keep executable decks, CSV results, compact summaries, and curated figures/docs in GitHub; full Sentaurus logs and native `.plt` files are workspace/debug evidence unless a later reproducibility need specifically requires them.
+with no additional SDevice parameter.
 
-Primary documentation:
+## Common 3-D / parity physics family
 
-- `docs/evidence/feedback_baseline_3d_reconstruction_20260911.md`
+```text
+Temperature = 300 K
+Fermi
+PhuMob
+Enormal(Lombardi)
+eHighFieldSaturation(GradQuasiFermi)
+hHighFieldSaturation(GradQuasiFermi)
+Band2Band(Hurkx)
+Gate WF = 4.8 eV
+```
+
+This is consistent at model-family / activation level with the paper wording of Philips unified mobility, Lombardi, Canali velocity saturation, and Hurkx tunneling. Exact paper parameter overrides are not published and are not claimed to be reproduced.
+
+## 3-D electrical checkpoint
+
+```text
+Vth_high @ Vd=1.20 V = 1.14659 V
+Vth_low  @ Vd=0.05 V = 1.20610 V
+SS_high                 ≈ 91.17 mV/dec
+SS_low                  ≈ 92.83 mV/dec
+reconstruction DIBL     ≈ 51.75 mV/V
+```
+
+The paper reports `Vth=0.656 V`, `SS=76 mV/dec`, `Ion/Ioff=3.4e10`, and `DIBL=23.6 mV/V`. Exact electrical reproduction is therefore not claimed.
+
+## 2-D parity checkpoint
+
+Using the original simplified 2-D B0 geometry and the same main SDevice physics / bias family:
+
+```text
+Vth_high,2D = 1.51879 V
+SS_high,2D  ≈ 112.20 mV/dec
+SS_low,2D   ≈ 114.29 mV/dec
+```
+
+The low-Vd 2-D curve does not reach the paper-style threshold criterion by `Vg=2.0 V`, so only a conservative lower bound is reported under the same reconstruction drain-bias pair:
+
+```text
+DIBL_2D > 418.4 mV/V
+```
+
+The very-low-current 2-D off-state region contains sign changes near the numerical floor, so a formal 2-D Ion/Ioff is not frozen from this parity sweep.
+
+## Final modeling role
+
+The final baseline-fidelity conclusion is:
+
+> the simplified 2-D B0 is not an absolute reproduction of the literature-oriented 3-D BCAT, but remains useful as a controlled relative-trend / design-space model. Final design conclusions should be checked using selected-point 3-D validation.
+
+The 3-D reconstruction itself remains a **literature-consistent reconstruction / validation anchor**, not an exact reverse-engineered Sun-2022 deck.
+
+## Evidence
+
+- `data/baseline_3d_sun_b0/b0_2d_parity_highvd.csv`
+- `data/baseline_3d_sun_b0/b0_2d_parity_lowvd.csv`
+- `data/baseline_3d_sun_b0/baseline_2d_3d_fidelity_summary_20260914.csv`
+- `data/baseline_3d_sun_b0/f1_mesh_convergence_summary_20260914.csv`
+- `docs/evidence/feedback_baseline_closeout_20260914.md`
 - `docs/evidence/baseline_3d_evidence_manifest_20260912.md`
-- `docs/evidence/baseline_3d_extraction_physics_verification_20260913.md`
+
+Repository convention remains unchanged: keep executable / controlled source decks, validated CSVs, compact summaries, curated figures, and evidence docs in GitHub. Full Sentaurus logs and native `.plt` files remain workspace/debug evidence unless specifically needed later.
