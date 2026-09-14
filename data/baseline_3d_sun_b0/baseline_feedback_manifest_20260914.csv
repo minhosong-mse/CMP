@@ -1,0 +1,22 @@
+stage,artifact_type,path,status,purpose
+F1,code,code/sde/baseline_3d_sun_b0/F1_nominal.cmd,verified,exact nominal 3D SDE source
+F1,code,code/sde/baseline_3d_sun_b0/VARIANTS.md,verified,controlled H1/H2/F1C/F1F variant definitions
+G0,code,code/sdevice/baseline_3d_sun_b0/G0_bringup.cmd,executed,3D numerical bring-up
+G1,code,code/sdevice/baseline_3d_sun_b0/G1_highVd_full_idvg.cmd,executed,3D high-Vd ID-VG
+G2,code,code/sdevice/baseline_3d_sun_b0/G2_lowVd_full_idvg.cmd,executed,3D low-Vd ID-VG
+2D-parity,code,code/sdevice/baseline_3d_sun_b0/B0_2D_parity_highVd.cmd,executed,2D B0 high-Vd parity run with 3D physics family
+2D-parity,code,code/sdevice/baseline_3d_sun_b0/B0_2D_parity_lowVd.cmd,executed,2D B0 low-Vd parity run with 3D physics family
+E,data,data/baseline_3d_sun_b0/junction_source_C1.csv,verified,source vertical junction-depth validation
+E,data,data/baseline_3d_sun_b0/junction_drain_C2.csv,verified,drain vertical junction-depth validation
+G0,data,data/baseline_3d_sun_b0/g0_idvg_lowvd_0p05V_to_1p2V.csv,verified,3D bring-up curve
+G1,data,data/baseline_3d_sun_b0/g1_idvg_highvd_1p2V_to_2p0V.csv,verified,3D high-Vd baseline curve
+G2,data,data/baseline_3d_sun_b0/g2_idvg_lowvd_0p05V_to_2p0V.csv,verified,3D low-Vd baseline curve
+H1,data,data/baseline_3d_sun_b0/h1_idvg_highvd_lgate_outer20nm.csv,verified,Lgate-mapping sensitivity
+H2,data,data/baseline_3d_sun_b0/h2_gaussfactor0p8_idvg_highvd.csv,verified,lateral-Gaussian sensitivity
+F1C,data,data/baseline_3d_sun_b0/f1c_coarse_idvg_highvd.csv,verified,coarse mesh convergence point
+F1F,data,data/baseline_3d_sun_b0/f1f_fine_idvg_highvd.csv,verified,fine mesh convergence point
+mesh-summary,data,data/baseline_3d_sun_b0/f1_mesh_convergence_summary_20260914.csv,verified,Coarse/Nominal/Fine extracted metrics
+2D-parity,data,data/baseline_3d_sun_b0/b0_2d_parity_highvd.csv,verified,2D parity high-Vd curve
+2D-parity,data,data/baseline_3d_sun_b0/b0_2d_parity_lowvd.csv,verified,2D parity low-Vd curve
+closeout,data,data/baseline_3d_sun_b0/baseline_2d_3d_fidelity_summary_20260914.csv,verified,final paper/3D/2D comparison table
+closeout,doc,docs/evidence/feedback_baseline_closeout_20260914.md,verified,final baseline-feedback interpretation and workflow decision
