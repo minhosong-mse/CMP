@@ -2,7 +2,7 @@
 
 > Baseline source: `F1_nominal.cmd`  
 > Scope: `FB-BASELINE-01` / `T-BASELINE-01`  
-> Last updated: 2026-09-13
+> Last updated: 2026-09-14
 
 This file records every controlled SDE variant used after the nominal F1 build. The variants are defined relative to `F1_nominal.cmd` so the reconstruction assumptions remain auditable even when the complete working CMD is kept in the Sentaurus workspace during execution.
 
@@ -140,6 +140,16 @@ Gate-edge max             = 1.25 / 1.25 / 0.625 nm
 Gate-edge min             = 0.375 / 0.375 / 0.25 nm
 ```
 
+Returned result:
+
+```text
+Points   = 325741
+Elements = 1998482
+Vth_high = 1.14899 V
+SS        = 91.251 mV/dec
+Id(2 V)   = 1.0686352e-5 A
+```
+
 ### F1F — Fine
 
 Nominal mesh dimensions are multiplied by `0.80`:
@@ -156,7 +166,17 @@ Gate-edge max             = 0.8 / 0.8 / 0.4 nm
 Gate-edge min             = 0.24 / 0.24 / 0.16 nm
 ```
 
-Both use the unchanged G1 electrical run:
+Returned result:
+
+```text
+Points   = 883382
+Elements = 5393039
+Vth_high = 1.14541 V
+SS        = 91.099 mV/dec
+Id(2 V)   = 1.0638591e-5 A
+```
+
+All three mesh branches use the unchanged G1 electrical run:
 
 ```text
 T = 300 K
@@ -167,19 +187,52 @@ Vsub = 0 V
 WF = 4.8 eV
 ```
 
-Status as of 2026-09-13:
+### Mesh-convergence decision
+
+Reference nominal F1:
 
 ```text
-F1C Coarse  = launched / result pending
-F1 Nominal  = completed / reference
-F1F Fine    = launched / result pending
+Points   = 473004
+Elements = 2902876
+Vth_high = 1.14659 V
+SS        = 91.170 mV/dec
+Id(2 V)   = 1.063365e-5 A
 ```
 
-Required result package per new branch:
+Fine relative to Nominal:
 
 ```text
-1) SVisual Points / Elements
-2) gate OuterVoltage vs drain TotalCurrent CSV
+Delta Vth     = -1.18 mV
+Delta SS      = -0.071 mV/dec
+Delta Id(2 V) = +0.046%
 ```
 
-No full Sentaurus log or native `.plt` is required unless the curve or convergence is abnormal.
+This is well inside the predeclared first-pass baseline-DC guideline (`|Delta Vth| <= ~10 mV`, `|Delta SS| <= ~2 mV/dec`).
+
+Decision:
+
+```text
+F1 for baseline DC ID-VG comparison = FROZEN / ACCEPTED
+```
+
+This does not establish convergence for arbitrary local peak-field or BTBT/GIDL hotspot claims. Those remain separate high-field mesh questions.
+
+Evidence:
+
+```text
+data/baseline_3d_sun_b0/f1c_coarse_idvg_highvd.csv
+data/baseline_3d_sun_b0/g1_idvg_highvd_1p2V_to_2p0V.csv
+data/baseline_3d_sun_b0/f1f_fine_idvg_highvd.csv
+data/baseline_3d_sun_b0/f1_mesh_convergence_summary_20260914.csv
+docs/evidence/baseline_3d_mesh_convergence_result_20260914.md
+```
+
+## Current resume point
+
+```text
+H1 Lgate mapping sensitivity          DONE — rejected
+H2 lateral Gaussian sensitivity       DONE — rejected as main cause
+F1 electrical mesh convergence        DONE — PASS for baseline DC
+F1 nominal mesh                       FROZEN for baseline DC comparison
+next                                  stabilized 3-D vs simplified 2-D B0 fidelity comparison
+```
