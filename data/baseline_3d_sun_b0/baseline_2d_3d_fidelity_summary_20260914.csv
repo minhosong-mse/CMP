@@ -1,0 +1,8 @@
+model,condition,Vd_V,Vg_end_V,current_basis,Vth_V,SS_mV_dec,Id_at_Vg2,notes
+Sun_2022,nominal,NA,NA,paper-reported,0.656,76,NA,"Ion/Ioff=3.4e10; DIBL=23.6 mV/V"
+3D_Sun_B0,high,1.2,2.0,total_A,1.14659,91.17,1.06336500e-05,"literature-consistent reconstruction; provisional threshold convention"
+3D_Sun_B0,low,0.05,2.0,total_A,1.20610,92.83,2.48569000e-06,"reconstruction-defined DIBL=51.75 mV/V"
+2D_B0_parity,high,1.2,2.0,native_2D_width_normalized_A_per_um,1.51879,112.20,4.93640980e-05,"same SDevice physics/bias family as 3D parity run"
+2D_B0_parity,low,0.05,2.0,native_2D_width_normalized_A_per_um,>2.0,114.29,3.74105010e-06,"threshold criterion not reached by Vg=2.0 V; DIBL lower bound >418.4 mV/V"
+3D_Sun_B0,width_normalized_high,1.2,2.0,A_per_um_equivalent,NA,NA,6.25508824e-04,"3D total current divided by Wfin=0.017 um for parity comparison"
+3D_Sun_B0,width_normalized_low,0.05,2.0,A_per_um_equivalent,NA,NA,1.46217059e-04,"3D total current divided by Wfin=0.017 um for parity comparison"
