@@ -1,224 +1,39 @@
-# CMP Run 7 — 1T1C Retention Feasibility: Interim Closure
+# CMP Run 7 — 1T1C Retention Feasibility: Updated Checkpoint
 
-Date: 2026-09-11  
-Scope: **B0-v1 methodology feasibility** only. This document does **not** freeze a production baseline or final retention time.
+Date: 2026-09-20  
+Scope: **B0-v1 methodology feasibility** only. This document does **not** freeze a production baseline or a final retention time.
 
 ## 1. Executive status
 
-Current Run 7 has demonstrated the following chain at feasibility level:
+The executed Run-7 chain is now:
 
 ```text
 Write feasibility
-→ floating-SN 100 ns short Hold
-→ independent D0/D1 charge-sharing Read
+→ 300 K Write-to-~1 V normalization
+→ floating-SN direct Hold to 100 us
+→ independent D0/D1 Read
+→ VSN-to-Read-margin transfer
+→ integrated 300 K Write → Hold → Read
+→ 340/380 K Write-to-~1 V normalization
 ```
 
-This supports the scoped statement:
+This supports a stronger but still scoped statement:
 
-> **A first-pass 1T1C retention-operation feasibility validation was completed for B0-v1.**
+> **B0=36 nm에서 300 K의 normalized 1T1C Write→floating Hold→Read operation feasibility를 확인했고, storage-node voltage와 Read margin의 전달 관계를 독립 Read sweep으로 확인했다.**
 
-The precise meaning is:
-
-- D1 write behavior is reproducibly generated.
-- After write-pulse termination and switching settling, the floating storage node remains numerically stable over a 100 ns short-hold window in the currently processed subset.
-- Independent charge-sharing read tests distinguish D0 and D1 with opposite BL signal directions.
-
-It does **not** yet mean:
-
-- integrated `Write → Hold → Read` has been completed in a single transient,
-- a physical retention time has been extracted,
-- the final standby bias or final write condition has been frozen,
-- a Liu-compatible `1.0 V → 0.8 V` retention time has been measured.
-
-Documentation map:
-
-- methodology traceability: [`../methodology/run07_methodology_traceability.md`](../methodology/run07_methodology_traceability.md)
-- feedback-level checkpoint: [`../evidence/feedback_retention_operation_checkpoint_20260911.md`](../evidence/feedback_retention_operation_checkpoint_20260911.md)
-- write evidence: [`../evidence/run07_write_screen_20260911.md`](../evidence/run07_write_screen_20260911.md)
-- hold evidence: [`../evidence/run07_hold100_partial_20260911.md`](../evidence/run07_hold100_partial_20260911.md)
-- read evidence: [`../evidence/run07_read_window_20260911.md`](../evidence/run07_read_window_20260911.md)
-- evidence manifest: [`../evidence/run07_retention_manifest.md`](../evidence/run07_retention_manifest.md)
+The currently running 340/380 K normalized long-Hold matrix is intentionally excluded from completed evidence.
 
 ## 2. Fixed feasibility scope
 
 ```text
 B0 MEB depth = 36 nm
-T            = 300 K
-Mesh_Code    = 1 for current write/hold/read feasibility work
+Mesh_Code    = 1
+AreaFactor   = 0.017 for normalized checkpoints
 Ccell        = 10 fF
 Physics      = established CMP NonlocalPath chain
 ```
 
-Run 7 remains a B0 protocol-definition stage. MEB-dependent cell comparison belongs to downstream Run 8 after the protocol is frozen.
-
-## 3. R7B — Write screen
-
-For the quantified nominal-width candidate block:
-
-```text
-AreaFactor = 0.017
-VBL_WRITE  = 1.2 V
-VWL_ON     = 1.5 / 2.0 / 2.5 / 3.0 V
-VWL_HOLD   = -0.7 V
-Twrite     = 100 / 200 / 300 ns
-```
-
-| node | VWL_ON [V] | Twrite [ns] | final VSN [V] |
-|---:|---:|---:|---:|
-| 182 | 1.5 | 100 | 0.157485 |
-| 183 | 2.0 | 100 | 0.428389 |
-| 184 | 2.5 | 100 | 0.675346 |
-| 185 | 3.0 | 100 | 0.866426 |
-| 194 | 1.5 | 200 | 0.190966 |
-| 195 | 2.0 | 200 | 0.469623 |
-| 196 | 2.5 | 200 | 0.723916 |
-| 197 | 3.0 | 200 | 0.919497 |
-| 206 | 1.5 | 300 | 0.209947 |
-| 207 | 2.0 | 300 | 0.492115 |
-| 208 | 2.5 | 300 | 0.750794 |
-| 209 | 3.0 | 300 | **0.948118** |
-
-Within the screened range, `VSN` increases monotonically with both `VWL_ON` and `Twrite`.
-
-Current strongest screened condition:
-
-```text
-AreaFactor = 0.017
-VWL_ON     = 3.0 V
-Twrite     = 300 ns
-VSN_final  = 0.948118 V
-```
-
-This is a **preliminary D1 candidate**, not a final write-condition freeze. The current screen has not reached 1.0 V.
-
-Processed data:
-
-- `data/run07/processed/write_screen_af0017.csv`
-
-## 4. R7C — Floating storage-node Hold
-
-Current short-hold branch:
-
-```text
-BL after write = 0 V
-WL_HOLD        = -0.7 V
-substrate      = 0 V
-SN             = floating after Unset(sn)
-Thold          = 100 ns
-```
-
-The hold metric is intentionally started after WL/BL falling-edge settling, near `Twrite + 2 ns`, so switching transient and genuine hold behavior are not conflated.
-
-### Processed subset
-
-| node | AF | VWL_ON [V] | Twrite [ns] | VSN hold-start [V] | VSN +100 ns [V] | Delta VSN [V] |
-|---:|---:|---:|---:|---:|---:|---:|
-| 179 | 0.011 | 2.0 | 100 | 0.400957143 | 0.400957143 | 5.860e-13 |
-| 191 | 0.011 | 2.0 | 200 | 0.444792564 | 0.444792564 | 6.500e-13 |
-| 203 | 0.011 | 2.0 | 300 | 0.468481043 | 0.468481043 | 6.470e-13 |
-| 183 | 0.017 | 2.0 | 100 | 0.428387852 | 0.428387852 | 9.720e-13 |
-| 194 | 0.017 | 1.5 | 200 | 0.190978612 | 0.190978612 | 5.970e-13 |
-| 195 | 0.017 | 2.0 | 200 | 0.469644635 | 0.469644635 | 1.054e-12 |
-
-Observed changes are only on the order of `1e-13 ~ 1e-12 V`. They are treated as **numerical-floor-level changes**, not as physically resolved retention decay.
-
-Therefore this checkpoint establishes:
-
-- floating-SN implementation: **PASS at feasibility level**
-- 100 ns short-hold stability: **PASS for processed subset**
-- retention time: **not extracted**
-
-Processed data:
-
-- `data/run07/processed/hold100_partial.csv`
-
-The full 36-case Hold matrix is not claimed complete in this document until all raw outputs are processed.
-
-## 5. R7E — Independent D0/D1 Read window
-
-Current independent read test:
-
-```text
-AreaFactor = 0.017
-Ccell      = 10 fF
-CBL        = 45 fF
-VBL_init   = 0.5 V
-WL_OFF     = -0.7 V
-WL_READ    = 3.0 V
-Tread      = 10 ns
-D0 VSN     = 0 V
-D1 VSN     = 0.9481 V
-```
-
-D1 initial VSN maps to the strongest quantified write-screen state above.
-
-| state | VSN init [V] | VBL init [V] | VSN final [V] | VBL final [V] | Delta VSN | Delta VBL | capacitor-charge error |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| D0 (n136) | 0.000000 | 0.500000 | 0.324409 | 0.427884 | +324.41 mV | **-72.12 mV** | -0.0051% |
-| D1 (n138) | 0.948100 | 0.500000 | 0.810658 | 0.530553 | -137.44 mV | **+30.55 mV** | +0.0014% |
-
-Final D0/D1 BL separation:
-
-```text
-0.530553 - 0.427884 = 0.102669 V = 102.67 mV
-```
-
-Interpretation:
-
-- D0 produces a negative BL shift.
-- D1 produces a positive BL shift.
-- Opposite signal directions provide an independent charge-sharing discrimination check.
-- Capacitor-charge balance error below 0.01% supports a charge-redistribution interpretation.
-
-This is **independent read feasibility**, not yet `Read-after-Hold`.
-
-Processed data:
-
-- `data/run07/processed/read_window.csv`
-
-## 6. Method / literature mapping
-
-The current methodology is deliberately split into distinct metrics rather than forcing unlike definitions into one number.
-
-### Direct floating transient
-
-```text
-Write → SN floating → VSN(t)
-```
-
-Current result: 100 ns short-hold stability only.
-
-### Synopsys-compatible secondary metric
-
-The audited `Memory/SF_DRAM` example provides the methodology precedent:
-
-```text
-T_RET,5% = integral [ Ccell / |I_SN(VSN)| ] dVSN
-```
-
-over an approximately 5% storage-voltage window from `0.95*Vmax` to `Vmax`.
-
-This metric has **not yet been executed for CMP**.
-
-### Liu-compatible literature metric
-
-Reserved name:
-
-```text
-t_1.0→0.8
-```
-
-Only report it if the CMP written state genuinely begins near 1.0 V. The current strongest screen is 0.948118 V, so no Liu-compatible retention time is claimed.
-
-### Read-derived usability
-
-Readability will eventually be checked after Hold using the CMP D0/D1 charge-sharing window. Literature thresholds such as Cho et al.'s read-derived value are retained as references, not imported as automatic CMP pass/fail thresholds.
-
-Full source-to-method mapping is in `docs/methodology/run07_methodology_traceability.md`.
-
-## 7. Physics continuity and bias boundary
-
-Main R7 physics remains the established CMP chain:
+Mainline physics:
 
 ```text
 Fermi
@@ -229,44 +44,160 @@ Auger
 Band2Band(Model=NonlocalPath)
 ```
 
-The Synopsys example is used as a topology/methodology precedent only; its example-specific leakage physics is not copied into the CMP mainline.
+## 3. Write normalization
 
-The current short-hold bias:
+The original 300 K calibration is frozen:
 
 ```text
-WL = -0.7 V
+300 K
+Twrite = 667 ns
+VSN_hold_start = 1.00001464973547 V
+```
+
+Temperature-specific Write calibration is also complete:
+
+| Temperature | Twrite | VSN_hold_start |
+|---:|---:|---:|
+| 300 K | 667 ns | 1.00001464973547 V |
+| 340 K | 258 ns | 1.00009888 V |
+| 380 K | 126.54 ns | 1.00009202 V |
+
+These values are normalization anchors for later same-start-voltage comparison. They do not imply that 1 V is a universal DRAM operating voltage.
+
+Processed data:
+- `data/run07/processed/write_1v_calibration_af0017.csv`
+- `data/run07/processed/write_temp_calibration_af0017.csv`
+
+## 4. 300 K direct floating Hold
+
+Normalized direct-Hold condition:
+
+```text
+T = 300 K
+Twrite = 667 ns
+WL_HOLD = -0.7 V
 BL = 0 V
-substrate = 0 V
 SN = floating
 ```
 
-is a **CMP-adapted feasibility bias** and must not be described as a literature-standard or production standby condition.
+| Thold | Delta VSN |
+|---:|---:|
+| 100 ns | 0.270 nV |
+| 1 us | 2.702 nV |
+| 10 us | 27.020 nV |
+| 100 us | 270.195 nV |
+
+The 0.8 V criterion is not reached within 100 us.
+
+Therefore:
+- direct floating-Hold transient: **PASS for tested window**
+- resolved `t_1.0→0.8`: **not measured**
+- precise retention time from short-window slope extrapolation: **not allowed**
+
+Processed data:
+- `data/run07/processed/hold_direct_300k.csv`
+
+## 5. Independent Read and transfer
+
+Independent D0/D1 reference:
+
+```text
+D0 DeltaVBL = -72.12 mV
+D1 at VSN=0.9481 V: DeltaVBL = +30.55 mV
+final BL separation = 102.67 mV
+```
+
+Read-B transfer selected points:
+
+| VSN init | Delta VBL | D0/D1 separation |
+|---:|---:|---:|
+| 0.80 V | +17.92 mV | 90.04 mV |
+| 0.9481 V | +30.55 mV | 102.67 mV |
+| 1.00 V | +35.14 mV | 107.26 mV |
+
+The transfer is monotonic over the executed sweep. In this setup, 0.8 V still produces a positive D1 Read signal and substantial D0/D1 separation, so 0.8 V must not be described as a read-fail threshold.
+
+Processed data:
+- `data/run07/processed/read_window.csv`
+- `data/run07/processed/read_transfer_vsn.csv`
+
+## 6. Integrated 300 K Write → Hold → Read
+
+Normalized integrated condition uses the executed 667 ns Write anchor.
+
+| Thold | VSN hold-start | Hold loss | VSN before Read | Delta VBL |
+|---:|---:|---:|---:|---:|
+| 100 ns | 1.000028401 V | 0.261 nV | 1.000044347 V | +35.6251 mV |
+| 1 us | 1.000028401 V | 2.701 nV | 1.000044344 V | +35.6251 mV |
+| 10 us | 1.000028401 V | 27.01 nV | 1.000044320 V | +35.6251 mV |
+
+Result:
+
+> **300 K normalized integrated Write→floating Hold→Read feasibility = PASS for 100 ns / 1 us / 10 us Hold.**
+
+The Write-off settling before the settled Hold metric is not counted as retention loss.
+
+Processed data:
+- `data/run07/processed/whr_300k_norm.csv`
+
+## 7. Current metric boundary
+
+The project keeps these definitions separate:
+
+- direct floating transient: `VSN(t)`, `DeltaVSN(t)`
+- Synopsys-compatible secondary metric: `T_RET,5%` from leakage-vs-voltage integration
+- Liu-compatible metric: `t_1.0→0.8` only when a genuine ~1 V start is used
+- Read transfer: `VSN → DeltaVBL`
+- integrated operation: Write → Hold → Read
+
+No direct-retention result is relabeled as another metric.
 
 ## 8. Presentation-safe wording
 
-Allowed at this checkpoint:
+Supported now:
 
-> **B0 1T1C MixedMode에서 Write 후 floating storage node의 100 ns 단기 유지 안정성을 확인했고, 별도 D0/D1 read test에서 약 102.7 mV의 bitline separation을 확보하여 1차 retention-operation feasibility를 검증하였다.**
+> **B0=36 nm, 300 K에서 약 1 V의 D1 state를 실제 Write로 형성한 뒤 floating Hold와 Read를 연속 수행했으며, 100 ns–10 us Hold 조건에서 약 +35.6 mV의 D1 bitline signal을 유지했다.**
+
+Also supported:
+
+> **300 K direct floating-Hold transient에서는 100 us까지 storage-node voltage가 약 1 V 부근에 유지되었고, 독립 Read sweep에서는 VSN 감소에 따라 Read signal과 D0/D1 separation이 감소하는 전달 특성을 확인했다.**
 
 Do not claim yet:
 
 - `Retention time = X`
-- final retention validation complete
-- full `Write → Hold → Read` validation complete
-- production/calibrated retention behavior
-- Liu-compatible `1.0 → 0.8 V` retention time
+- measured `t_1.0→0.8`
+- final temperature-dependent retention result
+- final MEB-dependent retention result
+- production/calibrated retention or refresh reduction
 
-## 9. Next required closure
+## 9. Next closure
 
-1. choose one representative written D1 state;
-2. execute integrated `Write → Hold → Read` in one sequence;
-3. extend Hold time beyond 100 ns;
-4. track both `VSN(t)` and post-hold `DeltaVBL`;
-5. execute the Synopsys-compatible `T_RET,5%` leakage integration;
-6. later check Mesh1 vs Mesh3 and NonlocalPath ON/OFF attribution before full R7 close-out.
+Currently running, not yet registered as completed evidence:
 
-## 10. README integration state
+```text
+340 K: Twrite = 258 ns
+380 K: Twrite = 126.54 ns
+Thold = 100 ns / 1 us / 10 us / 100 us
+```
+
+After that matrix is processed:
+
+```text
+temperature-normalized Hold
+→ temperature-normalized integrated W-H-R
+→ leakage-vs-V integration if direct transient still does not reach the selected threshold
+→ later MEB-dependent cell translation
+```
+
+## 10. Documentation map
+
+- presentation/evidence checkpoint: `docs/evidence/run07_cell_operation_checkpoint_20260920.md`
+- formal manifest: `docs/evidence/run07_retention_manifest.md`
+- methodology: `docs/methodology/run07_methodology_traceability.md`
+- source/deck index: `code/sdevice/run07/README.md`
+
+## 11. README integration state
 
 **Do not update the main README yet.**
 
-This checkpoint is intentionally staged in Run 7 progress/evidence and linked from `TASK_HUB` / `FEEDBACK_LOG`. Main README integration is deferred until the principal first-presentation feedback set is synthesized consistently.
+Main README integration remains deferred until the current feedback/retention block is closed consistently.

@@ -1,0 +1,5 @@
+temperature_K,twrite_s,thold_s,vsn_hold_start_V,vsn_hold_end_V,delta_vsn_V,loss_percent,criterion_0p8_reached
+300,6.67e-7,1.0e-7,1.000017733,1.000017732,2.70e-10,2.70e-8,false
+300,6.67e-7,1.0e-6,1.000017733,1.000017730,2.702e-9,2.70e-7,false
+300,6.67e-7,1.0e-5,1.000017733,1.000017706,2.7020e-8,2.70e-6,false
+300,6.67e-7,1.0e-4,1.000017733,1.000017462,2.70195e-7,2.70e-5,false

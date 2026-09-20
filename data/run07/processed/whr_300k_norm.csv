@@ -1,0 +1,4 @@
+temperature_K,twrite_s,thold_s,vsn_write_end_V,vsn_hold_start_V,vsn_hold_end_V,delta_vsn_hold_V,vsn_before_read_V,vbl_pre_read_V,delta_vbl_mV,status
+300,6.67e-7,1.0e-7,1.002027,1.000028401,1.000028400,2.61e-10,1.000044347,0.5,35.6251,PASS
+300,6.67e-7,1.0e-6,1.002027,1.000028401,1.000028398,2.701e-9,1.000044344,0.5,35.6251,PASS
+300,6.67e-7,1.0e-5,1.002027,1.000028401,1.000028374,2.701e-8,1.000044320,0.5,35.6251,PASS
