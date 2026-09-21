@@ -19,7 +19,7 @@ The direct-Hold deck therefore achieves an approximately common 1 V start. The 3
 
 | T | 100 ns | 1 us | 10 us | 100 us |
 |---:|---:|---:|---:|---:|
-| 300 K | 0.270 nV | 2.702 nV | 27.020 nV | 0.270195 us-equivalent microvolt = 0.270195 uV |
+| 300 K | 0.270 nV | 2.702 nV | 27.020 nV | 0.270195 uV |
 | 340 K | 0.4839 nV | 4.8389 nV | 48.389 nV | 0.483889 uV |
 | 380 K | 7.439 nV | 74.390 nV | 0.743900 uV | 7.438961 uV |
 
