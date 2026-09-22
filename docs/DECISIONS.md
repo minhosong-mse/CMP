@@ -387,7 +387,7 @@ Decision date: 2026-08-30
 
 Decision date: 2026-09-22
 
-## D-038 — Post-Turn-02 Three-Phase Validation Hierarchy
+## D-046 — Post-Turn-02 Three-Phase Validation Hierarchy
 
 - The canonical research title remains **“20 nm급 BCAT DRAM에서 MEB 깊이에 따른 GIDL–Retention 전달 특성 및 온도 의존적 유효 설계 범위 도출.”**
 - The main independent design variable remains **MEB depth**.
@@ -398,21 +398,21 @@ Decision date: 2026-09-22
 - Temperature and gate scheme are validation axes; they do not replace MEB as the central research variable.
 - A common SG/DWFG design range is only reported if the executed evidence produces a real overlap. Otherwise the result is reported as an MEB optimum/range shift under DWFG.
 
-## D-039 — High-WL-Bias Write Feasibility Becomes a Guardrail
+## D-047 — High-WL-Bias Write Feasibility Becomes a Guardrail
 
 - The 300 K B0 write normalization condition `VWL_ON=3.0 V`, `VBL_WRITE=1.2 V`, `AreaFactor=0.017`, `Ccell=10 fF`, and `Twrite≈667 ns` is retained as an executed protocol checkpoint.
 - Reaching `VSN≈1 V` is **not sufficient by itself** to declare write performance acceptable.
 - The `3.0 V` WL requirement is promoted to an unresolved cell-performance guardrail.
 - Future selected-point comparison should evaluate `VWL→VSN`, write time, and the relation to device/cell metrics before freezing the final effective MEB range.
 
-## D-040 — Cold Temperature Extension
+## D-048 — Cold Temperature Extension
 
 - Existing completed temperature evidence remains `300/340/380 K`.
 - `233 K (-40 °C)` is added as a **planned** cold operating point.
 - Until executed, no README, result table, or conclusion may imply a completed `233 K` result.
 - The cold point is intended to test whether the SG-derived MEB candidate/range remains usable from cold to hot conditions.
 
-## D-041 — DWFG Transferability, Not Baseline Replacement
+## D-049 — DWFG Transferability, Not Baseline Replacement
 
 - The 20 nm single-WF BCAT remains the baseline of record.
 - The project does **not** replace the 20 nm baseline with the 15 nm ICEIC DWFG device.
@@ -420,7 +420,7 @@ Decision date: 2026-09-22
 - After the SG MEB candidate/range is established, a DWFG extension will test the same candidate set for hotspot redistribution, GIDL, retention, and write/read transferability.
 - Existing SG work remains the control/reference branch and is not discarded.
 
-## D-042 — 3D Selected-Point Validation Strategy
+## D-050 — 3D Selected-Point Validation Strategy
 
 - `3D-Sun-B0` remains the higher-fidelity validation anchor; it is not an exact calibrated reproduction of Sun et al.
 - Dense design-space exploration remains in the controlled 2D framework.

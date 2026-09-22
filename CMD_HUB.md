@@ -570,4 +570,4 @@ The unprefixed `n<node>_sys_des.plt` can contain only the initial `t=0` coupled 
 - Node-expanded `pp*.cmd`, `.tdr`, `.plt`, full logs, and jobs remain in the local TCAD archive unless a specific provenance issue requires them.
 - If a later Run reuses an earlier source unchanged, the Hub either links the inherited source directly or keeps a Run-specific representative copy when that improves auditability.
 - A completed Run result is not added to the Hub as evidence unless its source command and parameter condition can be traced to the TCAD archive or an already committed source.
-- Prepared-but-unexecuted Run 7 decks remain labeled as planned until actual SWB execution evidence exists; executed write-feasibility nodes are now recorded separately from the still-unexecuted hold/retention/read branches.
+- Historical prepared decks remain documented for provenance. Current committed evidence now includes 300 K integrated Write→Hold→Read and approximately normalized 300/340/380 K direct Hold; final leakage-vs-V retention metric and retention Mesh1/3 close-out remain pending.

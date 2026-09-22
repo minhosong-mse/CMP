@@ -16,8 +16,8 @@
 |---|---|---|---|---|---|---|
 | `T-EFIELD-01` | Literature-grounded hotspot E-field / BTBT validation | Run 4–5, 31/36/41 nm, 300 K GIDL ON | **Completed — feedback level** | Phase A + conditional Phase B complete; hotspot coordinates, threshold sensitivity, integrated field / BTBT trend and figures committed | Use the evidence package for presentation; reopen only for thesis-level extension | `docs/evidence/feedback_efield_hotspot_validation_20260911.md` + `data/run05/feedback_efield_20260911/` |
 | `T-MESH-01` | Per-MEB mesh-setting / common-ROI feedback evidence | Run 3–4 + full Run 6.5 extension | **Completed — full R6.5 coverage / comparison-consistency level** | All 8 R6.5 MEB cases `36/41/43/45/47/48/49/51 nm` use the same Mesh-Code 3 policy; independently extracted BTBT hotspots remain inside the common ROI with ≥9.875 nm nearest-edge margin; full raw/ROI tables and screenshot provenance committed | Use the full-R6.5 evidence package for presentation; reopen only for an absolute mesh-convergence study or if a future geometry leaves the ROI | `docs/evidence/feedback_mesh_run65_full_validation_20260913.md` + `data/run06_5/feedback_mesh_20260913/` + `assets/images/feedback/20260913_mesh/` |
-| `T-BASELINE-01` | Literature-consistent 3-D BCAT baseline reconstruction and 2-D fidelity comparison | Run 0–1 + dedicated `3D-Sun-B0` workflow | **Completed — model-fidelity close-out** | Geometry/contact/doping mapping, G0/G1/G2, H1/H2 sensitivities, DC electrical mesh convergence, and controlled 2D↔3D parity comparison completed; exact Sun-et-al. electrical calibration remains intentionally unclaimed | Use 2D for dense DOE and 3D-Sun-B0 as the selected-point validation anchor | `docs/evidence/feedback_baseline_closeout_20260914.md` | Export exact final F1 SDE source CMD → run isolated lateral S/D Gaussian sensitivity → if needed test S/D-side 3-D rounding → mesh convergence → compare stabilized 3-D baseline with simplified 2-D B0 | `docs/evidence/feedback_baseline_3d_reconstruction_20260911.md` + `docs/evidence/baseline_3d_evidence_manifest_20260912.md` + `docs/evidence/baseline_3d_extraction_physics_verification_20260913.md` |
-| `T-RET-01` | 1T1C retention protocol freeze | Run 7 | **Advanced checkpoint — final retention metric still open** | 300 K write-to-~1 V, 100 us direct Hold, independent Read, integrated 300 K W→H→R and approximately normalized 300/340/380 K direct-Hold comparison committed | Complete leakage-vs-V / final retention metric, Mesh1/3 retention check, and temperature-integrated W-H-R only if required by the final handoff | `docs/progress/run07_1t1c_retention_feasibility.md` + latest Run-7 evidence | Integrated `Write → Hold → Read`, longer Hold, `T_RET,5%`, final retention-metric freeze | `docs/progress/run07_1t1c_retention_feasibility.md` + `docs/evidence/feedback_retention_operation_checkpoint_20260911.md` + methodology traceability |
+| `T-BASELINE-01` | Literature-consistent 3-D BCAT baseline reconstruction and 2-D fidelity comparison | Run 0–1 + dedicated `3D-Sun-B0` workflow | **Completed — model-fidelity close-out** | Geometry/contact/doping mapping, G0/G1/G2, H1/H2 sensitivities, DC electrical mesh convergence, and controlled 2D↔3D parity comparison completed; exact Sun-et-al. electrical calibration remains intentionally unclaimed | Use 2D for dense DOE and 3D-Sun-B0 as the selected-point validation anchor | `docs/evidence/feedback_baseline_closeout_20260914.md` |
+| `T-RET-01` | 1T1C retention protocol freeze | Run 7 | **Advanced checkpoint — final retention metric still open** | 300 K write-to-~1 V, direct Hold to 100 us, independent Read, integrated 300 K W→H→R and approximately normalized 300/340/380 K direct-Hold comparison committed | Complete leakage-vs-V / final retention metric and Mesh1/3 retention check; add 340/380 K integrated W-H-R only if required by final handoff | `docs/progress/run07_1t1c_retention_feasibility.md` + latest Run-7 evidence |
 | `T-RC-01` | Practical MEB-depth trade-off: W cross-section / normalized RWL proxy | Run 6.5 GIDL + frozen `3D-Sun-B0` geometry branch | **Checkpoint reached — proxy complete; waiting retention synthesis** | `36/41/43/45/47/48/49/51 nm` geometry sweep completed; normalized `1/A_W` proxy quantified; `47–49 nm` shows diminishing GIDL return while RWL proxy continues to rise | Do not add more TCAD to this branch yet; combine with MEB-dependent retention after Run-7 metric freeze. Optional WL-RC MixedMode only if stronger speed evidence becomes necessary | `docs/evidence/feedback_rwl_tradeoff_proxy_20260913.md` + `data/tradeoff/rwl_proxy_tradeoff_20260913.csv` + `assets/images/feedback/20260913_tradeoff/01_gidl_rwl_tradeoff.svg` |
 
 ## 3. T-EFIELD-01 close-out checkpoint
@@ -165,7 +165,9 @@ Reopen conditions:
 
 Dedicated `3D-Sun-B0` baseline workflow.
 
-Current checkpoint:
+> **Historical reconstruction checkpoint:** this subsection preserves the pre-close-out work sequence. The task is now closed at model-fidelity level; the canonical final result is `docs/evidence/feedback_baseline_closeout_20260914.md`.
+
+Historical checkpoint:
 
 ```text
 Literature truth table          DONE
@@ -235,7 +237,9 @@ Primary links:
 ### T-RET-01
 Dedicated Run-7 workflow.
 
-Current feedback-level checkpoint:
+> **Historical feedback checkpoint:** the subsection below predates the later integrated 300 K W→H→R and 300/340/380 K normalized direct-Hold evidence. See `docs/progress/run07_1t1c_retention_feasibility.md` for current status.
+
+Historical feedback-level checkpoint:
 
 ```text
 Write screen                      PASS — feasibility

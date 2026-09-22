@@ -167,7 +167,7 @@ assets/images/feedback/20260911_mesh/
 
 ## 5. Baseline-feedback checkpoint — literature-consistent 3-D reconstruction
 
-A separate `3D-Sun-B0` workflow is being used to answer `FB-BASELINE-01` before judging the simplified 2-D CMP baseline.
+A separate `3D-Sun-B0` workflow was used to answer `FB-BASELINE-01`. The task is now closed at model-fidelity level; this section preserves the historical reconstruction checkpoint.
 
 Detailed evidence:
 
@@ -251,7 +251,7 @@ The exact low/high drain-bias pair used by the paper for DIBL is not explicitly 
 
 Current conclusion:
 
-> `3D-Sun-B0` is numerically operational through G2, but the reported Sun et al. electrical baseline has **not** yet been reproduced.
+> Historical checkpoint: G2 was operational at this stage. Final close-out later confirmed that exact Sun-et-al. absolute electrical calibration is **not reproduced and is not claimed**; the reconstruction is retained as a literature-consistent 3D validation anchor.
 
 ### 5.3 Open baseline issues
 
@@ -263,7 +263,7 @@ Current conclusion:
 
 No work-function or doping tuning should be used merely to force agreement before those checks are completed.
 
-## 6. Retention-feedback checkpoint — Run 7
+## 6. Historical retention-feedback checkpoint — Run 7
 
 Current checkpoint:
 
@@ -368,7 +368,7 @@ Use scoped wording:
 - G0/G1/G2 show numerically operational ID–VG behavior, not complete electrical reproduction;
 - completed E-field validation supports critical-region spatial E-field / BTBT interpretation rather than one peak-field scalar;
 - completed mesh feedback verifies common-ROI hotspot coverage / comparison consistency across the full R6.5 MEB set, not absolute mesh independence;
-- Run 7 currently supports first-pass retention-operation feasibility, not a final retention-time claim;
+- The earlier first-pass retention checkpoint has since advanced to integrated 300 K W→H→R plus approximately normalized 300/340/380 K direct Hold; the final physical retention metric remains open;
 - the RWL result is a geometry-derived normalized `1/A_W` proxy and supports a practical trade-off argument, not an absolute RC-delay claim;
 - the final objective remains an effective / defensible MEB design range.
 

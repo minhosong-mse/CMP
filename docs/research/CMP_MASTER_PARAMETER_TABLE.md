@@ -103,7 +103,7 @@ MEB and the other process labels below describe the **physical-process origin of
 
 ## 6. R7 Circuit / Protocol Parameters — Historical Pre-Execution Table
 
-Run 7 is a **B0-only measurement-framework stage**. The values below remain Candidate / Planned / Reference-only until the R7 exit gate freezes them. No R7 simulation result is implied by this table.
+This subsection preserves the **historical pre-execution R7 parameter table**. Its Candidate / Planned labels describe the state before execution and are superseded, where applicable, by the executed/frozen anchors in Section 7 below.
 
 | Parameter / Test | TCAD / Symbol | Current Value | Status | R7 Branch | Physical / Method Role |
 |---|---|---|---|---|---|
