@@ -19,3 +19,15 @@ Detailed notes:
 The latest post-Turn-02 research direction is maintained in:
 - [Post-Turn-02 Validation Roadmap](../research/post_turn02_validation_roadmap.md)
 - [Feedback Log](../FEEDBACK_LOG.md)
+
+
+## Source-PDF provenance
+
+The two source PDFs used for this synchronization are identified below so that a later binary archive can be verified byte-for-byte.
+
+| Turn | Source size | SHA-256 |
+|---|---:|---|
+| Turn 01 | 2,458,957 bytes | `484c9fa742667145ef9e42d7372605457fbb79ea788c2714220a50af4dd3b852` |
+| Turn 02 | 2,097,525 bytes | `068c83b521673644baaf3bc9efffff72214fb183fc19f1714b30b4a2130149d8` |
+
+These hashes identify the original user-provided PDF bytes. The current GitHub connector path supports the text/document synchronization performed here but does not expose a direct binary-file upload handoff for these PDFs.
