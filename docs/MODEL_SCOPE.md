@@ -1,113 +1,257 @@
-# Model Scope
+# CMP Model Scope and Claim Boundaries
 
-## Official Model ID
+> Last synchronized: 2026-09-22  
+> Purpose: define what the CMP models can and cannot support after the first/second presentation feedback cycles.
 
-```text
-Model ID: B0
-Full name: 20 nm-Class Simplified 2D BCAT Baseline
-Nominal MEB/Gate-Top Depth: 36 nm
-```
+## 1. Model hierarchy
 
-## Verified Scope
+CMP no longer treats “the baseline” as a single model with one fidelity claim.
 
-- Geometry and material regions
-- Four contacts: source, drain, gate, substrate
-- Uniform P-body and abrupt N+ source/drain
-- Local mesh placement and SDE→SDevice linkage
-- Internal DC metric definitions for Vth, SS, Ion, and DIBL
-- `Mesh-DC = Medium / Mesh_Code 1`
-- NonlocalPath BTBT/GIDL feasibility and drain-side mechanism attribution
-- `Mesh-GIDL = Mesh_Code 3`
-- Formal Run 4 31/36/41 nm single-WF MEB screening
-- Run 5 four-terminal `ACCoupled`/`ACExtract` and raw project-internal `|Cgd|`
-- Run 5 frequency and mesh sensitivity for the internal Cgd path
-- Formal Run 5 31/33.5/36/38.5/41 nm MEB–Cgd–field–GIDL screening
-- Fixed `E_wall,max` definition: `Y=0.116 um`, ROI `X=0.032–0.070 um`
-- Run 6 300/340/380 K isothermal GIDL robustness
-- Run 6 BTBT-OFF background control
-- Run 6 temperature-dependent fixed-wall field and DC thermal guardrails
-- Run 6.5 extended MEB points `43/45/47/48/49/51 nm` with 36/41 reproduction
-- Run 6.5 Cgd remains monotonic through 51 nm
-- Run 6.5 fixed `E_wall,max` remains monotonic through 51 nm
-- Run 6.5 field-peak location shifts deeper with MEB
-- Run 6.5 stable low-GIDL region is resolved around 47–49 nm
-- Run 6.5 51 nm endpoint is recorded as low-current/background-sensitive for ranking
-- `P1=41 nm` is preserved as the historical initial screened-window candidate
-- `P2=48 nm` is selected from R6.5 as the extended-MEB structural/electrostatic handoff point and is carried forward as the transistor-level electrostatic/GIDL candidate for cell-level retention validation
-- 49 nm is retained as the primary challenger/sensitivity point
-- R6.5 spatial evidence: geometry, junction alignment, hotspot mesh, ElectricField morphology,
-  Band2BandGeneration morphology, and doping/junction evidence
-
-## Assumptions and Limitations
-
-- B0 is a simplified 2D cross-section, not a full 3D saddle-fin reproduction.
-- The gate is single-WF with work function 4.8 eV.
-- The physical etch process is not simulated.
-- `MEB` is represented by the metal-gate-top depth in SDE.
-- Source/drain are abrupt constant-doping rectangular approximations.
-- The geometrical junction boundary is 48 nm deep.
-- The 15 nm lateral setback is a simplified user-defined assumption.
-- No 3D saddle-fin width is represented.
-- Terminal current is raw simplified-2D current with no production-cell calibration.
-- NonlocalPath GIDL is an internal relative metric; experimental BTBT calibration is absent.
-- `|Cgd|` is a raw AC matrix element, not calibrated production-cell Cov.
-- `E_wall,max` is a fixed-cut peak, not global device Emax.
-- `Lproj=max(Jdepth-MEB,0)` is a depth-projection helper, not a physical lateral overlap length.
-- `GateTop=Jdepth` at 48 nm is a model-internal structural boundary, not a production optimum.
-- Run 5 correlations are descriptive within the five-point 31–41 nm range and are not causal proof.
-- Run 6.5 shows Cgd and Ewall continue to decrease beyond 48 nm; 48 nm is not a saturation point.
-- The 51 nm terminal GIDL endpoint is not used as a high-confidence optimum ranking point.
-- BTBT-OFF is a background reference, not a complete mechanism decomposition.
-- ON−OFF is not promoted to calibrated pure-BTBT current.
-- Run 6/6.5 are fixed lattice-temperature comparisons, not electrothermal self-heating simulations.
-- R6.5 does not prove direct retention improvement or refresh reduction.
-- Electrothermal self-heating, direct 1T1C retention, refresh burden, variation-aware design
-  window, aging-aware optimization, and Dual-WF superiority remain unverified.
-- Mesh decisions are physics-specific; retention/transient physics may require new convergence checks.
-- P2=48 nm is not called global, final, 3D, process, or production optimum.
-
-## Post-R6.5 Current Mainline
-
-R0–R6.5 establishes the transistor-level path:
+### 1.1 Main DOE model — B0 simplified 2D BCAT
 
 ```text
-MEB
-→ project-internal Cgd
-→ fixed drain-side E_wall,max
-→ NonlocalPath GIDL
-→ temperature-dependent leakage balance
+Model ID                 B0
+Geometry                 simplified 2D BCAT cross-section
+Nominal MEB / GateTop    36 nm
+Gate length              20 nm
+Recess depth             120 nm
+SiO2 liner               5 nm
+Junction depth           48 nm
+Body doping              B, 1e17 cm^-3
+S/D doping               As, 1e20 cm^-3
+Gate                     single-WF W, 4.8 eV
 ```
 
-The next mainline does **not** assume that this transistor-level benefit automatically translates into DRAM retention.
-R7+ will test:
+Role:
 
-1. direct 1T1C write/hold/read or a clearly labeled storage-node charge-loss fallback;
-2. MEB-dependent retention ranking at 300 K;
-3. temperature-dependent GIDL-to-retention translation.
+- dense MEB design-space exploration;
+- reproducible relative comparison;
+- Cgd / DC / GIDL / temperature / 1T1C protocol development;
+- candidate-range screening.
 
-`P2=48 nm` is therefore a **cell-level validation candidate**, not a final optimum.
-`49 nm` remains the primary challenger and may alter the final candidate interpretation if the cell-level evidence supports it.
+The physical MEB etch process is not simulated. `MEB_Depth` represents the resulting gate-top depth.
 
-### Not Yet Verified in the Current Mainline
+### 1.2 Validation anchor — 3D-Sun-B0
 
-- direct 1T1C write/hold/read operation;
-- storage-node `VSN(t)` / `Q(t)` behavior;
-- MEB-dependent retention improvement;
-- temperature-dependent GIDL-to-retention translation;
+A literature-consistent 3D reconstruction was built from the explicit structural information reported by Sun et al.
+
+Nominal structural anchors include:
+
+```text
+Lgate      = 20 nm
+Drecess    = 120 nm
+DBCAT      = 36 nm
+Tox        = 5 nm
+Wfin       = 17 nm
+Djunction  = 48 nm
+Gate WF    = 4.8 eV
+```
+
+Completed baseline-feedback checkpoints include geometry/contact/doping freeze, source/drain junction checks, G0/G1/G2 electrical runs, sensitivity checks, and DC electrical-mesh convergence.
+
+Important boundary:
+
+> `3D-Sun-B0` is a **literature-consistent 3D reconstruction**, not an exact calibrated reproduction of the absolute Sun-et-al. electrical characteristics.
+
+Representative reconstruction-defined metrics remain different from the paper nominal values. The discrepancy was not force-fitted away because the full process/CAD/calibration deck is not published.
+
+Role:
+
+- higher-fidelity model-fidelity anchor;
+- controlled 2D↔3D comparison;
+- selected-point validation after the final/near-final MEB decision matures.
+
+The 3D model is **not** used for a full MEB × temperature × gate-scheme factorial sweep in the current mainline.
+
+## 2. Established transistor-level methods
+
+### DC
+
+- internal Vth / SS / Ion / DIBL rules are frozen in Run 1;
+- `Mesh-DC = Medium / Mesh_Code 1` was selected by the current DC convergence study;
+- these are project-internal comparison metrics, not production calibration.
+
+### GIDL / BTBT
+
+- formal relative GIDL branch uses `Band2Band(Model=NonlocalPath)`;
+- formal endpoint condition is `VD=1.2 V`, `VG=-0.7 V`;
+- `Mesh-GIDL = Mesh_Code 3` uses the common drain-side refinement ROI;
+- terminal current is a project-internal relative leakage metric;
+- absolute BTBT calibration is not claimed.
+
+### Mesh / hotspot feedback
+
+For the complete R6.5 set `36/41/43/45/47/48/49/51 nm`:
+
+- all independently extracted BTBT hotspots remain inside the same Mesh-Code 3 ROI;
+- minimum nearest-edge margin = `9.875 nm`;
+- observed X-hotspot motion over 36→51 nm is small relative to the ROI.
+
+This supports **coverage and comparison consistency**, not universal absolute mesh independence.
+
+### E-field interpretation after feedback
+
+The historical Run-5 field metric:
+
+```text
+E_wall,max
+Y = 0.116 um
+X = 0.032–0.070 um
+```
+
+is retained for chronology and reproducibility but is no longer the sole/primary mechanism interpretation.
+
+The current feedback-resolved mechanism evidence uses:
+
+1. full-Si BTBT hotspot localization;
+2. hotspot-following cut;
+3. BTBT amplitude/profile;
+4. 10/20/50% BTBT-active-region sensitivity;
+5. active-region `int(|E| dx)`;
+6. 1-D `int(G_BTBT dx)` only as a spatial-generation trend cross-check.
+
+The representative 20% criterion is a CMP analysis choice, not a universal literature standard.
+
+No direct quantitative `Cgd → E-field → GIDL` causal law is claimed from the correlation alone.
+
+## 3. Extended-MEB interpretation
+
+R6.5 established the following project roles:
+
+- `P1 = 41 nm`: historical initial screened-window candidate;
+- `P2 = 48 nm`: transistor-level electrostatic/GIDL candidate carried into cell validation;
+- `49 nm`: primary challenger / sensitivity point;
+- `51 nm`: low-current / background-sensitive boundary reference.
+
+`48 nm` is not a global, production, process, 3D, or final optimum.
+
+The geometry-derived W cross-section / normalized `1/A_W` RWL proxy shows that deeper MEB introduces a practical structural penalty. The 47–49 nm region is therefore treated as a diminishing-return candidate region rather than an automatically optimal region.
+
+The proxy is **not** an actual distributed word-line resistance or RC-delay simulation.
+
+## 4. Temperature scope
+
+Completed existing temperature framework:
+
+```text
+300 / 340 / 380 K
+```
+
+These are fixed lattice-temperature / isothermal comparisons, not electrothermal self-heating simulations.
+
+At the transistor level, the high-temperature leakage balance becomes increasingly background-sensitive.
+
+At the B0 cell level, approximately normalized direct-Hold results have been committed at 300/340/380 K.
+
+Planned extension:
+
+```text
+233 K = -40 °C
+```
+
+The 233 K point is **not yet a completed CMP result**.
+
+## 5. 1T1C scope
+
+Executed B0 anchors include:
+
+```text
+AreaFactor = 0.017
+Ccell      = 10 fF
+VBL_WRITE  = 1.2 V
+VWL_ON     = 3.0 V
+300 K Twrite ≈ 667 ns → VSN≈1 V
+```
+
+Completed:
+
+- 300 K write-to-~1 V normalization;
+- direct floating Hold to 100 us;
+- independent D0/D1 Read transfer;
+- integrated 300 K Write→Hold→Read for tested Hold windows;
+- 340/380 K write normalization;
+- approximately normalized 300/340/380 K direct Hold.
+
+Still open:
+
+- leakage-vs-V / final physical retention metric;
+- retention-specific Mesh1/3 numerical check;
+- formal MEB-to-cell retention comparison.
+
+The short-window direct-Hold slope is **not** extrapolated into a physical retention time.
+
+`VSN=0.8 V` remains a comparison criterion / literature-motivated window point, not a demonstrated CMP read-failure threshold.
+
+## 6. High-WL write-transfer guardrail
+
+The current write path reaches `VSN≈1 V`, but it requires `VWL_ON=3.0 V`.
+
+This is now an unresolved performance guardrail.
+
+Future selected-point analysis should consider:
+
+- `VWL→VSN` transfer;
+- write time;
+- MEB dependence;
+- Ion / Vth relation;
+- read margin;
+- leakage / retention interaction.
+
+“1 V reached” alone is not treated as complete write-performance validation.
+
+## 7. DWFG scope
+
+The current baseline remains **20 nm single-WF**.
+
+DWFG is a planned downstream transferability branch:
+
+```text
+derive SG MEB candidate/range
+→ introduce literature-grounded DWFG extension
+→ re-search BTBT hotspot / verify mesh ROI
+→ compare field redistribution / GIDL / retention
+→ determine common range or optimum-range shift
+```
+
+The project does not replace the 20 nm baseline with the 15 nm ICEIC device.
+
+No DWFG result, SG/DWFG common window, or DWFG superiority is claimed before execution.
+
+## 8. Final design-range claim boundary
+
+The final target is a **usable/effective MEB design range**, not a single minimum-GIDL point.
+
+Candidate synthesis may combine:
+
+- GIDL suppression;
+- 1T1C retention benefit;
+- write/read feasibility;
+- temperature robustness;
+- geometry-derived word-line penalty;
+- DWFG transferability when executed;
+- selected-point 3D trend validation.
+
+Not currently supported as completed project claims:
+
+- production optimum;
+- calibrated absolute retention time;
 - refresh-burden reduction;
-- GIJL/alternate-leakage trade-off;
-- RWL/distributed-RC trade-off;
-- variation-aware robust design window.
+- actual distributed WL resistance / RC delay;
+- variation-aware manufacturing process window;
+- completed 233 K behavior;
+- completed DWFG behavior;
+- SG/DWFG common range;
+- full 3D quantitative equivalence to the paper or a production DRAM cell.
 
-Refresh is treated as a downstream system implication, while robust-window wording is deferred until sufficient variation data and pass/fail constraints exist.
+## 9. Evidence links
 
-## Comparison Principle
-
-Baseline and proposed cases must use the same:
-
-- physics models;
-- mesh standard appropriate to the metric;
-- bias conditions;
-- extraction definitions.
-
-Any departure must be recorded before interpretation.
+- [Run Sheet](RUN_SHEET.md)
+- [Decisions](DECISIONS.md)
+- [Feedback Log](FEEDBACK_LOG.md)
+- [3D baseline close-out](evidence/feedback_baseline_closeout_20260914.md)
+- [E-field / BTBT hotspot validation](evidence/feedback_efield_hotspot_validation_20260911.md)
+- [Full R6.5 mesh coverage](evidence/feedback_mesh_run65_full_validation_20260913.md)
+- [RWL proxy trade-off](evidence/feedback_rwl_tradeoff_proxy_20260913.md)
+- [Run-7 cell operation](evidence/run07_cell_operation_checkpoint_20260920.md)
+- [Run-7 temperature-normalized Hold](evidence/run07_hold_temperature_normalized_20260921.md)
+- [Post-Turn-02 roadmap](research/post_turn02_validation_roadmap.md)

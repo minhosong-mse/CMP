@@ -40,3 +40,19 @@
 ## Update Rule
 
 A claim should be promoted only after the corresponding Run closes with traceable code/data/evidence and the wording remains inside `MODEL_SCOPE.md`. Literature can support interpretation or novelty boundaries, but it does not replace CMP simulation evidence.
+
+## Post-feedback / Run-7 claim updates — 2026-09-22
+
+| ID | Potential Claim | CMP Evidence | Literature Role | Status | Needed Next |
+|---|---|---|---|---|---|
+| C25 | The complete R6.5 MEB set remains covered by one common Mesh-Code 3 hotspot ROI | full 36/41/43/45/47/48/49/51 hotspot audit; ≥9.875 nm nearest-edge margin | numerical-method context only | Demonstrated at coverage/comparison-consistency level | separate spacing convergence only if absolute mesh-independence claim is required |
+| C26 | One local E-field peak is insufficient to represent the observed 31→41 nm terminal-GIDL sensitivity | hotspot-following E-field/BTBT profiles; threshold sensitivity; integrated spatial metrics | REF03/REF05/REF12/REF13 support critical-region spatial interpretation | Demonstrated within the tested feedback set | do not promote to direct Cgd→E→GIDL causal law |
+| C27 | The simplified 2D B0 quantitatively reproduces the literature-oriented 3D baseline | controlled 2D↔3D comparison shows substantial differences | REF01 is the literature anchor | Not Demonstrated / explicitly rejected | use 2D only for controlled relative DOE |
+| C28 | 3D-Sun-B0 is a useful higher-fidelity validation anchor | geometry/doping/contact reconstruction, sensitivity checks, DC mesh convergence and parity close-out | REF01 | Demonstrated at model-fidelity level | selected-point 3D validation after candidate range matures |
+| C29 | Geometry-derived RWL penalty continues to increase while incremental GIDL return diminishes around 47–49 nm | 3D W cross-section sweep + normalized 1/A_W proxy + R6.5 GIDL | REF03/REF09 provide trade-off context | Supported as a geometry proxy | actual distributed WL-R / RC only if needed |
+| C30 | B0 1T1C integrated Write→Hold→Read is feasible at 300 K under the current project protocol | Run-7 executed integrated cell operation | REF08/REF09 + Sentaurus SF_DRAM implementation context | Demonstrated for the tested protocol | final retention metric and MEB comparison |
+| C31 | Approximately 1 V-normalized B0 direct-Hold decay increases strongly from 300 to 380 K | committed 300/340/380 K direct-Hold data; 100 us ΔVSN and equivalent leakage scale | retention-temperature literature context | Demonstrated as short-window transient trend | do not extrapolate to physical retention time |
+| C32 | The current 3.0 V WL requirement is an acceptable final write condition | current write normalization only proves feasibility | cell-operation literature provides context, not acceptance criterion | Not Yet Demonstrated | VWL→VSN / time / MEB / read-margin / leakage guardrail study |
+| C33 | The SG-derived MEB range is valid at 233 K | none | operating-temperature motivation only | Hypothesis / Planned | execute 233 K selected-point comparison |
+| C34 | The SG-derived MEB range transfers to DWFG | none yet | REF03/REF02/REF04/REF05 support DWFG mechanism and trade-offs | Hypothesis / Planned | implement DWFG on 20 nm framework; relocate hotspot; compare selected MEBs |
+| C35 | A common SG + temperature + DWFG MEB window exists | none | none | Hypothesis | only report if the executed intersections are non-empty |
