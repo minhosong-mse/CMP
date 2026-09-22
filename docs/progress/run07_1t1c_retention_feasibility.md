@@ -79,3 +79,39 @@ Documentation:
 - `docs/evidence/run07_hold_temperature_normalized_20260921.md`
 - `docs/evidence/run07_retention_manifest.md`
 - `docs/evidence/run07_cell_operation_checkpoint_20260920.md`
+
+
+---
+
+## 6. Post-Turn-02 write-transfer guardrail
+
+The current B0 write normalization demonstrates feasibility, but the required drive condition is itself a new performance question:
+
+```text
+VBL_WRITE = 1.2 V
+VWL_ON    = 3.0 V
+300 K Twrite ≈ 667 ns
+VSN       ≈ 1.0 V
+```
+
+The project will therefore not use “1 V reached” as the only write-success condition.
+
+Planned selected-point diagnostics:
+
+- `VWL → VSN` transfer curve;
+- time-to-target `VSN`;
+- relation to Ion / Vth;
+- read-margin impact;
+- leakage / retention interaction;
+- MEB dependence.
+
+The same rule applies when the temperature and DWFG branches are activated.
+
+## 7. Downstream temperature / gate-scheme validation
+
+- Existing B0 cell evidence: approximately normalized direct Hold at `300/340/380 K`.
+- Planned cold point: `233 K (-40 °C)`; not yet executed.
+- DWFG: planned only after the SG MEB candidate/range is established.
+- The 20 nm single-WF branch remains the reference/control branch.
+
+See `docs/research/post_turn02_validation_roadmap.md`.

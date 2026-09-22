@@ -18,13 +18,64 @@ recorded decisions, not inferred from exploratory plots.
 | **Run 6.5** | **Extended MEB boundary closure** | **43/45/47/48/49/51 + 36/41 reproduction; Cgd/Ewall/GIDL/OFF/DC/thermal/spatial audit** | **remove 41-nm search-boundary ambiguity and select retention handoff candidate** | **Completed — P2=48 nm; 49 nm challenger; 51 nm floor-sensitive** |
 | M1 | Semester milestone | B0 vs P1 vs P2 | structure + DC + field + GIDL + temperature story | Ready after R6.5 |
 | D1 | Single-WF vs Dual-WF decision | literature + retention result + schedule | interaction branch 필요성 명시 | Deferred / Conditional |
-| Run 7 | **1T1C / Retention Feasibility & Metric Freeze** | **B0=36 nm, 300 K only; AreaFactor, 1T1C mapping, 10 fF baseline, write/hold/read, direct VSN(t), Ileak(VSN) integral, read guardrail, mesh/BTBT checks** | **repeatable protocol + `RT_1p0_0p8` + R8 handoff values frozen** | **In Progress — MixedMode/write feasibility verified; 10 ns screen reviewed; hold/retention/read pending** |
+| Run 7 | **1T1C / Retention Feasibility & Metric Freeze** | **B0=36 nm protocol; write/hold/read, temperature-normalized direct Hold, final leakage-vs-V retention metric, numerical checks** | **repeatable protocol + traceable retention metric + R8 handoff values frozen** | **In Progress — 300 K write→Hold→Read PASS; 300/340/380 K ~1 V-normalized direct Hold completed; final retention metric + Mesh1/3 check pending** |
 | Run 8 | **MEB-to-Cell Retention Translation** | 36/41/48 nm at 300 K; optional 49 challenger | GIDL ranking vs retention/charge-loss ranking + write/read guardrail | Planned |
 | Run 9 | **Temperature-Dependent Retention Translation** | minimum 36/48 × 300/380 K; preferred 36/41/48/49 × 300/340/380 K | temperature-dependent GIDL benefit ↔ retention benefit relation quantified | Planned |
 | Run 9.5 | **Alternate Leakage Diagnostic** | GIJL-like / bottom / junction / background path if retention deviates from GIDL trend | identify plausible alternate leakage bottleneck without pre-assigning a trade-off | Conditional |
 | Run 10 | **Local MEB Sensitivity / Optional Robustness Extension** | 47/48/49 or small MEB variation | distinguish sharp optimum from broad usable plateau | Optional |
 
-## Run 7 Protocol v1 — Execution in Progress
+## Run 7 Current Closure Snapshot — 2026-09-22
+
+Completed and committed:
+
+```text
+300 K Write-to-~1 V normalization
+→ 300 K direct floating Hold to 100 us
+→ independent D0/D1 Read transfer
+→ integrated 300 K Write→Hold→Read
+→ 340/380 K Write-to-~1 V normalization
+→ 300/340/380 K approximately normalized direct Hold
+```
+
+Current anchors:
+
+| Temperature | Twrite to ~1 V | direct-Hold start |
+|---:|---:|---:|
+| 300 K | 667 ns | 1.000017733 V |
+| 340 K | 258 ns | 1.000107421 V |
+| 380 K | 126.54 ns | 1.000272165 V |
+
+At 100 us Hold:
+
+| T | ΔVSN |
+|---:|---:|
+| 300 K | 0.270195 uV |
+| 340 K | 0.483889 uV |
+| 380 K | 7.438961 uV |
+
+The 380 K transient-equivalent leakage scale is approximately 27.5× the 300 K value. This is a short-window direct-transient result, **not** a measured physical retention time.
+
+300 K integrated W→H→R remains PASS for the tested Hold windows, with an approximately +35.625 mV D1 bitline signal.
+
+Still open before formal Run-7 close-out:
+
+1. leakage-vs-V integration / final retention metric;
+2. Mesh1 vs Mesh3 retention numerical check;
+3. any additional 340/380 K integrated W-H-R only if required by the final handoff.
+
+Post-Turn-02 guardrail:
+
+- `VWL_ON=3.0 V` is required in the current 300 K normalization path to bring `VSN` near 1 V.
+- This is now treated as an unresolved **write-transfer performance guardrail**, not merely as a successful-write result.
+
+Planned downstream extensions are `233 K (-40 °C)` and DWFG transferability. Neither is a completed Run-7 result.
+
+Evidence:
+- [Run-7 cell-operation checkpoint](evidence/run07_cell_operation_checkpoint_20260920.md)
+- [Temperature-normalized Hold](evidence/run07_hold_temperature_normalized_20260921.md)
+- [300 K 1 V write calibration](evidence/run07_write_1v_calibration_20260914.md)
+
+## Run 7 Protocol v1 — Historical Execution Plan
 
 Run 7 is a **measurement-framework Run**, not an MEB optimization Run. The only formal geometry is B0=`MEB_Depth=0.036 um` at 300 K.
 
@@ -79,7 +130,7 @@ R7F  numerical close-out
 | `0.698 V` | Literature reference only | not a calibrated CMP sense threshold |
 | `1.0 -> 0.8 V` | Primary retention-window candidate | common cross-case window |
 
-### Run 7 execution snapshot — 2026-09-03
+### Historical early Run 7 execution snapshot — 2026-09-03
 
 Verified from executed/visually reviewed 10 ns write nodes:
 
@@ -138,3 +189,25 @@ P2 = 48 nm transistor-level electrostatic/GIDL candidate for cell-level retentio
 ```
 
 R6.5 closes the transistor-level MEB search-boundary question. Run 7 is now **In Progress** and is still limited to the B0-only cell measurement framework. Only after the R7 exit gate passes may Run 8 vary MEB across 36/41/48 nm (+ optional 49). Direct retention improvement, refresh reduction and a robust process/design window remain unverified until their corresponding evidence exists.
+
+
+---
+
+## Post-Turn-02 Mainline
+
+```text
+Phase 1 — Single-WF MEB design range
+  2D dense DOE → hotspot-resolved field / GIDL → 1T1C retention → write/read + RWL guardrails
+        ↓
+Phase 2 — Temperature robustness
+  planned 233 K + completed/established 300/340/380 K framework
+        ↓
+Phase 3 — DWFG transferability
+  same SG-selected MEB candidates; hotspot and mesh ROI revalidated
+        ↓
+Selected-point 3D validation
+```
+
+The 20 nm single-WF baseline remains the reference. DWFG is a downstream transferability test, not a baseline replacement.
+
+See [Post-Turn-02 Validation Roadmap](research/post_turn02_validation_roadmap.md).

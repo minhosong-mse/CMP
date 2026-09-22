@@ -1,6 +1,6 @@
 # CMP Master Parameter Table
 
-> Purpose: provide one project-wide parameter reference before Run 7 execution.  
+> Purpose: provide one project-wide parameter reference. This file preserves historical parameter tables while also recording the post-Turn-02 validation plan and the latest Run-7 frozen/executed anchors.  
 > This document does **not** replace `docs/RUN_SHEET.md`, `docs/DECISIONS.md`, `CMD_HUB.md`, or the individual Run records. If any value or status conflicts, the latest `RUN_SHEET.md` and `DECISIONS.md` take precedence.
 
 The table is organized to match the course requirement to separate **Geometry / Process / Device·Material** parameters, identify **Fixed / Split** controls, and record the physical reason and project role of each parameter. R7 circuit/protocol values are kept explicitly separate because most are still pre-execution candidates.
@@ -36,7 +36,7 @@ The table is organized to match the course requirement to separate **Geometry / 
 | P2 | `MEB_Depth` | R6.5 structural-boundary handoff | `48 nm` | Derived | R6.5 | Transistor-level electrostatic/GIDL candidate for cell-level retention validation |
 | Primary challenger | `MEB_Depth` | R6.5 handoff | `49 nm` | Derived | R6.5/R8 | Cell-level sensitivity/challenger point |
 | Low-current boundary reference | `MEB_Depth` | R6.5 boundary audit | `51 nm` | Reference-only | R6.5 | Background/floor-sensitive endpoint; not best-design claim |
-| Geometry topology | — | CMP model scope | simplified `2D`, single-WF, rectangular trench | Fixed | R0+ | Relative academic TCAD comparison; not full 3D production cell |
+| Geometry topology | — | CMP model scope | simplified `2D` single-WF main DOE + `3D-Sun-B0` validation anchor | Fixed / validation split | R0+ | 2D is used for dense relative DOE; 3D is used for model-fidelity and selected-point trend validation |
 | Corner shape | — | G1 review | rectangular; fillet not activated | Conditional | G1/R10 | Activate only if corner-dominated interpretation requires sensitivity |
 
 ## 3. Process Parameters and TCAD Representation
@@ -54,8 +54,8 @@ MEB and the other process labels below describe the **physical-process origin of
 | Gate formation | single-WF electrode | `4.8 eV` | Fixed | R0-R9 mainline | Dual-WF intentionally outside immediate mainline |
 | Gate/corner profile | rectangular trench/GateTop | rectangular | Fixed | R0-R9 mainline | Fillet/profile sensitivity remains conditional |
 | Temperature condition | SDevice lattice temperature | `300 / 340 / 380 K` where split | Split | R6/R6.5/R9 | Isothermal temperature split; not electrothermal self-heating |
-| Dual-WF process | not active | — | Conditional | D1/future | Add only if later retention evidence makes multi-objective gate design necessary |
-| 3D saddle-fin process geometry | not active | — | Conditional | future | Current results cannot be promoted to full 3D production geometry |
+| Dual-WF process | not active in current baseline | literature-grounded extension after SG handoff | Planned / downstream | Post-Turn-02 Phase 3 | Keep 20 nm SG baseline; test the same selected MEB candidates under DWFG for transferability |
+| 3D saddle-fin process geometry | `3D-Sun-B0` reconstruction | Sun-et-al.-consistent 20 nm geometry | Validation anchor | baseline feedback + selected-point future | Literature-consistent reconstruction exists; not exact absolute calibration; dense DOE remains 2D |
 
 ## 4. Device / Material / Physics Parameters
 
@@ -101,7 +101,7 @@ MEB and the other process labels below describe the **physical-process origin of
 | Cgd mesh | `Mesh_Code=1` | Medium | Frozen | R5A+ | Selected internal Cgd protocol |
 | DC/GIDL `VG_MaxStep` | quasistationary numerical control | Run-specific (`0.005 V` formal later guardrails; earlier histories differ) | Fixed | by Run | Numerical convergence setting, not a scientific split unless explicitly tested |
 
-## 6. R7 Circuit / Protocol Parameters — Pre-Execution Status
+## 6. R7 Circuit / Protocol Parameters — Historical Pre-Execution Table
 
 Run 7 is a **B0-only measurement-framework stage**. The values below remain Candidate / Planned / Reference-only until the R7 exit gate freezes them. No R7 simulation result is implied by this table.
 
@@ -206,3 +206,37 @@ Only the chain through transistor-level leakage is directly verified through R6.
 - [Model Scope](../MODEL_SCOPE.md)
 - [References](../REFERENCES.md)
 - [Run 7 progress / protocol](../progress/run07_1t1c_retention_feasibility.md)
+
+
+---
+
+## 7. Run-7 Executed / Frozen Anchors — 2026-09-22
+
+The historical pre-execution table above is retained for chronology. The current executed B0 checkpoint is:
+
+| Parameter | Current executed value / role | Status |
+|---|---|---|
+| `MEB_Depth` | 36 nm | Frozen for Run-7 protocol |
+| `AreaFactor` | 0.017 | Executed effective-width proxy; not production calibration |
+| `Ccell` | 10 fF | Executed baseline |
+| `VBL_WRITE` | 1.2 V | Executed |
+| `VWL_ON` | 3.0 V | Executed, but now an explicit high-WL write-transfer guardrail |
+| `Twrite @ 300 K` | 667 ns | Executed normalization anchor |
+| `Twrite @ 340 K` | 258 ns | Executed normalization anchor |
+| `Twrite @ 380 K` | 126.54 ns | Executed normalization anchor |
+| direct Hold | 300/340/380 K, approximately 1 V-normalized | Executed |
+| integrated W→H→R | 300 K tested Hold windows | PASS |
+| final physical retention metric | leakage-vs-V / final metric | In progress |
+| retention Mesh1/3 check | — | Pending |
+
+## 8. Post-Turn-02 Planned Validation Parameters
+
+| Parameter / branch | Value / plan | Status | Rule |
+|---|---|---|---|
+| Cold temperature | `233 K (-40 °C)` | **Planned** | Must not be mixed with completed 300/340/380 K results before execution |
+| Existing temperature set | `300/340/380 K` | Executed in transistor-level framework; B0 normalized-Hold evidence exists | Preserve exact scope of each Run |
+| Gate scheme | 20 nm single-WF W, 4.8 eV | Baseline of record | Derive SG range first |
+| DWFG branch | literature-grounded extension | **Planned / downstream** | Reuse SG-selected MEB candidates; re-search hotspot / revalidate mesh ROI |
+| 3D selected points | baseline + candidate + boundary/challenger | **Planned / downstream** | No full MEB×T×gate-scheme 3D factorial sweep |
+
+See `docs/research/post_turn02_validation_roadmap.md`.

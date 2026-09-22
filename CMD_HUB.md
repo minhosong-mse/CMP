@@ -17,7 +17,7 @@
 | Run 5B | 5-level correlation | 31 / 33.5 / 36 / 38.5 / 41 nm | Cgd / GIDL / DC guardrail |
 | Run 6 | Temperature robustness | Run 4 parameterized SDE reuse | GIDL ON / BTBT OFF / thermal DC |
 | Run 6.5 | Extended MEB boundary | 36–51 nm extended SDE | 300 K GIDL / Cgd / DC / thermal ON-OFF-DC |
-| **Run 7** | **1T1C / retention feasibility** | **Run 6.5 parameterized SDE reuse; B0=36 nm** | **write in progress / floating-SN hold / retention ON-OFF / read guardrail** |
+| **Run 7** | **1T1C / retention feasibility & metric freeze** | **Run 6.5 parameterized SDE reuse; B0=36 nm** | **300 K W→H→R PASS; 300/340/380 K normalized direct Hold complete; final retention metric / Mesh1-3 checks pending** |
 
 The raw SWB `pp*.cmd` node expansions remain in the local TCAD archive. GitHub keeps the reusable source/representative command for each reported branch, while the actual SWB split is recorded below.
 
@@ -402,8 +402,8 @@ Common settings: `Mesh_Code=3`, `VD_Target1=1.2 V`, `VG_Min1=-0.7 V`, NonlocalPa
 <details>
 <summary><strong>Run 7 — 1T1C / Retention Feasibility & Metric Freeze</strong></summary>
 
-> Status: **In Progress — 1T1C MixedMode/write feasibility executed; hold/retention/read pending.**  
-> Run 7 is B0=`MEB_Depth=36 nm`, `T=300 K` only. MEB comparison begins in Run 8.
+> Status: **In Progress — 300 K integrated Write→Hold→Read completed; ~1 V-normalized 300/340/380 K direct Hold completed; final retention metric and numerical close-out pending.**  
+> Run 7 remains a B0 protocol-freeze stage. Formal MEB cell comparison begins after the retention metric is sufficiently frozen.
 
 ### SDE provenance
 
@@ -428,6 +428,27 @@ Formal R7 SDE use:
 - R7D BTBT-OFF reference: [`code/sdevice/run07/bcat_retention_r7_ivsn_integral_off.cmd`](code/sdevice/run07/bcat_retention_r7_ivsn_integral_off.cmd)
 - R7E BL/SN charge-sharing read: [`code/sdevice/run07/bcat_1t1c_r7_read_guardrail.cmd`](code/sdevice/run07/bcat_1t1c_r7_read_guardrail.cmd)
 - retention integral postprocess: [`code/scripts/extraction/run07_retention_integral.py`](code/scripts/extraction/run07_retention_integral.py)
+
+### Latest Run-7 synchronization — 2026-09-22
+
+Executed reference anchors:
+
+```text
+AreaFactor = 0.017
+Ccell      = 10 fF
+VBL_WRITE  = 1.2 V
+VWL_ON     = 3.0 V
+300 K Twrite ≈ 667 ns → VSN ≈ 1 V
+340 K Twrite ≈ 258 ns → VSN ≈ 1 V
+380 K Twrite ≈ 126.54 ns → VSN ≈ 1 V
+```
+
+The high `VWL_ON=3.0 V` requirement is now an explicit write-transfer guardrail. Do not interpret “VSN reached 1 V” as a complete write-performance validation.
+
+Latest evidence:
+- `docs/evidence/run07_write_1v_calibration_20260914.md`
+- `docs/evidence/run07_cell_operation_checkpoint_20260920.md`
+- `docs/evidence/run07_hold_temperature_normalized_20260921.md`
 
 ### Circuit mapping
 
