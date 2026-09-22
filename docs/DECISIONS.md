@@ -381,3 +381,49 @@ Decision date: 2026-08-30
 - When R7 passes, the final AreaFactor, Ccell, terminal mapping, write/hold/read biases, timing, mesh, physics, retention metric and extraction rules are frozen for R8.
 - R8 first changes `MEB_Depth` across `36/41/48 nm` with `49 nm` optional at 300 K.
 - No retention improvement, refresh reduction, usable MEB range or robust process/design window is claimed before the corresponding executed Run evidence exists.
+
+
+---
+
+Decision date: 2026-09-22
+
+## D-038 — Post-Turn-02 Three-Phase Validation Hierarchy
+
+- The canonical research title remains **“20 nm급 BCAT DRAM에서 MEB 깊이에 따른 GIDL–Retention 전달 특성 및 온도 의존적 유효 설계 범위 도출.”**
+- The main independent design variable remains **MEB depth**.
+- The remaining study is organized as:
+  1. single-WF MEB design-range derivation;
+  2. temperature robustness / retention-translation validation;
+  3. DWFG transferability validation.
+- Temperature and gate scheme are validation axes; they do not replace MEB as the central research variable.
+- A common SG/DWFG design range is only reported if the executed evidence produces a real overlap. Otherwise the result is reported as an MEB optimum/range shift under DWFG.
+
+## D-039 — High-WL-Bias Write Feasibility Becomes a Guardrail
+
+- The 300 K B0 write normalization condition `VWL_ON=3.0 V`, `VBL_WRITE=1.2 V`, `AreaFactor=0.017`, `Ccell=10 fF`, and `Twrite≈667 ns` is retained as an executed protocol checkpoint.
+- Reaching `VSN≈1 V` is **not sufficient by itself** to declare write performance acceptable.
+- The `3.0 V` WL requirement is promoted to an unresolved cell-performance guardrail.
+- Future selected-point comparison should evaluate `VWL→VSN`, write time, and the relation to device/cell metrics before freezing the final effective MEB range.
+
+## D-040 — Cold Temperature Extension
+
+- Existing completed temperature evidence remains `300/340/380 K`.
+- `233 K (-40 °C)` is added as a **planned** cold operating point.
+- Until executed, no README, result table, or conclusion may imply a completed `233 K` result.
+- The cold point is intended to test whether the SG-derived MEB candidate/range remains usable from cold to hot conditions.
+
+## D-041 — DWFG Transferability, Not Baseline Replacement
+
+- The 20 nm single-WF BCAT remains the baseline of record.
+- The project does **not** replace the 20 nm baseline with the 15 nm ICEIC DWFG device.
+- Jang & Kim (ICEIC 2026) is used as a literature mechanism/trade-off reference for MEB/DWFG interaction.
+- After the SG MEB candidate/range is established, a DWFG extension will test the same candidate set for hotspot redistribution, GIDL, retention, and write/read transferability.
+- Existing SG work remains the control/reference branch and is not discarded.
+
+## D-042 — 3D Selected-Point Validation Strategy
+
+- `3D-Sun-B0` remains the higher-fidelity validation anchor; it is not an exact calibrated reproduction of Sun et al.
+- Dense design-space exploration remains in the controlled 2D framework.
+- 3D is used on a small selected set after the candidate/range decision matures.
+- A full `MEB × temperature × SG/DWFG` 3D factorial sweep is not part of the current mainline.
+- For future DWFG 3D selected points, the BTBT hotspot must be re-located and the current mesh ROI revalidated; SG hotspot coordinates are not reused by assumption.

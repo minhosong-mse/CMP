@@ -21,8 +21,8 @@ Feedback received
 |---|---|---|---|---|---|
 | `FB-EFIELD-01` | Should the E-field be evaluated in the actual BTBT/GIDL critical region, and can spatial E-field / BTBT behavior explain the large GIDL-vs-field sensitivity mismatch? | Run 3–5 | `T-EFIELD-01` | **Resolved — feedback level** | 31/36/41 hotspot-following Phase A + conditional Phase B completed. Evidence: [`feedback_efield_hotspot_validation_20260911.md`](evidence/feedback_efield_hotspot_validation_20260911.md) |
 | `FB-MESH-01` | If MEB changes hotspot position, is the common Mesh-GIDL refinement still valid for each MEB case, and how should the per-MEB mesh-setting evidence be shown? | Run 3–4 + Run 6.5 extension | `T-MESH-01` | **Resolved — full R6.5 coverage / comparison-consistency level** | Full R6.5 set `36/41/43/45/47/48/49/51 nm` independently checked: 8/8 BTBT hotspots remain inside the same Mesh-Code 3 ROI with ≥9.875 nm nearest-edge margin. Evidence: [`feedback_mesh_run65_full_validation_20260913.md`](evidence/feedback_mesh_run65_full_validation_20260913.md) |
-| `FB-BASELINE-01` | How closely does the simplified 2-D B0 reproduce the literature 3-D BCAT electrical characteristics? | Run 0–1 + dedicated 3-D reconstruction | `T-BASELINE-01` | **In Progress — post-G2 extraction / model-mapping stage** | `3D-Sun-B0` built through frozen geometry/contact/doping; G0/G1/G2 curves completed; provisional low/high-Vd thresholds and reconstruction-defined DIBL extracted; executable decks, CSVs, compact summaries, and curated visual evidence committed. Evidence: [`feedback_baseline_3d_reconstruction_20260911.md`](evidence/feedback_baseline_3d_reconstruction_20260911.md), [`baseline_3d_evidence_manifest_20260912.md`](evidence/baseline_3d_evidence_manifest_20260912.md) |
-| `FB-RET-01` | What exactly is the 1T1C retention measurement definition? | Run 7; downstream Run 8–9 | `T-RET-01` | **Checkpoint reached — feasibility; metric freeze still open** | Write quantified, 100 ns floating-Hold stability verified on processed subset, independent D0/D1 read window = 102.67 mV. Evidence: [`feedback_retention_operation_checkpoint_20260911.md`](evidence/feedback_retention_operation_checkpoint_20260911.md). Next: integrated Write→Hold→Read, longer Hold, `T_RET,5%`, final metric freeze. |
+| `FB-BASELINE-01` | How closely does the simplified 2-D B0 reproduce the literature 3-D BCAT electrical characteristics? | Run 0–1 + dedicated 3-D reconstruction | `T-BASELINE-01` | **Resolved — model-fidelity level** | 3D-Sun-B0 reconstruction, DC mesh convergence, sensitivity checks and controlled 2D↔3D parity comparison completed. The reconstruction remains literature-consistent rather than an exact Sun-et-al. electrical calibration. Evidence: [`feedback_baseline_closeout_20260914.md`](evidence/feedback_baseline_closeout_20260914.md) |
+| `FB-RET-01` | What exactly is the 1T1C retention measurement definition? | Run 7; downstream Run 8–9 | `T-RET-01` | **Advanced checkpoint — integrated 300 K W-H-R + temperature-normalized Hold; final metric freeze open** | 300 K write-to-~1 V, direct Hold to 100 us, independent Read, integrated W→H→R, and approximately normalized 300/340/380 K direct-Hold comparison are committed. Final leakage-vs-V retention metric and Mesh1/3 retention check remain open. Evidence: [`run07_cell_operation_checkpoint_20260920.md`](evidence/run07_cell_operation_checkpoint_20260920.md), [`run07_hold_temperature_normalized_20260921.md`](evidence/run07_hold_temperature_normalized_20260921.md) |
 | `FB-RC-01` | Does deeper metal etch-back introduce a practical DRAM trade-off such as increased word-line resistance / RC delay? | Run 6.5 interpretation + `3D-Sun-B0` geometry branch | `T-RC-01` | **Checkpoint reached — geometry proxy; retention synthesis pending** | Frozen 3-D geometry swept over `36/41/43/45/47/48/49/51 nm`; remaining W cross-section and normalized `1/A_W` RWL proxy quantified. `47–49 nm` shows diminishing GIDL return while RWL proxy keeps rising. Evidence: [`feedback_rwl_tradeoff_proxy_20260913.md`](evidence/feedback_rwl_tradeoff_proxy_20260913.md) |
 
 ## 3. Resolved feedback — E-field / BTBT critical-region validation
@@ -375,3 +375,39 @@ Use scoped wording:
 ## 8. README integration rule
 
 Do **not** rewrite the main README after each individual feedback item. Final README integration is deferred until the principal first-presentation feedback set is complete so baseline, E-field/mesh, retention, and practical-trade-off wording can be synthesized consistently in one pass.
+
+---
+
+## 7. Second-presentation feedback and next validation — 2026-09-22
+
+The second presentation did not replace the MEB-centered research question. It added downstream guardrails for testing whether the MEB design range remains usable under a broader operating / gate-technology context.
+
+| Feedback ID | Feedback / question | Role | Status | Next action |
+|---|---|---|---|---|
+| `FB-WRITE-02` | The present B0 protocol needs `VWL_ON=3.0 V` to normalize the storage node near `1 V`. Is “1 V reached” alone an adequate success condition? | Cell-performance guardrail | **Open / Planned analysis** | Quantify `VWL→VSN`, write time, Ion/Vth/read-margin/leakage behavior and MEB dependence. Treat the high-WL requirement as an unresolved design penalty, not merely a write-success result. |
+| `FB-TEMP-02` | Add a cold operating point such as `-40 °C`. | Temperature robustness extension | **Planned** | Add `233 K` after the SG MEB candidate / cell protocol is sufficiently frozen. Keep existing `300/340/380 K` results separate from the unexecuted cold point. |
+| `FB-DWFG-02` | Consider a dual-work-function gate because MEB-related DRAM literature frequently uses DWFG structures. | Technology-transfer validation | **Planned / Conditional on SG handoff** | Keep the 20 nm single-WF baseline. First derive the SG MEB candidate/range, then introduce a literature-grounded DWFG extension and test the same MEB candidates for hotspot redistribution, GIDL and retention transferability. |
+
+### Research-direction decision
+
+The post-Turn-02 hierarchy is:
+
+```text
+Phase 1: 20 nm single-WF MEB design range
+        ↓
+Phase 2: cold-to-hot temperature robustness
+        ↓
+Phase 3: DWFG transferability
+        ↓
+selected-point 3D validation
+```
+
+The main independent variable remains **MEB depth**. Neither `233 K` nor DWFG is a completed CMP result at this point.
+
+Detailed roadmap:
+
+- [Post-Turn-02 Validation Roadmap](research/post_turn02_validation_roadmap.md)
+
+### 3D boundary for the new branches
+
+3D is not promoted to a full factorial engine. Dense exploration remains 2D. For future DWFG selected points, the BTBT hotspot must be re-located and the current Mesh-GIDL ROI rechecked before quantitative comparison; the SG hotspot coordinate must not be reused by assumption.
