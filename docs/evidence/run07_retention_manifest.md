@@ -1,6 +1,6 @@
 # Run 07 Evidence Manifest — 1T1C / Retention Feasibility
 
-Status: **B0-v1 cell-operation feasibility expanded and processed; 300 K normalized Write/Hold/Read complete at feasibility level; 300/340/380 K approximately 1 V-normalized direct-Hold comparison complete; final retention-time metric still open**.
+Status: **B0-v1 cell-operation feasibility expanded and processed; 300/340/380 K approximately 1 V-normalized direct-Hold and integrated Write→Hold→Read comparisons complete; final retention-time metric still open**.
 
 ## 1. Scope and provenance
 
@@ -25,6 +25,7 @@ Physics = established CMP NonlocalPath chain
 | Integrated W-H-R | 300 K, 100 ns/1 us/10 us | `whr_300k_norm.csv` | PASS — operation feasibility |
 | Temperature Write calibration | 340 K 258 ns / 380 K 126.54 ns | `write_temp_calibration_af0017.csv` | PASS |
 | Temperature-normalized direct Hold | 300/340/380 K × 4 Hold windows | `hold_temp_normalized_300_340_380.csv` | PASS — temperature trend |
+| Temperature-normalized integrated W-H-R | 300/340/380 K × 3 Hold windows | `whr_temp_normalized_300_340_380.csv` | PASS — integrated operation feasibility |
 | T_RET,5% leakage integration | pending | pending | not closed |
 | Mesh1 vs Mesh3 | pending | pending | not closed |
 
@@ -74,12 +75,17 @@ VSN=0.9481 V -> DeltaVBL = +30.55 mV, separation = 102.67 mV
 VSN=1.00 V   -> DeltaVBL = +35.14 mV, separation = 107.26 mV
 ```
 
-### Integrated 300 K W-H-R
+### Temperature-normalized integrated W-H-R
+
+Same ramped deck used for all temperatures:
 
 ```text
-100 ns / 1 us / 10 us Hold
-DeltaVBL ≈ +35.6251 mV
+300 K: DeltaVBL ≈ +35.84146 mV
+340 K: DeltaVBL ≈ +45.00479 mV
+380 K: DeltaVBL ≈ +53.18769 mV
 ```
+
+Across 100 ns–10 us Hold, the Hold-induced change in DeltaVBL is negligible at the displayed scale because DeltaVSN remains very small. The larger absolute DeltaVBL at higher temperature is a temperature-dependent Read response and must not be interpreted as improved retention.
 
 ## 4. Claim boundary
 
@@ -98,7 +104,7 @@ Use these current headline results:
 2. Direct Hold temperature trend at 100 us: 0.270 uV / 0.484 uV / 7.439 uV for 300/340/380 K.
 3. Equivalent leakage scale: ~27.5x increase from 300 K to 380 K.
 4. Independent VSN -> DeltaVBL transfer.
-5. Integrated 300 K W-H-R: +35.625 mV D1 BL signal for 100 ns–10 us Hold.
+5. Integrated W-H-R: all 300/340/380 K cases complete; D1 DeltaVBL is about +35.84 / +45.00 / +53.19 mV with the same ramped deck.
 
 Detailed temperature-Hold evidence:
 - `docs/evidence/run07_hold_temperature_normalized_20260921.md`
@@ -109,8 +115,11 @@ Cell-operation checkpoint:
 ## 6. Next required evidence
 
 ```text
-temperature-normalized integrated Write → Hold → Read at 340/380 K
-→ leakage-vs-V integration if direct transient remains far from threshold
+leakage-vs-V integration if direct transient remains far from threshold
 → Mesh1/3 check
+→ separate intrinsic temperature-dependent Read response from retention-induced Read degradation
 → later MEB-dependent cell translation
 ```
+
+Detailed integrated temperature-WHR evidence:
+- `docs/evidence/run07_whr_temperature_normalized_20260923.md`
