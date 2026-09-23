@@ -15,12 +15,12 @@ Completed:
 → integrated 300 K Write→Hold→Read
 → 340/380 K Write-to-~1 V normalization
 → 300/340/380 K approximately normalized direct Hold
+→ 300/340/380 K integrated Write→Hold→Read with the same ramped deck
 ```
 
 Still open:
 
 ```text
-340/380 K integrated W-H-R
 leakage-vs-V integration / final retention metric
 Mesh1 vs Mesh3 retention check
 MEB-dependent cell-level translation
@@ -48,14 +48,17 @@ The 380 K equivalent leakage scale is approximately 27.53x the 300 K value and 1
 
 This establishes a clear B0 temperature dependence while preserving the claim boundary that direct short-window decay is not itself a retention-time measurement.
 
-## 3. Existing 300 K cell-operation results
+## 3. Temperature-normalized integrated cell-operation results
 
-Integrated 300 K W-H-R remains:
+All temperatures were rerun with the same ramped deck:
 
-```text
-Thold = 100 ns / 1 us / 10 us
-DeltaVBL ≈ +35.6251 mV
-```
+| T | VSN hold-start | DeltaVBL @ 100 ns | DeltaVBL @ 10 us |
+|---:|---:|---:|---:|
+| 300 K | 1.000026514 V | +35.841458 mV | +35.841456 mV |
+| 340 K | 1.000170588 V | +45.004795 mV | +45.004790 mV |
+| 380 K | 1.000372782 V | +53.187687 mV | +53.187607 mV |
+
+The Hold-induced DeltaVBL change is extremely small over 100 ns–10 us because the storage-node decay remains small. The absolute Read signal increases with temperature under this setup; this should be treated as intrinsic temperature-dependent Read response, not retention improvement.
 
 Independent Read transfer remains monotonic; VSN=0.8 V still produces a positive D1 signal and therefore is not a CMP read-fail threshold.
 
@@ -69,9 +72,9 @@ Independent Read transfer remains monotonic; VSN=0.8 V still produces a positive
 ## 5. Next step
 
 ```text
-340/380 K normalized integrated Write→Hold→Read
-→ leakage-vs-V integration if needed for t_1.0→0.8 or T_RET,5%
+leakage-vs-V integration if needed for t_1.0→0.8 or T_RET,5%
 → Mesh1/3 check
+→ isolate temperature-dependent Read response from retention-induced Read degradation
 → later MEB-depth cell translation
 ```
 
@@ -79,6 +82,7 @@ Documentation:
 - `docs/evidence/run07_hold_temperature_normalized_20260921.md`
 - `docs/evidence/run07_retention_manifest.md`
 - `docs/evidence/run07_cell_operation_checkpoint_20260920.md`
+- `docs/evidence/run07_whr_temperature_normalized_20260923.md`
 
 
 ---
