@@ -12,7 +12,8 @@ Run 7 freezes the B0=36 nm 1T1C / retention protocol before MEB-dependent cell c
 | R7C-direct | 300 K direct Hold to 100 us | PASS |
 | R7E | independent D0/D1 Read | PASS |
 | R7E-transfer | VSN-to-Read-margin transfer | PASS |
-| R7F W-H-R | normalized 300 K Write→Hold→Read | PASS for 100 ns/1 us/10 us |
+| R7F W-H-R | normalized 300 K Write→Hold→Read | historical PASS |
+| R7F-T W-H-R | 300/340/380 K common ramped Write→Hold→Read | PASS for 100 ns/1 us/10 us |
 | R7T Write-cal | 340/380 K Write-to-1 V normalization | PASS |
 | R7T Hold-norm | 300/340/380 K approximately normalized direct Hold | PASS / processed |
 | R7D-ON/OFF | leakage-vs-V integration / attribution | pending |
@@ -51,3 +52,13 @@ Equivalent Ccell*DeltaV/DeltaT scale:
 - Temperature comparison is approximately normalized near 1 V.
 - Mainline physics remains the established NonlocalPath chain.
 - Main README integration remains deferred until the feedback/retention block is closed.
+
+## Temperature-integrated W-H-R headline
+
+```text
+300 K: DeltaVBL ~ +35.84146 mV
+340 K: DeltaVBL ~ +45.00479 mV
+380 K: DeltaVBL ~ +53.18769 mV
+```
+
+All three temperatures complete the integrated sequence for 100 ns / 1 us / 10 us Hold. The absolute Read-signal increase with temperature is treated as a Read-response temperature dependence, not as improved retention.
