@@ -716,6 +716,7 @@ SG MEB range
 
 → [Feedback Log](docs/FEEDBACK_LOG.md)  
 → [Post-Turn-02 Validation Roadmap](docs/research/post_turn02_validation_roadmap.md)
+→ [2D Baseline 재구축·Calibration 전체 기록](docs/research/b0_2d_baseline_reconstruction_calibration.md)
 
 ---
 
