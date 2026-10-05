@@ -24,6 +24,47 @@ recorded decisions, not inferred from exploratory plots.
 | Run 9.5 | **Alternate Leakage Diagnostic** | GIJL-like / bottom / junction / background path if retention deviates from GIDL trend | identify plausible alternate leakage bottleneck without pre-assigning a trade-off | Conditional |
 | Run 10 | **Local MEB Sensitivity / Optional Robustness Extension** | 47/48/49 or small MEB variation | distinguish sharp optimum from broad usable plateau | Optional |
 
+## Post-Turn-02 2D Paper-Calibration Checkpoint — 2026-10-05
+
+The paper-grounded 2D recalibration branch has completed C4/C5 sensitivity, C6 local DOE, and C7 final candidate confirmation.
+
+Selected final-freeze candidate:
+
+```text
+C7_4 / B_QF_HALF
+GateCouplingScale = 2.300
+GateDepthBoost    = 25 nm
+Qf_Int            = 2.55e12 cm^-2
+```
+
+Electrical checkpoint:
+
+| Metric | C7_4 | Paper nominal |
+|---|---:|---:|
+| Vth @ 1.2 V | 0.655558 V | 0.656 V |
+| SSquick @ 1.2 V | 75.7652 mV/dec | 76 mV/dec |
+| DIBL 0.05→1.2 | 23.408 mV/V | 23.6 mV/V |
+| Ion/Ioff (Vg=2/0) | 2.6168e10 | 3.4e10 |
+
+Status boundary:
+
+> C7_4 is **selected**, but `B0-2D-PAPER-CAL` is **not yet officially frozen**.
+
+Required final numerical gate:
+
+```text
+FZ-A : 0.05-V solver-path cross-check
+FZ-B : standard vs fine DC mesh @ 1.2 V
+FZ-C : standard vs fine GIDL / BTBT / local-E mesh @ VD=1.2, VG=-0.7 V
+```
+
+The calibrated MEB / temperature production reruns begin only after FZ-A/B/C all pass.
+
+→ [2D baseline calibration log](research/b0_2d_baseline_reconstruction_calibration.md)  
+→ [C7_4 final-freeze plan](research/b0_2d_final_freeze_plan.md)
+
+---
+
 ## Run 7 Current Closure Snapshot — 2026-09-22
 
 Completed and committed:
