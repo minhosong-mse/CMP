@@ -1,8 +1,8 @@
 # B0-2D-PAPER-CAL — 2D BCAT Baseline Reconstruction & Calibration Log
 
-> **Status:** In progress — C7 final selection 단계  
+> **Status:** C7 selection complete — **C7_4 selected for final numerical freeze validation**  
 > **Checkpoint:** 2026-10-05  
-> **Final freeze:** C7_1 / C7_4 / C7_5 rescue + 7-candidate comparison 후  
+> **Final freeze:** FZ-A solver cross-check + FZ-B DC mesh + FZ-C GIDL/BTBT/E-field mesh PASS 후  
 > **Target label after freeze:** `B0-2D-PAPER-CAL`
 
 이 문서는 2차 발표(주차 피드백) 이후 다시 수행한 **20 nm급 BCAT 2D baseline 재구축 및 calibration 전 과정**을 다음 발표와 최종 연구 정리에 바로 재사용할 수 있도록 기록한 문서입니다.
@@ -37,7 +37,7 @@ C7 final candidate confirmation
 final B0-2D-PAPER-CAL freeze
 ```
 
-현재 provisional best는 **C7_3 (`MID_AB`)**이며 최종 확정 전입니다.
+현재 calibration candidate selection은 완료되었고, **C7_4 (`B_QF_HALF`)를 final-freeze validation candidate로 선택**했습니다. 아직 FZ-A/B/C numerical validation 전이므로 `B0-2D-PAPER-CAL`을 최종 frozen baseline이라고 부르지는 않습니다.
 
 ---
 
@@ -487,86 +487,101 @@ C7_2에서도 같은 패턴이 시작돼 candidate-specific physics failure가 �
 
 으로 세분했습니다.
 
-### 14.2 현재 완료 상태
+### 14.2 C7 최종 완료 상태
 
-정상 완료:
+초기/robust solver에서 정상 완료된 C7_2 / C7_3 / C7_6 / C7_7에 더해,
+실패했던 C7_1 / C7_4 / C7_5도 **physics / geometry / Qf를 바꾸지 않고 numerical continuation만 강화한 Rescue V2**로 재실행하여 정상 완료했습니다.
 
-- C7_2
-- C7_3
-- C7_6
-- C7_7
+따라서 C7_1~C7_7 전체가 required bias에서 valid electrical result를 확보했습니다.
 
-Rescue pending:
+| Candidate | Vth@1.2 | SSquick@1.2 | DIBL 0.05→1.0 | DIBL 0.05→1.2 | JointVSScore |
+|---|---:|---:|---:|---:|---:|
+| C7_1 | 0.656494 | 76.1788 | ~26.81 | ~25.30 | 0.204286 |
+| C7_2 | 0.652739 | 76.0904 | ~26.27 | ~24.71 | 0.658344 |
+| C7_3 | 0.653142 | 75.9335 | ~25.92 | ~24.39 | 0.575530 |
+| **C7_4** | **0.655558** | **75.7652** | **~24.89** | **~23.41** | **0.250898** |
+| C7_5 | 0.650086 | 75.7616 | ~24.88 | ~23.39 | 1.206600 |
+| C7_6 | 0.664688 | 75.4106 | ~22.98 | ~21.55 | 1.834916 |
+| C7_7 | 0.659342 | 75.4071 | ~22.96 | ~21.54 | 0.893511 |
 
-- C7_1
-- C7_4
-- C7_5
+해석:
 
-현재 completed set:
+- C7_1은 Vth / SS joint score가 가장 작지만 DIBL이 paper headline보다 높음.
+- C7_5는 DIBL이 가장 가까운 축이지만 Vth가 약 5.9 mV 낮음.
+- C7_4는 Vth error가 0.5 mV 미만이면서 DIBL도 paper headline에 약 1% 이내로 접근하고, Ion/Ioff 역시 C7_1/C7_3보다 paper reference 쪽으로 개선됨.
+- 따라서 한 지표의 최솟값이 아니라 **Vth + SS + DIBL + Ion/Ioff + smooth multi-bias behavior의 balance**를 기준으로 C7_4를 final-freeze candidate로 선택했습니다.
 
-| Candidate | Vth@1.2 | SSquick | DIBL 0.05→1.0 | DIBL 0.05→1.2 |
-|---|---:|---:|---:|---:|
-| C7_2 | 0.652739 | 76.0904 | ~26.27 | ~24.71 |
-| **C7_3** | **0.653142** | **75.9335** | **~25.92** | **~24.39** |
-| C7_6 | 0.664688 | 75.4106 | ~22.98 | ~21.55 |
-| C7_7 | 0.659342 | 75.4071 | ~22.96 | ~21.54 |
-
-현재 provisional ranking:
+### 14.3 C7 selection decision
 
 ```text
-C7_3 > C7_2 > C7_7 > C7_6
+Selected candidate = C7_4 / B_QF_HALF
+
+GateCouplingScale = 2.300
+GateDepthBoost    = 0.025 um = 25 nm
+Qf_Int            = 2.55e12 cm^-2
+MEB / GateTop     = 36 nm
+T                 = 300 K
 ```
 
-C7_1 / C7_4 / C7_5 rescue 완료 전에는 final ranking으로 freeze하지 않습니다.
+이 시점부터 **추가 C8 micro-fitting은 수행하지 않습니다.**
+남은 simulation은 paper 숫자를 더 맞추기 위한 calibration이 아니라, C7_4를 numerical baseline으로 freeze할 수 있는지 확인하는 validation입니다.
 
 ---
+## 15. Selected C7_4와 reference paper 비교
 
-## 15. 현재 best C7_3와 reference paper 비교
-
-C7_3:
+C7_4:
 
 ```text
-GateCouplingScale = 2.275
-GateDepthBoost    = 22.5 nm
+GateCouplingScale = 2.300
+GateDepthBoost    = 25.0 nm
 Qf_Int            = 2.55e12 cm^-2
 ```
 
 Equivalent reduced-order coordinate:
 
 ```text
-ToxEff     = 5 / 2.275 ≈ 2.198 nm
-DrecessEff = 120 + 22.5 = 142.5 nm
+ToxEff     = 5 / 2.30 ≈ 2.174 nm
+DrecessEff = 120 + 25 = 145 nm
 ```
 
-이 두 값은 fabricated/paper dimension이 아니라 reduced-order calibration coordinates입니다.
+이 두 값은 fabricated / paper physical dimension이 아니라 **reduced-order 2D calibration coordinates**입니다.
 
-| Metric | Paper | C7_3 | Difference |
+C7_4의 three-bias threshold:
+
+```text
+Vd = 0.05 V : Vth = 0.682477 V
+Vd = 1.00 V : Vth = 0.658828 V
+Vd = 1.20 V : Vth = 0.655558 V
+```
+
+Paper comparison:
+
+| Metric | Paper nominal | C7_4 | Difference |
 |---|---:|---:|---:|
-| Vth | 0.656 V | 0.653142 V | -2.858 mV, 약 -0.44% |
-| SS headline | 76.0 | SSquick 75.9335 | -0.0665, 약 -0.09% |
-| DIBL | 23.6 | 24.39* | +0.79, 약 +3.4% |
-| Ion/Ioff | 3.4e10 | ~2.37e10** | 약 -30% |
+| Vth @ 1.2 V | 0.656 V | **0.655558 V** | **-0.442 mV (~-0.067%)** |
+| SS headline | 76.0 mV/dec | **SSquick 75.7652** | **-0.2348 (~-0.31%)** |
+| DIBL | 23.6 mV/V | **23.408 mV/V*** | **-0.192 (~-0.81%)** |
+| Ion/Ioff | 3.4e10 | **2.6168e10** ** | about -23% |
 
 `*` project internal `0.05→1.2 V` definition  
 `**` `Id(Vg=2)/Id(Vg=0)` sampling
 
-Alternative SS:
+Alternative SS extraction at 1.2 V:
 
 ```text
-SS_1dec = 79.4079 mV/dec
-SS_2dec = 77.9298 mV/dec
+SS_1dec = 79.1983 mV/dec
+SS_2dec = 77.7340 mV/dec
 ```
 
-따라서 현재 safe claim은:
+현재 safe claim:
 
-> **A reduced-order 2D BCAT surrogate was calibrated against the nominal electrical characteristics of the reference 3D TCAD structure.**
+> **C7_4 is the selected reduced-order 2D calibration candidate and matches the reference device's nominal Vth / SS / DIBL headline values closely under the project-defined extraction rules. Final baseline freeze remains conditional on FZ-A/B/C numerical validation.**
 
 다음 표현은 사용하지 않습니다.
 
 > ~~The 3D reference BCAT was exactly reproduced in 2D.~~
 
 ---
-
 ## 16. C7 SVisual metadata 주의
 
 Common SVisual 작성 과정에서 일부 screenshot의 metadata field가 C7_1 값으로 표시되는 문제가 확인됐습니다.
@@ -580,7 +595,7 @@ Qf = 2.5e12
 
 처럼 보이더라도 candidate identity는 **project name + candidate-specific SDE/SDevice deck** 기준으로 판단합니다.
 
-Final archive 전에는 common SVisual metadata hardcoding을 수정하고 final screenshot / CSV를 다시 검증해야 합니다.
+Final-freeze용 SVisual은 C7_4 metadata(`CandidateCode=4`, `GCS=2.30`, `GDB=25 nm`, `Qf=2.55e12`)가 명시되도록 별도로 준비했습니다. 기존 common C7 SVisual screenshot은 historical selection evidence로만 유지하고 final archive에는 사용하지 않습니다.
 
 ---
 
@@ -596,64 +611,130 @@ Final archive 전에는 common SVisual metadata hardcoding을 수정하고 final
 
 Paper exact SS/DIBL/Ion-Ioff definition이 공개되지 않은 항목은 exact-match claim 대신 benchmark로 사용합니다.
 
----
-
-## 18. Final freeze 후 바로 이어갈 Run
-
-C7 final candidate를 선택하면 paper metric을 맞추기 위한 추가 tuning은 중단합니다.
-
-### 18.1 One-time nominal numerical confirmation
-
-```text
-MEB = 36 nm
-T = 300 K
-final candidate
-standard mesh vs one-step finer mesh
-```
-
-DC + GIDL/BTBT/local field numerical consistency만 마지막으로 확인합니다.
-
-### 18.2 Final MEB run
-
-Calibration coordinate를 고정하고 **MEB만 변경**합니다.
-
-```text
-MEB = 31 / 36 / 41 nm
-```
-
-재추출:
-
-- Vth / SS / Ion / Ioff
-- GIDL
-- BTBTmax / hotspot
-- common fixed-cut
-- integrated E / integrated BTBT
-- shallow/deep same-coordinate E
-
-### 18.3 Full temperature
-
-```text
-233 / 300 / 340 / 380 K
-×
-MEB 31 / 36 / 41
-```
-
-B0F temperature-edge pilot의 **방법과 trend만 승계**하고 absolute 숫자는 final baseline에서 다시 계산합니다.
-
-### 18.4 1T1C retention
-
-```text
-MEB
-→ GIDL / leakage
-→ storage-node charge loss
-→ retention
-→ temperature-dependent effective MEB range
-```
-
-로 연결합니다.
+**Selection result:** 위 기준을 적용한 결과 **C7_4 / B_QF_HALF를 final-freeze validation candidate로 선택**했습니다. 이 결정은 candidate selection의 종료를 의미하지만, numerical freeze 자체는 아래 FZ-A/B/C PASS 전까지 보류합니다.
 
 ---
 
+## 18. C7_4 final-freeze validation — prepared / not yet executed
+
+C7_4 selection 이후 추가 calibration DOE는 중단했습니다.
+본 연구의 MEB / temperature production rerun은 아래 numerical validation을 통과한 뒤에만 시작합니다.
+
+### 18.1 FZ-A — solver-path cross-check
+
+```text
+Candidate = C7_4
+MEB       = 36 nm
+T         = 300 K
+Vd        = 0.05 V
+MeshLevel = 0
+```
+
+목적: 기존 0.05 V 결과를 Rescue-style continuation으로 한 번 더 계산해 solver path dependence가 없는지 확인.
+
+Reference:
+
+```text
+Vth     = 0.682477 V
+SSquick = 76.4115 mV/dec
+```
+
+Recommended PASS:
+
+- |ΔVth| ≤ 1 mV
+- |ΔSSquick| ≤ 0.5 mV/dec
+- ΔId(Vg=2) ≤ 1%
+- `BiasReached=1`, `Vth_CC_Reached=1`
+
+### 18.2 FZ-B — final DC mesh confirmation
+
+```text
+Candidate = C7_4
+MEB       = 36 nm
+T         = 300 K
+Vd        = 1.2 V
+MeshLevel = 0 / 1
+```
+
+`MeshLevel=0`은 C7 selection standard mesh, `MeshLevel=1`은 drain-side local one-step-finer mesh입니다.
+
+Recommended PASS:
+
+- |ΔVth| ≤ 2 mV
+- |ΔSSquick| ≤ 0.5 mV/dec
+- ΔId(Vg=2) ≤ 1%
+- ΔIon/Ioff ≤ 5%
+- both endpoints valid
+
+### 18.3 FZ-C — final GIDL / BTBT / local-E mesh confirmation
+
+```text
+Candidate = C7_4
+MEB       = 36 nm
+T         = 300 K
+Vd        = 1.2 V
+Vg        = -0.7 V
+MeshLevel = 0 / 1
+Physics   = Hurkx baseline family
+```
+
+확인 항목:
+
+- terminal GIDL
+- BTBTmax
+- BTBT hotspot coordinate
+- E@BTBT hotspot
+- Emax in Si
+
+Recommended PASS:
+
+- endpoint reached for both meshes
+- ΔGIDL ≤ 2%
+- ΔBTBTmax ≤ 5%
+- ΔEhot ≤ 2%
+- ΔEmax ≤ 2%
+- hotspot shift ≲ 2 nm preferred
+
+### 18.4 Freeze gate
+
+총 new SDevice case:
+
+```text
+FZ-A = 1
+FZ-B = 2
+FZ-C = 2
+Total = 5
+```
+
+세 validation이 모두 PASS하면:
+
+```text
+B0-2D-PAPER-CAL = C7_4 / B_QF_HALF
+GCS              = 2.300
+GateDepthBoost   = 25 nm
+Qf_Int           = 2.55e12 cm^-2
+MEB nominal      = 36 nm
+T nominal        = 300 K
+```
+
+를 official frozen 2D baseline으로 선언합니다.
+
+**FZ-A/B/C가 끝나기 전에는 MEB / temperature production rerun을 시작하지 않습니다.**
+
+### 18.5 Freeze 후 production sequence
+
+PASS 이후에만:
+
+1. MEB `31 / 36 / 41 nm` @ 300 K DC + GIDL
+2. fixed-cut E / BTBT mechanism 재추출
+3. `233 / 300 / 340 / 380 K × MEB` calibrated-temperature run
+4. GIDL → 1T1C retention translation
+5. effective MEB range 도출
+6. selected-point 3D validation
+
+으로 진행합니다.
+
+---
 ## 19. 이전 Run에서 승계하는 것 / 다시 계산하는 것
 
 ### 그대로 승계
@@ -699,7 +780,7 @@ MEB
 - internal DIBL proxy
 - SS extraction-window sensitivity
 - missing 3D electrostatics의 effective coordinate 보정
-- final selection pending / provisional candidate
+- C7_4 selected for final numerical freeze validation
 
 ### 사용 금지
 
@@ -709,7 +790,7 @@ MEB
 - Qf가 paper explicit process value
 - SSquick이 paper exact extraction
 - 0.05→1.2 DIBL이 반드시 paper-equivalent
-- C7_3가 이미 final baseline
+- FZ-A/B/C PASS 전에 C7_4를 final frozen baseline이라고 표현
 - faithful B0F와 calibrated C7을 동일 physical model로 표현
 - legacy NonlocalPath와 faithful Hurkx absolute value 직접 혼합
 
@@ -721,25 +802,41 @@ Completed:
 
 - B0F faithful control
 - domain convergence / DIBL bias sensitivity
-- DC mesh / Hurkx GIDL mesh check
+- DC mesh / Hurkx GIDL mesh check on faithful control
 - MEB3 faithful trend / fixed-cut mechanism
 - Hurkx / NonlocalPath bridge
 - 233/380 K temperature-edge pilot
 - C4/C5 calibration sensitivity
 - C6 128-case local DOE
-- C7_2 / C7_3 / C7_6 / C7_7 confirmation
+- C7_1~C7_7 electrical confirmation
+- C7_1 / C7_4 / C7_5 Rescue V2 completion
+- **C7_4 / B_QF_HALF selected as final-freeze candidate**
+- FZ-A / FZ-B / FZ-C execution plan and dedicated working decks prepared
 
-Pending:
+Current selected values:
 
-- C7_1 / C7_4 / C7_5 failure-log rescue
-- 7-candidate final ranking
-- final `B0-2D-PAPER-CAL` freeze
-- one-time final mesh confirmation
+```text
+C7_4
+GCS = 2.300
+GDB = 25 nm
+Qf  = 2.55e12 cm^-2
 
-다음 업데이트에서는 위 pending 항목을 이어서 기록하고 **final baseline을 이 문서에서 공식 freeze**합니다.
+Vth@1.2          = 0.655558 V
+SSquick@1.2      = 75.7652 mV/dec
+DIBL 0.05→1.2   = 23.408 mV/V
+Ion/Ioff 2.0/0   = 2.6168e10
+```
+
+Pending before official freeze:
+
+- FZ-A solver-path cross-check
+- FZ-B standard-vs-fine DC mesh confirmation
+- FZ-C standard-vs-fine GIDL / BTBT / local-E mesh confirmation
+- PASS result ingestion and official `B0-2D-PAPER-CAL` freeze
+
+Production MEB / temperature reruns are intentionally blocked until these three checks are complete.
 
 ---
-
 ## 22. Related repository records
 
 - [Main Run Sheet](../RUN_SHEET.md)
