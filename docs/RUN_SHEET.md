@@ -24,48 +24,52 @@ recorded decisions, not inferred from exploratory plots.
 | Run 9.5 | **Alternate Leakage Diagnostic** | GIJL-like / bottom / junction / background path if retention deviates from GIDL trend | identify plausible alternate leakage bottleneck without pre-assigning a trade-off | Conditional |
 | Run 10 | **Local MEB Sensitivity / Optional Robustness Extension** | 47/48/49 or small MEB variation | distinguish sharp optimum from broad usable plateau | Optional |
 
-## Post-Turn-02 2D Paper-Calibration Checkpoint — 2026-10-05
+## Post-Turn-02 2D Paper-Calibration Freeze — 2026-10-05
 
-The paper-grounded 2D recalibration branch has completed C4/C5 sensitivity, C6 local DOE, and C7 final candidate confirmation.
+The paper-grounded 2D recalibration branch is now **officially closed**.
 
-Selected final-freeze candidate:
+`B0-2D-PAPER-CAL = C7_4 / B_QF_HALF`
 
-```text
-C7_4 / B_QF_HALF
-GateCouplingScale = 2.300
-GateDepthBoost    = 25 nm
-Qf_Int            = 2.55e12 cm^-2
-```
+- GateCouplingScale = 2.300
+- GateDepthBoost = 25 nm
+- Qf_Int = 2.55e12 cm^-2
 
-Electrical checkpoint:
+Final numerical close-out:
 
-| Metric | C7_4 | Paper nominal |
-|---|---:|---:|
-| Vth @ 1.2 V | 0.655558 V | 0.656 V |
-| SSquick @ 1.2 V | 75.7652 mV/dec | 76 mV/dec |
-| DIBL 0.05→1.2 | 23.408 mV/V | 23.6 mV/V |
-| Ion/Ioff (Vg=2/0) | 2.6168e10 | 3.4e10 |
+| Check | Result |
+|---|---|
+| FZ-A solver path | Vth +0.008 mV, SS -0.066 mV/dec; high-Vg Id ~-2.68% |
+| FZ-B DC mesh | Vth -0.011 mV, SS +0.0006, Id@2 V +0.09% |
+| FZ-C GIDL mesh | Mesh1→2 GIDL +0.424%, BTBTmax -0.029%, E@BTBT +1.69%, hotspot +0.293 nm |
 
-Status boundary:
+Decision:
 
-> C7_4 is **selected**, but `B0-2D-PAPER-CAL` is **not yet officially frozen**.
+- **B0-2D-PAPER-CAL officially frozen**
+- global point Emax is secondary because of interface/corner mesh sensitivity
+- production calibration knobs are locked
+- runtime optimization is allowed only through validated solver / mesh policy
 
-Required final numerical gate:
+Production numerical policy:
 
-```text
-FZ-A : 0.05-V solver-path cross-check
-FZ-B : standard vs fine DC mesh @ 1.2 V
-FZ-C : standard vs fine GIDL / BTBT / local-E mesh @ VD=1.2, VG=-0.7 V
-```
+- DC broad sweep → MeshLevel 0
+- GIDL broad sweep → MeshLevel 1
+- selected mechanism → MeshLevel 2
+- Rescue V2 → reference / fallback solver
 
-The calibrated MEB / temperature production reruns begin only after FZ-A/B/C all pass.
+Before the full MEB batch, perform a one-point runtime-equivalence benchmark for a faster production continuation.
+
+Next calibrated revalidation:
+
+- MEB = 31 / 36 / 41 nm
+- T = 300 K
+- DC: Vd = 0.05 / 1.2 V
+- GIDL: Vg=-0.7, Vd=1.2 V
 
 → [2D baseline calibration log](research/b0_2d_baseline_reconstruction_calibration.md)  
-→ [C7_4 final-freeze plan](research/b0_2d_final_freeze_plan.md)
+→ [Final-freeze close-out](research/b0_2d_final_freeze_plan.md)  
+→ [Production revalidation & runtime plan](research/b0_2d_production_revalidation_plan.md)
 
----
-
-## Run 7 Current Closure Snapshot — 2026-09-22
+---## Run 7 Current Closure Snapshot — 2026-09-22
 
 Completed and committed:
 
