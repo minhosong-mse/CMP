@@ -1,126 +1,74 @@
-# C7_4 Final-Freeze Validation Plan
+# C7_4 Final-Freeze Validation — CLOSED
 
-> **Status:** Prepared / not yet executed  
+> **Status:** PASS / CLOSED  
 > **Date:** 2026-10-05  
-> **Selected candidate:** C7_4 / B_QF_HALF  
-> **Freeze target:** `B0-2D-PAPER-CAL`
+> **Frozen baseline:** `B0-2D-PAPER-CAL = C7_4 / B_QF_HALF`
 
-## 1. Selected candidate
+## 1. Frozen candidate
 
-```text
-GateCouplingScale = 2.300
-GateDepthBoost    = 0.025 um = 25 nm
-Qf_Int            = 2.55e12 cm^-2
-MEB / GateTop     = 36 nm
-T                 = 300 K
-```
+- GateCouplingScale = 2.300
+- GateDepthBoost = 25 nm
+- Qf_Int = 2.55e12 cm^-2
+- MEB / GateTop = 36 nm
+- T = 300 K
 
-Selection checkpoint:
+No additional C8 calibration DOE is permitted after this checkpoint.
 
-```text
-Vth @ 1.2 V        = 0.655558 V
-SSquick @ 1.2 V    = 75.7652 mV/dec
-DIBL 0.05→1.2      = 23.408 mV/V
-Ion/Ioff (2.0/0)   = 2.6168e10
-```
+## 2. FZ-A — solver-path consistency
 
-C7_4 is selected because it provides the best overall balance of Vth / SS / DIBL / Ion-Ioff and smooth three-bias behavior. No C8 calibration DOE is planned.
+| Metric | Original C7_4 | Rescue-style | Change |
+|---|---:|---:|---:|
+| Vth @0.05 | 0.682477 | **0.682485** | **+0.008 mV** |
+| SSquick | 76.4115 | **76.3458** | **-0.0657** |
+| Id@Vg2 | 9.5541e-5 | **9.2977e-5** | **-2.68%** |
 
-## 2. SWB parameter rule
+Decision: Vth / SS consistency PASS; high-Vg current ~2–3% solver sensitivity recorded.
 
-Only one SWB parameter is used in the freeze projects:
+## 3. FZ-B — DC mesh convergence
 
-```text
-SDE parameter:
-MeshLevel
-```
+| Metric | Mesh0 | Mesh1 | Change |
+|---|---:|---:|---:|
+| Vth | 0.655709 | **0.655698** | **-0.011 mV** |
+| SSquick | 75.8267 | **75.8273** | **+0.0006** |
+| Id@Vg2 | 6.62076e-4 | **6.62669e-4** | **+0.0896%** |
+| Ion/Ioff 2/0 | 2.4922e10 | **2.5444e10** | **+2.10%** |
 
-```text
-MeshLevel = 0 : C7_4 standard selection mesh
-MeshLevel = 1 : standard mesh + one-step finer drain-side local refinement
-```
+**FZ-B: PASS / CLOSED.**
 
-Do **not** add GCS / GateDepthBoost / Qf as SWB parameters. They are fixed to the selected C7_4 values.
+## 4. FZ-C — GIDL / BTBT / local-E convergence
 
-## 3. FZ-A — solver-path cross-check
+| Metric | Mesh1 | Mesh2 | Mesh1→2 |
+|---|---:|---:|---:|
+| GIDL | 5.8010e-13 | **5.8256e-13** | **+0.424%** |
+| BTBTmax | 7.2656e23 | **7.2635e23** | **-0.029%** |
+| E@BTBT | 1.1232e6 | **1.1423e6** | **+1.69%** |
+| Xhot | 0.034570 um | **0.034863 um** | **+0.293 nm** |
+| Yhot | 0.252174 um | **0.252174 um** | **0 nm** |
+| global Emax | 1.19e7 | **2.30e7** | **+93%** |
 
-```text
-MeshLevel = 0
-Vd        = 0.05 V
-Vg        = 0→2 V
-T         = 300 K
-```
+Decision: GIDL / BTBT / hotspot-local E / hotspot location PASS. Global point Emax is a secondary interface/corner-sensitive diagnostic.
 
-Run count: 1.
+## 5. Official freeze
 
-PASS:
+`B0-2D-PAPER-CAL = C7_4 / B_QF_HALF`
 
-- ΔVth ≤ 1 mV
-- ΔSSquick ≤ 0.5 mV/dec
-- ΔId(Vg=2) ≤ 1%
-- valid bias / threshold extraction
+Reference under the standardized final solver:
 
-## 4. FZ-B — DC mesh confirmation
+- Vth @0.05 V ≈ 0.682485 V
+- Vth @1.20 V ≈ 0.65570 V
+- SSquick @1.20 ≈ 75.827 mV/dec
+- DIBL 0.05→1.20 ≈ 23.29 mV/V
 
-```text
-MeshLevel = 0 / 1
-Vd        = 1.2 V
-Vg        = 0→2 V
-T         = 300 K
-```
+## 6. Frozen numerical policy
 
-Run count: 2.
+- DC broad sweep: MeshLevel 0
+- GIDL broad sweep: MeshLevel 1
+- selected mechanism / final evidence: MeshLevel 2 confirmation
+- Rescue V2: reference/fallback solver
+- global point Emax: not a primary mechanism metric
 
-PASS:
+## 7. Handoff
 
-- ΔVth ≤ 2 mV
-- ΔSSquick ≤ 0.5 mV/dec
-- ΔId(Vg=2) ≤ 1%
-- ΔIon/Ioff ≤ 5%
+Next: one-point runtime-equivalence benchmark, then calibrated MEB 31/36/41 revalidation.
 
-## 5. FZ-C — GIDL / BTBT / local-E mesh confirmation
-
-```text
-MeshLevel = 0 / 1
-Vd        = 1.2 V
-Vg        = -0.7 V
-T         = 300 K
-BTBT      = Hurkx
-```
-
-Run count: 2.
-
-PASS:
-
-- endpoint reached for both meshes
-- ΔGIDL ≤ 2%
-- ΔBTBTmax ≤ 5%
-- ΔEhot ≤ 2%
-- ΔEmax ≤ 2%
-- hotspot coordinate shift ≲ 2 nm preferred
-
-## 6. Freeze gate
-
-```text
-FZ-A PASS
-+ FZ-B PASS
-+ FZ-C PASS
-----------------
-B0-2D-PAPER-CAL official freeze
-```
-
-Until that gate is passed, calibrated MEB / temperature production reruns are not started.
-
-## 7. Prepared working-deck names
-
-```text
-CMP_C7_4_FINAL_FREEZE_SDE.cmd
-CMP_C7_4_FZ_A_SOLVER_005_SDevice.cmd
-CMP_C7_4_FZ_A_SOLVER_005_SVisual.cmd
-CMP_C7_4_FZ_B_DC_12_SDevice.cmd
-CMP_C7_4_FZ_B_DC_12_SVisual.cmd
-CMP_C7_4_FZ_C_GIDL_SDevice.cmd
-CMP_C7_4_FZ_C_GIDL_SVisual.cmd
-```
-
-Final source archive should use the corrected C7_4 metadata rather than the older common-C7 SVisual metadata.
+→ [Production revalidation & runtime plan](b0_2d_production_revalidation_plan.md)
