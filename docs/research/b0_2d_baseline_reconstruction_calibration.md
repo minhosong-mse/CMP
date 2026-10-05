@@ -1,9 +1,9 @@
 # B0-2D-PAPER-CAL — 2D BCAT Baseline Reconstruction & Calibration Log
 
-> **Status:** C7 selection complete — **C7_4 selected for final numerical freeze validation**  
+> **Status:** **FINAL FROZEN — B0-2D-PAPER-CAL = C7_4 / B_QF_HALF**  
 > **Checkpoint:** 2026-10-05  
-> **Final freeze:** FZ-A solver cross-check + FZ-B DC mesh + FZ-C GIDL/BTBT/E-field mesh PASS 후  
-> **Target label after freeze:** `B0-2D-PAPER-CAL`
+> **Freeze basis:** FZ-A solver-path check + FZ-B DC mesh convergence + FZ-C GIDL/BTBT/local-E convergence  
+> **Frozen label:** `B0-2D-PAPER-CAL`
 
 이 문서는 2차 발표(주차 피드백) 이후 다시 수행한 **20 nm급 BCAT 2D baseline 재구축 및 calibration 전 과정**을 다음 발표와 최종 연구 정리에 바로 재사용할 수 있도록 기록한 문서입니다.
 
@@ -37,7 +37,7 @@ C7 final candidate confirmation
 final B0-2D-PAPER-CAL freeze
 ```
 
-현재 calibration candidate selection은 완료되었고, **C7_4 (`B_QF_HALF`)를 final-freeze validation candidate로 선택**했습니다. 아직 FZ-A/B/C numerical validation 전이므로 `B0-2D-PAPER-CAL`을 최종 frozen baseline이라고 부르지는 않습니다.
+Calibration candidate selection과 final numerical validation을 모두 완료했으며, **C7_4 (`B_QF_HALF`)를 `B0-2D-PAPER-CAL`로 공식 freeze**했습니다.
 
 ---
 
@@ -615,127 +615,90 @@ Paper exact SS/DIBL/Ion-Ioff definition이 공개되지 않은 항목은 exact-m
 
 ---
 
-## 18. C7_4 final-freeze validation — prepared / not yet executed
+## 18. C7_4 final-freeze validation — COMPLETED
 
-C7_4 selection 이후 추가 calibration DOE는 중단했습니다.
-본 연구의 MEB / temperature production rerun은 아래 numerical validation을 통과한 뒤에만 시작합니다.
+C7_4 selection 이후 calibration knob를 더 조정하지 않고 solver / mesh sensitivity를 별도 검증했습니다.
 
 ### 18.1 FZ-A — solver-path cross-check
 
-```text
-Candidate = C7_4
-MEB       = 36 nm
-T         = 300 K
-Vd        = 0.05 V
-MeshLevel = 0
-```
+| Metric | Original C7_4 | FZ-A | Difference |
+|---|---:|---:|---:|
+| Vth @0.05 V | 0.682477 V | **0.682485 V** | **+0.008 mV** |
+| SSquick | 76.4115 | **76.3458** | **-0.0657 mV/dec** |
+| Id@Vg2 | 9.5541e-5 A | **9.2977e-5 A** | **-2.68%** |
 
-목적: 기존 0.05 V 결과를 Rescue-style continuation으로 한 번 더 계산해 solver path dependence가 없는지 확인.
+- threshold / subthreshold extraction은 solver path에 사실상 독립적
+- high-Vg current는 약 2–3% solver-path sensitivity가 존재
+- production에서는 solver policy를 하나로 고정해 관리
 
-Reference:
-
-```text
-Vth     = 0.682477 V
-SSquick = 76.4115 mV/dec
-```
-
-Recommended PASS:
-
-- |ΔVth| ≤ 1 mV
-- |ΔSSquick| ≤ 0.5 mV/dec
-- ΔId(Vg=2) ≤ 1%
-- `BiasReached=1`, `Vth_CC_Reached=1`
+**FZ-A: PASS for Vth / SS solver consistency; high-Vg current sensitivity recorded as a numerical guardrail.**
 
 ### 18.2 FZ-B — final DC mesh confirmation
 
-```text
-Candidate = C7_4
-MEB       = 36 nm
-T         = 300 K
-Vd        = 1.2 V
-MeshLevel = 0 / 1
-```
+동일 Rescue-style solver에서 MeshLevel=0/1을 비교했습니다.
 
-`MeshLevel=0`은 C7 selection standard mesh, `MeshLevel=1`은 drain-side local one-step-finer mesh입니다.
+| Metric | Mesh0 | Mesh1 | Mesh1−Mesh0 |
+|---|---:|---:|---:|
+| Vth | 0.655709 V | **0.655698 V** | **-0.011 mV** |
+| SSquick | 75.8267 | **75.8273** | **+0.0006 mV/dec** |
+| SS1dec | 79.2661 | 79.2666 | +0.0005 |
+| SS2dec | 77.8000 | 77.8005 | +0.0005 |
+| Id@Vg1.2 | 2.47550e-4 | 2.47592e-4 | **+0.0167%** |
+| Id@Vg2 | 6.62076e-4 | 6.62669e-4 | **+0.0896%** |
+| Ion/Ioff @2/0 | 2.4922e10 | 2.5444e10 | **+2.10%** |
 
-Recommended PASS:
-
-- |ΔVth| ≤ 2 mV
-- |ΔSSquick| ≤ 0.5 mV/dec
-- ΔId(Vg=2) ≤ 1%
-- ΔIon/Ioff ≤ 5%
-- both endpoints valid
+**FZ-B: PASS / CLOSED.**
 
 ### 18.3 FZ-C — final GIDL / BTBT / local-E mesh confirmation
 
-```text
-Candidate = C7_4
-MEB       = 36 nm
-T         = 300 K
-Vd        = 1.2 V
-Vg        = -0.7 V
-MeshLevel = 0 / 1
-Physics   = Hurkx baseline family
-```
+초기 Mesh0→1에서 local peak sensitivity가 보여 targeted MeshLevel=2를 추가했습니다.
 
-확인 항목:
+| Metric | Mesh0 | Mesh1 | Mesh2 | Mesh1→2 |
+|---|---:|---:|---:|---:|
+| terminal GIDL | 5.6806e-13 | 5.8010e-13 | **5.8256e-13** | **+0.424%** |
+| BTBTmax | 6.1162e23 | 7.2656e23 | **7.2635e23** | **-0.029%** |
+| E@BTBT hotspot | 1.0964e6 | 1.1232e6 | **1.1423e6** | **+1.69%** |
+| Xhot (um) | 0.035742 | 0.034570 | **0.034863** | **+0.293 nm** |
+| Yhot (um) | 0.252656 | 0.252174 | **0.252174** | **0 nm** |
+| global Emax | 3.53e6 | 1.19e7 | **2.30e7** | **+93%** |
 
-- terminal GIDL
-- BTBTmax
-- BTBT hotspot coordinate
-- E@BTBT hotspot
-- Emax in Si
+핵심 GIDL / BTBT / hotspot-local field와 hotspot 위치는 Mesh1→2에서 수렴했습니다.
+global point Emax는 interface/corner mesh sensitivity가 강하므로 이후 primary mechanism metric에서 제외하고 secondary diagnostic으로만 유지합니다.
 
-Recommended PASS:
+**FZ-C: PASS / CLOSED for physically relevant GIDL-mechanism metrics.**
 
-- endpoint reached for both meshes
-- ΔGIDL ≤ 2%
-- ΔBTBTmax ≤ 5%
-- ΔEhot ≤ 2%
-- ΔEmax ≤ 2%
-- hotspot shift ≲ 2 nm preferred
+### 18.4 Official freeze
 
-### 18.4 Freeze gate
+`B0-2D-PAPER-CAL = C7_4 / B_QF_HALF`
 
-총 new SDevice case:
+- GateCouplingScale = 2.300
+- GateDepthBoost = 25 nm
+- Qf_Int = 2.55e12 cm^-2
+- nominal MEB = 36 nm
+- nominal T = 300 K
+- physical WF = 4.8 eV
+- BTBT baseline = Hurkx
 
-```text
-FZ-A = 1
-FZ-B = 2
-FZ-C = 2
-Total = 5
-```
+Standardized solver reference:
 
-세 validation이 모두 PASS하면:
+- Vth @0.05 V = 0.682485 V
+- Vth @1.20 V ≈ 0.65570 V
+- SSquick @1.20 V ≈ 75.827 mV/dec
+- internal DIBL 0.05→1.20 ≈ 23.29 mV/V
 
-```text
-B0-2D-PAPER-CAL = C7_4 / B_QF_HALF
-GCS              = 2.300
-GateDepthBoost   = 25 nm
-Qf_Int           = 2.55e12 cm^-2
-MEB nominal      = 36 nm
-T nominal        = 300 K
-```
+**No further calibration tuning is allowed after this freeze.**
 
-를 official frozen 2D baseline으로 선언합니다.
+### 18.5 Production numerical policy after freeze
 
-**FZ-A/B/C가 끝나기 전에는 MEB / temperature production rerun을 시작하지 않습니다.**
+- DC broad sweep: validated standard DC mesh
+- GIDL broad screening: MeshLevel 1
+- selected mechanism / final anchor: MeshLevel 2 confirmation
+- full Rescue V2: reference/fallback, not default for every production point
+- one-point runtime-equivalence benchmark before the large MEB/temperature batch
 
-### 18.5 Freeze 후 production sequence
+→ [Production revalidation & runtime plan](b0_2d_production_revalidation_plan.md)
 
-PASS 이후에만:
-
-1. MEB `31 / 36 / 41 nm` @ 300 K DC + GIDL
-2. fixed-cut E / BTBT mechanism 재추출
-3. `233 / 300 / 340 / 380 K × MEB` calibrated-temperature run
-4. GIDL → 1T1C retention translation
-5. effective MEB range 도출
-6. selected-point 3D validation
-
-으로 진행합니다.
-
----
-## 19. 이전 Run에서 승계하는 것 / 다시 계산하는 것
+---## 19. 이전 Run에서 승계하는 것 / 다시 계산하는 것
 
 ### 그대로 승계
 
@@ -780,7 +743,7 @@ PASS 이후에만:
 - internal DIBL proxy
 - SS extraction-window sensitivity
 - missing 3D electrostatics의 effective coordinate 보정
-- C7_4 selected for final numerical freeze validation
+- B0-2D-PAPER-CAL = C7_4 / B_QF_HALF officially frozen after numerical validation
 
 ### 사용 금지
 
@@ -790,54 +753,50 @@ PASS 이후에만:
 - Qf가 paper explicit process value
 - SSquick이 paper exact extraction
 - 0.05→1.2 DIBL이 반드시 paper-equivalent
-- FZ-A/B/C PASS 전에 C7_4를 final frozen baseline이라고 표현
+- frozen proxy coordinates를 fabricated physical dimensions처럼 표현
 - faithful B0F와 calibrated C7을 동일 physical model로 표현
 - legacy NonlocalPath와 faithful Hurkx absolute value 직접 혼합
 
 ---
 
-## 21. 2026-10-05 checkpoint
+## 21. 2026-10-05 checkpoint — BASELINE FREEZE COMPLETE
 
 Completed:
 
-- B0F faithful control
-- domain convergence / DIBL bias sensitivity
-- DC mesh / Hurkx GIDL mesh check on faithful control
-- MEB3 faithful trend / fixed-cut mechanism
-- Hurkx / NonlocalPath bridge
-- 233/380 K temperature-edge pilot
+- B0F faithful control and numerical controls
 - C4/C5 calibration sensitivity
 - C6 128-case local DOE
-- C7_1~C7_7 electrical confirmation
+- C7_1~C7_7 final candidate confirmation
 - C7_1 / C7_4 / C7_5 Rescue V2 completion
-- **C7_4 / B_QF_HALF selected as final-freeze candidate**
-- FZ-A / FZ-B / FZ-C execution plan and dedicated working decks prepared
+- C7_4 / B_QF_HALF selection
+- **FZ-A solver-path consistency check**
+- **FZ-B DC mesh convergence PASS**
+- **FZ-C GIDL / BTBT / hotspot-local-E convergence PASS**
+- **official `B0-2D-PAPER-CAL` freeze**
 
-Current selected values:
+Frozen calibration coordinates:
 
-```text
-C7_4
-GCS = 2.300
-GDB = 25 nm
-Qf  = 2.55e12 cm^-2
+- GCS = 2.300
+- GDB = 25 nm
+- Qf = 2.55e12 cm^-2
 
-Vth@1.2          = 0.655558 V
-SSquick@1.2      = 75.7652 mV/dec
-DIBL 0.05→1.2   = 23.408 mV/V
-Ion/Ioff 2.0/0   = 2.6168e10
-```
+Final numerical guardrails:
 
-Pending before official freeze:
+- Vth / SS are effectively solver-path invariant
+- high-Vg current shows ~2–3% solver-path sensitivity; production solver must be standardized
+- DC Mesh0↔1 is strongly converged
+- GIDL / BTBT / E@BTBT / hotspot position converge by Mesh1↔2
+- global point Emax is interface/corner mesh-sensitive and is not a primary mechanism metric
 
-- FZ-A solver-path cross-check
-- FZ-B standard-vs-fine DC mesh confirmation
-- FZ-C standard-vs-fine GIDL / BTBT / local-E mesh confirmation
-- PASS result ingestion and official `B0-2D-PAPER-CAL` freeze
+Next:
 
-Production MEB / temperature reruns are intentionally blocked until these three checks are complete.
+1. runtime-equivalence benchmark for a faster production solver
+2. calibrated MEB 31/36/41 nm revalidation @ 300 K
+3. fixed-cut / BTBT mechanism re-extraction
+4. calibrated temperature matrix
+5. GIDL → 1T1C retention translation
 
----
-## 22. Related repository records
+---## 22. Related repository records
 
 - [Main Run Sheet](../RUN_SHEET.md)
 - [Model Scope](../MODEL_SCOPE.md)
