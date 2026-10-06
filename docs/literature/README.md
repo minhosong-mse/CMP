@@ -7,7 +7,7 @@
 | REF | Paper | Main CMP role | Verification status | Detailed note now? |
 |---|---|---|---|---|
 | REF01 | Sun, Baac, Shin, Micromachines 2022 | B0 / structural-variation baseline context | local PDF verified | later if needed |
-| REF02 | Park et al., IEEE Access 2024 | DWF-BCAT process/device context | DOI/metadata verified | no |
+| REF02 | Park et al., IEEE Access 2024 | DWF-BCAT process/device context | **local PDF verified** | yes |
 | REF03 | Jang & Kim, ICEIC 2026 | direct MEB/PEB/GIDL novelty boundary and read/write trade-off | local PDF verified | yes |
 | REF04 | Jeon & Kwon, JJAP 2026 | DWF multi-objective leakage/disturb context | DOI/abstract verified | no |
 | REF05 | Kim, Min, Park, IEEE EDL 2021 | direct leakage-field-retention context; tail-cell retention | local PDF verified | yes |
@@ -36,6 +36,7 @@ No paper-specific value is treated as production calibrated merely because it is
 
 ## Detailed Notes Present
 
+- [REF02 — Park et al. 2024](REF02_park_2024_dwf_bcat.md)
 - [REF03 — Jang & Kim 2026](REF03_jang_2026_gidl.md)
 - [REF05 — Kim, Min, Park 2021](REF05_kim_2021_retention.md)
 - [REF06 — Liu et al. 2024 Part I](REF06_liu_2024_retention_part1.md)
