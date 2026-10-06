@@ -1,8 +1,32 @@
 # B0-2D-PAPER-CAL — Production Revalidation & Runtime Plan
 
-> **Status:** Next execution stage  
+> **Status:** **PAUSED at exact-parent / mesh-lineage verification gate**  
 > **Baseline:** `B0-2D-PAPER-CAL = C7_4 / B_QF_HALF`  
 > **Calibration knobs:** frozen; no retuning
+
+## 0. 2026-10-07 execution gate
+
+Post-freeze local mesh experimentation revealed that the SDE used for several local 31/36/41 reruns is **not yet proven identical to the frozen C7_4/FZ-C executed parent**.
+
+Key reason for the pause:
+
+- nominal local DC Vth differs from the frozen C7_4 reference by roughly 17–19 mV;
+- therefore subsequent GIDL changes cannot be classified as a controlled mesh-only A/B comparison;
+- one aggressive refinement branch grew to about 30k elements and failed in SDevice;
+- the frozen FZ-C mesh policy remains valid and is **not reopened** by these local experiments.
+
+Resume gate:
+
+1. recover/map the exact executed C7_4/FZ-C SDE/SDevice/SVisual parent;
+2. verify geometry/calibration/physics/bias/extraction/solver identity;
+3. derive any candidate mesh as a mesh-only change from that exact parent;
+4. test nominal 36 nm first under same-parent conditions;
+5. if a replacement mesh is still proposed, check 31/41 with the same mesh policy before freezing;
+6. if the existing frozen Mesh1/Mesh2 policy reproduces, resume P0/P1 directly and discard the local redesign.
+
+Detailed checkpoint:
+
+- [Post-freeze mesh revalidation debugging checkpoint](../progress/b0_2d_paper_cal_mesh_revalidation_20261007.md)
 
 ## 1. Runtime principle
 

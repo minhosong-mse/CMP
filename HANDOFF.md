@@ -5,7 +5,7 @@
 > Read this after `AGENTS.md` at the start of a new CMP research session.
 > Keep this file focused on the current state rather than accumulating full history.
 
-**Last updated:** 2026-10-06
+**Last updated:** 2026-10-07
 
 ## 1. Canonical Research Topic
 
@@ -45,11 +45,11 @@ Do not directly mix absolute GIDL / BTBT values across those physics/model linea
 
 ## 3. Current Stage
 
-**Post-calibration production revalidation opened.**
+**Post-calibration production revalidation is PAUSED at an exact-parent / mesh-lineage verification gate.**
 
-The paper-grounded 2D calibration branch was closed and frozen on 2026-10-05.
+The paper-grounded 2D calibration branch remains closed and frozen from 2026-10-05.
 
-Current sequence of record:
+The intended production sequence is still:
 
 ```text
 P0 runtime-equivalence benchmark
@@ -61,7 +61,9 @@ P0 runtime-equivalence benchmark
 → P6 effective MEB design range
 ```
 
-Calibration knobs are locked. This sequence is a production revalidation / translation stage, not another fitting stage.
+However, P0/P1 should not resume until the exact executed C7_4/FZ-C parent deck is recovered and the local mesh work is separated from lineage differences.
+
+Calibration knobs remain locked. This is a numerical/provenance verification gate, not another fitting stage.
 
 ---
 
@@ -100,13 +102,36 @@ No C8 micro-fitting is open.
 
 ## 5. Active / Blocked Work
 
-### Active
+### Active blocker — exact parent / mesh lineage
 
-Production revalidation is the next active research branch.
+Post-freeze local mesh experiments were executed, but the local SDE used for those runs is not yet demonstrated to be an exact copy of the frozen C7_4/FZ-C parent.
 
-### Not yet executed in this stage
+At nominal 36 nm, the local lineage produced approximately:
 
-The immediate P0 runtime-equivalence benchmark has not yet been recorded as completed in the repository.
+- `Vth @0.05 V = 0.663083 V`
+- `Vth @1.20 V = 0.638303 V`
+
+versus the frozen references:
+
+- `0.682485 V`
+- `0.65570 V`
+
+The roughly 17–19 mV difference means the local GIDL changes cannot be treated as mesh-only differences.
+
+### Mesh-debug status
+
+- H1→H1.1: nominal 36-nm terminal GIDL changed about 19%; not converged.
+- Later local refinements made 36/41 relatively stable, but the 31-nm endpoint remained strongly mesh-sensitive.
+- A high-density branch reached about 30k elements and failed in SDevice; its abnormal spatial field view is not interpreted physically.
+- A manual-grounded v3 mesh draft exists only as an unexecuted local candidate and is not frozen/canonical.
+
+Detailed record:
+
+- `docs/progress/b0_2d_paper_cal_mesh_revalidation_20261007.md`
+
+### Frozen result remains valid
+
+The original C7_4 FZ-A/FZ-B/FZ-C close-out remains PASS/CLOSED. No new mesh policy or calibration value has been accepted.
 
 ### Legacy retention state to preserve separately
 
@@ -125,35 +150,27 @@ However:
 
 ## 6. Next Immediate Task
 
-Run the **one-point runtime-equivalence benchmark** before bulk calibrated MEB revalidation.
+Recover and map the **exact executed parent deck for C7_4/FZ-C** before any new bulk MEB run.
 
-Nominal benchmark:
+First action:
 
-- `MEB = 36 nm`
-- `T = 300 K`
-- `Vd = 1.2 V`
-- `MeshLevel = 0`
+1. recover the executed SDE/SDevice/SVisual parent from the SWB/local archive used for the 2026-10-05 freeze;
+2. verify geometry, calibration coordinates, domain, Hurkx physics, bias, extraction, solver and MeshLevel definitions against the frozen documents;
+3. only then derive a mesh-only candidate if a new mesh is still needed.
 
-Compare a relaxed **PROD-STANDARD** continuation against the frozen **Rescue V2** reference.
+Validation order after parent recovery:
 
-Acceptance criteria:
-
-- `BiasReached = 1`
-- `Vth_CC_Reached = 1`
-- `|ΔVth| ≤ 1 mV`
-- `|ΔSSquick| ≤ 0.3 mV/dec`
-- `ΔId@Vg2 ≤ 2%`
-- runtime preferably at least 2× faster
-
-If PASS:
-
-use PROD-STANDARD for routine production DC.
-
-If FAIL:
-
-use Rescue V2 for that branch before considering any other numerical change.
+```text
+exact frozen parent reproduction
+→ nominal 36-nm same-parent mesh A/B
+→ 31/41 common-mesh endpoint check if replacement is still proposed
+→ freeze/abandon candidate mesh
+→ resume original P0 runtime-equivalence benchmark
+```
 
 Do **not** retune `GateCouplingScale`, `GateDepthBoost`, or `Qf_Int`.
+
+Do not use the local H1/L1/L2/L3 absolute GIDL values as production results until the lineage bridge is resolved.
 
 ---
 
@@ -208,6 +225,12 @@ Do not repeat a closed study merely because a new session started.
 ---
 
 ## 10. Read Next
+
+### For the current mesh/lineage pause
+
+- `docs/progress/b0_2d_paper_cal_mesh_revalidation_20261007.md`
+- `docs/research/b0_2d_production_revalidation_plan.md`
+- `docs/research/b0_2d_final_freeze_plan.md`
 
 ### For the immediate production rerun
 
