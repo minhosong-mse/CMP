@@ -50,6 +50,8 @@ Use `HANDOFF.md` to recover:
 
 After that, read **only the sources needed for the requested task**.
 
+Do not open literature originals or TCAD manuals merely because a new session started. They are task-triggered sources.
+
 Do not re-scan or reinterpret the full repository at the start of every session unless the requested task actually requires a repository-wide audit.
 
 ---
@@ -103,7 +105,28 @@ Primary authority is the original paper available in the ChatGPT CMP Project.
 
 ### Sentaurus syntax
 
-For syntax, command availability, solver options, model keywords, and version-specific behavior, use the official manual matching the installed Sentaurus version.
+The official manual matching the installed Sentaurus version is the final authority for syntax, command availability, solver options, model keywords, defaults, and version-specific behavior.
+
+However, the manual is an **on-demand technical verification source**, not a default onboarding source.
+
+Before opening a manual:
+
+1. identify the target lineage and frozen items;
+2. inspect the closest executed CMP deck;
+3. determine whether the requested change actually introduces a syntax / option / model / solver / mesh question.
+
+Open the relevant manual section when at least one of the following applies:
+
+- a new command, keyword, or option is being introduced;
+- an argument meaning or default behavior is unclear;
+- solver / continuation / transient / mesh behavior is being changed;
+- a physics model is being added or changed;
+- a syntax, convergence, or version-compatibility problem must be diagnosed;
+- the closest executed parent does not provide an equivalent implementation pattern.
+
+Routine same-deck reruns, already validated parameter substitutions, CSV analysis, literature interpretation, presentation wording, and GitHub state maintenance do not require re-reading the manual.
+
+Use the Project Source `TCAD_MANUAL_INDEX.md` to route to the relevant manual section when manual verification is needed.
 
 Do not invent executable syntax when it is not verified in the relevant manual.
 
@@ -224,16 +247,19 @@ When a claim is important, check `CLAIM_EVIDENCE_MATRIX.md` and `MODEL_SCOPE.md`
 
 ## 8. TCAD Code Modification Workflow
 
-When creating or modifying SDE / SDevice / SWB-related code:
+When creating or modifying SDE / SDevice / SMesh / SVisual / SWB-related code:
 
 1. identify the target lineage;
 2. identify the closest executed parent deck;
 3. check relevant frozen parameters / decisions;
-4. verify the required syntax in the official manual for the installed version;
-5. make the minimum necessary change;
-6. distinguish numerical-solver changes from physical-model changes;
-7. preserve provenance;
-8. do not pre-write a scientific conclusion before execution results exist.
+4. determine whether a **manual verification trigger** exists;
+5. if triggered, use `TCAD_MANUAL_INDEX.md` and verify only the relevant section of the official manual for the installed version;
+6. make the minimum necessary change;
+7. distinguish numerical-solver changes from physical-model changes;
+8. preserve provenance;
+9. do not pre-write a scientific conclusion before execution results exist.
+
+A close executed parent is the first implementation reference. The manual is used when the requested change needs technical verification, not automatically for every routine code-associated task.
 
 Do not retroactively rewrite a completed historical Run deck simply to match a later method.
 
@@ -339,14 +365,22 @@ Suggested statuses:
 
 ## 12. Session End Rule
 
-When the user asks to close a research session and synchronize GitHub:
+When the user asks to close a research session and synchronize GitHub, first classify the stopping state as **completed**, **paused**, **failed**, or **provisional**.
+
+Then:
 
 1. verify what was actually executed and what result was obtained;
 2. update necessary code / data / evidence / progress documents first;
-3. record a new scientific decision in the relevant decision/freeze document when necessary;
-4. update `HANDOFF.md` to the new current state;
+3. record a new scientific decision in the relevant decision/freeze document only when the work actually changes a scientific decision;
+4. update `HANDOFF.md` when the current state, blocker, or next action changed;
 5. update `PROJECT_TIMELINE.md` only if a major research transition occurred;
 6. commit changes in logical units;
-7. leave the next immediate task unambiguous in `HANDOFF.md`.
+7. confirm that the final `HANDOFF.md` next immediate task is the real first action for the next session.
+
+If the work stopped midway, record exactly what completed, what remains, where it paused/failed, and the next first action.
+
+Do not mark provisional or incomplete work as completed/frozen.
 
 Do not update `PROJECT_TIMELINE.md` merely because a session ended.
+
+Routine literature indexing, source housekeeping, formatting cleanup, or an ordinary rerun does not by itself change the research stage.
