@@ -1,0 +1,58 @@
+name: Temporary REF02 PDF import
+
+on:
+  push:
+    paths:
+      - '.github/workflows/import-ref02.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  import-ref02:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Download exact published REF02 PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="docs/literature/source/REF02_park_2024_dwf_bcat.pdf"
+          expected="2a0cb7bf20ea97458e89067c10ecc0d0a081bfab4d92047eecc1881e59a459f1"
+          mkdir -p "$(dirname "$out")"
+          ok=0
+          urls=(
+            "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=10453579&ref="
+            "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?arnumber=10453579"
+          )
+          for url in "${urls[@]}"; do
+            rm -f "$out"
+            if curl -fL --retry 2 --retry-delay 2 -A "Mozilla/5.0" "$url" -o "$out"; then
+              actual="$(sha256sum "$out" | awk '{print $1}')"
+              echo "candidate sha256=$actual"
+              if [ "$actual" = "$expected" ]; then
+                ok=1
+                break
+              fi
+            fi
+          done
+          if [ "$ok" != "1" ]; then
+            echo "Exact uploaded PDF could not be reproduced from the official download endpoint."
+            exit 1
+          fi
+          head -c 4 "$out" | grep -q '%PDF'
+
+      - name: Commit PDF and remove temporary workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/literature/source/REF02_park_2024_dwf_bcat.pdf
+          git rm .github/workflows/import-ref02.yml
+          git commit -m "docs(literature): archive REF02 Park 2024 PDF"
+          git push origin HEAD:main
