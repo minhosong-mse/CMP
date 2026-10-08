@@ -29,7 +29,8 @@
 | 2026-09-22 | Post-Turn-02 research hierarchy formalized | Completed | Project-wide | Mainline was organized as single-WF MEB range → temperature robustness → DWFG transferability → selected-point 3D validation; 3.0 V WL requirement retained as an unresolved write-transfer guardrail | `docs/research/post_turn02_validation_roadmap.md`; `docs/FEEDBACK_LOG.md` | Preserved MEB as the central variable while defining downstream validation axes |
 | 2026-10-04~05 | Literature-grounded 2D baseline reconstruction and reduced-order calibration | Completed | `B0-2D-PAPER-CAL` | Faithful paper-explicit 2D reconstruction showed substantial absolute electrical mismatch; after numerical/physical sensitivity checks, reduced-order calibration coordinates were introduced and C6/C7 were executed | `docs/research/b0_2d_baseline_reconstruction_calibration.md` | Created a new paper-grounded 2D lineage without rewriting Legacy evidence |
 | 2026-10-05 | C7_4 final baseline freeze | Completed | `B0-2D-PAPER-CAL` | `C7_4 / B_QF_HALF` selected; FZ-A/B/C validation passed; calibration knobs frozen; C8 micro-fitting closed | `docs/research/b0_2d_final_freeze_plan.md`; `docs/RUN_SHEET.md` | Closed calibration and authorized production revalidation |
-| 2026-10-05 onward | Calibrated production revalidation handoff | In Progress / next execution stage | `B0-2D-PAPER-CAL` | Runtime-equivalence benchmark is the immediate gate before 31/36/41 nm calibrated DC/GIDL revalidation and later retention translation | `docs/research/b0_2d_production_revalidation_plan.md`; `HANDOFF.md` | Rebuild the main MEB/temperature/retention evidence on the frozen PAPER-CAL baseline |
+| 2026-10-05 onward | Calibrated production revalidation handoff | Historical planning / bridge still open | `B0-2D-PAPER-CAL` | Runtime-equivalence benchmark is the immediate gate before 31/36/41 nm calibrated DC/GIDL revalidation and later retention translation | `docs/research/b0_2d_production_revalidation_plan.md`; `HANDOFF.md` | Rebuild the main MEB/temperature/retention evidence on the frozen PAPER-CAL baseline |
+| 2026-10-08 | New 300 K 15-point MEB Atlas + signed BTBT-ON/OFF/2D integration audit | Completed for within-branch data; lineage bridge open | `B0-2D-PAPER-CAL` post-freeze MeshLevel-2 branch | 15-point DC/Cgd/GIDL/spatial and OFF control were completed, all 1,036 independent checks passed, the signed ON−OFF current matched q∫BTBT to ≤0.62%, and shallow residual-current dominance was diagnosed; exact 2026-10-05 FZ-C parent identity remains unresolved | `data/paper_cal/atlas_300k_20261008/`; `docs/progress/b0_2d_paper_cal_meb_atlas_300k_20261008.md` | Preserve a validated internal atlas without asserting mesh-only identity; perform parent-lineage audit before promoting temperature/1T1C claims |
 
 ---
 
@@ -75,13 +76,11 @@ They must not be relabeled as PAPER-CAL results.
 ### Active
 
 ```text
-P0 runtime-equivalence benchmark
-→ P1 31/36/41 @300 K calibrated DC + GIDL
-→ P2 mechanism extraction
-→ P3 233/300/340/380 K calibrated GIDL
-→ P4 temperature DC guardrails as needed
-→ P5 GIDL → 1T1C retention
-→ P6 effective MEB design range
+300 K 15-point MEB Atlas → DATA-QC COMPLETE (post-freeze mesh branch)
+→ exact 2026-10-05 FZ-C parent/deck lineage bridge or explicitly approved separate-branch status
+→ selected 233/300/340/380 K transistor-level testing
+→ new PAPER-CAL 1T1C Write/Hold/Read + retention-metric verification
+→ effective MEB range, if cell and DC constraints justify it
 ```
 
 ### Planned downstream validation
