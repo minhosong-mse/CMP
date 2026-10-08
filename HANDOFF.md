@@ -77,6 +77,8 @@ At 300 K and GIDL bias `Vd=1.2,Vg=-0.7`:
 
 **Next first task:** decide the **exact-parent/lineage bridge** to the 2026-10-05 FZ-C freeze before promoting the new 15-point atlas as a fully controlled physical-parameter/mesh-only production validation.
 
+**Downstream study-design roadmap (approved direction, not numeric freeze):** A+B 1T1C Retention evaluation has been approved as the research framework — A: common 1.0→0.8 V initial-state retention; B: actual common-pulse Write→Hold→Read. The provisional 2D-to-cell handoff gates, measurement roles, and unresolved circuit/bias conditions are recorded in [`docs/research/MEB_2D_TO_1T1C_VALIDATION_ROADMAP_PROVISIONAL.md`](docs/research/MEB_2D_TO_1T1C_VALIDATION_ROADMAP_PROVISIONAL.md). This **does not supersede G0 exact-parent lineage verification** or freeze a new write/read/retention threshold.
+
 1. Recover / map the executed C7_4/FZ-C SDE, SDevice, SVisual, extracted nominal DC/GIDL, and compare with current SDE/physics/geometry/bias under a documented controlled bridge.
 2. If an exact bridge is unavailable, make an **explicit user decision** whether to proceed with this self-consistent post-freeze numerical branch as a **separately labeled** working atlas. Do not quietly retroactively re-freeze the physical calibration.
 3. The current atlas already has enough 300 K DC/Cgd/GIDL/spatial/ON-OFF data; do **not** rerun this entire suite by default.
