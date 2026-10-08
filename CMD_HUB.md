@@ -1,8 +1,47 @@
 # CMP TCAD CMD / Parameter Hub
 
-> Run별 SDE / SDevice command와 Sentaurus Workbench parameter를 빠르게 확인하기 위한 실행 인덱스입니다.  
-> 연구 결과와 해석은 `README.md` 및 `docs/progress/`에 유지하고, 이 문서는 실제 실행 코드와 SWB split/provenance만 정리합니다.  
-> 전체 연구 parameter의 출처·상태·Fixed/Split 근거는 [`docs/research/CMP_MASTER_PARAMETER_TABLE.md`](docs/research/CMP_MASTER_PARAMETER_TABLE.md)를 참고합니다.
+> **Current 2D research branch:** `B0-2D-PAPER-CAL / C7_4 / B_QF_HALF`; post-freeze 300 K MEB Atlas (working production MeshLevel 2).  
+> **Legacy history:** 기존 `B0-2D-Legacy / NonlocalPath` Run 0–7 인덱스는 아래에 내용 변경 없이 보존합니다.  
+> **Research status:** [HANDOFF](HANDOFF.md) · [PROJECT_TIMELINE](PROJECT_TIMELINE.md) · [Atlas Evidence](docs/progress/b0_2d_paper_cal_meb_atlas_300k_20261008.md)
+
+## 1. Current 2D Baseline SDE — PAPER-CAL 300 K Atlas
+
+**[검토 완료 · 주석 정리 SDE CMD](code/sde/paper_cal/atlas_300k/CMP_B0_2D_PAPER_CAL_MEB_ATLAS_SDE.cmd)**
+
+| Item | Implemented condition |
+|---|---|
+| Model lineage | `B0-2D-PAPER-CAL` reduced-order calibration, C7_4 / B_QF_HALF |
+| SWB split | `MEBDepth = 31/33/36/39/41/42/43/44/45/46/47/48/49/50/51 nm` |
+| SDE fixed | `MeshLevel = 2`, `GateCouplingScale = 2.300`, `GateDepthBoost = 0.025 um` |
+| SDevice controls | `Qf_Int = 2.55e12 cm^-2`, Gate WF = 4.8 eV |
+| Geometry / doping | Rounded buried W gate & SiO2, Gaussian source/drain |
+| Mesh | Global + interface + compact S/D shoulder + GIDL Outer/Mid/Core |
+
+- 위 SDE는 대화에서 검토·승인한 **주석 정리본**입니다. 실행 구문, 조건문, 메시 수치 및 QA 출력은 수정하지 않았습니다.
+- **Provenance gate OPEN:** `2026-10-05 FZ-C`에서 실행한 정확한 parent SDE/SDevice/SVisual과 현재 Atlas 작업 계열의 mesh-only 동일성은 검증되지 않았습니다. SDE를 기록한 것이 곧 계보 검증 완료를 의미하지 않습니다.
+- 300 K Atlas의 15-point DC/Cgd/GIDL/spatial 분석 및 QC는 **동일 작업 계열 내부에서 완료**. PAPER-CAL 온도·1T1C Retention과 최종 MEB 설계 범위는 아직 미완료입니다.
+
+## 2. 2D PAPER-CAL Calibration / Validation Stages
+
+아래 표는 **단계별 검증 흐름과 관련 기록**입니다. 원본 CMD 파일들은 이전 연구 대화에서 식별했으나, 현재 소스 파일 접근 장애 때문에 **원본 주석 보존을 검증한 GitHub 등록은 아직 완료하지 못했습니다.** 따라서 등록되지 않은 CMD로 연결하는 링크는 만들지 않았습니다.
+
+| Stage | Verification purpose | Source of record |
+|---|---|---|
+| C5 — Global DOE | 2D reduced-order calibration 후보 탐색 | [Baseline Calibration](docs/research/b0_2d_baseline_reconstruction_calibration.md) |
+| C6 — Local DOE | 128-case local calibration | [Baseline Calibration](docs/research/b0_2d_baseline_reconstruction_calibration.md) |
+| C7 — Candidate confirmation | C7_4 / B_QF_HALF 결정 | [Baseline Calibration](docs/research/b0_2d_baseline_reconstruction_calibration.md) |
+| FZ-A / FZ-B / FZ-C | Solver path, DC mesh, GIDL·BTBT·local-E freeze validation | [Freeze Plan](docs/research/b0_2d_final_freeze_plan.md) |
+| Post-freeze mesh revalidation | NEW-MESH v1, L2/L3 comparison; exact-parent bridge OPEN | [Mesh Revalidation](docs/progress/b0_2d_paper_cal_mesh_revalidation_20261007.md) |
+| H1–H1.5 historical debug | Local mesh debugging, **not validated production lineage** | [Mesh Debug Checkpoint](docs/progress/b0_2d_paper_cal_mesh_revalidation_20261007.md) |
+| 300 K Atlas | DC005/DC12, 1 MHz Cgd, Hurkx ON/OFF, spatial BTBT, signed terminal extraction | [Atlas Evidence](docs/progress/b0_2d_paper_cal_meb_atlas_300k_20261008.md) |
+
+**Pending original-comment CMD archive:** C5/C6/C7 SDE·SDevice·SVisual; C7_4 FZ-A/B/C decks; NEW-MESH Level-2/3 and H1 historical debugging; Atlas DC005/DC12/Cgd/GIDL ON/OFF SDevice·SVisual, corrected Cgd extractor and P2 v3. These files must be read in full and added **without deleting comments**; do not recreate their contents from descriptions. The explicitly unexecuted `CMP_MANUAL_OPT_MESH_SDE_v3.cmd` is **not** an executed validation source.
+
+---
+
+## 3. Historical B0-2D-Legacy — Original Run 0–7 CMD Hub
+
+> 아래 본문은 이전 `CMD_HUB.md`의 Run 0–7 자료를 그대로 유지한 역사적 인덱스입니다. Run 7 Legacy 1T1C feasibility를 현재 PAPER-CAL의 Retention 검증으로 해석하지 않습니다.
 
 ## Run Index
 
