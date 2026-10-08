@@ -1,0 +1,28 @@
+{
+  "research_lineage": "B0-2D-PAPER-CAL / C7_4 / B_QF_HALF",
+  "mesh": "MeshLevel 2 (production)",
+  "temperature_K": 300,
+  "MEB_nm": [
+    31,
+    33,
+    36,
+    39,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "data_source": "read-only copy of original SVisual one-row CSV files",
+  "source_root": "REDACTED_PUBLIC_EXPORT",
+  "collect_time_UTC": "2026-10-08T07:25:11.866695+00:00",
+  "QC_note": "PASS means extraction/file sanity only; NOT full scientific validation.",
+  "control": "BTBT ON Hurkx vs BTBT OFF, same GIDL bias",
+  "source_files_recorded": 195
+}

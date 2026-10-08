@@ -1,0 +1,10 @@
+ZIP sha256: 7707a2ed1375a0fa193c3bb94bce9e55ecbc41e1aa2eb0f2fafa7c7d09a401ea
+Input member count: 201
+Input original CSV: 90 branch summaries + 105 curves (all preserved in uploaded ZIP)
+Independent test count: 1036
+All independent tests: PASS
+Maximum independent master/collector relative deviation: 2.1071837636570335e-14
+Largest absolute ΔI/qG error: 0.6193391260330195%
+Largest Cgd reciprocity error: 0.00180345369613%
+Largest KCL relative error: 4.52512238385e-12
+Claim caveats: EXACT FZ-C deck bridge outstanding, 2D/3D equivalence not shown, 1T1C PAPER-CAL not executed.
