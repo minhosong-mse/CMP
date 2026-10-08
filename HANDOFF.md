@@ -2,8 +2,8 @@
 
 > Canonical session handoff. Read after `AGENTS.md`. Current research authority: live GitHub main + linked underlying evidence.
 
-**Last updated:** 2026-10-08  
-**Session state:** **300 K Atlas DATA-COMPLETE / QC-VALIDATED; exact FZ-C parent lineage bridge OPEN**.
+**Last updated:** 2026-10-09  
+**Session state:** **300 K Atlas QC-VALIDATED; G0 executed-parent recovered / cross-mesh equivalence NOT DEMONSTRATED; 15-MEB × 3-new-temperature user-reported SWB runs / EVIDENCE RETURN PENDING**.
 
 ## 1. Current research objective and lineage
 
@@ -22,7 +22,7 @@ MEB depth → project-internal Cgd / electrostatic redistribution
 - **Physical baseline still frozen:** `B0-2D-PAPER-CAL = C7_4 / B_QF_HALF`.
 - Frozen calibration inputs: `GateCouplingScale=2.300`, `GateDepthBoost=25 nm`, `Qf_Int=2.55e12 cm^-2`, `WF=4.8 eV`, nominal 36 nm, reference 300 K.
 - **New numerical branch:** post-freeze 2D MEB atlas, **MeshLevel 2 working production**; MeshLevel 3 convergence reference. No physics retuning.
-- **Unresolved:** the exact 2026-10-05 executed FZ-C parent deck has not been canonically recovered/bridged to the new SDE. Accordingly, do **not** call the atlas a proven mesh-only restatement of frozen C7_4, despite coherent within-branch data.
+- **2026-10-08 G0 update:** exact FZ-C SWB parent CMD, logs/CSV and original n14 TDR were recovered; nominal 36-nm static physical/solver association and TDR spatial comparisons were completed. FZ-C↔Atlas numerical interchangeability was NOT demonstrated (+86.86% Atlas total drain current, -64.64% Atlas integrated BTBT). User explicitly chose to continue the post-freeze Atlas L2 as a **separately labeled within-branch research model**, without FZ-C equality/recalibration claims. Read docs/evidence/paper_cal_g0_parent_spatial_bridge_20261008.md.
 - Do not mix this branch's absolute currents with `B0-2D-Legacy / NonlocalPath`, old FZ-C, or `3D-Sun-B0` without an explicit bridge.
 
 ## 2. Current completed work (2026-10-08)
@@ -71,21 +71,21 @@ At 300 K and GIDL bias `Vd=1.2,Vg=-0.7`:
 - Shallow total leakage is predominantly **BTBT-OFF residual drain–substrate current**; residual microscopic mechanism remains **unresolved**. Do not call all GIDL-condition terminal current BTBT current.
 - Common fixed cut under-samples shallow hotspots (31/33/36 nm); use whole-Si BTBT area/integral for comparisons across the full 15 points.
 - `GateTop≈Jdepth=48 nm` is a **model structural boundary**; there is no sharp electrical plateau/knee at 48 from this atlas. The 51-nm endpoint is **not** a final optimum.
-- No current-branch temperature/1T1C retention validation yet.
+- No independently validated current-branch temperature dataset or PAPER-CAL 1T1C retention validation yet. New-temperature SWB runs are **user-reported**, not QC verified.
 
-## 4. Active gates and next immediate actions
+## 4. Active stage and NEXT FIRST ACTION — 2026-10-09
 
-**Next first task:** decide the **exact-parent/lineage bridge** to the 2026-10-05 FZ-C freeze before promoting the new 15-point atlas as a fully controlled physical-parameter/mesh-only production validation.
+**Stage:** 15-MEB × 3-new-temperature Atlas SWB execution is **USER-REPORTED**, not yet evidence-validated. Source CMD preparation and offline preflight completed. Session is **PAUSED AWAITING DATA**, not a numerical failure.
 
-**Downstream study-design roadmap (approved direction, not numeric freeze):** A+B 1T1C Retention evaluation has been approved as the research framework — A: common 1.0→0.8 V initial-state retention; B: actual common-pulse Write→Hold→Read. The provisional 2D-to-cell handoff gates, measurement roles, and unresolved circuit/bias conditions are recorded in [`docs/research/MEB_2D_TO_1T1C_VALIDATION_ROADMAP_PROVISIONAL.md`](docs/research/MEB_2D_TO_1T1C_VALIDATION_ROADMAP_PROVISIONAL.md). This **does not supersede G0 exact-parent lineage verification** or freeze a new write/read/retention threshold.
+**Next FIRST ACTION:** collect user-run temperature SWB evidence (CSV, actual pp*_des.cmd, SDE CMD, logs, project mapping) into ONE indexed ZIP using the read-only CMP_collect_TDEP_45_all_branches.py already supplied to the user. Request exact SWB project folder(s), run collector, upload CMP_TDEP_45_EVIDENCE.zip. **Do not dispatch new TCAD simulations first.**
 
-1. Recover / map the executed C7_4/FZ-C SDE, SDevice, SVisual, extracted nominal DC/GIDL, and compare with current SDE/physics/geometry/bias under a documented controlled bridge.
-2. If an exact bridge is unavailable, make an **explicit user decision** whether to proceed with this self-consistent post-freeze numerical branch as a **separately labeled** working atlas. Do not quietly retroactively re-freeze the physical calibration.
-3. The current atlas already has enough 300 K DC/Cgd/GIDL/spatial/ON-OFF data; do **not** rerun this entire suite by default.
-4. After lineage gate: plan selected temperature series (`233/300/340/380 K` only as justified by the active protocol), then PAPER-CAL 1T1C Write/Hold/Read and validated retention metric. Legacy Run-7 cell results are historical only.
-5. Optional 0.5/0.1 nm sweep near 48 nm is **conditional on observed evidence / design question**, not automatic.
-
-No new scientific optimum/final retention claim is frozen here.
+- New matrix: 15 MEB [31,33,36,39,41,42,43,44,45,46,47,48,49,50,51] nm × [233,340,380] K = **45 new (MEB,T) cases**. User reports six SVisual output branches attempted for all 45 combinations (five SDevice branches: DC005/DC12/CGD/GIDL_ON/GIDL_OFF; ON has terminal+spatial SVisual siblings). **Expected** 225 device runs and 270 visual extractions, **verified completed** count remains UNKNOWN until logs inspected.
+- 300 K already QC-validated across all 15 MEB; reuse unchanged. Final target = **60 (MEB,T) rows**.
+- SWB parameters: SDE MEBDepth = 0.031/0.033/0.036/0.039/0.041/0.042/0.043/0.044/0.045/0.046/0.047/0.048/0.049/0.050/0.051 (um); SDevice Temp_K = 233/340/380 (K). SDE Atlas MeshLevel 2; frozen GCS=2.300, GateDepthBoost=0.025 um, Qf_Int=2.55e12 cm^-2, WF=4.8 eV. Temperature is prescribed isothermal; do not retune physics.
+- After upload, verify correct MEB↔Temp↔node mapping, executable temperature/geometry preprocessing, completed solver and endpoint flags, current sign/KCL, AC reciprocity, DC metrics, ON/OFF vs integrated BTBT, spatial hotspot/E/20% area and missing records. Distinguish terminal total drain current from BTBT-only generation.
+- Build 45-row audited temperature result, merge with existing 15 300 K rows, plot 36-nm temperature dependencies first then MEB-vs-temperature, investigate anomalies, and only then decide narrow follow-up numerical runs if needed. No blanket FZ-C re-comparison or full 300 K rerun.
+- User-approved downstream A+B PAPER-CAL 1T1C framework remains **PROVISIONAL**; no retention gain/refresh/effective optimum is proven.
+- **Detailed checkpoint and commands:** docs/progress/paper_cal_temperature_atlas_15x4_dispatch_20261009.md. **G0 audit:** docs/evidence/paper_cal_g0_parent_spatial_bridge_20261008.md.
 
 ## 5. Do not reopen by default
 
@@ -101,12 +101,13 @@ No new scientific optimum/final retention claim is frozen here.
 ## 6. Read next
 
 1. `AGENTS.md` then this file.
-2. New `docs/progress/b0_2d_paper_cal_meb_atlas_300k_20261008.md` and validated CSV plus source ZIP/QC.
-3. Existing authoritative numerical-lineage concerns:
+2. **Resume first:** `docs/progress/paper_cal_temperature_atlas_15x4_dispatch_20261009.md`, then `docs/evidence/paper_cal_g0_parent_spatial_bridge_20261008.md`.
+3. `docs/progress/b0_2d_paper_cal_meb_atlas_300k_20261008.md` and validated CSV plus source ZIP/QC.
+4. Existing authoritative numerical-lineage concerns:
    - `docs/progress/b0_2d_paper_cal_mesh_revalidation_20261007.md`
    - `docs/research/b0_2d_production_revalidation_plan.md`
    - `docs/research/b0_2d_final_freeze_plan.md`
-4. `docs/MODEL_SCOPE.md`, `docs/research/CLAIM_EVIDENCE_MATRIX.md` before upgrading claims.
-5. Consult manual routing index and official T-2022.03 section **only** for a triggered syntax/solver/physics question.
+5. `docs/MODEL_SCOPE.md`, `docs/research/CLAIM_EVIDENCE_MATRIX.md` before upgrading claims.
+6. Consult manual routing index and official T-2022.03 section **only** for a triggered syntax/solver/physics question.
 
-**Session close-out:** DATA-COMPLETED / ANALYSIS PROVISIONAL on controlled FZ-C identity. First next action is provenance bridge, not a fresh MEB scan.
+**Session close-out (2026-10-09):** PAUSED / awaiting evidence from user-reported 45 MEB×T executions. First next action: collect and inspect actual SWB result ZIP, not FZ-C recalibration or new simulation.
