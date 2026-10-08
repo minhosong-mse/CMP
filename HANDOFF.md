@@ -1,343 +1,110 @@
 # CMP Research Handoff
 
-> Canonical session-handoff document.
->
-> Read this after `AGENTS.md` at the start of a new CMP research session.
-> Keep this file focused on the current state rather than accumulating full history.
+> Canonical session handoff. Read after `AGENTS.md`. Current research authority: live GitHub main + linked underlying evidence.
 
-**Last updated:** 2026-10-08
+**Last updated:** 2026-10-08  
+**Session state:** **300 K Atlas DATA-COMPLETE / QC-VALIDATED; exact FZ-C parent lineage bridge OPEN**.
 
-## 1. Canonical Research Topic
+## 1. Current research objective and lineage
 
 **20 nm급 BCAT DRAM에서 MEB 깊이에 따른 GIDL–Retention 전달 특성 및 온도 의존적 유효 설계 범위 도출**
 
-Main design variable: **MEB depth**
-
-Current main chain:
+Current causal-evidence sequence to test (not assume):
 
 ```text
-MEB depth
-→ gate–drain electrostatics / project-internal Cgd coupling
-→ drain-side spatial E-field / BTBT distribution
-→ terminal GIDL
-→ temperature dependence
-→ 1T1C Write / Hold / Read
-→ retention translation
-→ effective MEB design range
+MEB depth → project-internal Cgd / electrostatic redistribution
+→ drain-side E + spatial BTBT → total drain leakage at GIDL bias
+→ ON/OFF Hurkx sensitivity → temperature
+→ PAPER-CAL 1T1C Write/Hold/Read → retention translation
+→ effective MEB range
 ```
 
----
+- **Physical baseline still frozen:** `B0-2D-PAPER-CAL = C7_4 / B_QF_HALF`.
+- Frozen calibration inputs: `GateCouplingScale=2.300`, `GateDepthBoost=25 nm`, `Qf_Int=2.55e12 cm^-2`, `WF=4.8 eV`, nominal 36 nm, reference 300 K.
+- **New numerical branch:** post-freeze 2D MEB atlas, **MeshLevel 2 working production**; MeshLevel 3 convergence reference. No physics retuning.
+- **Unresolved:** the exact 2026-10-05 executed FZ-C parent deck has not been canonically recovered/bridged to the new SDE. Accordingly, do **not** call the atlas a proven mesh-only restatement of frozen C7_4, despite coherent within-branch data.
+- Do not mix this branch's absolute currents with `B0-2D-Legacy / NonlocalPath`, old FZ-C, or `3D-Sun-B0` without an explicit bridge.
 
-## 2. Current Main Lineage
+## 2. Current completed work (2026-10-08)
 
-### Active production lineage
-
-`B0-2D-PAPER-CAL`
-
-Frozen physical / calibration baseline:
-
-`C7_4 / B_QF_HALF`
-
-Frozen calibration coordinates:
-
-- `GateCouplingScale = 2.300`
-- `GateDepthBoost = 25 nm`
-- `Qf_Int = 2.55e12 cm^-2`
-- nominal `MEB / GateTop = 36 nm`
-- calibration reference temperature: `300 K`
-- PAPER-CAL BTBT lineage: `Hurkx`
-
-These physical calibration coordinates remain locked.
-
-### Historical / supporting lineages
-
-- `B0-2D-Legacy` — historical R0–R7 evidence; preserve, do not convert absolute values into PAPER-CAL results.
-- `3D-Sun-B0` — literature-consistent selected-point 3D fidelity anchor.
-- Legacy main GIDL used `NonlocalPath`; active PAPER-CAL production uses `Hurkx`.
-
-Do not mix absolute values across those lineages without a controlled bridge.
-
----
-
-## 3. Current Stage
-
-**300 K PAPER-CAL MEB Atlas — IN PROGRESS**
-
-The previous mesh-debug loop has been closed for current production work.
-
-A new common mesh family was executed and compared at 31 / 36 / 41 nm. The working production choice is:
-
-- **MeshLevel 2 = production mesh**
-- **MeshLevel 3 = finer convergence/reference mesh**
-- no Level 4 planned
-
-This mesh decision applies to the new 300 K MEB atlas. It does **not** retroactively rewrite the historical 2026-10-05 FZ-A/FZ-B/FZ-C freeze.
-
-The current 300 K atlas is intended to close the transistor-level evidence before temperature and PAPER-CAL 1T1C work.
-
----
-
-## 4. Last Completed Work
-
-### 4.1 New mesh revalidation / production choice
-
-The new mesh family uses:
-
-- moderate global mesh;
-- Si/SiO2 interface-following refinement;
-- compact source/drain shoulder refinement;
-- nested drain-side GIDL Outer / Mid / Core windows;
-- MEB-following local windows rather than one fixed hotspot box.
-
-Observed mesh sizes:
-
-- Level 2 example: about `15,279 elements / 7,384 points`
-- Level 3 example: about `18,333 elements / 8,869 points`
-- Level 3 therefore costs about **20% more elements** than Level 2.
-
-Level 2 → Level 3 numerical sensitivity:
-
-| MEB | ΔGIDL | ΔBTBTmax | ΔE@BTBT | hotspot shift |
-|---:|---:|---:|---:|---:|
-| 31 nm | about -2.44% | about +3.56% | about +0.52% | about 0.29 nm |
-| 36 nm | about -0.65% | about -1.20% | about -0.13% | 0 nm |
-| 41 nm | about -0.52% | about -1.20% | about -0.22% | 0 nm |
-
-Interpretation:
-
-- 36 / 41 nm are clearly stable between Level 2 and Level 3.
-- 31 nm terminal GIDL exceeds the earlier internal 2% guardrail slightly, but spatial metrics are stable.
-- The extra ~20% element cost of Level 3 gives only small changes in the quantities relevant to the current MEB trend.
-- For the current study, Level 2 is accepted as the **working production mesh**, with Level 3 retained as convergence evidence.
-
-### 4.2 300 K MEB range expanded
-
-The formal current sweep is:
+Full **15-point 300 K MEB Atlas** completed from user's TCAD runs:
 
 ```text
-31 / 33 / 36 / 39 /
-41 / 42 / 43 / 44 / 45 /
-46 / 47 / 48 / 49 / 50 / 51 nm
+MEB = 31 / 33 / 36 / 39 /
+      41 / 42 / 43 / 44 / 45 /
+      46 / 47 / 48 / 49 / 50 / 51 nm
 ```
 
-Total: **15 MEB points**
+- DC @ `Vd=0.05`, DC @ `Vd=1.20`, Cgd AC @ `Vd=1.2,Vg=-0.7,1 MHz, BTBT OFF`, GIDL-ON @ `Vd=1.2,Vg=-0.7,Hurkx`.
+- P2 spatial post-processing completed: `BTBTmax`, `E@BTBT`, hotspot, `∫BTBT`, 20%-active Si area, common fixed-cut `Y=0.252174 um` E/BTBT profiles and 20% width.
+- Additional diagnostic: BTBT-OFF controlled 15 points, plus signed terminal ON/OFF re-extractions and KCL checks.
+- `DC005` SVisual extractor originally misconfigured; corrected and confirmed `BiasReached=1, Vd=0.05`.
+- `Cgd` SVisual path corrected for actual `Cgd_AC_n*_ac_des.plt` output.
+- P2 SVisual cutline/Tcl bugs corrected in v3 and 15-point results returned.
 
-Reason:
+**Raw data ingestion/independent audit:**
 
-- preserve one shallow point below nominal;
-- retain nominal / nearby reference points;
-- resolve the deeper-MEB behavior densely;
-- map the `GateTop ≈ Jdepth = 48 nm` model-internal boundary at 1 nm resolution;
-- defer optional 0.5 nm / 0.1 nm refinement around the 48-nm neighborhood until the coarse atlas is analyzed.
+- 201 archived entries: **90 summary CSV + 105 curve CSV + collector QC/manifest/metadata**.
+- **1,036 independent checks passed** for coverage, checksum, endpoint, bias, KCL, AC reciprocity, ON/OFF versus spatial integral, and computed master consistency.
+- Public GitHub archive has only TCAD absolute-path metadata sanitized; all 195 numerical CSV byte sequences preserved.
+- GitHub evidence commit: `b40c63299917419e789ac41f2f87c637ff3ebcdb` (2026-10-08).
 
-Do not assume “deeper is always optimal.” The dense deep-MEB sweep is intended to identify plateau / knee / reversal / floor-sensitivity behavior.
+Evidence paths:
 
-### 4.3 Production simulation packages prepared
+- `data/paper_cal/atlas_300k_20261008/CMP_MEB_ATLAS_300K_EVIDENCE_PUBLIC.zip`
+- `data/paper_cal/atlas_300k_20261008/processed/MEB_300K_ATLAS_MASTER_VALIDATED.csv`
+- `data/paper_cal/atlas_300k_20261008/qc/`
+- `docs/progress/b0_2d_paper_cal_meb_atlas_300k_20261008.md`
+- `assets/images/paper_cal/atlas_300k/01..10.svg`
+- `code/scripts/analysis/validate_paper_cal_meb_atlas_300k.py`
 
-A common production SDE was prepared with:
+## 3. Results established *within this numerical branch*
 
-- `MEBDepth` as the only SWB sweep parameter;
-- `MeshLevel = 2` hard-coded;
-- frozen PAPER-CAL geometry/calibration coordinates.
+At 300 K and GIDL bias `Vd=1.2,Vg=-0.7`:
 
-Four current 300 K simulation branches:
+- Terminal **total drain leakage**, not pure BTBT current, decreases monotonically from 31→51 nm by **1,135.0×** (36→51 by **19.5×**).
+- Project-internal `|c(g,d)|` decreases **35.91%** (31→51); it is **not** calibrated production overlap `Cov` nor a proof of direct `Cgd→local-E→GIDL` causality.
+- DC: `Id@Vg1.2,Vd1.2` decreases **1.30%** and `Id@Vg2,Vd1.2` decreases **6.46%** (31→51); DIBL increases **0.459 mV/V**, `SSquick@Vd1.2` increases **0.069 mV/dec**.
+- BTBT integral and `E@BTBT` peak at **39 nm**, `BTBTmax` at **41 nm**, while total drain leakage continues decreasing.
+- Signed `Id(ON)-Id(OFF)` matches `q∫G_BTBT,dA` within **0.62% max** (31 nm; near-cancellation) and within approximately **0.01%** for 36–51 nm.
+- Hurkx-sensitive percentage: **31 nm 0.105%; 36 nm 16.94%; 39 nm 74.10%; 41 nm 91.19%; 48 nm 99.57%; 51 nm 99.81%**. It is a controlled ON/OFF sensitivity, not a separately proven microscopic contribution under arbitrary conditions.
+- Shallow total leakage is predominantly **BTBT-OFF residual drain–substrate current**; residual microscopic mechanism remains **unresolved**. Do not call all GIDL-condition terminal current BTBT current.
+- Common fixed cut under-samples shallow hotspots (31/33/36 nm); use whole-Si BTBT area/integral for comparisons across the full 15 points.
+- `GateTop≈Jdepth=48 nm` is a **model structural boundary**; there is no sharp electrical plateau/knee at 48 from this atlas. The 51-nm endpoint is **not** a final optimum.
+- No current-branch temperature/1T1C retention validation yet.
 
-1. **DC-low**
-   - `VD = 0.05 V`
-   - `VG = 0 → 1.2 V`
-   - outputs: Vth / SS / low-Vd current anchors
+## 4. Active gates and next immediate actions
 
-2. **DC-high**
-   - `VD = 1.20 V`
-   - `VG = 0 → 2.0 V`
-   - outputs: Vth / SS / Id samples / Ion-Ioff
-   - DIBL will be formed from DC-low + DC-high Vth
+**Next first task:** decide the **exact-parent/lineage bridge** to the 2026-10-05 FZ-C freeze before promoting the new 15-point atlas as a fully controlled physical-parameter/mesh-only production validation.
 
-3. **GIDL / spatial**
-   - `T = 300 K`
-   - `VD = 1.20 V`
-   - `VG = 0 → -0.70 V`
-   - `Hurkx`
-   - outputs: terminal GIDL, BTBTmax, Xhot, Yhot, E@BTBT
-   - TDR stores `ElectricField/Vector` and `Band2BandGeneration` for later P2 post-processing
+1. Recover / map the executed C7_4/FZ-C SDE, SDevice, SVisual, extracted nominal DC/GIDL, and compare with current SDE/physics/geometry/bias under a documented controlled bridge.
+2. If an exact bridge is unavailable, make an **explicit user decision** whether to proceed with this self-consistent post-freeze numerical branch as a **separately labeled** working atlas. Do not quietly retroactively re-freeze the physical calibration.
+3. The current atlas already has enough 300 K DC/Cgd/GIDL/spatial/ON-OFF data; do **not** rerun this entire suite by default.
+4. After lineage gate: plan selected temperature series (`233/300/340/380 K` only as justified by the active protocol), then PAPER-CAL 1T1C Write/Hold/Read and validated retention metric. Legacy Run-7 cell results are historical only.
+5. Optional 0.5/0.1 nm sweep near 48 nm is **conditional on observed evidence / design question**, not automatic.
 
-4. **Cgd / ACExtract**
-   - `T = 300 K`
-   - `VD = 1.20 V`
-   - `VG = -0.71 → -0.69 V`, center `-0.70 V`
-   - `f = 1 MHz`
-   - BTBT OFF by frozen Cgd protocol
-   - primary: `|c(g,d)|`
-   - cross-check: `|c(d,g)|`
-   - treat as a project-internal gate–drain small-signal coupling metric, not calibrated production-cell Cov
+No new scientific optimum/final retention claim is frozen here.
 
-### 4.4 Execution status at session close
+## 5. Do not reopen by default
 
-- **DC-low 15-point run:** launched by user; results pending
-- **DC-high 15-point run:** launched by user; results pending
-- **GIDL 15-point package:** prepared; execution/result return pending
-- **Cgd 15-point package:** prepared; execution/result return pending
+- C6/C7 physical calibration DOE or C8 fitting;
+- model retuning to make old and new GIDL match;
+- Hurkx→NonlocalPath replacement without a bridge;
+- MeshLevel 4 or global over-refinement;
+- historical FZ-C freeze rewritten as if newer mesh had been used then;
+- Legacy absolute-value/1T1C relabeling;
+- 3D production equivalence, physical retention/refresh or DWFG claims without execution;
+- `48 nm = final optimum`.
 
-No 300 K atlas conclusion has been frozen yet because the batch results have not been returned/analyzed.
+## 6. Read next
 
----
-
-## 5. Active / Blocked Work
-
-### Active work
-
-Wait for the 15-point 300 K batch results, then build one unified MEB master table.
-
-Required combined columns:
-
-- MEB
-- Vth @ 0.05 V
-- Vth @ 1.20 V
-- DIBL
-- SS
-- Ion / Ioff
-- terminal GIDL
-- Cgd raw metric
-- BTBTmax
-- Xhot / Yhot
-- E@BTBT
-
-Then add the P2 spatial metrics from the saved GIDL TDRs:
-
-- integrated BTBT / spatial BTBT measure;
-- 20%-criterion active width / area;
-- common fixed-cut E-field profile / integral.
-
-The current new PAPER-CAL result already shows that terminal GIDL can decrease while BTBT peak and E@BTBT increase, so peak-only interpretation is not sufficient.
-
-### Provenance / documentation gap
-
-The exact 2026-10-05 executed C7_4/FZ-C parent archive was not recovered into canonical GitHub during this session.
-
-Therefore:
-
-- do not rewrite the historical freeze as if the new mesh were the original FZ-C mesh;
-- preserve the historical final-freeze record;
-- record the new Level-2 mesh as a **new post-freeze production mesh branch** derived under the frozen PAPER-CAL calibration;
-- synchronize code/evidence/HANDOFF after the current atlas results are available.
-
-This is now a provenance/documentation gap rather than a reason to retune physical calibration.
-
----
-
-## 6. Next Immediate Task
-
-First action next session:
-
-1. collect the completed **DC-low / DC-high / GIDL / Cgd** 15-point outputs;
-2. verify all endpoint / bias / AC-point sanity flags;
-3. merge the four branches into a single 300 K MEB table;
-4. compute:
-   - DIBL;
-   - normalized GIDL and Cgd;
-   - local MEB-to-MEB slope / knee behavior;
-   - reciprocity error for Cgd;
-5. run SVisual post-processing on saved GIDL TDRs for:
-   - BTBT integral / distribution;
-   - 20% active width / area;
-   - common fixed-cut E profile / integral;
-6. analyze the 48-nm neighborhood and decide whether a later 0.5 nm or 0.1 nm local MEB sweep is actually justified.
-
-Only after the 300 K MEB atlas is closed:
-
-```text
-300 K MEB atlas
-→ selected temperature GIDL/DC validation
-→ PAPER-CAL 1T1C Write/Hold/Read
-→ MEB × temperature × retention
-→ effective MEB design range
-```
-
----
-
-## 7. Frozen / Working-Frozen Items
-
-Do not change without an explicit new decision:
-
-### Physical / calibration
-
-- `B0-2D-PAPER-CAL = C7_4 / B_QF_HALF`
-- `GateCouplingScale = 2.300`
-- `GateDepthBoost = 25 nm`
-- `Qf_Int = 2.55e12 cm^-2`
-- Gate WF = `4.8 eV`
-- active PAPER-CAL Hurkx lineage
-- calibration reference `300 K`
-
-### Numerical / protocol
-
-- **working production mesh = MeshLevel 2**
-- **fine reference = MeshLevel 3**
-- current 15-point MEB set above
-- GIDL: `VD=1.2 V`, `VG=-0.7 V`, Hurkx
-- Cgd: `VD=1.2 V`, `VG=-0.70 V`, `1 MHz`, BTBT OFF
-- Cgd primary metric = `|c(g,d)|`, cross-check = `|c(d,g)|`
-- global point `Emax` remains secondary; do not use it as the sole mechanism metric
-
----
-
-## 8. Do Not Reopen by Default
-
-Unless new evidence specifically requires it, do not reopen:
-
-- C6 / C7 calibration DOE
-- C8 micro-fitting
-- arbitrary physical Tox / WF / doping tuning
-- Hurkx ↔ NonlocalPath switching
-- Level 4 mesh refinement
-- full-device over-refinement for the sake of a lower numerical delta
-- Legacy absolute-value reuse in PAPER-CAL
-- 3D / DWFG / refresh claims before the active 2D PAPER-CAL chain is closed
-
----
-
-## 9. Active Guardrails
-
-- The new mesh decision is a **numerical production choice**, not a new physical calibration.
-- `GateCouplingScale`, `GateDepthBoost`, and `Qf_Int` retain reduced-order calibration meaning.
-- Do not call Cgd a directly calibrated physical Cov.
-- A single BTBT peak or E-field peak does not explain terminal GIDL by itself.
-- 48 nm is a model-internal `GateTop≈Jdepth` boundary, not automatically a process optimum.
-- The lowest terminal GIDL point is not automatically the final design optimum.
-- Transistor-level GIDL improvement does not yet establish retention improvement.
-- Legacy 1T1C results remain historical until PAPER-CAL 1T1C is executed.
-- Short-time Hold is not physical retention time.
-- Temperature and 1T1C are downstream of the current 300 K transistor-level atlas.
-
----
-
-## 10. Read Next
-
-At the next session start:
-
-1. `AGENTS.md`
-2. this `HANDOFF.md`
-3. returned 300 K atlas outputs / CSVs
-4. only if needed:
+1. `AGENTS.md` then this file.
+2. New `docs/progress/b0_2d_paper_cal_meb_atlas_300k_20261008.md` and validated CSV plus source ZIP/QC.
+3. Existing authoritative numerical-lineage concerns:
+   - `docs/progress/b0_2d_paper_cal_mesh_revalidation_20261007.md`
    - `docs/research/b0_2d_production_revalidation_plan.md`
    - `docs/research/b0_2d_final_freeze_plan.md`
-   - `docs/progress/b0_2d_paper_cal_mesh_revalidation_20261007.md`
-   - `docs/research/b0_2d_baseline_reconstruction_calibration.md`
-   - `docs/MODEL_SCOPE.md`
-   - `docs/research/CLAIM_EVIDENCE_MATRIX.md`
+4. `docs/MODEL_SCOPE.md`, `docs/research/CLAIM_EVIDENCE_MATRIX.md` before upgrading claims.
+5. Consult manual routing index and official T-2022.03 section **only** for a triggered syntax/solver/physics question.
 
-For syntax changes only, route through `TCAD_MANUAL_INDEX.md` to the matching T-2022.03 official manual section.
-
----
-
-## 11. Next-Session Start Hint
-
-```text
-Read AGENTS.md
-→ read HANDOFF.md
-→ ingest completed 15-point DC / GIDL / Cgd outputs
-→ build 300 K MEB master table
-→ close P1/P2 transistor-level mechanism
-→ decide whether 48-nm local refinement is needed
-→ then move to temperature
-```
+**Session close-out:** DATA-COMPLETED / ANALYSIS PROVISIONAL on controlled FZ-C identity. First next action is provenance bridge, not a fresh MEB scan.
