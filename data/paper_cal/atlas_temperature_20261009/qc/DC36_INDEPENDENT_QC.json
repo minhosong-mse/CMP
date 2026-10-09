@@ -1,0 +1,26 @@
+{
+  "source_zip": "CMP_DC36_RESULTS.zip",
+  "source_sha256": "e680122bcfca924bf60f7320efd39f685e2289bc8b89f963938ccdd5319b8262",
+  "zip_members": 47,
+  "individual_sha256_verified": 44,
+  "branches": ["DC005", "DC12"],
+  "new_temperatures_K": [233, 340, 380],
+  "MEB_nm": 36,
+  "sde_node": 8,
+  "device_node_by_temperature": {"233":9,"340":66,"380":96},
+  "svisual_node_by_temperature": {"233":10,"340":67,"380":97},
+  "curve_points_per_node":6107,
+  "original_summary_csvs":6,
+  "original_curve_csvs":6,
+  "QC": "PASS: SWB graph, pp device temperature, reduced execution-log endpoint, Vth log interpolation Icrit=5e-6, SSquick/SS1dec/SS2dec, currents and IonIoff independently recalculated from curves",
+  "gidl_cgd_source": "prior user-returned CMP_GIDL_CGD_RESULTS.tar.gz; its separate analysis is reused, not revalidated from scratch here",
+  "source_master_300K": "data/paper_cal/atlas_300k_20261008/processed/MEB_300K_ATLAS_MASTER_VALIDATED.csv",
+  "warnings": [
+    "Full SDevice logs were not included; bounded excerpts contain simulation finished",
+    "36nm 380K signed ON-OFF vs qIntegralBTBT discrepancy -4.390760233%",
+    "41nm 340K Cgd remains missing",
+    "other 14 MEB depths new temperature DC still pending",
+    "no mesh convergence or 1T1C retention established"
+  ],
+  "local_full_source_package_SHA256_NOT_COMMITTED": "e680122bcfca924bf60f7320efd39f685e2289bc8b89f963938ccdd5319b8262"
+}
