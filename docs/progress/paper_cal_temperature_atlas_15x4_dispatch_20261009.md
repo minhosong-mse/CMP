@@ -53,3 +53,10 @@ USER-REPORTED: 45 MEB-temperature combinations dispatched/completed across all s
 This step does not establish physical retention/refresh, absolute FZ-C numerical equivalence, a global optimum, or a robust process range. GIDL-condition total terminal current is not BTBT-only current. Common fixed Y-cut can miss shallow MEB hotspots; whole-Silicon BTBT is prioritized. Keep original FZ-A/B/C records and 300 K master unchanged. Do not modify calibration knobs or retune to match historical absolute leakage.
 
 Related: docs/evidence/paper_cal_g0_parent_spatial_bridge_20261008.md; docs/research/MEB_2D_TO_1T1C_VALIDATION_ROADMAP_PROVISIONAL.md.
+
+## 2026-10-09 36nm evidence-based update (supersedes earlier execution-only status for completed branches)
+
+- Actual GIDL ON terminal, OFF terminal and ON spatial CSVs are independently QC-reviewed for **45/45 new-temperature MEB cases each**. AC Cgd extracts for **44/45** cases, missing 41nm/340K as a SDevice numerical-failure result. These facts supersede the earlier 'only user-reported' statement for those branches; see standalone 2026-10-09 GIDL/Cgd analysis artifact. Five shallow/high-temperature ON−OFF-vs-qG relative discrepancies remain QC flags.
+- Actual **36nm new-temperature DC005/DC12** original summaries+curves (233/340/380 K, 6+6 CSVs) were subsequently ingested and curve-recomputed; all six PASS. Combined 233/300/340/380 K complete 36nm baseline is committed under `data/paper_cal/atlas_temperature_20261009/` with report `docs/progress/paper_cal_36nm_temperature_dc_qc_20261009.md`.
+- All 60 MEB×T slots retain GIDL/Cgd/spatial where measured, but **42 non-36nm new-temperature DC rows are still unverified/unfilled here**. Full 60-row partial CSV and large curve/plot evidence are preserved in local download bundle, not claimed committed to Git.
+- **Next immediate action:** collect other-depth DC005/DC12 completed original CSV/curves and pp CMD/log evidence in batches, then incrementally QC; do not globally retune or rerun due to one missing Cgd point.

@@ -3,7 +3,7 @@
 > Canonical session handoff. Read after `AGENTS.md`. Current research authority: live GitHub main + linked underlying evidence.
 
 **Last updated:** 2026-10-09  
-**Session state:** **300 K Atlas QC-VALIDATED; G0 executed-parent recovered / cross-mesh equivalence NOT DEMONSTRATED; 15-MEB × 3-new-temperature user-reported SWB runs / EVIDENCE RETURN PENDING**.
+**Session state:** **300 K Atlas QC VALIDATED; 45/45 new-T GIDL ON/OFF + spatial DATA QC REVIEWED; 44/45 new-T AC Cgd DATA QC REVIEWED; 36nm × four-temperature DC/GIDL/Cgd/spatial DATA-COMPLETE (new DC source curves QC PASS); remaining 14 new-temperature MEB DC PENDING**. FZ-C↔Atlas L2 mesh numeric equivalence NOT DEMONSTRATED.
 
 ## 1. Current research objective and lineage
 
@@ -25,7 +25,7 @@ MEB depth → project-internal Cgd / electrostatic redistribution
 - **2026-10-08 G0 update:** exact FZ-C SWB parent CMD, logs/CSV and original n14 TDR were recovered; nominal 36-nm static physical/solver association and TDR spatial comparisons were completed. FZ-C↔Atlas numerical interchangeability was NOT demonstrated (+86.86% Atlas total drain current, -64.64% Atlas integrated BTBT). User explicitly chose to continue the post-freeze Atlas L2 as a **separately labeled within-branch research model**, without FZ-C equality/recalibration claims. Read docs/evidence/paper_cal_g0_parent_spatial_bridge_20261008.md.
 - Do not mix this branch's absolute currents with `B0-2D-Legacy / NonlocalPath`, old FZ-C, or `3D-Sun-B0` without an explicit bridge.
 
-## 2. Current completed work (2026-10-08)
+## 2. Current completed work (2026-10-08, updated 2026-10-09)
 
 Full **15-point 300 K MEB Atlas** completed from user's TCAD runs:
 
@@ -41,6 +41,8 @@ MEB = 31 / 33 / 36 / 39 /
 - `DC005` SVisual extractor originally misconfigured; corrected and confirmed `BiasReached=1, Vd=0.05`.
 - `Cgd` SVisual path corrected for actual `Cgd_AC_n*_ac_des.plt` output.
 - P2 SVisual cutline/Tcl bugs corrected in v3 and 15-point results returned.
+
+**2026-10-09 update:** new-temperature 15-MEB GIDL ON/OFF/spatial 45×3 output branches and AC Cgd 44/45 extracted and independently reviewed; 41nm/340K Cgd is missing because the device did not converge. For nominal 36nm, DC005+DC12 at 233, 340, 380 K are newly source-curve QC-validated (six summary + six 6107-point Id-Vg curves, pp deck, SWB graph, bounded device-end log). Together with already validated 300 K this closes the **36nm × four-temperature electrical and spatial baseline**, not the full 15-depth DC thermal matrix. Source ZIP and full curve archive exist in local chat deliverable; six original DC summary CSV and 4-row integrated 36nm master are committed. Read `docs/progress/paper_cal_36nm_temperature_dc_qc_20261009.md` and `data/paper_cal/atlas_temperature_20261009/README.md`.
 
 **Raw data ingestion/independent audit:**
 
@@ -71,21 +73,22 @@ At 300 K and GIDL bias `Vd=1.2,Vg=-0.7`:
 - Shallow total leakage is predominantly **BTBT-OFF residual drain–substrate current**; residual microscopic mechanism remains **unresolved**. Do not call all GIDL-condition terminal current BTBT current.
 - Common fixed cut under-samples shallow hotspots (31/33/36 nm); use whole-Si BTBT area/integral for comparisons across the full 15 points.
 - `GateTop≈Jdepth=48 nm` is a **model structural boundary**; there is no sharp electrical plateau/knee at 48 from this atlas. The 51-nm endpoint is **not** a final optimum.
-- No independently validated current-branch temperature dataset or PAPER-CAL 1T1C retention validation yet. New-temperature SWB runs are **user-reported**, not QC verified.
+- New temperatures have independently QC-reviewed 45/45 terminal GIDL ON/OFF and spatial extracts, 44/45 Cgd extracts and, at 36nm only, validated six additional DC extractions from original curves. **No** PAPER-CAL 1T1C retention validation yet. Numerical/thermal mesh convergence NOT established.
 
 ## 4. Active stage and NEXT FIRST ACTION — 2026-10-09
 
-**Stage:** 15-MEB × 3-new-temperature Atlas SWB execution is **USER-REPORTED**, not yet evidence-validated. Source CMD preparation and offline preflight completed. Session is **PAUSED AWAITING DATA**, not a numerical failure.
+**Stage:** 36nm four-temperature Atlas DATA-COMPLETE / independent source-extraction QC PASS, while the **other 14 MEB depths at new temperatures remain DC IN-PROGRESS / not ingested**. New 45 GIDL ON/OFF/spatial branches and 44 of 45 AC Cgd branches have been previously independently QC-reviewed. Do NOT treat this as full 60-condition DC completed.
 
-**Next FIRST ACTION:** collect user-run temperature SWB evidence (CSV, actual pp*_des.cmd, SDE CMD, logs, project mapping) into ONE indexed ZIP using the read-only CMP_collect_TDEP_45_all_branches.py already supplied to the user. Request exact SWB project folder(s), run collector, upload CMP_TDEP_45_EVIDENCE.zip. **Do not dispatch new TCAD simulations first.**
+**NEXT FIRST ACTION: let ongoing DC005/DC12 runs for remaining 14 MEB depths finish; collect completed original CSV+Id–Vg curves, actual pp*_des.cmd, SWB gtree, and node logs in batches. QC each row and append to the existing 60-row PARTIAL table. Do not start a blanket new run or re-calibration.**
 
-- New matrix: 15 MEB [31,33,36,39,41,42,43,44,45,46,47,48,49,50,51] nm × [233,340,380] K = **45 new (MEB,T) cases**. User reports six SVisual output branches attempted for all 45 combinations (five SDevice branches: DC005/DC12/CGD/GIDL_ON/GIDL_OFF; ON has terminal+spatial SVisual siblings). **Expected** 225 device runs and 270 visual extractions, **verified completed** count remains UNKNOWN until logs inspected.
-- 300 K already QC-validated across all 15 MEB; reuse unchanged. Final target = **60 (MEB,T) rows**.
-- SWB parameters: SDE MEBDepth = 0.031/0.033/0.036/0.039/0.041/0.042/0.043/0.044/0.045/0.046/0.047/0.048/0.049/0.050/0.051 (um); SDevice Temp_K = 233/340/380 (K). SDE Atlas MeshLevel 2; frozen GCS=2.300, GateDepthBoost=0.025 um, Qf_Int=2.55e12 cm^-2, WF=4.8 eV. Temperature is prescribed isothermal; do not retune physics.
-- After upload, verify correct MEB↔Temp↔node mapping, executable temperature/geometry preprocessing, completed solver and endpoint flags, current sign/KCL, AC reciprocity, DC metrics, ON/OFF vs integrated BTBT, spatial hotspot/E/20% area and missing records. Distinguish terminal total drain current from BTBT-only generation.
-- Build 45-row audited temperature result, merge with existing 15 300 K rows, plot 36-nm temperature dependencies first then MEB-vs-temperature, investigate anomalies, and only then decide narrow follow-up numerical runs if needed. No blanket FZ-C re-comparison or full 300 K rerun.
-- User-approved downstream A+B PAPER-CAL 1T1C framework remains **PROVISIONAL**; no retention gain/refresh/effective optimum is proven.
-- **Detailed checkpoint and commands:** docs/progress/paper_cal_temperature_atlas_15x4_dispatch_20261009.md. **G0 audit:** docs/evidence/paper_cal_g0_parent_spatial_bridge_20261008.md.
+- Source of 36nm validated four-temperature table: `data/paper_cal/atlas_temperature_20261009/processed/MEB36_4TEMP_INTEGRATED_VALIDATED_DC.csv` (59 fields, 4 rows), six raw DC summaries in `raw_dc36/`. Original user ZIP SHA256 `e680122bcfca924bf60f7320efd39f685e2289bc8b89f963938ccdd5319b8262`. Full ZIP / six Id–Vg raw curves / 60-row partial dataset / workbook / plots and reproducible script are in local downloadable `CMP_DC36_COMPLETE_RESEARCH_BUNDLE_20261009.zip`, NOT fully Git-committed.
+- 36nm 233→380K: Vth@Vd1.2 falls 131.635mV; SSquick@Vd1.2 rises 40.228mV/dec; DIBL 22.813→26.786mV/V; Ion@Vg1.2 falls 4.093%; Ion/Ioff 2.5597e12→1.6586e7; **DC** Ioff@Vg0 rises ~148,009×. Total **GIDL-bias** Id_ON rises ~24,627.5×; raw AC |Cgd| falls 11.378%. These are distinct bias currents.
+- Known QC watchlist: 36nm/380K ON−OFF vs q∫BTBT mismatch −4.39076%; five higher-temperature/shallow MEB cases are previously flagged in GIDL/Cgd analysis. The 41nm/340K AC is missing due to SDevice Newton failure; it must not be interpolated as measured.
+- SWB parameters: SDE `MEBDepth` [0.031,0.033,0.036,0.039,0.041,0.042,0.043,0.044,0.045,0.046,0.047,0.048,0.049,0.050,0.051] um; SDevice `Temp_K=233,340,380` K; existing 300 K reused. Atlas MeshLevel=2; frozen Qf/WF/geometry adjustments unchanged.
+- When other new-T MEB DC data are returned, independently check node↔temperature↔MEB, curve endpoint, constant-current Vth (Icrit=5e-6 A/um), SS1/2/quick, Ion/Ioff, DIBL from Vth005/12, then combine with existing GIDL/Cgd/spatial data without filling absent values. Narrow follow-up reruns only if a warning materially affects scientific conclusions.
+- Remain within Atlas L2 branch. Avoid presenting frozen FZ-C↔Atlas equivalence, mesh convergence, physical retention/refresh or final effective optimum as proven. A+B 1T1C roadmap remains provisional.
+
+**Read next:** `docs/progress/paper_cal_36nm_temperature_dc_qc_20261009.md` → `data/paper_cal/atlas_temperature_20261009/README.md` → `docs/progress/paper_cal_temperature_atlas_15x4_dispatch_20261009.md`.
 
 ## 5. Do not reopen by default
 
@@ -101,7 +104,7 @@ At 300 K and GIDL bias `Vd=1.2,Vg=-0.7`:
 ## 6. Read next
 
 1. `AGENTS.md` then this file.
-2. **Resume first:** `docs/progress/paper_cal_temperature_atlas_15x4_dispatch_20261009.md`, then `docs/evidence/paper_cal_g0_parent_spatial_bridge_20261008.md`.
+2. **Resume first:** `docs/progress/paper_cal_36nm_temperature_dc_qc_20261009.md` and `data/paper_cal/atlas_temperature_20261009/README.md`. Then temperature dispatch and, only if relevant, G0 bridge.
 3. `docs/progress/b0_2d_paper_cal_meb_atlas_300k_20261008.md` and validated CSV plus source ZIP/QC.
 4. Existing authoritative numerical-lineage concerns:
    - `docs/progress/b0_2d_paper_cal_mesh_revalidation_20261007.md`
@@ -110,4 +113,4 @@ At 300 K and GIDL bias `Vd=1.2,Vg=-0.7`:
 5. `docs/MODEL_SCOPE.md`, `docs/research/CLAIM_EVIDENCE_MATRIX.md` before upgrading claims.
 6. Consult manual routing index and official T-2022.03 section **only** for a triggered syntax/solver/physics question.
 
-**Session close-out (2026-10-09):** PAUSED / awaiting evidence from user-reported 45 MEB×T executions. First next action: collect and inspect actual SWB result ZIP, not FZ-C recalibration or new simulation.
+**Session close-out (2026-10-09):** 36nm four-temperature DC/GIDL/Cgd/spatial BASELINE DATA-COMPLETE / DC source QC PASS; the all-MEB DC thermal validation is IN PROGRESS. First next action: collect remaining-depth DC source curves / logs as SWB jobs finish and incrementally QC/extend the 60-row partial Atlas. No FZ-C recalibration or wholesale reruns.
