@@ -2,8 +2,32 @@
 
 > Canonical session handoff. Read after `AGENTS.md`. Current research authority: live GitHub main + linked underlying evidence.
 
-**Last updated:** 2026-10-09  
-**Session state:** **300 K Atlas QC VALIDATED; 45/45 new-T GIDL ON/OFF + spatial DATA QC REVIEWED; 44/45 new-T AC Cgd DATA QC REVIEWED; 36nm × four-temperature DC/GIDL/Cgd/spatial DATA-COMPLETE (new DC source curves QC PASS); remaining 14 new-temperature MEB DC PENDING**. FZ-C↔Atlas L2 mesh numeric equivalence NOT DEMONSTRATED.
+**Last updated:** 2026-10-11  
+**Session state:** **2026-10-11 Faithful-Q0 300 K × 15-depth independent source-data audit COMPLETED / cross-model mechanism validation CONDITIONAL; PAPER-CAL freeze UNCHANGED.** Existing Atlas 300 K validated; new-T GIDL ON/OFF + spatial 45/45 reviewed, Cgd 44/45 reviewed; 36nm × four-temperature DC complete; remaining 14 new-T MEB DC pending. FZ-C↔Atlas L2 numerical equivalence NOT DEMONSTRATED.
+
+## 0. 2026-10-11 third-presentation handoff — new faithful 2D cross-control (300 K)
+
+> **Scope/provenance:** User-executed Sentaurus T-2022.03 Workbench projects, independently reviewed from user-exported `CMP_FAITHFUL_Q0_ALL15_4PROJECTS_EVIDENCE.zip` against the committed `data/paper_cal/atlas_300k_20261008/processed/MEB_300K_ATLAS_MASTER_VALIDATED.csv`. Analytical artifacts `CMP_FAITHFUL_Q0_INDEPENDENT_REVIEW_20261011.zip` (report `ANALYSIS_REPORT_KR.md`, 15-point comparison CSV, QC source tables, figures) are **local conversation deliverables, not yet committed to GitHub**. No new Sentaurus runs or parameter retunes were made during review.
+
+**Purpose / controlled comparison:** Test how much of the PAPER-CAL Atlas MEB trend survives when using a paper-dimension-based **2D faithful control**, rather than treating nominal DC-fit as full physical validation. This comparison changes the **calibration package together**, not one independent physical variable. Faithful-Q0 has GCS=1, GateDepthBoost=0, modeled Tox=5 nm, recess=120 nm, Qf=0 (assumption, **not literature-measured fixed charge**); PAPER-CAL Atlas uses GCS=2.3, DepthBoost=25 nm, Qf=2.55e12 cm^-2. Both 300 K, GIDL Vd=1.2/Vg=-0.7 V, Hurkx ON/OFF, AC Cgd 1 MHz at same bias with BTBT OFF; mesh policy L2, not proven mesh-independent.
+
+**Coverage / independent input QC:**
+- Faithful-Q0 15 MEB depths `31/33/36/39/41/42/43/44/45/46/47/48/49/50/51 nm`. ON terminal 15/15, OFF terminal 15/15, ON spatial 15/15, Cgd **14/15**: 31 nm AC SDevice `done` but SVisual summary missing; do not interpolate.
+- User evidence source manifest 1,513/1,513 size/SHA-256 PASS; four projects ×15 SDevice `done` (60/60); checked source/deck metadata includes 300 K, Hurkx only in ON, no added FixedCharge; 36 nm preprocessed SDE byte-identical across four projects; basic terminal/KCL/AC endpoint audit passed. This does **not** establish mesh convergence or experimental accuracy; original TDR/AC PLT absent from exported ZIP.
+- Cgd raw `|c(g,d)|` 33→51 nm: Q0 **−31.87%**, PAPER-CAL **−33.20%**; similar decreasing **within-model trend**, while Q0 absolute values ≈80–82% of PAPER-CAL.
+- GIDL-bias **total drain current** (NOT pure BTBT current) 31→51 nm: Q0 decreases **~2,585.5×**, PAPER-CAL **~1,135×**; absolute Q0/PAPER-CAL current ranges ~82–912× on selected depths. Shared downward rank, **not** agreement in magnitude or mechanism.
+- `(Id_ON−Id_OFF)/Id_ON`: Q0 only **0.00000549–0.00009833%** across depths; PAPER-CAL is 0.105% (31), 16.94% (36), 91.19% (41), 99.57% (48), 99.81% (51). Q0 OFF residual dominates; its microscopic origin remains unresolved; small subtraction needs numerical precision review.
+- Spatial BTBT: Q0 full-Si integral declines monotonically ~1,400× over 31→51 nm, whereas PAPER-CAL integral peaks at **39 nm** and BTBTmax at **41 nm**. Q0 global BTBTmax is at `Xhot≈0.00234375 um` for 33–51 nm (14/15), vs PAPER-CAL gate-depth-tracking hotspot (Xhot≈0.034–0.050 um); Q0 hotspot lies outside its target GIDL refinement ROI. Q0 `(q×∫BTBT)/(Id_ON−Id_OFF)` under shared convention rises ~1.25 (31 nm)→~29.9 (51 nm); terminal-vs-generation collection/normalization/precision **not reconciled**. Equal contact current and total generated BTBT are **not assumed as a universal identity**.
+
+**Model decision / paper claim boundary (2026-10-11):**
+1. `B0-2D-FAITHFUL-Q0` = **CONDITIONAL paper-dimension-based 2D control**, not exact 3D/paper reproduction and **not the new calibrated baseline**.
+2. `B0-2D-PAPER-CAL = C7_4/B_QF_HALF` remains **FROZEN**. Q0 supports the *direction* of MEB→Cgd and total GIDL-bias leakage suppression, **not** quantitative BTBT/GIDL mechanism robustness, hotspot equivalence, pure BTBT terminal-current inference, 3D validity, retention or optimal MEB range.
+3. Academic paper readiness: research question and 300 K relative trend are promising, but **mechanism/numerical uncertainty and PAPER-CAL MEB-specific 1T1C retention transfer remain open**. Do **not** say Q0 validated the full PAPER-CAL physics or that 48 nm is an electrical/retention optimum.
+4. **Presentation-safe (2026-10-12 third talk):** “논문 명시 구조의 별도 2D 대조군으로 MEB 증가에 따른 Cgd·총 누설 감소 경향을 재확인했으나, Hurkx 기여와 BTBT hotspot은 보정모델과 크게 달라 수치 수렴 및 누설 경로 검증이 필요하다.” All Q0 results are **CMP-EXECUTED data, independently reviewed; mechanism inference remains PROVISIONAL**.
+
+**NEXT FIRST ACTION after presentation (no new run/code prepared in this review):** target **36/41/48 nm** for (a) Q0 near-surface hotspot ROI and L2↔refined-mesh convergence, (b) ON−OFF numerical precision and `q∫BTBT`/AreaFactor/contact partition audit with actual TDR, and (c) PAPER-CAL Atlas L2 mesh-family reliability review. Then isolate GCS/GDB/Qf sensitivities at selected depths without retuning the frozen baseline, followed by PAPER-CAL 1T1C Write/Hold/Read and temperature-dependent retention transfer; recover Q0 missing 31-nm Cgd summary as a narrow extraction-only task. Separately **continue collection/QC of 14 pending Atlas new-T DC depths** when jobs finish.
+
+---
 
 ## 1. Current research objective and lineage
 
@@ -75,11 +99,11 @@ At 300 K and GIDL bias `Vd=1.2,Vg=-0.7`:
 - `GateTop≈Jdepth=48 nm` is a **model structural boundary**; there is no sharp electrical plateau/knee at 48 from this atlas. The 51-nm endpoint is **not** a final optimum.
 - New temperatures have independently QC-reviewed 45/45 terminal GIDL ON/OFF and spatial extracts, 44/45 Cgd extracts and, at 36nm only, validated six additional DC extractions from original curves. **No** PAPER-CAL 1T1C retention validation yet. Numerical/thermal mesh convergence NOT established.
 
-## 4. Active stage and NEXT FIRST ACTION — 2026-10-09
+## 4. Active stage and concurrent Atlas DC task — 2026-10-11
 
 **Stage:** 36nm four-temperature Atlas DATA-COMPLETE / independent source-extraction QC PASS, while the **other 14 MEB depths at new temperatures remain DC IN-PROGRESS / not ingested**. New 45 GIDL ON/OFF/spatial branches and 44 of 45 AC Cgd branches have been previously independently QC-reviewed. Do NOT treat this as full 60-condition DC completed.
 
-**NEXT FIRST ACTION: let ongoing DC005/DC12 runs for remaining 14 MEB depths finish; collect completed original CSV+Id–Vg curves, actual pp*_des.cmd, SWB gtree, and node logs in batches. QC each row and append to the existing 60-row PARTIAL table. Do not start a blanket new run or re-calibration.**
+**Concurrent Atlas DC follow-through:** let ongoing DC005/DC12 runs for remaining 14 MEB depths finish; collect completed original CSV+Id–Vg curves, actual pp*_des.cmd, SWB gtree, and node logs in batches. QC each row and append to the existing 60-row PARTIAL table. Do not start a blanket new run or re-calibration. **The new primary research validation gate is in §0; it does not cancel pending DC source collection.**
 
 - Source of 36nm validated four-temperature table: `data/paper_cal/atlas_temperature_20261009/processed/MEB36_4TEMP_INTEGRATED_VALIDATED_DC.csv` (59 fields, 4 rows), six raw DC summaries in `raw_dc36/`. Original user ZIP SHA256 `e680122bcfca924bf60f7320efd39f685e2289bc8b89f963938ccdd5319b8262`. Full ZIP / six Id–Vg raw curves / 60-row partial dataset / workbook / plots and reproducible script are in local downloadable `CMP_DC36_COMPLETE_RESEARCH_BUNDLE_20261009.zip`, NOT fully Git-committed.
 - 36nm 233→380K: Vth@Vd1.2 falls 131.635mV; SSquick@Vd1.2 rises 40.228mV/dec; DIBL 22.813→26.786mV/V; Ion@Vg1.2 falls 4.093%; Ion/Ioff 2.5597e12→1.6586e7; **DC** Ioff@Vg0 rises ~148,009×. Total **GIDL-bias** Id_ON rises ~24,627.5×; raw AC |Cgd| falls 11.378%. These are distinct bias currents.
@@ -103,8 +127,8 @@ At 300 K and GIDL bias `Vd=1.2,Vg=-0.7`:
 
 ## 6. Read next
 
-1. `AGENTS.md` then this file.
-2. **Resume first:** `docs/progress/paper_cal_36nm_temperature_dc_qc_20261009.md` and `data/paper_cal/atlas_temperature_20261009/README.md`. Then temperature dispatch and, only if relevant, G0 bridge.
+1. `AGENTS.md` then this file; read **§0 for 2026-10-11 third-presentation/Q0 validation state and first post-presentation gate**. The Q0 independent review archive is currently a local chat deliverable, not a GitHub source.
+2. **Concurrent Atlas DC follow-through:** `docs/progress/paper_cal_36nm_temperature_dc_qc_20261009.md` and `data/paper_cal/atlas_temperature_20261009/README.md`. Then temperature dispatch and, only if relevant, G0 bridge.
 3. `docs/progress/b0_2d_paper_cal_meb_atlas_300k_20261008.md` and validated CSV plus source ZIP/QC.
 4. Existing authoritative numerical-lineage concerns:
    - `docs/progress/b0_2d_paper_cal_mesh_revalidation_20261007.md`
@@ -114,3 +138,5 @@ At 300 K and GIDL bias `Vd=1.2,Vg=-0.7`:
 6. Consult manual routing index and official T-2022.03 section **only** for a triggered syntax/solver/physics question.
 
 **Session close-out (2026-10-09):** 36nm four-temperature DC/GIDL/Cgd/spatial BASELINE DATA-COMPLETE / DC source QC PASS; the all-MEB DC thermal validation is IN PROGRESS. First next action: collect remaining-depth DC source curves / logs as SWB jobs finish and incrementally QC/extend the 60-row partial Atlas. No FZ-C recalibration or wholesale reruns.
+
+**Session checkpoint (2026-10-11):** Faithful-Q0 300 K 15-MEB ON/OFF/spatial + 14/15 Cgd independent review completed; conditional 2D control, no PAPER-CAL replacement or physical mechanism equivalence claim. Primary post-presentation gate: Q0 mesh/hotspot and ON−OFF-versus-BTBT attribution; temperature DC collection remains concurrent. **Handoff only; no Q0 source/evidence ZIP committed, no new TCAD execution.**
