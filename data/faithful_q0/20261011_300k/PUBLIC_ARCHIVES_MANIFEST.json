@@ -1,0 +1,53 @@
+{
+  "schema": "cmp-faithful-q0-public-evidence/v1",
+  "created_on": "2026-10-11",
+  "chunk_bytes": 491520,
+  "archive_type": "ZIP_DEFLATED",
+  "privacy_notice": "Public archives are derived subsets: SWB scheduler .job/.out/.sta/.err excluded. Server workspace and hostname metadata tokenized, including path attributes in TDR while retaining HDF5 readability. CSV numerical files unchanged. Original user ZIPs are separately identified by SHA-256 and not redefined.",
+  "original_q0": {
+    "source_filename": "CMP_FAITHFUL_Q0_ALL15_4PROJECTS_EVIDENCE.zip",
+    "source_sha256": "ee2d6f2bcbb74491aabd4e07b2300c283949db381fe3df621910ff0e026f662c",
+    "source_entries": 1518,
+    "public_filename": "CMP_Q0_300K_ORIGINAL_PUBLIC_20261011.zip",
+    "public_sha256": "77b9ed2e5223531309947c3cdf2bedf922cfc8bd26c4537052235408516ec158",
+    "public_size_bytes": 3904822,
+    "public_items": 619,
+    "chunk_dir": "original_parts",
+    "chunks": [
+      "b83f06704c3f2f247b36131dcea8d5c2a0270a37",
+      "4a620674f63d9197ef86936336135da14928b9d9",
+      "dab5eb5ed66db2d4472345f4423feb2327ce5f80",
+      "e64086e5f8849f07fa8e376ce653d53cdb7a4596",
+      "d021dcb05c903052bdfbefa2078edaa380b1a763",
+      "76a87b465c5af3172711e8f4e4e6f25874c37737",
+      "7374b802df279f76c07c5cf72556417813989e51",
+      "d1b61878699aaf790a5b3ab510177818b8ae054b"
+    ]
+  },
+  "surface_l1": {
+    "source_filename": "CMP_Q0_PHASE1_SPLIT6_15MEB_EVIDENCE.zip",
+    "source_sha256": "3d033071591f6a7a218877df5c866135d741e811069c696bcd5d8e2b12ef3880",
+    "source_entries": 1201,
+    "public_filename": "CMP_Q0_300K_SURFACE_L1_PUBLIC_20261011.zip",
+    "public_sha256": "303203b940121a8ddda4a124214d7ef8830b3188301cfc0502b9965ab9717008",
+    "public_size_bytes": 6637509,
+    "public_items": 520,
+    "chunk_dir": "surface_l1_parts",
+    "chunks": [
+      "daa3f06e3c8070c9dca74db35c80df6a83106e89",
+      "c0ad879c419be98abd617c5199b86c066569605d",
+      "6596f3f956fe80f7b413c9e6ae2f2fea82fe729f",
+      "dcdefc698ab6d2c5417b6eb4071172e09ff59c61",
+      "335562dd0fd99235ffdb2a2149be4aa1d88abce8",
+      "5453c282d830e5b3c01d5f6f83069bf897930394",
+      "ccfb7852f0a2479dcc80c85743653206cfa4b216",
+      "fc2a355946eeb4d76fc9340d310dd401a1d699ff",
+      "29a2bfcb02bf93c107f1f24c7e8f7908dd7d12d2",
+      "3839f8b79e53bcc19be1a27eccdab3231442af20",
+      "7e4ace3565f9cb6cbe0c1c1a63e9d906052cd593",
+      "fa2e970f890e2b322b424dad10a2b1a4a52f79d2",
+      "bfa28abcf2f6f4139eeb18bf9b0014898f37f7a7",
+      "b731b9e70581783edbdade263317bf0669d39163"
+    ]
+  }
+}

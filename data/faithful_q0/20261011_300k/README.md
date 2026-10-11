@@ -14,7 +14,7 @@
 - `CMP_FAITHFUL_Q0_ALL15_4PROJECTS_EVIDENCE.zip`: SHA256 `ee2d6f2bcbb74491aabd4e07b2300c283949db381fe3df621910ff0e026f662c`; 1,518 archive entries (1,513 source entries audit-hashed); 60/60 SDevice done; 15 ON /15 OFF /15 spatial /14 Cgd; 31-nm Cgd SVisual missing.
 - `CMP_Q0_PHASE1_SPLIT6_15MEB_EVIDENCE.zip`: SHA256 `3d033071591f6a7a218877df5c866135d741e811069c696bcd5d8e2b12ef3880`; 1,201 entries (1,197 source entries audit-hashed); split 8+7 × (ON/OFF/spatial); 45/45 SDevice done, 15/15 per metric; select 31/36/41/48-nm TDR/PLT present.
 
-**Public privacy guardrail:** original archives may contain the author's SWB absolute project paths and machine names. Do not upload them verbatim to this public repository. Where archive link is absent, only processed source-derived CSV and reports are GitHub-backed; original raw ZIP SHA verifies matching local/owner-held evidence.
+**Public evidence is now GitHub-archived** under `raw_public/original_parts/` (8 binary parts) and `raw_public/surface_l1_parts/` (14 binary parts). Use `python3 data/faithful_q0/20261011_300k/restore_public_archives.py` to reconstruct the two ZIPs and verify the published SHA-256. See `PUBLIC_ARCHIVES_MANIFEST.json` and each ZIP's `PUBLIC_MANIFEST.json` for original/public per-file hashes and sanitization. The original user-uploaded ZIPs retain different SHA-256 and are not replaced: scheduler intermediates were excluded and workspace paths anonymized in the **public** copies.
 
 ## Controlled comparison
 300 K; `VD=1.2 V, VG=-0.7 V` GIDL endpoint, `Band2Band(Hurkx)` ON, identical bias OFF comparator, MEB 31/33/36/39/41/42/43/44/45/46/47/48/49/50/51 nm.
