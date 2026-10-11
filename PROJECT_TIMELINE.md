@@ -31,6 +31,7 @@
 | 2026-10-05 | C7_4 final baseline freeze | Completed | `B0-2D-PAPER-CAL` | `C7_4 / B_QF_HALF` selected; FZ-A/B/C validation passed; calibration knobs frozen; C8 micro-fitting closed | `docs/research/b0_2d_final_freeze_plan.md`; `docs/RUN_SHEET.md` | Closed calibration and authorized production revalidation |
 | 2026-10-05 onward | Calibrated production revalidation handoff | Historical planning / bridge still open | `B0-2D-PAPER-CAL` | Runtime-equivalence benchmark is the immediate gate before 31/36/41 nm calibrated DC/GIDL revalidation and later retention translation | `docs/research/b0_2d_production_revalidation_plan.md`; `HANDOFF.md` | Rebuild the main MEB/temperature/retention evidence on the frozen PAPER-CAL baseline |
 | 2026-10-08 | New 300 K 15-point MEB Atlas + signed BTBT-ON/OFF/2D integration audit | Completed for within-branch data; lineage bridge open | `B0-2D-PAPER-CAL` post-freeze MeshLevel-2 branch | 15-point DC/Cgd/GIDL/spatial and OFF control were completed, all 1,036 independent checks passed, the signed ON−OFF current matched q∫BTBT to ≤0.62%, and shallow residual-current dominance was diagnosed; exact 2026-10-05 FZ-C parent identity remains unresolved | `data/paper_cal/atlas_300k_20261008/`; `docs/progress/b0_2d_paper_cal_meb_atlas_300k_20261008.md` | Preserve a validated internal atlas without asserting mesh-only identity; perform parent-lineage audit before promoting temperature/1T1C claims |
+| 2026-10-11 | 15-point Faithful-Q0 cross-control, 15-point surface-hotspot mesh sensitivity and calibration-vs-GIDL model-selection review | Completed for source/execution QC; future model choice **Conditional** | `B0-2D-FAITHFUL-Q0` vs frozen `B0-2D-PAPER-CAL` | Deeper MEB retains total-drain downward trend in both 2D models; Q0 spatial BTBT/hotspot/Hurkx disagrees strongly with DC-fitted PAPER-CAL and changes markedly under added surface mesh; neither is independently proven as true 3D GIDL | `data/faithful_q0/20261011_300k/`; `docs/research/faithful_q0_model_selection_gate_20261011.md` | Preserve both lineages; recommend bounded 36/48 mesh and 36nm knob sensitivity, then **proposed** early selected-point 3D before broad new 1T1C. No executed 3D proof or replacement freeze |
 
 ---
 
@@ -65,7 +66,7 @@ temperature-dependent effective MEB range
 DWFG transferability / selected-point 3D validation
 ```
 
-Historical Legacy results remain valid evidence within their original model and method scope.
+**2026-10-11 conditional sequencing note:** The diagram above reflects the earlier planned route with 3D late. A *proposed*, not yet executed model-selection gate now moves selected 3D consistency comparison earlier, before further large retention/temperature experiments. Frozen model decisions have not changed.\n\nHistorical Legacy results remain valid evidence within their original model and method scope.
 
 They must not be relabeled as PAPER-CAL results.
 
