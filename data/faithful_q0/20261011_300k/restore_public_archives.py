@@ -35,7 +35,8 @@ def restore(key: str, item: dict, output_dir: Path) -> Path:
     with zipfile.ZipFile(out) as z:
         if z.testzip() is not None:
             raise ValueError(f"{key}: ZIP CRC validation failed")
-        assert "PUBLIC_MANIFEST.json" in z.namelist()
+        if key != "plots_qc":
+            assert "PUBLIC_MANIFEST.json" in z.namelist()
     print(f"VALIDATED {key}: {out} SHA256={actual}")
     return out
 
@@ -43,7 +44,7 @@ def main():
     with (HERE / "PUBLIC_ARCHIVES_MANIFEST.json").open(encoding="utf-8") as f:
         cfg = json.load(f)
     out_dir = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else HERE / "_restored_public_zips"
-    for key in ("original_q0", "surface_l1"):
+    for key in ("original_q0", "surface_l1", "plots_qc"):
         restore(key, cfg[key], out_dir)
 
 if __name__ == "__main__":

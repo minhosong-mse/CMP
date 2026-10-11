@@ -16,6 +16,12 @@
 
 **Public evidence is now GitHub-archived** under `raw_public/original_parts/` (8 binary parts) and `raw_public/surface_l1_parts/` (14 binary parts). Use `python3 data/faithful_q0/20261011_300k/restore_public_archives.py` to reconstruct the two ZIPs and verify the published SHA-256. See `PUBLIC_ARCHIVES_MANIFEST.json` and each ZIP's `PUBLIC_MANIFEST.json` for original/public per-file hashes and sanitization. The original user-uploaded ZIPs retain different SHA-256 and are not replaced: scheduler intermediates were excluded and workspace paths anonymized in the **public** copies.
 
+## Figures and reproducibility bundle
+
+- The additional `raw_public/plots_qc_parts/` (2 binary pieces) restores `CMP_Q0_20261011_PLOTS_QC_PUBLIC.zip`, containing **9 original PNG figures**, original full Korean review notes, raw QC CSV tables, SDE minimal diff patch, and the **read-only collectors**. Reconstruct it with the same `restore_public_archives.py` script.
+- This plots/QC ZIP is not a separately simulated result; it is an archive of already-completed offline analysis and source audit.
+- All three reconstructed public ZIPs are SHA-256-checked against `PUBLIC_ARCHIVES_MANIFEST.json`.
+
 ## Controlled comparison
 300 K; `VD=1.2 V, VG=-0.7 V` GIDL endpoint, `Band2Band(Hurkx)` ON, identical bias OFF comparator, MEB 31/33/36/39/41/42/43/44/45/46/47/48/49/50/51 nm.
 - Faithful-Q0: GCS=1, GDB=0, modeled Tox 5 nm, recess 120 nm, Qf=0 assumption; Atlas mesh L2.

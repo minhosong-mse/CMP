@@ -49,5 +49,19 @@
       "bfa28abcf2f6f4139eeb18bf9b0014898f37f7a7",
       "b731b9e70581783edbdade263317bf0669d39163"
     ]
+  },
+  "plots_qc": {
+    "source_filename": null,
+    "source_sha256": null,
+    "source_entries": null,
+    "public_filename": "CMP_Q0_20261011_PLOTS_QC_PUBLIC.zip",
+    "public_sha256": "71ce80b3efca27cb06cff27cf0faa89682601caa889888fdd76a49c0d30f3bd3",
+    "public_size_bytes": 675948,
+    "public_items": 20,
+    "chunk_dir": "plots_qc_parts",
+    "chunks": [
+      "b560f4bd8a8a2c8aa9eef02a0e9bf677848e72c8",
+      "3a73f23c206060d0a9c22c553ac84901cd07c390"
+    ]
   }
 }
