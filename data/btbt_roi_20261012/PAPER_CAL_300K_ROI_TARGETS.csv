@@ -1,0 +1,4 @@
+MEBDepth_um,MEB_nm,Temperature_K,MeshLevel,GCS,GateDepthBoost_um,Qf_Int_cm2,Vd_V,Vg_V,BTBT_Model,Atlas300KWholeSiBenchmark,ROI_Status
+0.036,36,300,2,2.3,0.025,2550000000000,1.2,-0.7,Hurkx_ON,1151025.16951,not_executed
+0.039,39,300,2,2.3,0.025,2550000000000,1.2,-0.7,Hurkx_ON,1682352.32862,not_executed
+0.041,41,300,2,2.3,0.025,2550000000000,1.2,-0.7,Hurkx_ON,1551265.19607,not_executed

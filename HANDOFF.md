@@ -2,8 +2,15 @@
 
 > Canonical session handoff. Read after `AGENTS.md`. Current research authority: live GitHub main + linked underlying evidence.
 
-**Last updated:** 2026-10-11  
+**Last updated:** 2026-10-12  
 **Session state:** **2026-10-11 research CLOSE-OUT: Faithful-Q0 original 15-depth data and surface-hotspot Level-1 15-depth ON/OFF/spatial runs independently source-QC REVIEWED, all key CSV/source/public archives/figures committed. Mesh convergence, microscopic Hurkx-OFF leakage and choice of 2D model remain PROVISIONAL / PAUSED.** PAPER-CAL C7_4 freeze unchanged. Atlas 36nm four-temperature DC complete; 14 other new-T DC depths pending. FZ-C↔Atlas numerical equivalence NOT DEMONSTRATED.
+
+## 2026-10-12 BTBT 공간/메시 관찰 기록 (non-decision checkpoint)
+
+- New evidence-only checkpoint: [docs/evidence/btbt_roi_hotspot_mesh_checkpoint_20261012.md](docs/evidence/btbt_roi_hotspot_mesh_checkpoint_20261012.md). Q0 Surface-L1 300 K 31/36/41/48 nm TDR signed ROI fractions, PAPER-CAL Atlas 300 K whole-Si 15 MEB reference, 340 K screen-only hotspots, observed SDE mesh coverage, pending 300 K PAPER-CAL region split are now indexed. CSVs / redrawable SVGs under `data/btbt_roi_20261012/` and `assets/images/paper_cal/btbt_roi_20261012/`.
+- Q0 TDR-based Surface signed shares at 31/36/41/48 nm = 10.545/10.872/17.712/57.926%; original whole-Si SVisual integration cross-check |error| < 0.0003%. Specific to existing Q0 Surface-L1 mesh; no model/mesh convergence claim.
+- PAPER-CAL 300 K 36/39/41 nm whole-Si archived values = 1.151025e6 / 1.682352e6 / 1.551265e6. **PAPER-CAL same-temperature Surface/Gate ROI split not yet obtained.**
+- Next: receive and audit prepared independent 300 K Atlas L2 36/39/41 nm TDRs and ROI CSV; measure Surface-side local hotspot; only then design/check separate common Surface refinement across MEB. No README/freeze/model-decision or retention claim changes.
 
 ## 0. 2026-10-11 Faithful-Q0 source-based execution close-out — authoritative new checkpoint
 

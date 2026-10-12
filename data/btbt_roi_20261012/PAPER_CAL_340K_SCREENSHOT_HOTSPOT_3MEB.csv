@@ -1,0 +1,4 @@
+MEB_nm,TDR_Node,temperature_reported_K,BTBTmax_cm3s,Xhot_um,Yhot_um,source
+36,n66_des,340,1.1117868997e+24,0.035742186,0.25217399,user_SVisual_screenshot_only
+39,n68_des,340,3.46714663649e+24,0.038671875,0.25217399,user_SVisual_screenshot_only
+41,n70_des,340,4.20020467211e+24,0.040429689,0.25217399,user_SVisual_screenshot_only
