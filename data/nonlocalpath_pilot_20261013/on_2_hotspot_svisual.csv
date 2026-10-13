@@ -1,0 +1,3 @@
+MEB_nm,SWB_project,SVisual_geometry,Field,Global_max_cm_minus3_s_minus1,Xhot_um,Yhot_um,Xhot_minus_GateTop_nm,Elements,Points,Status,Source_screenshot_sha256
+36,MEB_nonlocal,n49_des,Band2BandGeneration,6.32186e18,0.0369141,0.252174,0.9141,15279,7384,SCREENSHOT_ONLY_NOT_TDR_QC,87b7e91dae3419e2826fd483857b048ca8de9767b7631268bb99f64f612d96d2
+39,MEB_nonlocal,n50_des,Band2BandGeneration,2.01641e18,0.0398437,0.252174,0.8437,15253,7370,SCREENSHOT_ONLY_NOT_TDR_QC,3f7a3448d52a0ee03ec6b287576e2214834b5f750475bca55a6c007ab36eeb4f

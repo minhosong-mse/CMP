@@ -2,8 +2,16 @@
 
 > Canonical session handoff. Read after `AGENTS.md`. Current research authority: live GitHub main + linked underlying evidence.
 
-**Last updated:** 2026-10-12  
-**Session state:** **2026-10-11 research CLOSE-OUT: Faithful-Q0 original 15-depth data and surface-hotspot Level-1 15-depth ON/OFF/spatial runs independently source-QC REVIEWED, all key CSV/source/public archives/figures committed. Mesh convergence, microscopic Hurkx-OFF leakage and choice of 2D model remain PROVISIONAL / PAUSED.** PAPER-CAL C7_4 freeze unchanged. Atlas 36nm four-temperature DC complete; 14 other new-T DC depths pending. FZ-C↔Atlas numerical equivalence NOT DEMONSTRATED.
+**Last updated:** 2026-10-14  
+**Session state:** **NonlocalPath PAPER-CAL-derived pilot IN PROGRESS / PROVISIONAL** after BTBT-OFF ×6 source-QC and ON 36/39 nm hotspot screenshots; model/mesh/3D/DC-sensitivity gates OPEN. Prior 2026-10-11 Q0 close-out remains intact. Frozen C7_4 baseline unchanged.
+
+## 2026-10-14 NonlocalPath pilot (newest session checkpoint, PROVISIONAL)
+
+- **Current stopping classification: IN PROGRESS / PROVISIONAL; no re-freeze.** [Pilot progress & staged model-validation gates](docs/progress/nonlocalpath_hotspot_pilot_checkpoint_20261014.md), [numerical/QC tables](data/nonlocalpath_pilot_20261013/README.md). User plans NonlocalPath hotspot screening → new mesh validation → controlled 15-MEB Hurkx/NonlocalPath GIDL/BTBT → independent DC sensitivity gate → conditional future baseline adoption (NOT an adopted model/parameter change).
+- `MEB_nonlocal_off`: six MEB = **31/36/39/41/46/51 nm** (46, not 48); 300K, Vd=1.2,Vg=-0.7, current L2; 6/6 SDevice endpoints and OFF terminal PLT source-QC PASS; original ZIP SHA256 `086d50fadc4a271728030b42000aac62015ea77562c3bc1fbcecc3b1f6fe1e92`. OFF differs from historical Hurkx Atlas OFF by **2.39–3.80x**, so clean physics-model comparison is **NOT** established.
+- `MEB_nonlocal`: ON SVisual `Band2BandGeneration` **screenshot-only** at 36nm peak `6.32186e18` at (X,Y)=`(0.0369141,0.252174) um`, 39nm peak `2.01641e18` at `(0.0398437,0.252174) um`. GateTop-adjacent; no carrier-resolved maps/integrals or source-QC of ON TDR/PP-CMD/PLT. No mesh convergence/optimum/model preference.
+- **NEXT FIRST ACTION:** collect/verify remaining ON actual PP-CMD/log/terminal PLT/final TDR, 36/39 carrier-specific BTBT and all-region/local-surface hotspots, and complete representative depth screening (including missing **48 nm** boundary); then plan/common-source mesh convergence and run controlled Hurkx↔NonlocalPath comparisons. DC extraction was previously BTBT-OFF, so swapping the BTBT model does NOT itself solve the SS/Vth MEB-sensitivity issue. Frozen PAPER-CAL GCS2.3/GDB25nm/Qf2.55e12, older evidence, Q0 obligations and outstanding temperature DC follow-through remain intact.
+- No README update; no `DECISIONS.md` model decision; no 1T1C retention claim. This new section supersedes prior immediate task ordering for **this user-selected Nonlocal pilot** but does not close older Q0/SDE ROI evidence gates.
 
 ## 2026-10-12 BTBT 공간/메시 관찰 기록 (non-decision checkpoint)
 
