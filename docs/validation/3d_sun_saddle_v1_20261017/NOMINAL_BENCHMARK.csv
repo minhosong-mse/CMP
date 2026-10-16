@@ -1,0 +1,5 @@
+metric,Sun_2022_nominal,M1_measured_or_provisional,unit,protocol_note
+Vth,0.656,0.78604610254,V,"Icrit=8.5e-8 A; nominal Wfin=17nm assumed"
+SS,76,77.07938112,mV/dec,"fit abs(Id) 1e-12..1e-9 A"
+DIBL,23.6,22.81431906,mV/V,"Vd 0.05/1.2 V assumed; paper exact bias pair not explicit"
+Ion_Ioff,3.4e10,1.672508e8,dimensionless,"Id(Vg=2)/Id(Vg=-1) at Vd=1.2; NOT paper-matched"
