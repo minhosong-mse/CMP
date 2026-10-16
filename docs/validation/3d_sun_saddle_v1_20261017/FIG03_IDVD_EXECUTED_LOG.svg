@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620"><rect width="960" height="620" fill="#fff"/>
+<text x="43" y="44" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1d3046">M1 3D BCAT — nominal Id–Vd (log)</text>
+<text x="43" y="69" font-family="Arial,sans-serif" font-size="14" fill="#63738a">The low-gate curves are orders of magnitude below the ON curve</text>
+<rect x="92" y="93" width="782" height="420" fill="#fcfdff" stroke="#d7dfeb"/>
+<line x1="92" y1="513" x2="874" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="81" y="518" font-family="Arial" text-anchor="end" font-size="14" fill="#1d3046">1e−14</text>
+<line x1="92" y1="436.6363636363636" x2="874" y2="436.6363636363636" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="81" y="441.6363636363636" font-family="Arial" text-anchor="end" font-size="14" fill="#1d3046">1e−12</text>
+<line x1="92" y1="360.27272727272725" x2="874" y2="360.27272727272725" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="81" y="365.27272727272725" font-family="Arial" text-anchor="end" font-size="14" fill="#1d3046">1e−10</text>
+<line x1="92" y1="283.90909090909093" x2="874" y2="283.90909090909093" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="81" y="288.90909090909093" font-family="Arial" text-anchor="end" font-size="14" fill="#1d3046">1e−8</text>
+<line x1="92" y1="207.54545454545453" x2="874" y2="207.54545454545453" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="81" y="212.54545454545453" font-family="Arial" text-anchor="end" font-size="14" fill="#1d3046">1e−6</text>
+<line x1="92" y1="131.1818181818182" x2="874" y2="131.1818181818182" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="81" y="136.1818181818182" font-family="Arial" text-anchor="end" font-size="14" fill="#1d3046">1e−4</text>
+<line x1="92" y1="93" x2="92" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="92" y="540" font-family="Arial" text-anchor="middle" font-size="14" fill="#1d3046">0.0</text>
+<line x1="287.5" y1="93" x2="287.5" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="287.5" y="540" font-family="Arial" text-anchor="middle" font-size="14" fill="#1d3046">0.5</text>
+<line x1="483" y1="93" x2="483" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="483" y="540" font-family="Arial" text-anchor="middle" font-size="14" fill="#1d3046">1.0</text>
+<line x1="678.5" y1="93" x2="678.5" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="678.5" y="540" font-family="Arial" text-anchor="middle" font-size="14" fill="#1d3046">1.5</text>
+<line x1="874" y1="93" x2="874" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="874" y="540" font-family="Arial" text-anchor="middle" font-size="14" fill="#1d3046">2.0</text>
+<text x="483" y="578" font-family="Arial" text-anchor="middle" font-size="17" fill="#1d3046">Drain voltage, Vd (V)</text>
+<text transform="translate(23,303) rotate(-90)" font-size="16" font-family="Arial" text-anchor="middle" fill="#1d3046">|Id| / 0.017 µm (A/µm)</text>
+<polyline points="131.10,496.71 170.20,487.18 209.30,478.03 248.40,469.42 287.50,464.46 326.60,460.78 365.70,458.40 404.80,457.01 443.90,455.61 483.00,453.31 522.10,450.72 561.20,446.87 600.30,440.95 639.40,435.11 678.50,429.42 717.60,424.21 756.70,419.77 795.80,416.06 834.90,412.95 874.00,410.30" fill="none" stroke="#2463A4" stroke-width="4"/>
+<polyline points="131.10,268.34 170.20,266.65 209.30,266.13 248.40,265.77 287.50,265.41 326.60,265.03 365.70,264.67 404.80,264.31 443.90,263.95 483.00,263.59 522.10,263.24 561.20,262.89 600.30,262.54 639.40,262.19 678.50,261.84 717.60,261.50 756.70,261.16 795.80,260.81 834.90,260.47 874.00,260.14" fill="none" stroke="#DA7A22" stroke-width="4"/>
+<polyline points="131.10,131.15 170.20,126.67 209.30,124.32 248.40,123.11 287.50,122.29 326.60,121.63 365.70,121.07 404.80,120.57 443.90,120.13 483.00,119.73 522.10,119.37 561.20,119.04 600.30,118.74 639.40,118.47 678.50,118.22 717.60,118.00 756.70,117.80 795.80,117.61 834.90,117.45 874.00,117.30" fill="none" stroke="#139675" stroke-width="4"/>
+<rect x="611" y="119" width="230" height="103" rx="9" fill="#fff" stroke="#d7dfeb"/>
+<line x1="627" y1="143" x2="659" y2="143" stroke="#2463A4" stroke-width="4"/>
+<text x="675" y="148" font-family="Arial" font-size="15" fill="#1d3046">Vg = 0.1 V</text>
+<line x1="627" y1="173" x2="659" y2="173" stroke="#DA7A22" stroke-width="4"/>
+<text x="675" y="178" font-family="Arial" font-size="15" fill="#1d3046">Vg = 0.6 V</text>
+<line x1="627" y1="203" x2="659" y2="203" stroke="#139675" stroke-width="4"/>
+<text x="675" y="208" font-family="Arial" font-size="15" fill="#1d3046">Vg = 1.2 V</text>
+<text x="92" y="594" font-family="Arial" font-size="12" fill="#63738a">Source: M1 D3 actual PLTs. Paper has no raw curve provided, so do not treat this as a paper overlay.</text>
+</svg>
