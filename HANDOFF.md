@@ -1,9 +1,18 @@
 # CMP Research Handoff
 
+## 2026-10-16 — L1 paper-figure model comparison: 23/24 curves QC; 2D→3D bridge PROPOSED (not adopted)
+
+- **Last updated 2026-10-16. Current stage: PROVISIONAL / no new freeze.** User-executed 300-K PAPER-CAL-derived L1 Table-1 figure replication: NonlocalPath 12/12 IDVG+IDVD conditions (3,612 PLT points); Hurkx 11/12 (3,011 points); **Hurkx MEB24nm IDVG failed Newton/MinStep near gate +0.0395 V after negative-gate sweep**. Full source archives were collected, hashes/conditions and 23 completed curves QC-reviewed; original full source ZIPs remain conversation artifacts, not in GitHub. Checkpoint CSV and exact source SHA: [progress evidence](docs/progress/dbcat_paper_compare_l1_hurkx_nonlocal_20261016.md), [numeric checkpoint data](data/dbcat_figure_2d_20261016/README.md).
+- **Main finding:** both 2D BTBT model choices nearly coincide in channel-on current; substantial MEB sensitivity differences occur in low-current/off regions and several paper D_BCAT trends are not reproduced. Paper 3-way overlay plots from synthetic hand-picked anchors were illustrative, **not systematic quantitative digitization**, and have NOT been accepted as literature measurements. No baseline selection/model winner or effective MEB range.
+- **Decision boundary:** existing frozen `B0-2D-PAPER-CAL C7_4/B_QF_HALF` remains unchanged, as do earlier Q0/Run Sheet/3D results. Do **not** silently label L1 as converged or paper-validated, or equate terminal leakage to BTBT/Retention.
+- **NEXT FIRST ACTION (user confirmation needed for direction):** evaluate **faster 2D screening + already existing 3D-Sun-B0 selected-point bridge** rather than attempting exact paper-3D absolute transfer/output fit with 2D; inventory existing 3D parent F1/current decks and 36nm high-Vd state, benchmark runtime and apples-to-apples width normalization/model/bias, then selected 24/48 nm sensitivity or candidate/boundary points. This is a research path PROPOSAL, not an executed 3D extension or an adopted freeze.
+- **Do not reopen:** calibrated knobs (GCS2.3/GDB25nm/Qf2.55e12), earlier historical findings, README/public claims, 1T1C physical-retention claims. **Read next:** checkpoint doc; `data/baseline_3d_sun_b0/README.md`; `docs/MODEL_SCOPE.md`; `docs/RUN_SHEET.md`; original Sun 2022 only for benchmark ambiguity.
+
+
 > Canonical session handoff. Read after `AGENTS.md`. Current research authority: live GitHub main + linked underlying evidence.
 
-**Last updated:** 2026-10-14  
-**Session state:** **NonlocalPath PAPER-CAL-derived pilot IN PROGRESS / PROVISIONAL**; L1/L2 duplicate effective mesh confirmed from 36/51-nm OFF source; dual-mesh (L1 vs Rough R1) 15-MEB × 2-VD × 2-mesh DC SWB dispatched by user, all 60 DC numerical results/QC still PENDING. Frozen C7_4 and prior Q0 close-out unchanged.
+**Last updated:** 2026-10-16  
+**Session state:** **PAPER-CAL-derived L1 figure-QC 23/24 complete / research direction review PROVISIONAL**; L1/L2 duplicate effective mesh confirmed from 36/51-nm OFF source; dual-mesh (L1 vs Rough R1) 15-MEB × 2-VD × 2-mesh DC SWB dispatched by user, all 60 DC numerical results/QC still PENDING. Frozen C7_4 and prior Q0 close-out unchanged.
 
 ## 2026-10-14 latest checkpoint — L1/L2 duplicate effective mesh; L1 vs Rough R1 dual-mesh DC dispatched (PROVISIONAL)
 
