@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620"><rect width="960" height="620" fill="white"/>
+<text x="43" y="44" font-family="Arial" font-size="26" font-weight="700" fill="#1d3046">M1 3D BCAT — high-drain Id–Vg</text>
+<text x="43" y="69" font-family="Arial" font-size="14" fill="#63738a">Executed 300 K, Vd=1.2 V: independent negative and positive gate sweeps</text>
+<rect x="92" y="93" width="782" height="420" fill="#fcfdff" stroke="#d7dfeb"/>
+<line x1="92" y1="513" x2="874" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="80" y="518" font-family="Arial" font-size="14" text-anchor="end" fill="#1d3046">1e-16</text>
+<line x1="92" y1="443" x2="874" y2="443" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="80" y="448" font-family="Arial" font-size="14" text-anchor="end" fill="#1d3046">1e-14</text>
+<line x1="92" y1="373.00000000000006" x2="874" y2="373.00000000000006" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="80" y="378.00000000000006" font-family="Arial" font-size="14" text-anchor="end" fill="#1d3046">1e-12</text>
+<line x1="92" y1="303" x2="874" y2="303" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="80" y="308" font-family="Arial" font-size="14" text-anchor="end" fill="#1d3046">1e-10</text>
+<line x1="92" y1="233.00000000000003" x2="874" y2="233.00000000000003" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="80" y="238.00000000000003" font-family="Arial" font-size="14" text-anchor="end" fill="#1d3046">1e-8</text>
+<line x1="92" y1="163" x2="874" y2="163" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="80" y="168" font-family="Arial" font-size="14" text-anchor="end" fill="#1d3046">1e-6</text>
+<line x1="92" y1="93" x2="874" y2="93" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="80" y="98" font-family="Arial" font-size="14" text-anchor="end" fill="#1d3046">1e-4</text>
+<line x1="92" y1="93" x2="92" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="92" y="538" font-family="Arial" font-size="14" text-anchor="middle" fill="#1d3046">-1.0</text>
+<line x1="222.33333333333331" y1="93" x2="222.33333333333331" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="222.33333333333331" y="538" font-family="Arial" font-size="14" text-anchor="middle" fill="#1d3046">-0.5</text>
+<line x1="352.66666666666663" y1="93" x2="352.66666666666663" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="352.66666666666663" y="538" font-family="Arial" font-size="14" text-anchor="middle" fill="#1d3046">0.0</text>
+<line x1="483" y1="93" x2="483" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="483" y="538" font-family="Arial" font-size="14" text-anchor="middle" fill="#1d3046">0.5</text>
+<line x1="613.3333333333333" y1="93" x2="613.3333333333333" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="613.3333333333333" y="538" font-family="Arial" font-size="14" text-anchor="middle" fill="#1d3046">1.0</text>
+<line x1="743.6666666666667" y1="93" x2="743.6666666666667" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="743.6666666666667" y="538" font-family="Arial" font-size="14" text-anchor="middle" fill="#1d3046">1.5</text>
+<line x1="874" y1="93" x2="874" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="874" y="538" font-family="Arial" font-size="14" text-anchor="middle" fill="#1d3046">2.0</text>
+<polyline fill="none" stroke="#2463A4" stroke-width="3.5" points="92.00,409.43 118.07,410.56 144.13,411.96 170.20,413.70 196.27,415.85 222.33,418.52 248.40,421.78 274.47,425.73 300.53,430.30 326.60,435.21 352.67,440.22 378.73,444.45 404.80,441.58 430.87,410.97 456.93,366.42 483.00,320.91 509.07,275.66 535.13,232.20 561.20,196.10 587.27,172.65 613.33,158.82 639.40,150.01 665.47,143.81 691.53,139.10 717.60,135.32 743.67,132.16 769.73,129.44 795.80,127.08 821.87,125.02 847.93,123.21 874.00,121.61"/>
+<text x="483" y="581" font-family="Arial" font-size="18" text-anchor="middle" fill="#1d3046">Gate voltage, Vg (V)</text>
+<text transform="translate(25,303) rotate(-90)" font-family="Arial" font-size="18" text-anchor="middle" fill="#1d3046">|Id| (A)</text>
+<text x="105" y="603" font-family="Arial" font-size="12" fill="#63738a">Re-sampled from actual combined D1+D2 PLTs for display; not published Figure 3 raw data.</text>
+</svg>
