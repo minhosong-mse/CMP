@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620"><rect width="960" height="620" fill="#fff"/>
+<text x="43" y="44" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1d3046">M1 3D BCAT — nominal Id–Vd (linear)</text>
+<text x="43" y="69" font-family="Arial,sans-serif" font-size="14" fill="#63738a">Executed Sentaurus data; 17-nm Wfin used only for illustrative A/µm conversion</text>
+<rect x="92" y="93" width="782" height="420" fill="#fcfdff" stroke="#d7dfeb"/>
+<line x1="92" y1="513" x2="874" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="81" y="518" font-family="Arial" text-anchor="end" font-size="14" fill="#1d3046">0</text>
+<line x1="92" y1="429" x2="874" y2="429" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="81" y="434" font-family="Arial" text-anchor="end" font-size="14" fill="#1d3046">5e−5</text>
+<line x1="92" y1="345" x2="874" y2="345" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="81" y="350" font-family="Arial" text-anchor="end" font-size="14" fill="#1d3046">1e−4</text>
+<line x1="92" y1="261" x2="874" y2="261" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="81" y="266" font-family="Arial" text-anchor="end" font-size="14" fill="#1d3046">1.5e−4</text>
+<line x1="92" y1="177" x2="874" y2="177" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="81" y="182" font-family="Arial" text-anchor="end" font-size="14" fill="#1d3046">2e−4</text>
+<line x1="92" y1="93" x2="874" y2="93" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="81" y="98" font-family="Arial" text-anchor="end" font-size="14" fill="#1d3046">2.5e−4</text>
+<line x1="92" y1="93" x2="92" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="92" y="540" font-family="Arial" text-anchor="middle" font-size="14" fill="#1d3046">0.0</text>
+<line x1="287.5" y1="93" x2="287.5" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="287.5" y="540" font-family="Arial" text-anchor="middle" font-size="14" fill="#1d3046">0.5</text>
+<line x1="483" y1="93" x2="483" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="483" y="540" font-family="Arial" text-anchor="middle" font-size="14" fill="#1d3046">1.0</text>
+<line x1="678.5" y1="93" x2="678.5" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="678.5" y="540" font-family="Arial" text-anchor="middle" font-size="14" fill="#1d3046">1.5</text>
+<line x1="874" y1="93" x2="874" y2="513" stroke="#d7dfeb" stroke-dasharray="4,4"/>
+<text x="874" y="540" font-family="Arial" text-anchor="middle" font-size="14" fill="#1d3046">2.0</text>
+<text x="483" y="578" font-family="Arial" text-anchor="middle" font-size="17" fill="#1d3046">Drain voltage, Vd (V)</text>
+<text transform="translate(23,303) rotate(-90)" font-size="16" font-family="Arial" text-anchor="middle" fill="#1d3046">Id / 0.017 µm (A/µm)</text>
+<polyline points="131.10,513.00 170.20,513.00 209.30,513.00 248.40,513.00 287.50,513.00 326.60,513.00 365.70,513.00 404.80,513.00 443.90,513.00 483.00,513.00 522.10,513.00 561.20,513.00 600.30,513.00 639.40,513.00 678.50,513.00 717.60,513.00 756.70,513.00 795.80,513.00 834.90,513.00 874.00,513.00" fill="none" stroke="#2463A4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="131.10,512.96 170.20,512.95 209.30,512.95 248.40,512.95 287.50,512.95 326.60,512.95 365.70,512.95 404.80,512.95 443.90,512.94 483.00,512.94 522.10,512.94 561.20,512.94 600.30,512.94 639.40,512.94 678.50,512.94 717.60,512.94 756.70,512.93 795.80,512.93 834.90,512.93 874.00,512.93" fill="none" stroke="#DA7A22" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="131.10,344.66 170.20,292.41 209.30,258.87 248.40,239.73 287.50,225.81 326.60,214.15 365.70,203.83 404.80,194.46 443.90,185.85 483.00,177.88 522.10,170.49 561.20,163.64 600.30,157.29 639.40,151.41 678.50,145.99 717.60,141.01 756.70,136.43 795.80,132.25 834.90,128.44 874.00,124.98" fill="none" stroke="#139675" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="608" y="119" width="238" height="103" rx="9" fill="#fff" stroke="#d7dfeb"/>
+<line x1="624" y1="143" x2="660" y2="143" stroke="#2463A4" stroke-width="4"/>
+<text x="676" y="148" font-family="Arial" font-size="15" fill="#1d3046">Vg = 0.1 V</text>
+<line x1="624" y1="173" x2="660" y2="173" stroke="#DA7A22" stroke-width="4"/>
+<text x="676" y="178" font-family="Arial" font-size="15" fill="#1d3046">Vg = 0.6 V</text>
+<line x1="624" y1="203" x2="660" y2="203" stroke="#139675" stroke-width="4"/>
+<text x="676" y="208" font-family="Arial" font-size="15" fill="#1d3046">Vg = 1.2 V</text>
+<text x="92" y="594" font-family="Arial" font-size="12" fill="#63738a">Source: six-run M1 PLT; values sampled/interpolated every 0.1 V. NOT a digitization of Sun et al.</text>
+</svg>
