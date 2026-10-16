@@ -1,0 +1,7 @@
+test,project,condition,status,source_points,endpoint_current_A,wallclock_seconds_including_license,peak_RAM_GB
+D0,B0_3D,"Vd=0.05 V;Vg=0->1.5",PASS,60,2.077561859e-6,1748.72,3.74
+D1,B0_3D_Copy,"Vd=1.2 V;Vg=0->2",PASS,107,1.522599253e-5,2315.63,4.62
+D2,B0_3D_Copy_Copy,"Vd=1.2 V;Vg=0->-1",PASS,205,9.103688759e-14,2561.88,3.97
+D3_1,B0_3D_D3_1,"Vg=0.1 V;Vd=0->2",PASS,107,8.31938527841508e-14,1383.48,4.65
+D3_2,B0_3D_D3_2,"Vg=0.6 V;Vd=0->2",PASS,108,7.13016577870036e-10,1777.28,3.95
+D3_3,B0_3D_D3_3,"Vg=1.2 V;Vd=0->2",PASS,109,3.92644032131088e-6,1911.26,4.30
