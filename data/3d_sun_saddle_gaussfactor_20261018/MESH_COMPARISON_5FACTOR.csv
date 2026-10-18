@@ -1,0 +1,6 @@
+GaussFactor,SDE_node,mesh_points,tetrahedra,min_edge_nm,max_edge_nm,Geometry_note
+0.0,1,84537,486701,0.0008350923475,30.9232921921,identical_boundary_shape
+0.2,20,84395,485895,0.0008350923475,30.9232921921,identical_boundary_shape
+0.5,22,84455,486245,0.0008350923475,30.9232921921,identical_boundary_shape
+1.0,24,84455,486245,0.0008350923475,30.9232921921,identical_boundary_shape_and_connectivity_vs_GF0p5
+1.5,26,84429,486068,0.0008350923475,30.9232921921,identical_boundary_shape
