@@ -1,0 +1,8 @@
+MeshCase,name,change_relative_to_M2D,status
+0,M2D reference,No changes to M2D mesh settings,PLANNED; baseline QC
+1,OuterCrest placement OFF,Only source/drain external saddle-crest size windows removed,PLANNED; off-Gate mesh may be under-resolved
+2,Gate placement OFF,Only Fast.Place.Gate turned off,PLANNED; gate interface may be too coarse
+3,Active placement OFF,Only Fast.Place.Active turned off,PLANNED; active channel may be too coarse
+4,Gate min-size x2,Fast.Def.Gate minimum lengths doubled; max sizes unchanged,PLANNED; needs interface resolution QC
+5,OuterCrest min-size x2,M2A.Def.OuterCrestInterface minimum lengths doubled; max sizes unchanged,PLANNED; needs interface resolution QC
+6,Global-only control,Only Global refinement retained; other local placements OFF,PLANNED; deliberately under-resolved - never SDevice
