@@ -28,3 +28,9 @@ An isolated new SWB project's `MeshCase=0 1 2 3 4 5 6` SDE-only sweep. The combi
 **NEXT FIRST ACTION after pause:** first run/check `MeshCase=0` on a separate SWB test copy; if matching M2D, run only remaining SDE cases and upload node-mapped `n*_msh.tdr`, `n*_bnd.tdr`, `n*_msh.log`, `pp*_dvs.cmd`/`n*_dvs.cmd` and SDE log; use per-case mesh QC to determine local window vs CAD/Boolean origin. If geometry slivers persist even for coarse controls, investigate CAD curved intersection / boundary imprint directly rather than blindly tuning global element size. Preserve original projects and frozen 2D. Then reintroduce physically sufficient Si/Ox/Gate-Drain mesh and validate SDevice LOWVD→selected HIGHVD E/BTBT only when mesh QC passes.
 
 **No scientific parameter/final design-range decision.** 2026-10-19 session close-out intentionally makes no `DECISIONS.md`, `PROJECT_TIMELINE.md`, `RUN_SHEET.md`, or root `README.md` change. Source bundle is a diagnostic checkpoint.
+
+## 2026-10-19 — Later decision addendum: Flat upper S/D selected (D-051)
+
+The historical PAUSED/PROVISIONAL mesh-QC record above remains as executed. **Subsequently, the researcher adopted Flat upper Source/Drain as the forward 3D-Sun-SADDLE-V1 upper geometry** after checking Sun et al. (2022), Figure 1(b,d) (flat upper S/D) and Figure 2(e) (rounded lower saddle fillet). This is **an accepted CMP geometry selection only**, not a claim of the paper's exact CAD construction. See [D-051](../DECISIONS.md).
+
+Keep the lower rounded Si saddle, gate/oxide, contacts, doping and nominal geometry inputs as in the executed Flat M1 source. Rounded M1 remains historical. **No TCAD execution, mesh acceptance, BTBT/GIDL validation, paper metric matching, or 2D freeze modification occurred with D-051.** The previously planned MeshCase=0..6 **SDE-only** mesh/CAD diagnosis remains the next action; no electrical/temperature/retention batch.
