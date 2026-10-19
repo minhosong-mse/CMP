@@ -427,3 +427,16 @@ Decision date: 2026-09-22
 - 3D is used on a small selected set after the candidate/range decision matures.
 - A full `MEB × temperature × SG/DWFG` 3D factorial sweep is not part of the current mainline.
 - For future DWFG 3D selected points, the BTBT hotspot must be re-located and the current mesh ROI revalidated; SG hotspot coordinates are not reused by assumption.
+
+Decision date: 2026-10-19
+
+## D-051 — 3D-Sun-SADDLE-V1 Flat Upper Source/Drain Geometry Selection
+
+**ACCEPTED — upper S/D geometry only. The 3D electrical/mesh/BTBT baseline remains PROVISIONAL.** This is a later explicit researcher decision; it changes the forward structural choice without rewriting historical run/QC evidence.
+
+- **Selected geometry:** Adopt the **flat-topped upper source/drain Si fin**, in place of the historical upper semicircular SiFin cap, as the forward structural parent for the separately provisional 3D-Sun-SADDLE-V1 reconstruction. **Retain the rounded LOWER Si saddle fin**, existing buried gate/oxide, contacts, and doping. The executed Flat M1 SDE extends the rectangular upper S/D fin to z=0 and removes only the upper S/D semicircular cap.
+- **Original-paper rationale:** Sun, Baac and Shin (2022), Micromachines 13, 1476, DOI https://doi.org/10.3390/mi13091476, depicts the *upper* source/drain as flat in **Figure 1(b,d)**, while **Figure 2(e)** defines the rounded **lower saddle-fin** fillet (nominal R_fillet=1). The selection is a **figure-consistent CMP reconstruction**, not proof that the paper disclosed the exact flat-top CAD, process geometry, or Sentaurus deck.
+- **Parameters held:** Nominal ARgate=6, DBCAT=36 nm, Wfin=17 nm, Hsaddle=48 nm, JunctionRatio=0.4, RfilletFactor=1, GaussFactor=0 and oxide=5 nm; no physics, workfunction, doping or calibration retuning is authorized by this geometry choice.
+- **Historical preservation:** Rounded M1 and GaussFactor runs remain historical controls, with Flat M1/M2A and SDE-only M2B/M2C/M2D evidence untouched. Frozen 2D PAPER-CAL C7_4 remains unchanged. D-050's selected-point 3D strategy and historical 3D-Sun-B0 anchor are not silently replaced.
+- **Still open:** Flat mesh quality/sliver diagnosis, independent two-mesh electrical/spatial E/BTBT comparison, source/drain/body current attribution, paper Vth and Ion/Ioff definition/mismatch, any retention or MEB-range claim. M2C and M2D are one effective mesh; no new simulations accompanied this decision.
+- **Next action:** Continue isolated MeshCase=0 SDE-only reproduction of M2D, then bounded SDE-only mesh/CAD screening; only after mesh QC consider selected matched-bias SDevice validation. No bulk 3D DOE, temperature, retention, root README, or final result freeze.
