@@ -1,5 +1,11 @@
 # CMP Research Handoff
 
+## 2026-10-19 — D-051 Flat upper S/D selected (STRUCTURAL SELECTION ONLY)
+
+- **Adopted forward geometry:** Flat upper source/drain in 3D-Sun-SADDLE-V1; **lower saddle remains rounded**. Source: Sun et al. Figure 1(b,d) upper S/D profile versus Figure 2(e) saddle fillet, plus user decision D-051. This is figure-consistent reconstruction, not exact paper CAD or validated 3D electrical reproduction. See [D-051](docs/DECISIONS.md) and [Flat S/D progress addendum](docs/progress/3d_sun_saddle_v1_flat_sd_mesh_20261019.md).
+- **Boundary:** Geometry choice accepted, but **Flat M1/M2A/M2D mesh and E/BTBT are NOT validated**; M2B/C/D are SDE-only and M2C/M2D are one effective mesh. All historical Rounded M1/GaussFactor evidence, existing 3D-Sun-B0 role under D-050, and frozen 2D PAPER-CAL C7_4 remain unchanged. No new TCAD run was performed to make this selection.
+- **NEXT FIRST ACTION:** Isolated **MeshCase=0 SDE-only** run to reproduce M2D, then bounded cases 1–6 and CAD/Si-Ox curved saddle sliver diagnosis. Two genuinely distinct, adequately resolved meshes and matched-bias SDevice E/BTBT checks are required before quantitative adoption. No blanket electrical, thermal or retention run yet.
+
 ## 2026-10-19 — 3D-Sun-SADDLE-V1 Flat S/D M1→M2D SDE mesh QA (PAUSED / PROVISIONAL)
 
 - **Current lineage and stage:** isolated Flat-upper-S/D variant of the separately provisional 3D-Sun-SADDLE-V1. Gate/Si saddle/oxide/contacts/doping unchanged through M2A–M2D (ARgate=6, DBCAT=36nm, Wfin=17nm, Hsaddle=48nm, JunctionRatio0.4, RfilletFactor1, GaussFactor0). This is **mesh-diagnostic work**, not an accepted geometry, mesh, GIDL field solution, paper fit or retention validation.
