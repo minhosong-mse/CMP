@@ -440,3 +440,12 @@ Decision date: 2026-10-19
 - **Historical preservation:** Rounded M1 and GaussFactor runs remain historical controls, with Flat M1/M2A and SDE-only M2B/M2C/M2D evidence untouched. Frozen 2D PAPER-CAL C7_4 remains unchanged. D-050's selected-point 3D strategy and historical 3D-Sun-B0 anchor are not silently replaced.
 - **Still open:** Flat mesh quality/sliver diagnosis, independent two-mesh electrical/spatial E/BTBT comparison, source/drain/body current attribution, paper Vth and Ion/Ioff definition/mismatch, any retention or MEB-range claim. M2C and M2D are one effective mesh; no new simulations accompanied this decision.
 - **Next action:** Continue isolated MeshCase=0 SDE-only reproduction of M2D, then bounded SDE-only mesh/CAD screening; only after mesh QC consider selected matched-bias SDevice validation. No bulk 3D DOE, temperature, retention, root README, or final result freeze.
+
+Decision date: 2026-10-20
+
+## D-052 — CONDITIONAL Flat-S/D 3D two-grid comparison policy (NOT baseline freeze)
+
+- **Scope:** In the reconstructed `3D-Sun-SADDLE-V1 / Flat upper S/D` only, use `CadSeamCase=3`, `CurveGrid=1` SDE n41 as economical **selected-point diagnostic mesh A**, with `CurveGrid=2` SDE n46 as an independently finer **control mesh B**; each project maps A→SDevice n47 and B→n48. This is an analysis workflow choice, not a universal mesh acceptance or production calibration.
+- **Evidence:** executed 6/6 300K/36nm Hurkx SDevice sweeps and 24 snapshot matched-bias spatial checks, plus unchanged CAD volumes/contact/doping definitions and mesh connectivity independence. [2026-10-20 progress](progress/3d_sun_saddle_v1_flat_sd_ab_20261020.md); [numeric source index](../data/3d_sun_flat_sd_ab_20261020/README.md).
+- **Scientific limitation:** nonzero sub-0.1nm edges, <1° tetra, finite x=60nm Drain-boundary max field, body-dominated OFF drain leakage, unisolated Hurkx ON/OFF difference and 2-grid-only sensitivity mean **absolute physical GIDL, mesh convergence, retention and optimum remain UNVALIDATED**. Preserve D-050 and D-051 and other lineages.
+- **Next decision gate:** audit drain outer contact/junction boundary and compare bounded Hurkx ON/OFF in a representative high-VD negative-VG state before any 36→48nm selected-point extension. No paper-DC retune, thermal/retention batch or 3D DOE authorized by this decision.
