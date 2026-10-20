@@ -1,5 +1,14 @@
 # CMP Research Handoff
 
+## 2026-10-21 — Flat S/D boundary and Mesh A Hurkx ON/OFF close-out (NUMERIC QC COMPLETE; GIDL CLAIM PROVISIONAL)
+
+- **New selected-point checkpoint:** [progress](docs/progress/3d_flat_sd_boundary_hurkx_20261021.md), [native-hash/derived evidence](data/3d_sun_flat_sd_hurkx_20261021/README.md), [ON/OFF control code](code/scripts/analysis/3d_flat_sd_hurkx_20261021/README.md). Old 2026-10-20 Flat CurveGrid A/B checkpoint remains historical parent, not overwritten.
+- **Executed:** native HIGHNEG Mesh A n41→n47, T300K/DBCAT36nm, Vd1.2V/Vg0→−1V, 205/205 matched original ON vs single-clause Hurkx-OFF, 4-terminal KCL both pass; reproduced ON original Id, no physical/solver retuning. At −1V drain +9.1393006812e−14A ON vs +5.3737137583e−15A OFF; Δ=8.6019293054e−14A, **94.1202% ON-reference reduction**. Substrate counterbalances drain; Source negligible. This demonstrates **Hurkx-model-dependent drain-body current**, NOT pure terminal-collected GIDL.
+- **Executed spatial QC:** 12 ON/12 OFF SVisual 3D-TDR cuts, 843 matched coordinate/doping points; E-field differs ≤0.1V/cm at sample positions and x=60nm outer |E|max remains ~3.85967MV/cm with Hurkx OFF, while OFF Band2BandGeneration=0 across samples/three ROI maxima. Previous Mesh A/B 12-cut outer-boundary x-gradient and BTBT-GateDrain mismatch confirmed. Native SDE pp41/n41 face selection returned Drain **Face 91** at x60nm probe z−25nm; **full face extent and hotspot Face91 membership NOT VERIFIED**.
+- **Next FIRST TASK:** isolate one drain-domain/contact-placement *boundary sensitivity* preserving model/active core/doping/WF/mesh controls; additionally calculate full 3D **signed** ON/OFF BTBT volume generation (positive, negative, net), distinguish terminal collection, verify face geometry. Only if boundary physically resolved consider selected MEB36↔48 at matched 300K. No global 3D DOE, temperature/retention, root README, public baseline promotion or frozen 2D C7_4 edits.
+- **Sources:** 2026-10-21 user native ZIPs and derived CSVs are hash indexed; raw TDR/PLT/log ZIPs external to GitHub, not rewritten. D-050/D-051/D-052 stay in force.
+
+
 ## 2026-10-20 — CURRENT: Flat S/D CurveGrid A/B 300K/36nm DC+spatial QC complete (PROVISIONAL)
 
 - **Current lineage:** separately provisional `3D-Sun-SADDLE-V1 / Flat upper S/D` under D-051. Native SDE/SMesh Case 0..6, LocalCase1/2, CadSeamCase0..3 and CurveGrid1/2 were executed and independently checked; data/code/report: [new checkpoint](docs/progress/3d_sun_saddle_v1_flat_sd_ab_20261020.md), [machine-readable evidence](data/3d_sun_flat_sd_ab_20261020/README.md). Older 2026-10-19 SDE-only next steps below are **HISTORICAL/SUPERSEDED by this current section**, not deleted.

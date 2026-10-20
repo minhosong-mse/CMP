@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" viewBox="0 0 760 360">
+<rect width="760" height="360" fill="#fff"/><text x="40" y="28" font-family="sans-serif" font-size="21" fill="#17263a">Mesh A HIGHNEG Hurkx ON / OFF</text>
+<text x="40" y="48" font-family="sans-serif" font-size="12" fill="#4a596b">Drain terminal current, A; sampled native 205-point PLT at four gate biases</text>
+<line x1="87" y1="290" x2="703" y2="290" stroke="#333"/><line x1="87" y1="75" x2="87" y2="290" stroke="#333"/>
+<g font-family="sans-serif" font-size="12" fill="#333"><text x="40" y="78">1.0e-13</text><text x="48" y="287">0</text><text x="86" y="312" text-anchor="middle">0</text><text x="286" y="312" text-anchor="middle">-0.1</text><text x="486" y="312" text-anchor="middle">-0.5</text><text x="686" y="312" text-anchor="middle">-1.0</text><text x="360" y="344">Gate voltage (V) — selected points</text></g>
+<polyline points="87,264.46 287,254.37 487,183.89 687,93.50" fill="none" stroke="#176baf" stroke-width="3"/>
+<polyline points="87,278.73 287,278.68 487,278.51 687,278.45" fill="none" stroke="#cb6b29" stroke-width="3"/>
+<g fill="#176baf"><circle cx="87" cy="264.46" r="4"/><circle cx="287" cy="254.37" r="4"/><circle cx="487" cy="183.89" r="4"/><circle cx="687" cy="93.50" r="4"/></g>
+<g fill="#cb6b29"><circle cx="87" cy="278.73" r="4"/><circle cx="287" cy="278.68" r="4"/><circle cx="487" cy="278.51" r="4"/><circle cx="687" cy="278.45" r="4"/></g>
+<g font-family="sans-serif" font-size="13"><line x1="515" y1="49" x2="548" y2="49" stroke="#176baf" stroke-width="3"/><text x="556" y="53" fill="#17263a">Hurkx ON</text><line x1="630" y1="49" x2="659" y2="49" stroke="#cb6b29" stroke-width="3"/><text x="665" y="53" fill="#17263a">OFF</text></g>
+<text x="455" y="122" font-family="sans-serif" font-size="12" fill="#176baf">ON 9.1393e-14 A</text><text x="455" y="263" font-family="sans-serif" font-size="12" fill="#cb6b29">OFF 5.3737e-15 A</text>
+</svg>
