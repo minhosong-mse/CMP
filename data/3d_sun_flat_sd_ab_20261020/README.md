@@ -23,3 +23,14 @@
 Meshes A/B are CurveGrid1 n41→SDevice n47 and CurveGrid2 n46→SDevice n48 **within each SWB project**, all 300K/Hurkx/36nm nominal. Files `.tdr`, `.plt`, `.log` and PP-CMD in the archive are the primary evidence; committed CSVs and summary charts are extracted derivatives, not replacements.
 
 **Physical scope warning:** Global |E| maximum x≈+60nm near drain outer domain; HIGHNEG gate-correlated BTBT x15..30nm is not yet proven to be *entire* drain GIDL. q∫max(G,0)dV is generation-equivalent, not terminal; signed negative term at some positive Vg is non-negligible. Remaining <1° tetra and <0.1nm edges forbid categorical full mesh convergence. No 3D temperature or retention result in this checkpoint.
+
+## DC transfer curve gallery (native PLT-derived)
+
+These plots use all original parsed transfer samples, absolute 3D `drain TotalCurrent` in A, and **not** literature-normalized A/µm. Red/orange is finer B, blue is A.
+
+![LOWVD A/B Id-Vg](figures/LOWVD_IDVG_AB.svg)
+![HIGHPOS A/B Id-Vg](figures/HIGHPOS_IDVG_AB.svg)
+![HIGHNEG A/B Id-Vg](figures/HIGHNEG_IDVG_AB.svg)
+
+![HIGHNEG positive BTBT integral](figures/HIGHNEG_BTBT_AB.svg)
+![HIGHNEG positive BTBT spatial share](figures/HIGHNEG_SPATIAL_SHARE_A.svg)
