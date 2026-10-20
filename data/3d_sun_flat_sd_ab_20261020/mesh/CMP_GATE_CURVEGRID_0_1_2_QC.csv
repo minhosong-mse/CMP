@@ -1,0 +1,6 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: CMP_GATE_CURVEGRID_0_1_2_QC_20261020.csv>
+index,CurveGrid,mesh,log,vertices,tetrahedra,unique_edges,min_edge_nm,edges_under_0.02nm,edges_under_0.05nm,edges_under_0.1nm,short_edges_gate_band_73.0_to_73.5nm,gate_curve_window_edge_median_nm,gate_curve_window_edge_p90_nm,gate_curve_window_edges,canonical_tetra_coord_digest,min_tetra_angle_deg,non_delaunay_boundary_faces,logged_final_tetra
+0,0,/mnt/data/n44_msh.tdr,/mnt/data/n44_msh.log,48531,272506,327056,0.0143806709398606,30,98,132,128,2.6516504294495533,3.380204320747498,33880,0b1d2fb25998d6591b5864e3eaa3f191293e951bc92be342632ce8d739dc04e6,0.356817,94.0,272506.0
+1,1,/mnt/data/n41_msh.tdr,/mnt/data/n41_msh.log,62396,352400,421953,0.0365888314620733,0,42,114,68,1.875,2.5242960033442965,113493,c11130f9f9f9b5de320364fb605db1bca1261fca11daf8b6ad79aedde3fac00b,0.427801,0.0,352400.0
+2,2,/mnt/data/n46_msh.tdr,/mnt/data/n46_msh.log,80788,459464,548222,0.0365888314620733,0,74,198,120,1.4062499999999978,1.932705762008276,219277,e5ecac35c415d17ca8a5ef8e9a90b1ff78cfe2fd153cc8f046d5889dd1d8679d,0.855553,0.0,459464.0
