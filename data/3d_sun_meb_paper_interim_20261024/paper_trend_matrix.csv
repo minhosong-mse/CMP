@@ -1,0 +1,6 @@
+bias_or_trace,paper_order_or_shape,cmp_order_or_shape,assessment,paper_source
+IdVg_OFF_Vd1p2,48>36>24,24>36>48,OPPOSITE,Table1_raster_visual
+IdVg_turn_on,steep_rise,steep_rise,PARTIAL,Table1_raster_visual
+IdVd_Vg1p2,24>36>48,24>36>48,AGREES_ORDER,Table1_raster_visual
+IdVd_Vg0p6,24>36>48,48>36>24,OPPOSITE,Table1_raster_visual
+IdVd_Vg0p1,paper_much_higher,CMP_low_current,ABSOLUTE_MISMATCH,Table1_raster_visual
