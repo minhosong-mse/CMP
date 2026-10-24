@@ -1,5 +1,8 @@
 # CMP Model Scope and Claim Boundaries
 
+> **Current-scope amendment (2026-10-25; D-053):** The user's active CMP research target is now the independent **`3D-Sun-SADDLE-V1 / Flat upper S/D` WORKING baseline**, pursuing 3D MEB → E/BTBT/GIDL → Cgd → temperature → 1T1C. Earlier 2D main DOE and `3D-Sun-B0` validation-anchor descriptions below document historical lineages as of 2026-09-22, **not the present active run plan**. Do not conflate these branches. The newly selected 3D physical parameters are retained as fixed working controls, not a fully paper-matched or mesh-converged physical calibration. See [2026-10-25 progress](progress/3d_vg06_channel_working_baseline_closeout_20261025.md), [D-053](DECISIONS.md), and [HANDOFF](../HANDOFF.md).
+
+
 > Last synchronized: 2026-09-22  
 > Purpose: define what the CMP models can and cannot support after the first/second presentation feedback cycles.
 

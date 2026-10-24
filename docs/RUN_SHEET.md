@@ -1,5 +1,8 @@
 # TCAD Virtual Run Sheet v9
 
+> **ACTIVE RESEARCH LINEAGE UPDATE (2026-10-25, D-053):** The user selected the independent `3D-Sun-SADDLE-V1 / Flat upper S/D` as the **current working mainline** for future CMP physical/retention research. The completed 2D Run 0–7 records below remain historical within their own lineages, **not a 3D prerequisite or a claim that their figures transfer to 3D**. 3D working baseline is selected, **not** a Sun-paper-calibrated/mesh-converged final model. Next: selected 3D MEB24/36/48 negative-Vg Hurkx ON/OFF + signed terminal/BTBT spatial QC, including bounded outer-drain boundary attribution. See [D-053](DECISIONS.md) and [2026-10-25 close-out](progress/3d_vg06_channel_working_baseline_closeout_20261025.md).
+
+
 This is the official project run sheet. Status and pass criteria must be updated through
 recorded decisions, not inferred from exploratory plots.
 

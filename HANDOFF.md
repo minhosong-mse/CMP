@@ -1,5 +1,16 @@
 # CMP Research Handoff
 
+## 2026-10-25 — 3D independent working baseline selected; Vg0.6 native TDR source-spatial QC COMPLETE (SESSION CLOSED)
+
+- **User scope decision:** use the independently constructed **`3D-Sun-SADDLE-V1 / Flat upper S/D`** as the **active research WORKING BASELINE** for subsequent MEB→GIDL/BTBT/E→Cgd→temperature→1T1C. No mandatory 2D revalidation or absolute Sun-paper force-fit. Keep the old 2D branches separate, historically valid but not inputs to the new 3D analysis.
+- **Baseline selection:** fixed current geometry/physics (`Lg20nm, Wfin17nm, Tox5nm, recess120nm, nominal junction48nm, WF4.8eV, Mesh A CurveGrid1, Hurkx ON`); **WORKING SELECTED / NOT PAPER-CALIBRATED OR FULL MESH-CONVERGED**. It is acceptable that paper and CMP differ in nominal Vth and some MEB current orderings; disclose, do not claim paper reproduction.
+- **Executed this session:** 24/36/48nm distinct SDevice reruns at **Vg0.6 Vd1.2 T300 Hurkx ON** from existing meshes, three 3D HDF5 TDRs successfully generated and ZIP-manifest SHA256 verified. Native tetra-interpolated matched-Silicon analysis at x−15nm shows 24→48 mean φ +2.5624mV, sampled eDensity +14.0663%, native drain Id +14.0713% (6.197e−10→7.069e−10 A). These align with a **channel-electrostatic explanation** of the Vg0.6 current inversion, **not proven unique transport saddle or causality**. MEB 36 Mesh A/B Id sensitivity ≈5% is a numerical caveat.
+- **Earlier 15/15 DC sweep comparison remains:** general Id–Vg turn-on and high-Vg Id–Vd shapes broadly reasonable, Id–Vd Vg1.2 order agrees paper (24>36>48), Vg0.6 order opposite (48>36>24), low-Vg Id–Vg OFF order opposite; paper Vth~0.656V vs CMP high-Vd ~0.783V. Uniform Vth shift can help explain 0.6V **absolute current amplitude**, not the MEB order reversal by itself. Vg0.1 native 36nm primarily Drain–Body current. Do not label raw drain leakage pure GIDL.
+- **Evidence:** [2026-10-25 analysis/selection](docs/progress/3d_vg06_channel_working_baseline_closeout_20261025.md), [raw-TDR hashes and extracted CSV/plots](data/3d_vg06_channel_validation_20261025/README.md). Full source HDF5 TDR, logs and fine-grained CSV/PNG remain immutable externally; Git stores validated summary and SVG trend plots. Previous 2026-10-24 report is historical predecessor, not erased.
+- **NEXT FIRST ACTION:** directly continue the **3D** model with matched **24/36/48nm, T300K, Vd1.2V, Vg≈−0.7V** Hurkx ON/OFF, signed four-terminal leakage/KCL plus Gate–Drain/Outer Drain spatial E-field/BTBT. Perform a **bounded** x≈60nm Drain contact/boundary check as part of leakage interpretation, not an open-ended baseline rebuild. Then 3D Cgd → temperature → 1T1C. No root README edit, no geometry/WF retune without new explicit scientific reason.
+- **Status:** session CLOSED; no final GIDL/Retention/optimum/production claim; frozen 2D historical data left intact.
+
+
 ## 2026-10-24 — 3D Sun Flat S/D MEB 24/36/48 paper-calibration interim review (EXECUTED / MODEL MECHANISM SUPPORTED / PAPER FIT PARTIAL)
 
 - **Current lineage and status:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, 20nm Lg / Wfin17nm, Mesh A/CurveGrid1 policy, **WF4.8eV frozen**, 300K, Hurkx ON unless deliberate OFF control. **PROVISIONAL; NOT a paper-reproducing calibrated or frozen 3D baseline.** The frozen 2D `B0-2D-PAPER-CAL C7_4` remains separate/untouched.
