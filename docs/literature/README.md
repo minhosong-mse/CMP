@@ -19,6 +19,7 @@
 | REF11 | Yun et al., IEEE TDMR 2026 | trap-induced local-field/GIDL reliability context | DOI/abstract verified | later |
 | REF12 | Lim & Kwon, JSTS 2022 | multi-gate BCAT GIDL / refresh context | local PDF verified | later |
 | REF13 | Lee et al., Electronics 2020 | Pi-BCAT / buried-insulator GIDL structural context | local PDF verified | later |
+| REF14 | Kim & Kwon, IEEE Access 2026 (fin height) | 3D saddle-fin structure; Hfin/Nbody/DBM isolation; GIJL/PGE/1-RD trade-off; **not a transferable MEB optimum** | **user-provided full PDF verified (2026-10-27)** | yes |
 
 ## Run 7 Implementation Source Set
 
@@ -43,6 +44,7 @@ No paper-specific value is treated as production calibrated merely because it is
 - [REF07 — Liu et al. 2024 Part II](REF07_liu_2024_retention_part2.md)
 - [REF08 — Bang et al. 2025](REF08_bang_2025_1t1c.md)
 - [REF09 — Cho, Kim, Baek 2026](REF09_cho_2026_read_write_hold.md)
+- [REF14 — Kim & Kwon 2026 fin-height / saddle-fin BCAT](REF14_kim_kwon_2026_fin_height.md)
 
 ## Note Discipline
 

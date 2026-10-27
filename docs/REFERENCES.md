@@ -19,12 +19,14 @@ A reference being listed here does not mean that its model, calibration, geometr
 | REF11 | J. Yun et al., “Analysis and Structural Mitigation of Trapping-State-Trap Induced Drain Leakage Current in Buried-Channel-Array-Transistor,” *IEEE Transactions on Device and Materials Reliability*, 2026. DOI `10.1109/TDMR.2026.3684027` | trap-induced local-field/GIDL reliability context | R9.5/future | DOI/abstract verified |
 | REF12 | C. Y. Lim, M.-W. Kwon, “Multi-gate BCAT Structure and Select Word-line Driver in DRAM for Reduction of GIDL,” *JSTS* 22(6), 452-456, 2022. DOI `10.5573/JSTS.2022.22.6.452` | GIDL/refresh and multi-gate/SWD context | background / future DWF | local PDF verified |
 | REF13 | J.-s. Lee et al., “Partial Isolation Type Buried Channel Array Transistor (Pi-BCAT) for a Sub-20 nm DRAM Cell Transistor,” *Electronics* 9, 1908, 2020. DOI `10.3390/electronics9111908` | structural GIDL-reduction / usable-parameter-range precedent | background / R10 context | local PDF verified |
+| REF14 | D. Kim, M.-W. Kwon, “Optimization of Fin Height in Saddle-Fin BCAT Structured DRAMs,” *IEEE Access* 14, 143318–143325, 2026. DOI `10.1109/ACCESS.2026.3733420` | 3D saddle-fin geometry, Hfin/body-doping/DBM co-variation, GIJL vs GIDL mechanism boundaries, multi-metric disturbance trade-off; **not** an MEB-depth or retention-time calibration | active 3D-Sun-SADDLE-V1 methodology / future cell discussion | **user-provided full PDF verified (2026-10-27)** |
 
 ## Role Rules
 
 - `REF01-REF04`: baseline and current MEB/DWF novelty boundary.
 - `REF05-REF09`: retention/cell-operation main group for R7-R10.
 - `REF10-REF13`: variation/reliability/alternative-structure context.
+- `REF14`: 3D saddle-fin height / GIJL / disturbance trade-off and structural-vs-doping isolation; current 3D method reference, not a direct MEB→GIDL→retention demonstration.
 
 Detailed extraction belongs in [`docs/literature/`](literature/README.md); this index should stay concise.
 
