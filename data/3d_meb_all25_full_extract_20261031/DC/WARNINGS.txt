@@ -1,0 +1,5 @@
+UNASSIGNED native result preserved without depth attribution: CMP_SADDLE_QUICK.plt
+UNASSIGNED native result preserved without depth attribution: CMP_SADDLE_QUICK.tdr
+UNASSIGNED native result preserved without depth attribution: Prep_Drain0p05_CMP_SADDLE_QUICK.plt
+UNASSIGNED native result preserved without depth attribution: Quick_PosOnly_VD0p05_CMP_SADDLE_QUICK.plt
+UNASSIGNED native result preserved without depth attribution: S0_GEOMETRY_PREVIEW_ONLY_bnd.tdr

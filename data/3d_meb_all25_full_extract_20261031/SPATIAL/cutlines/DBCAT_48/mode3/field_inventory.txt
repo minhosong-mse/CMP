@@ -1,0 +1,2 @@
+DATASET=n198_des
+AVAILABLE_FIELDS=Abs(ElectricField-V) AcceptorConcentration Band2BandGeneration DonorConcentration DopingConcentration ElectricField-V ElectricField-X ElectricField-Y ElectricField-Z ElectrostaticPotential LatticeTemperature X Y Z eDensity hDensity
