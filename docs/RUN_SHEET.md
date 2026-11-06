@@ -3,6 +3,21 @@
 > **ACTIVE RESEARCH LINEAGE UPDATE (2026-10-25, D-053):** The user selected the independent `3D-Sun-SADDLE-V1 / Flat upper S/D` as the **current working mainline** for future CMP physical/retention research. The completed 2D Run 0–7 records below remain historical within their own lineages, **not a 3D prerequisite or a claim that their figures transfer to 3D**. 3D working baseline is selected, **not** a Sun-paper-calibrated/mesh-converged final model. Next: selected 3D MEB24/36/48 negative-Vg Hurkx ON/OFF + signed terminal/BTBT spatial QC, including bounded outer-drain boundary attribution. See [D-053](DECISIONS.md) and [2026-10-25 close-out](progress/3d_vg06_channel_working_baseline_closeout_20261025.md).
 
 
+
+## 2026-11-06 — Active independent 3D low-/high-temperature extension (PLANNED; not executed)
+
+> This is a **new 3D working-lineage plan**, not a retroactive change to the historical 2D Run 6–9 records below. The historical Run Sheet already mentions 233 K as a downstream **2D** proposal; it was not an executed **3D** low-temperature result.
+
+- **Model lineage:** `3D-Sun-SADDLE-V1 / Flat upper S/D`; keep existing 3D SDE geometry, nominal junction depth 48 nm, doping, mesh policy, gate WF 4.8 eV, seven RunMode bias definitions and Hurkx ON/OFF control unchanged for temperature comparison. No full 3D paper calibration or mesh convergence is thereby implied.
+- **Temperature variable:** `TempK = 233, 300, 340, 380 K`. **233 K (approximately −40 °C) is newly added to the active 3D screening plan**, not yet simulated. The first-pass study uses fixed lattice/device temperature per SDevice case, not a self-heating/Thermodynamic simulation.
+- **Representative MEB depths:** `DBCAT_nm = 36, 41, 48, 54, 60` nm (nominal baseline, BTBT ROI contribution crossover, nominal junction-depth alignment, above-junction intermediate, and deep-end challenger).
+- **All seven original modes:** `RunMode = 0..6`. First run 0/1/5/6 at 233/340/380 K for DC, DIBL, SS and matched negative-gate Hurkx ON/OFF; complete 2/3/4 afterwards for output-current characteristics.
+- **Number of cases:** five MEB × four T × seven modes = **140** cross-condition comparison cells. Existing 300 K 3D data provide **35** cells subject to matched-source/QC reuse; **105** new non-300 K SDevice cases are planned (5×3×7). New temperature runs are **not yet executed**, and source Git archiving of the separate 49–60 nm campaign is not implied by this planning entry.
+- **SWB branching:** create each `DBCAT_nm` mesh once in SDE, then branch SDevice by `TempK` and `RunMode` (temperature logically above RunMode for organization). Substitute `Physics { Temperature=@TempK@ Fermi }` in the **original SDevice source**; verify 233/340/380 K values in each preprocessed `pp*_des.cmd` before execution. `TempK` and `RunMode` must both be resolved **before each independent SDevice solve**; do not run a temperature-only SDevice serially into a second RunMode SDevice or reuse its converged state without a separately controlled protocol.
+- **Validation/claim gate:** verify fixed-bias convergence, terminal KCL/endpoints, model activation/low-temperature physical validity, and selected-point mesh plus x≈60 nm outer-drain boundary/contact attribution. Model-dependent Hurkx ON−OFF current is not independently established collected GIDL; no retention improvement, optimized depth or complete 3D mesh convergence is claimed.
+- **Parallel retention track (PLANNED):** begin with a separately validated **3D** 36 nm/300 K 1T1C mixed-mode Write/Hold/Read and hold-current-vs-storage-voltage protocol; extend to 48/60 nm and 233/340/380 K only after 3D topology, terminal mapping, capacitance scaling and numerical checks pass. Historical 2D Run7 `AreaFactor=0.017` and `Ccell=10 fF` are methodological precedent/candidates, not frozen transferable 3D parameters.
+
+
 This is the official project run sheet. Status and pass criteria must be updated through
 recorded decisions, not inferred from exploratory plots.
 
