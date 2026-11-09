@@ -4,6 +4,13 @@
 
 
 
+## 2026-11-09 — Independent 3D temperature screening evidence (EXTRACTED; 138/140 endpoint-complete, PROVISIONAL)
+
+- **Executed externally and extracted:** `DBCAT_nm=36/41/48/54/60` × `TempK=233/300/340/380` × `RunMode=0..6` = **140** uniquely mapped cases. **105** cases originate from the temperature SWB project, **35** (300 K) from the existing separate 3D baseline project. `CASE_QC` and `SOURCE_MAPPING` record provenance; source SWB data were not altered by this archiving task.
+- **Numerically complete at target bias:** **138/140**; **two incomplete SDevice runs:** n1979 (36nm/380K/Mode5, −0.66372928V vs goal −0.7V, Newton/MinStep termination), n1686 (54nm/340K/Mode1, +0.108366V vs goal +2.0V, root cause pending). Keep partial raw curves archived but exclude both from target-bias metrics and paired comparisons. **552** valid spatial ROI rows, **552** cutlines, **3864** scalar rows.
+- **Evidence and next tasks:** [data/QC](../data/3d_meb_temp140_partial_20261109/README.md), [scientific provisional analysis](evidence/3d_meb_temp140_analysis_20261109.md), [progress log](progress/3d_meb_temp140_extraction_20261109.md). Next: minimum-change rerun of only the two incompletes, cross-project mesh/model validation, outer-drain x≈60nm geometry/contact attribution, selected mesh sensitivity, and then separate 3D SN-current/Ceff retention protocol.
+- **Claim gate:** temperature/MEB model-internal Hurkx and BTBT results do **not** establish collected GIDL or 1T1C VSN=1→0.8 V retention time. This 2026-11-09 executed checkpoint **updates the status** of the 2026-11-06 *historical plan below* without rewriting that earlier plan as if it had already been executed.
+
 ## 2026-11-06 — Active independent 3D low-/high-temperature extension (PLANNED; not executed)
 
 > This is a **new 3D working-lineage plan**, not a retroactive change to the historical 2D Run 6–9 records below. The historical Run Sheet already mentions 233 K as a downstream **2D** proposal; it was not an executed **3D** low-temperature result.

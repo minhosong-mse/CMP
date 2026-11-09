@@ -1,0 +1,3 @@
+DBCAT_nm,TempK,RunMode,SDevice_node,source_role,native_points,target_Vg_V,target_Vd_V,last_Vg_V,last_Vd_V,last_Id_A,KCL_relative_max,issue,error,scientific_use,raw_curve_file
+36,380,5,1979,temperature_project,238,-0.7,1.2,-0.66372928,1.2,2.383738e-12,4.7752036258288325e-08,PARTIAL_ENDPOINT,"Endpoint not reached: expected (-0.7,1.2), got (-0.66372928,1.2)",DO NOT compare partial point to target bias; no -0.7 V ON/OFF delta,DC_curves/DBCAT_36_T380_mode5_n1979.plt.csv
+54,340,1,1686,temperature_project,150,2.0,1.2,0.108366,1.2,1.1186369e-13,3.3696001464100644e-08,PARTIAL_ENDPOINT,"Endpoint not reached: expected (2.0,1.2), got (0.108366,1.2)",DO NOT compare partial point to target bias; no -0.7 V ON/OFF delta,DC_curves/DBCAT_54_T340_mode1_n1686.plt.csv

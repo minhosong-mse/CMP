@@ -1,0 +1,43 @@
+{
+  "lineage": "3D-Sun-SADDLE-V1 / Flat upper S/D working baseline",
+  "scientific_status": "PARTIAL-NUMERICAL-EXTRACTION / SCIENTIFIC-PROVISIONAL",
+  "expected_cases": 140,
+  "complete_target_bias_cases": 138,
+  "incomplete_cases_count": 2,
+  "incomplete_cases": [
+    {
+      "DBCAT_nm": 36,
+      "TempK": 380,
+      "RunMode": 5,
+      "SDevice_node": 1979,
+      "target_Vg_V": -0.7,
+      "last_Vg_V": -0.66372928,
+      "issue": "PARTIAL_ENDPOINT"
+    },
+    {
+      "DBCAT_nm": 54,
+      "TempK": 340,
+      "RunMode": 1,
+      "SDevice_node": 1686,
+      "target_Vg_V": 2.0,
+      "last_Vg_V": 0.108366,
+      "issue": "PARTIAL_ENDPOINT"
+    }
+  ],
+  "spatial_raw_rows": 3864,
+  "spatial_roi_rows": 552,
+  "cutline_files": 552,
+  "model_scope": [
+    "Partial endpoint cases EXCLUDED from target-bias metrics, spatial and paired ON/OFF statistics",
+    "Native partial DC curves are archived as evidence only",
+    "No interpolation/extrapolation to Vg=-0.7 V",
+    "Hurkx ON-minus-OFF is NOT measured collected GIDL",
+    "233K model validity, outer-drain boundary attribution, and mesh convergence unverified",
+    "No 1T1C retention simulated"
+  ],
+  "sources": [
+    "CMP_3D_COMPETITION_DBCAT24_48",
+    "CMP_3D_Temp"
+  ],
+  "cross_project_geometry_equivalence": "REQUIRES INDEPENDENT PHYSICAL DECK REVIEW"
+}

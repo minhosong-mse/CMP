@@ -1,5 +1,15 @@
 # CMP Research Handoff
 
+## 2026-11-09 — Independent 3D MEB × temperature 140-case extracted-evidence checkpoint (138/140 endpoint PASS; PROVISIONAL)
+
+- **ACTIVE LINEAGE / STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D` working baseline; MEB depth × temperature screening has been **executed externally** and now archived as a **partial numerical extraction checkpoint**, NOT a paper-calibrated, fully mesh-converged or validated retention result.
+- **LAST COMPLETED WORK:** Five MEB depths (36/41/48/54/60 nm) × four temperatures (233/300/340/380 K) × seven original RunModes = 140 mapped source cases. Existing 105 temperature-campaign cases plus 35 separately sourced 300 K comparison cases yielded **138/140 target-bias complete** SDevice curves, 552 ROI summaries, 3864 spatial scalar records, 552 Cutlines, 138 field inventories and 138 case-status JSONs. All 140 native-exported DC curve CSVs are retained; two partial curves are **not** represented as complete targets. No upstream SDevice reruns were performed for Git archiving.
+- **BLOCKED / ERROR:** `36nm / 380 K / Mode5 / n1979`: target Vg −0.7 V, reached −0.66372928 V; native log reports Newton / MinStep termination. `54nm / 340 K / Mode1 / n1686`: target Vg +2.0 V, reached +0.108366 V; native solver-log root cause pending. Both remain scientifically incomplete. Native grid equivalence/low-T model validity, x≈60 nm Outer Drain / Face91 attribution, and bounded mesh sensitivity also remain open.
+- **ARCHIVED EVIDENCE:** [data checkpoint](data/3d_meb_temp140_partial_20261109/README.md), [140-condition review](docs/evidence/3d_meb_temp140_analysis_20261109.md), [progress/QC](docs/progress/3d_meb_temp140_extraction_20261109.md), [recovery and analysis scripts](code/scripts/analysis/3d_temp140_20261109/README.md). D-005 applies: original review ZIP, native TDR/PLT and full logs remain external; Git contains sanitized exported numerical evidence with hashes.
+- **NEXT FIRST ACTION:** diagnose and selectively rerun only `n1686` and `n1979` under original physics using version-verified minimal solver continuation changes. Preserve 138 intact cases, then validate exact cross-project grid / model lineage, outer-drain boundary/contact geometry and representative mesh. Only after this, begin separate 3D 1T1C SN-current-vs-VSN 1.0→0.8 V retention protocol (not executed).
+- **FROZEN / DO NOT REOPEN:** preserve older 2D historical branches and 300 K 3D evidence; do not infer pure collected GIDL, physical 1T1C retention, refresh improvement, final optimum or paper-equivalent calibration. Root README unchanged.
+
+
 
 ## 2026-10-31 — Independent 3D all-25 MEB extraction/QC COMPLETE; evidence committed to main
 

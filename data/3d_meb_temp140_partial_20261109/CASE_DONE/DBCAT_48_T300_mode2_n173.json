@@ -1,0 +1,13 @@
+{
+  "PP_SHA256": "df86825bff7fe76c55ba4205acc37e9e8db501b7552c2adb3ac7d98b288f4778",
+  "SDE_PP_SHA256": "bf9ed1f13719f9f25f37f208c27cf1466159677a8637abc82ca7ca981c55c1e5",
+  "TDR_size_bytes": 5499926,
+  "PLT_size_bytes": 248095,
+  "TDR_mtime_ns": 1793176228469406961,
+  "PLT_mtime_ns": 1793176226581400292,
+  "label": "DBCAT_48_T300_mode2_n173",
+  "verified_at_UTC": "2026-11-09T10:06:25.102430+00:00",
+  "terminal_points": 312,
+  "roi_raw_rows": 28,
+  "cutlines": 4
+}

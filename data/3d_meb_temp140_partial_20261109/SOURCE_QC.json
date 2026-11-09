@@ -1,0 +1,26 @@
+{
+  "expected_cases": 140,
+  "found_cases": 140,
+  "missing": [],
+  "duplicate": [],
+  "unexpected": [],
+  "blocked": [],
+  "sde_nodes_found": 62,
+  "sde_provenance_errors": [],
+  "sources": [
+    {
+      "role": "temperature_project",
+      "project": "CMP_3D_Temp",
+      "selected_cases": 105
+    },
+    {
+      "role": "baseline_300K_fallback",
+      "project": "CMP_3D_COMPETITION_DBCAT24_48",
+      "selected_cases": 35
+    }
+  ],
+  "baseline_duplicates_skipped": 0,
+  "comparison_guardrail": "The fallback 300-K campaign must be from the same physical 3D geometry, mesh policy, physics and bias protocol as the temperature project. Preflight confirms PP dimensions/temperature, not full cross-project geometry equivalence.",
+  "comment": "Per-case provenance is independently resolved within the SWB owning project. Only missing 300-K combinations are filled from baseline; no SDevice rerun or numerical result fabrication.",
+  "valid": true
+}
