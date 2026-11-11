@@ -25,7 +25,7 @@ def estimate(points, capacitance):
 
 def main():
     ap=argparse.ArgumentParser()
-    ap.add_argument("--data-dir",type=Path,default=Path(__file__).resolve().parents[3]/"data/3d_1t1c_retention_20261111")
+    ap.add_argument("--data-dir",type=Path,default=Path(__file__).resolve().parents[4]/"data/3d_1t1c_retention_20261111")
     ap.add_argument("--capacitance",type=float,default=1e-14)
     args=ap.parse_args()
     path=args.data_dir

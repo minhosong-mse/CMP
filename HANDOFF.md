@@ -1,5 +1,17 @@
 # CMP Research Handoff
 
+## 2026-11-11 — External 3D SN I–V × MEB × temperature + 100-ns Hold checkpoint (SCIENTIFIC-PROVISIONAL)
+
+- **ACTIVE LINEAGE/STAGE:** independent `3D-Sun-SADDLE-V1 / Flat upper S/D` working baseline, no geometry/physics/calibration changes; 5 MEB `36/41/48/54/60nm` × 4 T `233/300/340/380K` **20/20 SN I–V** curves executed externally and exported; **16/20** direct 100ns floating Holds completed, 4 failed. This updates the Nov-09 "3D retention not executed" status **from Nov-11 onward**, not retroactively.
+- **LAST COMPLETED:** signed SN current at VSN=0.8..1.0V (101 points each), `Ccell=10fF` constant-C integral **20 provisional t_est values**; 16 short Hold initial-rate checks agree with IVSN within 0.0766%. **ZERO** direct 0.8V threshold crossings. Joined original 300K 3D `Ion/Ioff/SS/DIBL/Hurkx ON−OFF` with estimated t_ret and archived **6 SVG trend plots + per-point CSV**.
+- **RESULTS (300K, 36→60nm):** Ion −12.8%, Ioff −38.6%, high-Vd SS +4.23mV/dec, DIBL +9.17mV/V, Hurkx-excess −78.6%, 10fF IVSN t_est ×3.48. Hurkx difference is not proven pure collected GIDL, t_est is **NOT** measured or production retention.
+- **FAILURES:** Hold `36/380 n1968`, `54/380 n2238`, `60/380 n2328` fail initial Coupled; `48/233 n123` fails after ~4.9ns. Historical temp-campaign `36/380 Mode5 n1979`, `54/340 Mode1 n1686` independently remain unresolved. SVisual wildcards found 60 ambiguous files; direct SDevice PLT extraction was successful using precise `IVSN_0P8_TO_1P0_` / `DIRECT_HOLD_` prefixes.
+- **MENTOR FEEDBACK:** Vth `1e-7×(W/L)` inverse produced nonphysical height for paper-0.656V vs current curve, thus 48nm saddle height **unverified**; no forced retune. Temperature-dependent Retention required; four T points already screened.
+- **SEARCH PLAN NOT FROZEN:** broad `36–60nm`, focused `42–56nm`, provisional relative-filter overlap `~44–55nm` (not a validated optimum/range). Proposed additional 300K IVSN depths `38,40,42,44,46,50,52,56,58nm` are **PLANNED** only; 24–48nm historical 3D dataset retained.
+- **NEXT FIRST TASK:** selectively rescue **four** Hold runs in isolated SWB branches; verify grid/PP/contact/mesh, 3D AreaFactor/Ceff and 233K physics. Then evaluate additional MEB IVSN and selected direct Hold/Write–Hold–Read; independently rescue old temperature DC partial cases. No full 3D mesh convergence, Cgd, actual 0.8V crossing, production optimum or refresh improvement claimed.
+- **EVIDENCE:** [data](data/3d_1t1c_retention_20261111/README.md), [analysis](docs/evidence/3d_1t1c_ivsn_hold_analysis_20261111.md), [exploratory range](docs/evidence/3d_meb_exploratory_range_20261111.md), [progress](docs/progress/3d_1t1c_retention_checkpoint_20261111.md), [week-4 feedback](docs/evidence/feedback_4wk_20261111.md). Native PLT/TDR/logs remain external under D-005; root README unchanged.
+
+
 ## 2026-11-09 — Independent 3D MEB × temperature 140-case extracted-evidence checkpoint (138/140 endpoint PASS; PROVISIONAL)
 
 - **ACTIVE LINEAGE / STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D` working baseline; MEB depth × temperature screening has been **executed externally** and now archived as a **partial numerical extraction checkpoint**, NOT a paper-calibrated, fully mesh-converged or validated retention result.

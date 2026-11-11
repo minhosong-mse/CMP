@@ -4,6 +4,13 @@
 
 
 
+## 2026-11-11 — Active 3D 1T1C SN I–V and 100-ns Hold (EXTERNALLY EXECUTED; PROVISIONAL)
+
+- Newest controlled evidence: `DBCAT_nm=36/41/48/54/60` × `TempK=233/300/340/380`: 20/20 complete SN current–VSN sweeps, 16/20 100-ns Floating Hold complete, 4 failed; no direct VSN 0.8 V crossings. Constant `Ccell=10fF` yields **integrated estimates**, not calibrated retention.
+- 300K six metrics `Ion/Ioff/SS/DIBL/Hurkx excess/IVSN retention estimate` and SVG trend plots committed in [3D 1T1C data](../data/3d_1t1c_retention_20261111/README.md). 36–60nm broad and 42–56nm focus ranges **are exploratory only**; 44–55nm relative-guardrail overlap is **not** a scientific/production optimum.
+- Failed Holds `n1968/n2238/n2328/n123` selectively recover only; do not rerun 16 valid cases. Earlier Nov-09 DC target-missing `n1979/n1686` are distinct. Exact 3D mesh/current scaling, Ceff, 233K physics, x=60nm contact and direct long-window transient must be verified before final cell-level conclusions.
+- [Progress](progress/3d_1t1c_retention_checkpoint_20261111.md); [analysis](evidence/3d_1t1c_ivsn_hold_analysis_20261111.md); [exploratory range](evidence/3d_meb_exploratory_range_20261111.md).
+
 ## 2026-11-09 — Independent 3D temperature screening evidence (EXTRACTED; 138/140 endpoint-complete, PROVISIONAL)
 
 - **Executed externally and extracted:** `DBCAT_nm=36/41/48/54/60` × `TempK=233/300/340/380` × `RunMode=0..6` = **140** uniquely mapped cases. **105** cases originate from the temperature SWB project, **35** (300 K) from the existing separate 3D baseline project. `CASE_QC` and `SOURCE_MAPPING` record provenance; source SWB data were not altered by this archiving task.
