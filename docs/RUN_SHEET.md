@@ -4,6 +4,12 @@
 
 
 
+## 2026-11-13 — Independent 3D 1nm dense MEB41–57 SN-IV (EXTRACTED, PROVISIONAL)
+
+- `41..57nm × 233/300/340/380K` = 68/68 I–VSN sweeps, 101 points each, 51 PASS and 17 low-current KCL warnings all at 233K. **IVSN only, not 68 full Hold runs**.
+- `Ccell=10fF` integral `t_est(1→0.8V)`: 41→57nm gain 3.298× (233K), 1.666× (300K), 1.222× (340K), 1.067× (380K). No direct 0.8V crossing.
+- Archive [data and eight SVG plots](../data/3d_ivsn_meb41_57_20261113/README.md); [detailed QC and mechanism limits](evidence/3d_ivsn_dense_41_57_analysis_20261113.md). Before a final MEB range, resolve 233K numeric floor, Ceff/mesh/current scaling, matched DC/GIDL and selected-depth Write/Read/long Hold.
+
 ## 2026-11-11 — Active 3D 1T1C SN I–V and 100-ns Hold (EXTERNALLY EXECUTED; PROVISIONAL)
 
 - Newest controlled evidence: `DBCAT_nm=36/41/48/54/60` × `TempK=233/300/340/380`: 20/20 complete SN current–VSN sweeps, 16/20 100-ns Floating Hold complete, 4 failed; no direct VSN 0.8 V crossings. Constant `Ccell=10fF` yields **integrated estimates**, not calibrated retention.

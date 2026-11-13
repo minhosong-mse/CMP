@@ -1,5 +1,14 @@
 # CMP Research Handoff
 
+## 2026-11-13 — Independent 3D 41–57nm dense SN-I–V × four temperatures (68/68; SCIENTIFIC-PROVISIONAL)
+
+- **ACTIVE STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, Hurkx ON; externally executed **68** SN-I–V sweeps = `DBCAT_nm 41..57` step 1 × `TempK 233/300/340/380`. SDE/SDevice mapping 68/68, 101 points each (6868 samples), 51 normal PASS plus **17 cold 233K low-current KCL warnings**; no new 68-case direct Hold or measured VSN0.8 crossing.
+- **LAST COMPLETED:** `Ccell=10fF` constant-C numerical `t_est(1→0.8V)` for 68 cases; independent raw integral verification max rel deviation `4.98e-14`; 12/12 overlap with Nov-11 41/48/54×4T consistent. 41→57nm relative gains: **3.298×** at 233K, **1.666×** at 300K, **1.222×** at 340K, **1.067×** at 380K. Monotonic for all 16 1nm increments at each T; not a calibrated physical Retention time.
+- **EVIDENCE:** [dense data/68-case node map and eight SVGs](data/3d_ivsn_meb41_57_20261113/README.md), [numerical/physics boundary review](docs/evidence/3d_ivsn_dense_41_57_analysis_20261113.md), [progress](docs/progress/3d_ivsn_dense_41_57_checkpoint_20261113.md). Source ZIP SHA256 `070ce72a011977647e24365f00b7266068531c8b833ea4ca13191e2f488253a1`. Native PLT and full 6868-row source `IVSN_CURVES.csv` **remain external**, not committed; old Nov-11 20-case results unchanged.
+- **NEXT FIRST ACTION:** investigate **233K current/KCL numerical floor** and representative 3D Ceff/mesh/current scaling/outer-drain Face91; obtain matching dense DC/Hurkx as necessary and selected Hold/Write/Read. Existing four Nov-11 Hold failures and two Nov-09 DC incomplete runs remain open; old plan depths **42/44/46/50/52/56** now have SN-IV at all T, **38/40/58** not in this new dataset. 44–55nm proposed filter remains **NOT FROZEN**.
+- **GUARDRAILS:** no SDE/SDevice/solver changes or reruns in Git archiving; not direct threshold-crossing time, pure GIDL, validated Cgd/Ceff, final optimum, or refresh-burden claim. Root README/historical 2D unchanged.
+
+
 ## 2026-11-11 — External 3D SN I–V × MEB × temperature + 100-ns Hold checkpoint (SCIENTIFIC-PROVISIONAL)
 
 - **ACTIVE LINEAGE/STAGE:** independent `3D-Sun-SADDLE-V1 / Flat upper S/D` working baseline, no geometry/physics/calibration changes; 5 MEB `36/41/48/54/60nm` × 4 T `233/300/340/380K` **20/20 SN I–V** curves executed externally and exported; **16/20** direct 100ns floating Holds completed, 4 failed. This updates the Nov-09 "3D retention not executed" status **from Nov-11 onward**, not retroactively.
