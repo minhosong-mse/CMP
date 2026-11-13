@@ -1,0 +1,26 @@
+{
+  "status": "CMP_EXECUTED_EXTRACTION_QC_PASS_SCIENTIFIC_PROVISIONAL",
+  "lineage": "3D-Sun-SADDLE-V1 / Flat upper S/D",
+  "source_archive": "CMP_IVSN_41_57_EXPORT.zip",
+  "source_zip_sha256": "070ce72a011977647e24365f00b7266068531c8b833ea4ca13191e2f488253a1",
+  "analysis_archive_sha256": "7298101ad4a3daa14a732eae4b54a04f0b80cefdeacdc7bda4d42284f3ab8ca6",
+  "cases": 68,
+  "depth_count": 17,
+  "temperatures": [
+    233,
+    300,
+    340,
+    380
+  ],
+  "points": 6868,
+  "failed": 0,
+  "pass": 51,
+  "low_current_KCL_warn_233K": 17,
+  "old_overlap": 12,
+  "max_overlap_relative_deviation": 4.440892098500626e-14,
+  "max_trapezoid_recalc_relative_error": 4.979765495154355e-14,
+  "max_simpson_vs_trapezoid_relative_difference": 0.00000817967245144549,
+  "assumed_Ccell_F": 1e-14,
+  "direct_0p8V_crossing": false,
+  "full_IVSN_curves_in_Git": false
+}
