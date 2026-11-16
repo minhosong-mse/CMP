@@ -1,5 +1,13 @@
 # CMP Research Handoff
 
+## 2026-11-16 — Mentor feedback: final-design methodology (PLANNED / awaiting protocol decisions)
+
+- **ACTIVE DIRECTION:** existing 3D 36–60nm × 4T 100/100 IVSN estimates remain archived; mentor requests total Hold leakage-based Retention, standard-referenced temperature grid, Ion transport mechanism, 300K BEST reference and 6-metric normalized-loss radar/limits/P-NP + MEB–T contours.
+- **NEXT FIRST ACTION:** P1 confirm total SN leakage/current-integration methodology, fixed VDD vs VSN window and Ceff, same-bias subthreshold/GIDL/junction contribution closure; verify actual enabled models before new physics or solver changes. Clarify 64ns vs ms time target. P2 then choose DDR4/JEDEC-related temperature-grade grid (85°C=358.15K, 95°C=368.15K candidates; 105°C optional by grade) before any full rerun; 233K and 300K historical anchors retained.
+- **PRIORITY:** bounded representative validation → matched MEB×T DC/GIDL/IVSN sweep → Ion n/mobility/current-density analysis → actual 300K BEST → six metric allowable loss thresholds, radar and P/NP, contours. Master parameter/structure evolution table in parallel.
+- **STATUS:** method proposal and feedback only, no new execution or final metric/temperature/threshold freeze. No production retention claim, no best MEB selection yet. Prior 2 failed DC and 4 failed Holds remain historically open; new validation/work plan does not erase them.
+- **READ NEXT:** [mentor feedback + methodology and priorities](docs/research/mentor_feedback_20261116_final_design_methodology.md).
+
 ## 2026-11-16 — Complete independent 3D 36–60nm × four-T SN-I–V archive (100/100; SCIENTIFIC-PROVISIONAL)
 
 - **ACTIVE STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, Hurkx ON. New archive closes the six missing depths (37/38/39/40/58/59nm × 233/300/340/380K; 24/24 externally executed Nov-13), combined with 76 prior distinct cases: **100/100**, no remaining missing IVSN estimates in 36–60nm at 1nm spacing.
