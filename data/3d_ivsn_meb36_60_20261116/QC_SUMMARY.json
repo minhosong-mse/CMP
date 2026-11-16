@@ -1,0 +1,46 @@
+{
+  "new_cases": 24,
+  "new_raw_points": 2424,
+  "previous_cases": 76,
+  "total_cases": 100,
+  "new_warning_count": 6,
+  "new_max_KCL_A": 4.9920920491119075e-18,
+  "new_max_KCL_relative": 0.0719650526139334,
+  "new_max_simpson_difference": 8.094868679343782e-06,
+  "source_zip_sha256": "e520735bd1ff85747a1d2c8d91a69e7b9b9fab9e69d59776fea29e453bc6121f",
+  "normalized_new_device_deck_count": 1,
+  "temperature_summary": [
+    {
+      "Temp_K": 233,
+      "t36_s": 22.654973146193235,
+      "t60_s": 97.03826532515608,
+      "gain": 4.283309660045288,
+      "increasing_intervals": 24,
+      "max_step": 48
+    },
+    {
+      "Temp_K": 300,
+      "t36_s": 0.0671606798731091,
+      "t60_s": 0.2338369212741973,
+      "gain": 3.4817533371609715,
+      "increasing_intervals": 24,
+      "max_step": 38
+    },
+    {
+      "Temp_K": 340,
+      "t36_s": 0.0101123791533724,
+      "t60_s": 0.0186471325430762,
+      "gain": 1.8439906435724898,
+      "increasing_intervals": 24,
+      "max_step": 38
+    },
+    {
+      "Temp_K": 380,
+      "t36_s": 0.0016596302339414,
+      "t60_s": 0.0020282766660707,
+      "gain": 1.222125642561846,
+      "increasing_intervals": 24,
+      "max_step": 37
+    }
+  ]
+}

@@ -4,6 +4,11 @@
 
 
 
+## 2026-11-16 — Independent 3D full-range MEB36–60 SN-IV (100/100 EXTRACTED, PROVISIONAL)
+
+- 24 missing cases (37/38/39/40/58/59nm × four T) archived from Nov-13 completed external runs with log, source mapping and curve QC; 76 distinct previous estimates retained. Complete `36..60nm × 233/300/340/380K`, 100 estimates at assumed 10fF and WL=-0.7V. 75 ordinary PASS and 25 low-current 233K KCL warnings; no direct threshold crossings.
+- Monotonic increase for all 24 MEB intervals per T; 36→60nm gain 4.2833× / 3.4818× / 1.8440× / 1.2221×. [Data and figures](../data/3d_ivsn_meb36_60_20261116/README.md); [QC and scope](evidence/3d_ivsn_full_36_60_analysis_20261116.md). Do not claim physical retention, verified final range or refresh improvement. Dense matched DC/Hurkx, cold current precision, Ceff/mesh/current scaling and direct cell checks remain open.
+
 ## 2026-11-13 — Independent 3D 1nm dense MEB41–57 SN-IV (EXTRACTED, PROVISIONAL)
 
 - `41..57nm × 233/300/340/380K` = 68/68 I–VSN sweeps, 101 points each, 51 PASS and 17 low-current KCL warnings all at 233K. **IVSN only, not 68 full Hold runs**.

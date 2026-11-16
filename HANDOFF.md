@@ -1,5 +1,13 @@
 # CMP Research Handoff
 
+## 2026-11-16 — Complete independent 3D 36–60nm × four-T SN-I–V archive (100/100; SCIENTIFIC-PROVISIONAL)
+
+- **ACTIVE STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, Hurkx ON. New archive closes the six missing depths (37/38/39/40/58/59nm × 233/300/340/380K; 24/24 externally executed Nov-13), combined with 76 prior distinct cases: **100/100**, no remaining missing IVSN estimates in 36–60nm at 1nm spacing.
+- **QC:** all 24 PLTs have 101 finite samples, correct signed SN current, verified SWB tree/SDE PP/SDevice PP and done logs; 2424 newly extracted points. 18 normal PASS, 6 warnings at 233K (max residual 4.9921e-18A, 7.1965% relative); total 75 normal PASS + 25 cold warning. No model changes and no new simulations performed during archival.
+- **RESULTS:** constant assumed Ccell=10fF, WL=-0.7V, VSN 1→0.8V integral estimates monotonically increase across all 24 intervals at each T; 36→60nm gain 4.2833× / 3.4818× / 1.8440× / 1.2221× at 233/300/340/380K. These are **estimates, not direct 0.8V crossings or calibrated physical Retention**.
+- **EVIDENCE:** [100-case master and six SVGs](data/3d_ivsn_meb36_60_20261116/README.md), [24-case source QC](data/3d_ivsn_meb36_60_20261116/IVSN_24_new_case_QC.csv), [analysis](docs/evidence/3d_ivsn_full_36_60_analysis_20261116.md). Source ZIP SHA256 `e520735bd1ff85747a1d2c8d91a69e7b9b9fab9e69d59776fea29e453bc6121f`; native PLT/PP/log ZIP remains external per D-005.
+- **NEXT FIRST ACTION:** representative 233K low-current precision and 3D Ceff/current scaling/mesh/outer-drain Face91 checks, then matched dense DC/Hurkx and selected Hold/Write/Read. Four Nov-11 Hold failures and two Nov-09 DC incomplete runs remain open. 44–55nm candidate overlap NOT FROZEN; root README, historical data and physical model unchanged.
+
 ## 2026-11-13 — Independent 3D 41–57nm dense SN-I–V × four temperatures (68/68; SCIENTIFIC-PROVISIONAL)
 
 - **ACTIVE STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, Hurkx ON; externally executed **68** SN-I–V sweeps = `DBCAT_nm 41..57` step 1 × `TempK 233/300/340/380`. SDE/SDevice mapping 68/68, 101 points each (6868 samples), 51 normal PASS plus **17 cold 233K low-current KCL warnings**; no new 68-case direct Hold or measured VSN0.8 crossing.
