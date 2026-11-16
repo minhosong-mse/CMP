@@ -4,6 +4,13 @@
 
 
 
+## 2026-11-16 — Fast-track six-metric JEDEC-reference MEB×T DOE (SOURCE PREPARED; NOT EXECUTED)
+
+- User-approved priority: keep current 3D Flat upper S/D and existing Hurkx physics; defer SRH/NonlocalPath and detailed physical validation, retain model-qualified constant-10fF SN-current integration.
+- NEW grid: `DBCAT_nm=36..60` step 1, `TempK=233.15/300/340/358.15/368.15`, `RunMode=0/1/5/6/7` = **125 conditions, 625 target SDevice nodes**. Mode 7 is independent IVSN. Referenced 64/32ms refresh windows are engineering screening criteria, not single-cell specification compliance.
+- [Integrated SWB source](../code/sdevice/3d_sun_saddle_v1/CMP_3D_JEDEC_5MODE_des.cmd) statically checked against actual parent decks and all 25 mode-temperature expansions. Mode 1 adds Ion spatial outputs at Vg=Vd=1.2V. Next: copy original SWB project, native preprocess and run; no new execution performed. [Run protocol §13](research/mentor_feedback_20261116_final_design_methodology.md).
+- After execution: confirm bias/convergence/QC; join six metrics, decide BEST and loss allowances, P/NP, contours. Prior historical estimates/failures preserved; no calibrated retention or final optimum claim.
+
 ## 2026-11-16 — Independent 3D full-range MEB36–60 SN-IV (100/100 EXTRACTED, PROVISIONAL)
 
 - 24 missing cases (37/38/39/40/58/59nm × four T) archived from Nov-13 completed external runs with log, source mapping and curve QC; 76 distinct previous estimates retained. Complete `36..60nm × 233/300/340/380K`, 100 estimates at assumed 10fF and WL=-0.7V. 75 ordinary PASS and 25 low-current 233K KCL warnings; no direct threshold crossings.
