@@ -1,12 +1,13 @@
 # CMP Research Handoff
 
-## 2026-11-16 — Mentor feedback: final-design methodology (PLANNED / awaiting protocol decisions)
+## 2026-11-16 — Mentor feedback and bounded retention verification (SRH pilot PLANNED)
 
 - **ACTIVE DIRECTION:** existing 3D 36–60nm × 4T 100/100 IVSN estimates remain archived; mentor requests total Hold leakage-based Retention, standard-referenced temperature grid, Ion transport mechanism, 300K BEST reference and 6-metric normalized-loss radar/limits/P-NP + MEB–T contours.
-- **NEXT FIRST ACTION:** P1 confirm total SN leakage/current-integration methodology, fixed VDD vs VSN window and Ceff, same-bias subthreshold/GIDL/junction contribution closure; verify actual enabled models before new physics or solver changes. Clarify 64ns vs ms time target. P2 then choose DDR4/JEDEC-related temperature-grade grid (85°C=358.15K, 95°C=368.15K candidates; 105°C optional by grade) before any full rerun; 233K and 300K historical anchors retained.
+- **VERIFIED:** actual Nov-13 `pp873_des.cmd/n873_des.log` use signed SN terminal current, 10fF, VSN 0.8–1.0V, WL=-0.7V and explicitly omit SRH; Silicon BTBT Hurkx ON. Integral remains valid as a model-qualified estimate (16 short Hold initial-rate checks within 0.0766%). No full direct threshold crossing.
+- **NEXT FIRST ACTION:** separate SRH-only pilot (keep Hurkx and all other parent settings); `Recombination(SRH(DopingDependence TempDependence) Band2Band(Hurkx))` manual-verified syntax. Compare 37/59nm at 300K against n873/n1203, then 59nm at 340K vs n1758 if first runs converge. One minimal retry maximum, then use qualified legacy IVSN estimates if blocked. No new pilot run yet. Next choose consistent model and JEDEC-reference 233.15/300/358.15/368.15K (340K intermediate, 378.15K optional grade); 64/32/16ms refresh-reference targets do not imply cell compliance.
 - **DEFERRED FOLLOW-UP:** mentor also requests matched Hurkx vs NonlocalPath validation; user explicitly keeps it off the current critical path. Do not change BTBT model for the current retention/temperature DOE.
 - **PRIORITY:** bounded representative validation → matched MEB×T DC/GIDL/IVSN sweep → Ion n/mobility/current-density analysis → actual 300K BEST → six metric allowable loss thresholds, radar and P/NP, contours. Master parameter/structure evolution table in parallel.
-- **STATUS:** method proposal and feedback only, no new execution or final metric/temperature/threshold freeze. No production retention claim, no best MEB selection yet. Prior 2 failed DC and 4 failed Holds remain historically open; new validation/work plan does not erase them.
+- **STATUS:** method/deck/log review and pilot proposal completed; no new execution or final metric/temperature/threshold freeze. No production retention claim, no best MEB selection yet. Prior 2 failed DC and 4 failed Holds remain historically open; new validation/work plan does not erase them.
 - **READ NEXT:** [mentor feedback + methodology and priorities](docs/research/mentor_feedback_20261116_final_design_methodology.md).
 
 ## 2026-11-16 — Complete independent 3D 36–60nm × four-T SN-I–V archive (100/100; SCIENTIFIC-PROVISIONAL)
