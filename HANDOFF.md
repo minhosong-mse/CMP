@@ -1,6 +1,14 @@
 # CMP Research Handoff
 
-## 2026-11-16 — Fast-track JEDEC-reference six-metric DOE (SOURCE PREPARED / EXTERNAL EXECUTION PENDING)
+## 2026-11-21 — 18-depth six-metric MEB × temperature checkpoint (PARTIAL / SCIENTIFIC-PROVISIONAL)
+
+- **ACTIVE LINEAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, existing Hurkx (mode 6 OFF); retain geometry, mesh and physics. Actual sweep is 24–60 nm at 1 nm spacing × 233.15/300/358.15/368.15 K × modes 0/1/5/6/7 = 740 target SDevice jobs. This replaces the earlier planned grid for this execution campaign; 340 K and historical 233/380 K data remain separate.
+- **LAST COMPLETED:** Nov-19 nine depths (172/180), Nov-21 main seven depths (139/140), other account 28/29 nm (40/40). Total 18 sampled depths, 351/360 endpoint-complete, 65/72 five-mode rows and all 18 sampled 300 K rows complete. 70 IVSN estimates, ten cold KCL warnings. Exact duplicate curves deduplicated; selected PP geometry/device templates match under depth/T/node normalization across accounts. Native mesh equivalence not established.
+- **NEXT FIRST ACTION:** inspect external SWB and collect remaining 26/27/34/35/39/40/41/42/43/46/47/48/52/53/54/57/58/59/60 nm; selectively recover nine incomplete/missing case endpoints (24/368.15/M1 n3084, 36/368.15/M1 n3058, 44/233.15/M1 n3248, 44/368.15/M1 n3266 & M5 n3267, 45/358.15/M1 n3286, 49/358.15/M1 n3078 & M7 n3081, 49/368.15/M7 n3087). Use project-qualified mapping; 380+9 outstanding. Do not rerun valid jobs. Then complete six-metric merge and design screening, not final optimum yet.
+- **EVIDENCE:** [data, source manifest](data/3d_meb_jedec_18depth_20261121/README.md), [QC and gaps](docs/evidence/3d_meb_jedec_18depth_qc_20261121.md), [checkpoint](docs/progress/3d_meb_jedec_18depth_checkpoint_20261121.md). Original native exports remain external per D-005. Root README and historical results untouched.
+- **GUARDRAILS:** assumed 10 fF IVSN estimate, omitted SRH, signed Hurkx excess proxy, not pure GIDL, actual retention or JEDEC compliance. No model retune or new scientific freeze. Earlier deferrals and [metric protocol §13](docs/research/mentor_feedback_20261116_final_design_methodology.md) remain applicable.
+
+## 2026-11-16 — Fast-track JEDEC-reference six-metric DOE (HISTORICAL SOURCE PREPARATION; execution update above)
 
 - **ACTIVE DECISION:** user approves proceeding directly to MEB×T six-metric analysis. SRH pilot, NonlocalPath comparison, lengthy direct Hold, and additional physics/mesh calibration deferred. Preserve same `3D-Sun-SADDLE-V1 / Flat upper S/D`, existing Hurkx (mode 6 OFF), geometry and solver.
 - **NEXT FIRST ACTION:** copy `CMP_3D_Temp` to separate SWB project; retain SDE; use [integrated five-mode SDevice source](code/sdevice/3d_sun_saddle_v1/CMP_3D_JEDEC_5MODE_des.cmd). Set DBCAT_nm=36..60 step 1, TempK=233.15/300/340/358.15/368.15, RunMode=0/1/5/6/7 only. Preprocess and check one of each mode, then submit full independent DOE (125 conditions × 5 = 625 target SDevice nodes). Prioritize 300 K reference where possible. Mode1 additionally writes eMobility/eCurrent/eDensity at Vg=Vd=1.2V.

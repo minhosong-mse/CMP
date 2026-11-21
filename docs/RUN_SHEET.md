@@ -4,7 +4,13 @@
 
 
 
-## 2026-11-16 — Fast-track six-metric JEDEC-reference MEB×T DOE (SOURCE PREPARED; NOT EXECUTED)
+## 2026-11-21 — Active six-metric JEDEC-reference MEB×T DOE (PARTIAL EXTERNAL EXECUTION / PROVISIONAL)
+
+- Actual execution grid: `DBCAT_nm=24..60`, `TempK=233.15/300/358.15/368.15`, `RunMode=0/1/5/6/7` = **148 conditions, 740 target nodes**; supersedes the prior planned grid for this campaign only. No mixing of historical 233/340/380 K data.
+- 18 depths exported (24/25/28/29/30/31/32/33/36/37/38/44/45/49/50/51/55/56), 351/360 endpoint-complete, 351/740 full target. 65/72 complete five-mode rows; Ion/Ioff/SS/DIBL 66 each, Hurkx excess 71, IVSN estimate 70; ten cold KCL warnings. Cross-account PP templates agree under prescribed normalization; no native mesh equality claim.
+- Next: acquire 19 unexported depths (26/27/34/35/39/40/41/42/43/46/47/48/52/53/54/57/58/59/60), selectively recover nine incomplete/missing mode nodes (see [QC list](evidence/3d_meb_jedec_18depth_qc_20261121.md)), then derive six-metric screening and provisional design range. 389 target jobs remain unverified. [Data archive](../data/3d_meb_jedec_18depth_20261121/README.md), [progress](progress/3d_meb_jedec_18depth_checkpoint_20261121.md). No rework of frozen physical baseline or final optimum claim.
+
+## 2026-11-16 — Fast-track six-metric JEDEC-reference MEB×T DOE (HISTORICAL SOURCE PREPARATION; execution update above)
 
 - User-approved priority: keep current 3D Flat upper S/D and existing Hurkx physics; defer SRH/NonlocalPath and detailed physical validation, retain model-qualified constant-10fF SN-current integration.
 - NEW grid: `DBCAT_nm=36..60` step 1, `TempK=233.15/300/340/358.15/368.15`, `RunMode=0/1/5/6/7` = **125 conditions, 625 target SDevice nodes**. Mode 7 is independent IVSN. Referenced 64/32ms refresh windows are engineering screening criteria, not single-cell specification compliance.
