@@ -1,5 +1,14 @@
 # CMP Research Handoff
 
+## 2026-11-22 — 21-depth six-metric DOE and numerical recovery R1 (PAUSED / SCIENTIFIC-PROVISIONAL)
+
+- **ACTIVE LINEAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, fixed SDE/mesh policy and Hurkx (mode 6 OFF). Actual campaign: MEB 24–60 nm step 1 × 233.15/300/358.15/368.15 K × modes 0/1/5/6/7 = 740 SDevice targets. Historical 233/340/380 K datasets remain separate.
+- **LAST COMPLETED:** new 48/59/60 nm (19/20, 20/20, 19/20) after native endpoint/log/tree/PP checks and separate SDE supplements. Cumulative 21/37 depths; 409/420 sampled endpoints (409/740 campaign, 55.27%), 75/84 complete five-mode rows, all 21 sampled 300 K rows. 81 IVSN estimates; 13 cold KCL warnings. Duplicate 48 nm copy deduplicated. Selected PP templates match parent; native mesh equality not established.
+- **ACTIVE / BLOCKED:** 16 depths not exported (320 targets) and 11 sampled endpoints missing or incomplete. R1 recovery CMD prepared and supplied to user; 20 static branch checks passed, no verified R1 solver results yet. New gaps: 60/358.15/M1 n3364 (Vg stopped 0.0281151 V), 48/368.15/M7 n339 (VSN stopped 0.856 V). Previous 49/358.15/M7 n3081 was pending; check status before re-running.
+- **NEXT FIRST ACTION:** wait for user's external SWB results; collect 26/27/34/35/39/40/41/42/43/46/47/52/53/54/57/58 nm and selectively recover the [11 targets in R1 plan](docs/progress/3d_meb_jedec_recovery_R1_20261122.md). Preserve all valid endpoints, project-qualified map and actual SDE grid PP. Validate recovery execution and solver provenance before merging, then finish six-metric design screening. 331 endpoints remain not-yet-valid, not necessarily unrun.
+- **EVIDENCE:** [21-depth data and source manifest](data/3d_meb_jedec_21depth_20261122/README.md), [QC checkpoint](docs/progress/3d_meb_jedec_21depth_checkpoint_20261122.md), [R1 source](code/sdevice/3d_sun_saddle_v1/CMP_3D_JEDEC_RECOVERY_R1_des.cmd). Previous 18-depth files, root README and all historical results untouched; native exports external per D-005.
+- **GUARDRAILS:** assumed 10 fF IVSN estimate, omitted SRH, signed Hurkx excess proxy, not pure GIDL, actual retention or JEDEC compliance. R1 changes numerical controls only; no physical retune, new freeze, or final optimum claim. [Metric protocol §13](docs/research/mentor_feedback_20261116_final_design_methodology.md) remains applicable.
+
 ## 2026-11-21 — 18-depth six-metric MEB × temperature checkpoint (PARTIAL / SCIENTIFIC-PROVISIONAL)
 
 - **ACTIVE LINEAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, existing Hurkx (mode 6 OFF); retain geometry, mesh and physics. Actual sweep is 24–60 nm at 1 nm spacing × 233.15/300/358.15/368.15 K × modes 0/1/5/6/7 = 740 target SDevice jobs. This replaces the earlier planned grid for this execution campaign; 340 K and historical 233/380 K data remain separate.
