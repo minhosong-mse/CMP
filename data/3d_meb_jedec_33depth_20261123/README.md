@@ -32,3 +32,13 @@
 Read the [source manifest and merge rules](SOURCE_MANIFEST.md) before regenerating or using this master. Original 18-depth / 21-depth evidence and root README are untouched.
 
 **Guardrails:** `t_est` uses a *fixed assumed* 10 fF capacitor and integrated I–VSN, not actual 1T1C retention; signed Hurkx-ON minus OFF is a model-dependent leakage proxy, not independently collected pure GIDL. Omitted SRH, unverified native mesh equality, and 233.15 K KCL warnings remain limitations. A production design window and physically calibrated optimum remain **NOT DEMONSTRATED**.
+
+## Validation / reproduction
+
+The repository includes a [CSV integrity validator](../../code/scripts/analysis/3d_meb_jedec_20261123/validate_archive.py) for the published cumulative masters, source-selection records, DC segments and IVSN samples. Run from the repository root with:
+
+```bash
+python3 code/scripts/analysis/3d_meb_jedec_20261123/validate_archive.py
+```
+
+This audit checks internal CSV consistency only; it is **not** a substitute for re-reading external raw SWB ZIPs, solver logs, SDE source, or verifying native 3D mesh equality. The extraction code and native ZIPs are maintained as separate external reproducibility artifacts identified by [source manifest](SOURCE_MANIFEST.md).
