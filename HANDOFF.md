@@ -1,5 +1,15 @@
 # CMP Research Handoff
 
+## 2026-11-23 — 34-depth 3D MEB DOE (41 nm from other account) (PAUSED / SCIENTIFIC-PROVISIONAL)
+
+- **ACTIVE LINEAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, 24–60 nm, 4T (233.15/300/358.15/368.15 K), 5 RunModes (0/1/5/6/7); keep current SDE, 3D mesh policy, Hurkx (mode 6 OFF), WF, and original device physics.
+- **LAST COMPLETED:** Newly exported OTHER-account **41 nm** (`CMP_final_Copy2`) has **20/20 endpoint/log/PP source PASS**; PP SDE and SDevice normalized to previous 40 nm parent. Cumulative **34/37 MEB**, **676/680** exported endpoints PASS (**676/740** campaign), **132/136** five-mode-complete T×depth rows. Prior 11 numerical R1 recoveries retained unchanged. **23** cold 233.15 K low-current IVSN relative-KCL warnings, including 41 nm (4.01%). No new Sentaurus run or physical retuning performed in analysis.
+- **ACTIVE/BLOCKED:** MEB **35,47,53 nm** not exported (60 jobs); **4** exported uncompleted at 358.15 K: OTHER `27/M1 n409`, MAIN `40/M1 n3156`, `46/M1 n3312`, `58/M7 n3315`. Exactly **64/740** target endpoints remain not validated. Isolated numerical-only R1 reruns for these four planned, not yet independently validated.
+- **NEXT FIRST ACTION:** collect 35/47/53 nm native SWB exports and four numerical R1 rerun ZIPs; validate grid-level executed `pp*_dvs.cmd`/Device PP, source tree, solver logs, true terminal bias, IVSN 101 sample rule; deduplicate by project and (MEB,T,mode). Then update 740 master and screen temperature-dependent relative MEB range.
+- **CURRENT EVIDENCE:** [34-depth cumulative master](data/3d_meb_jedec_34depth_20261123/README.md): `node_qc_680.csv`, `six_metrics_136_conditions.csv`, 267 selected Nov-23 source cases, isolated 41 nm DC/IVSN curves and hashes; [source manifest](data/3d_meb_jedec_34depth_20261123/SOURCE_MANIFEST.md), [checkpoint](docs/progress/3d_meb_jedec_34depth_checkpoint_20261123.md), [41 nm QC script](code/scripts/analysis/3d_meb_jedec_20261123/qc_meb41.py). Older checkpoints and root README untouched. Original SWB ZIPs stay external per D-005.
+- **GUARDRAILS:** numerical endpoint completeness ≠ device physical validation or production JEDEC compliance; `t_est` assumes constant 10 fF and is not measured 1T1C retention; signed Hurkx ON−OFF is model-dependent proxy, not independent GIDL; omitted SRH, low-current KCL warnings, and unverified native binary mesh equivalence remain open; no final optimum or freeze claim.
+
+
 ## 2026-11-23 — 33-depth 3D MEB DOE exported; 11 R1 recoveries validated (PAUSED / SCIENTIFIC-PROVISIONAL)
 
 - **ACTIVE LINEAGE/STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, fixed SDE/mesh/WF/Hurkx (mode 6 OFF); 24–60 nm MEB × 233.15/300/358.15/368.15 K × RunModes 0/1/5/6/7 = 740 endpoints.
