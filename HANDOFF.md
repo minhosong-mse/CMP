@@ -1,5 +1,15 @@
 # CMP Research Handoff
 
+## 2026-11-23 — 33-depth 3D MEB DOE exported; 11 R1 recoveries validated (PAUSED / SCIENTIFIC-PROVISIONAL)
+
+- **ACTIVE LINEAGE/STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, fixed SDE/mesh/WF/Hurkx (mode 6 OFF); 24–60 nm MEB × 233.15/300/358.15/368.15 K × RunModes 0/1/5/6/7 = 740 endpoints.
+- **LAST COMPLETED:** Nov-23 main/other SWB native ZIPs yielded 12 additional depths `26/27/34/39/40/42/43/46/52/54/57/58` (236/240 target-complete). All **11** historical missing/incomplete endpoints independently recovered using numerical-only R1 on other account; old failures preserved. Cumulative **33/37 MEB, 656/660 acquired target-complete (656/740), 128/132 full five-mode MEB×T rows**; all 33 acquired 300 K rows complete. Grid-level PP SDE, executed PP SDevice, source tree, log/status/endpoint, IVSN sign and 101 points checked; native mesh equivalence NOT proven. Cumulative 233.15 K IVSN relative-KCL warnings **22**.
+- **ACTIVE/BLOCKED:** only four not-exported MEB depths `35,41,47,53` = 80 jobs; exactly **four incomplete** already exported endpoints, all 358.15 K: other `27/M1 n409`, main `40/M1 n3156`, `46/M1 n3312`, `58/M7 n3315`. Newton/MinStep failures; old Done status for 3 M1 nodes is not terminal completion. Current R1 CMD prepared for these four, **not yet verified executed**. Total **84** not-yet-valid campaign endpoints.
+- **NEXT FIRST ACTION:** receive the four missing-depth ZIPs and four isolated R1 numerical-only rerun exports (with `gtree.dat`, native PLT/log/sta, executed PP `pp*_des.cmd`, grid `pp*_dvs.cmd`). Map by MEB/TempK/RunMode across copies, validate original solver and exact bias endpoints, preserve old failed traces and select only valid recovered data. Then complete 740 target QC and temperature-dependent relative design screening.
+- **CURRENT EVIDENCE:** [33-depth cumulative master](data/3d_meb_jedec_33depth_20261123/README.md) including `node_qc_660.csv`, `six_metrics_132_conditions.csv`, candidate/selected provenance, 22,168 selected new/recovery DC points and 5,050 IVSN samples; [source manifest](data/3d_meb_jedec_33depth_20261123/SOURCE_MANIFEST.md), [validation progress](docs/progress/3d_meb_jedec_33depth_checkpoint_20261123.md), [CSV audit script](code/scripts/analysis/3d_meb_jedec_20261123/validate_archive.py). Nov-22 and earlier checkpoint files remain immutable; native ZIPs external per D-005.
+- **GUARDRAILS / DO NOT REOPEN:** no physical retune, geometry/mesh/model changes, historic data rewrite or root README change; `t_est` assumes 10 fF constant C, not physical retention or JEDEC-compliant measurement; signed Hurkx ON−OFF is not pure GIDL; omitted SRH, KCL warnings and mesh uncertainty retained; no final optimum claim.
+
+
 ## 2026-11-22 — 21-depth six-metric DOE and numerical recovery R1 (PAUSED / SCIENTIFIC-PROVISIONAL)
 
 - **ACTIVE LINEAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, fixed SDE/mesh policy and Hurkx (mode 6 OFF). Actual campaign: MEB 24–60 nm step 1 × 233.15/300/358.15/368.15 K × modes 0/1/5/6/7 = 740 SDevice targets. Historical 233/340/380 K datasets remain separate.
