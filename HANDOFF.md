@@ -1,5 +1,14 @@
 # CMP Research Handoff
 
+## 2026-11-23 — Original non-R1 source code archived after 740-case acquisition (CODE ARCHIVED / SCIENTIFIC-PROVISIONAL)
+
+- **ACTIVE LINEAGE/STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`; original 37 MEB (24–60 nm) × four T × modes 0/1/5/6/7. **740/740 planned numerical endpoints PASS** after separately documented R1 recoveries. Physical interpretation and MEB design-range selection remain pending.
+- **LAST COMPLETED:** Archived actual **original non-R1** [SDE](code/sde/3d_sun_saddle_v1/CMP_3D_MEB_DOE_ORIGINAL_dvs.cmd) and [SDevice](code/sdevice/3d_sun_saddle_v1/CMP_3D_MEB_DOE_ORIGINAL_des.cmd) in GitHub `main`, and indexed them atop [CMD_HUB.md](CMD_HUB.md). Only comments were removed, while executable Scheme, SWB conditionals, source-level variable macros, physics, mesh and numerical controls were preserved. The *original executed* SDevice uses **NumberOfThreads=32** rather than the older unexecuted development-source value 8.
+- **VERIFICATION:** Original PP SDE from four depths **35/40/53/54 nm** re-expanded to exactly the same executable content. Five original non-R1 SDevice PP modes **0/1/5/6/7** from 53 nm / 233.15 K matched source with SWB substitutions. Source identities and acceptance scope in [code-provenance record](docs/progress/3d_meb_jedec_original_nonr1_executed_code_20261123.md). This is **source archival/QC only**, no Sentaurus reruns or mesh validation performed.
+- **PROVENANCE SEPARATION:** The [original non-R1 SDevice](code/sdevice/3d_sun_saddle_v1/CMP_3D_MEB_DOE_ORIGINAL_des.cmd) is **not** the [numerical R1 recovery](code/sdevice/3d_sun_saddle_v1/CMP_3D_JEDEC_RECOVERY_R1_des.cmd) or the [three-node 53 nm R1](code/sdevice/3d_sun_saddle_v1/CMP_MEB53_R1_ONLY_des.cmd). No original historical deck or numerical evidence was rewritten.
+- **NEXT FIRST ACTION:** Use the complete [740-node/148-condition master](data/3d_meb_jedec_37depth_complete_20261123/README.md) for visualization/master tables and temperature-dependent **relative** trend analysis when requested. Defer optimum/design-range conclusions until numerical evidence and limitations are considered explicitly.
+- **GUARDRAILS / FROZEN:** No physical/mesh/geometry change; assumed 10 fF IVSN `t_est` not measured DRAM retention; signed Hurkx ON−OFF not independently collected pure GIDL; low-temperature relative-KCL warnings, missing SRH and unproven binary mesh equivalence remain open. No production or JEDEC validation claim.
+
 ## 2026-11-23 — 37-depth full 740/740 numerical DOE acquisition completed (SCIENTIFIC-PROVISIONAL / INTERPRETATION PENDING)
 
 - **ACTIVE LINEAGE/STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`; fixed geometry, mesh-policy, WF 4.8 eV, Hurkx (mode6 OFF) and physical protocol. MEB **24–60 nm step 1** × **4 temperatures** (233.15/300/358.15/368.15 K) × modes **0,1,5,6,7** = **740** planned native SDevice endpoints.
