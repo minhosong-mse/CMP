@@ -23,6 +23,8 @@ The active controlled lineage is `3D-Sun-SADDLE-V1 / Flat upper S/D`: MEB **24�
 - [depth_status_37.csv](depth_status_37.csv) — 37 depths, 20 accepted endpoints each.
 - [Final MEB53 isolated 3-node QC](meb53_r1_node_qc_3.csv), [selected source hashes](meb53_r1_selected_sources_3.csv), [native PP/log/PLT provenance](meb53_r1_native_provenance_3.csv), [metric patches](meb53_r1_metric_patches_2.csv), [ZIP source manifest](meb53_r1_source_manifest.json). Original failed endpoints are preserved in the [36-depth checkpoint](../3d_meb_jedec_36depth_20261123/README.md) and the [37-depth pre-recovery checkpoint](../3d_meb_jedec_37depth_20261123/README.md).
 
+The last exporter’s complete [NODE_MAPPING.csv](meb53_r1_export_node_mapping.csv), [CANDIDATES.csv](meb53_r1_export_candidates.csv) and [SKIPPED_PP.csv](meb53_r1_export_skipped_pp.csv) are also retained. The skipped 17 entries are *unpreprocessed placeholders*, **not newly failed numerical endpoints**.
+
 ## Newly GitHub-archived raw curve deltas
 
 The previous 37-depth checkpoint recorded some *source curves only in conversation QC packages*. They are now archived here as CSVs. Concatenate each DC family in numbered order, **discarding the repeated header after the first part**:
