@@ -1,0 +1,9 @@
+Account,MEB_nm,Temp_K,RunMode,OriginalProject,Node,LastBias_V,RequestedBias_V,Reason
+OTHER,27,358.15,1,CMP_final_Copy1,409,0.0394052550595613,2.0,"Newton nonconvergence, step below MinStep"
+MAIN,40,358.15,1,CMP_3D_Temp_36-48,3156,0.032297663121408,2.0,"Newton nonconvergence, step below MinStep"
+MAIN,46,358.15,1,CMP_3D_Temp_36-48_Copy1,3312,0.0361195020026024,2.0,"Newton nonconvergence, step below MinStep"
+MAIN,58,358.15,7,CMP_3D_Temp_49-60_Copy,3315,0.99,1.0,"Newton nonconvergence, step below MinStep"
+MAIN,47,368.15,5,CMP_3D_Temp_36-48_Copy1,3345,0.0,-0.7,"Newton nonconvergence, step below MinStep; VD=1.18958434712013"
+MAIN,53,358.15,1,CMP_3D_Temp_49-60_Copy_Copy,3182,0.001422831893572,2,"Newton didn't converge, trying again with smaller step... | Newton didn't converge, trying again with smaller step... | Step-size less than MinStep (step-size = 9.9250e-07)."
+MAIN,53,358.15,5,CMP_3D_Temp_49-60_Copy_Copy,3183,0.0,-0.7,"Newton didn't converge, trying again with smaller step... | Newton didn't converge, trying again with smaller step... | Step-size less than MinStep (step-size = 9.7656e-07)."
+MAIN,53,368.15,7,CMP_3D_Temp_49-60_Copy_Copy,3191,0.806,1,"Newton didn't converge, trying again with smaller step... | Newton didn't converge, trying again with smaller step... | Step-size less than MinStep (step-size = 6.4628e-11)."
