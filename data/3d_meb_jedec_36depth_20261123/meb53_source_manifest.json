@@ -1,0 +1,663 @@
+{
+  "source_zip": "CMP_MAIN_MEB53_NOV23_20261123_192708.zip",
+  "source_sha256": "691724181402bf429277cf6132f912263410375207c7d7f3c0667ea8dca17987",
+  "source_entries": 310,
+  "source_integrity": "PASS",
+  "selected_unique_conditions": 20,
+  "valid_count": 17,
+  "incomplete_count": 3,
+  "existing_recovery_candidates": 11,
+  "other_project_candidates": 123,
+  "other_project_53_candidates": [
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "233.15",
+      "RunMode": "0",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "21f7ac0e9c6003635a31f109ab5f9102d798bc3b13023252e658517356337844"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "233.15",
+      "RunMode": "0",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "233.15",
+      "RunMode": "0",
+      "Selected": "0",
+      "PLT": "1",
+      "PLT_hash": "21f7ac0e9c6003635a31f109ab5f9102d798bc3b13023252e658517356337844"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "233.15",
+      "RunMode": "0",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "233.15",
+      "RunMode": "1",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "dafe418160d08317d0a4ad38aac0b0a10df1b30ef83c2025a5e0ee4983b68a4b"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "233.15",
+      "RunMode": "1",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "233.15",
+      "RunMode": "1",
+      "Selected": "0",
+      "PLT": "1",
+      "PLT_hash": "dafe418160d08317d0a4ad38aac0b0a10df1b30ef83c2025a5e0ee4983b68a4b"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "233.15",
+      "RunMode": "1",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "233.15",
+      "RunMode": "5",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "dcd0356d1dfe47d4d1d48af06647bc6de331d47bf88ac4f5fd5ef3451110c3de"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "233.15",
+      "RunMode": "5",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "233.15",
+      "RunMode": "5",
+      "Selected": "0",
+      "PLT": "1",
+      "PLT_hash": "dcd0356d1dfe47d4d1d48af06647bc6de331d47bf88ac4f5fd5ef3451110c3de"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "233.15",
+      "RunMode": "5",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "233.15",
+      "RunMode": "6",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "23809e00181d0707160ce7eedf9793faa94458dd11ff1b1d66bc9816915f2952"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "233.15",
+      "RunMode": "6",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "233.15",
+      "RunMode": "6",
+      "Selected": "0",
+      "PLT": "1",
+      "PLT_hash": "7791bbe039338d1415d068e2a4e7be22025438ae3b2479e0180ecb531cf3f655"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "233.15",
+      "RunMode": "6",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "233.15",
+      "RunMode": "7",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "fa20ce5564611598d3a1ce9ab5cd4e5c5856b07ca264c37a6d7f8d9e0c2823ed"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "233.15",
+      "RunMode": "7",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "233.15",
+      "RunMode": "7",
+      "Selected": "0",
+      "PLT": "1",
+      "PLT_hash": "f95c7c6f04846744cbe92236ade4a1bda7007d55c33d28888b396c3ab07c60e3"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "233.15",
+      "RunMode": "7",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "300.0",
+      "RunMode": "0",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "70a5ea6bf26cff71ca1d6075e56b75513a2aa16b63f28e2b9d0ced35b996fa76"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "300.0",
+      "RunMode": "0",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "300.0",
+      "RunMode": "0",
+      "Selected": "0",
+      "PLT": "1",
+      "PLT_hash": "b94f3e40ea1233ba6f948ba4fb0a24746c0ba9f14d1325f0cef7bd518ed17f1e"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "300.0",
+      "RunMode": "0",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "300.0",
+      "RunMode": "1",
+      "Selected": "0",
+      "PLT": "1",
+      "PLT_hash": "f9400190d389137fab92387d323324e4fc176d2ff18b13567a2538a14bcc60e8"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "300.0",
+      "RunMode": "1",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "300.0",
+      "RunMode": "1",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "745ab676c0a37af87ea3eca9e3563860816487c33befcc9a2d41dd08c4cf44c5"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "300.0",
+      "RunMode": "1",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "300.0",
+      "RunMode": "5",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "300.0",
+      "RunMode": "5",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "300.0",
+      "RunMode": "5",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "7e6ed2b0c5b39abcb612d76c0b629d364ec8e70c7f448f689c1ee3c56be2cdac"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "300.0",
+      "RunMode": "5",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "300.0",
+      "RunMode": "6",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "300.0",
+      "RunMode": "6",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "300.0",
+      "RunMode": "6",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "3973b4780699a61d67260e6ebcd07304c60bd4dcc6cf2c5bb6b92d8b0650f807"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "300.0",
+      "RunMode": "6",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "300.0",
+      "RunMode": "7",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "300.0",
+      "RunMode": "7",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "300.0",
+      "RunMode": "7",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "c219a9d3a2fceb230ded4f2af785f59b217171bec9ae8979d2f898c60a2109b2"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "300.0",
+      "RunMode": "7",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "358.15",
+      "RunMode": "0",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "358.15",
+      "RunMode": "0",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "358.15",
+      "RunMode": "0",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "838fbc30e10b39d0c81410691ec2bf476c3ff039932ffd197b77c5b10f4ab612"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "358.15",
+      "RunMode": "0",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "358.15",
+      "RunMode": "1",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "358.15",
+      "RunMode": "1",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "358.15",
+      "RunMode": "1",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "aebd401acba134e628b089df17041971278211f6fff5b24760b145883b04d261"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "358.15",
+      "RunMode": "1",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "358.15",
+      "RunMode": "5",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "358.15",
+      "RunMode": "5",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "358.15",
+      "RunMode": "5",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "7a6bd4163778834090a4de694512ef3daa27005a2592b5c1ac25310f14805e7d"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "358.15",
+      "RunMode": "5",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "358.15",
+      "RunMode": "6",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "358.15",
+      "RunMode": "6",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "358.15",
+      "RunMode": "6",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "7e20eeee591930c0670e90ab7455462387f9b8553562cf280e886f8098acf0b2"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "358.15",
+      "RunMode": "6",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "358.15",
+      "RunMode": "7",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "358.15",
+      "RunMode": "7",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "358.15",
+      "RunMode": "7",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "3f8931d1162af4bb02b4daf1d752f6607aab3b6304160890feb82d53067a6bee"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "358.15",
+      "RunMode": "7",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "368.15",
+      "RunMode": "0",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "368.15",
+      "RunMode": "0",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "368.15",
+      "RunMode": "0",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "710a305a3c88cf6cc63433cfee24f1c447cd89ebcdeefc258ae0448544209b43"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "368.15",
+      "RunMode": "0",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "368.15",
+      "RunMode": "1",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "368.15",
+      "RunMode": "1",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "368.15",
+      "RunMode": "1",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "146add55d9a47fdfae49c49a786482d236f9f19a8467a11c72cdf4fe5b02e5ac"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "368.15",
+      "RunMode": "1",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "368.15",
+      "RunMode": "5",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "368.15",
+      "RunMode": "5",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "368.15",
+      "RunMode": "5",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "78edbc3037e9a50da137506d7dc71281571eadaafd02405e7f241082c845047f"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "368.15",
+      "RunMode": "5",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "368.15",
+      "RunMode": "6",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "368.15",
+      "RunMode": "6",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "368.15",
+      "RunMode": "6",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "18885c83867df58050d0c179777e5ae7093d3fe62dd74fe67bac9cfa2cc99925"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "368.15",
+      "RunMode": "6",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60",
+      "TempK": "368.15",
+      "RunMode": "7",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy",
+      "TempK": "368.15",
+      "RunMode": "7",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy",
+      "TempK": "368.15",
+      "RunMode": "7",
+      "Selected": "1",
+      "PLT": "1",
+      "PLT_hash": "2c77beda696b2b7df8418570b388e07ea7c9de85e38adeaf9db9cf9ce73ce484"
+    },
+    {
+      "project": "CMP_3D_Temp_49-60_Copy_Copy1",
+      "TempK": "368.15",
+      "RunMode": "7",
+      "Selected": "0",
+      "PLT": "0",
+      "PLT_hash": ""
+    }
+  ],
+  "model_parent": "CMP_MAIN_MEB54_NOV23_20261123_175736.zip",
+  "normalized_sde_sha256": "f81d0ce4cb2476f30b91c5e7f8a0d304240e39e234643c46ef0d85b6dbe8660b",
+  "normal_device_sha256": {
+    "0": "354c197fd6a2cf0f268eca252f36c93272d373c48cca9920fb87c93a2d9505e4",
+    "1": "b6f1c367027854bd65b705bb0396fd148bea05dcd997c0d7e8dbb8c5f391569e",
+    "5": "bd769702e342c8b60eb0d0dcf0b5c032cc98055896b372fa5b5710cf02e53507",
+    "6": "9f65c2757849449abb09349c81201715d0bf9f13ca98eb7af4800e1267138bbf",
+    "7": "db16a475874da0f9e9cea70933689f0ac4d4e359cd7c912fccf0761c4f9e748c"
+  },
+  "note": "Source, PP and template equality verified; native binary mesh equality NOT verified. Incomplete traces excluded. Previous R1 recoveries are not re-counted."
+}
