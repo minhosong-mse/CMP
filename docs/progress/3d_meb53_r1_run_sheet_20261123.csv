@@ -1,0 +1,4 @@
+Account,MEB_nm,TempK,RunMode,OriginalProject,OldNode,OldGrid,OldObserved,Required,QC
+MAIN,53,358.15,1,CMP_3D_Temp_49-60_Copy_Copy,3182,3166,Vd=0.888653 V; Vg=0.001423 V,"Drain 1.2 V, Gate 2.0 V",PLANNED_R1
+MAIN,53,358.15,5,CMP_3D_Temp_49-60_Copy_Copy,3183,3166,Vd=0.879653 V; Vg=0 V,"Drain 1.2 V, Gate -0.7 V",PLANNED_R1
+MAIN,53,368.15,7,CMP_3D_Temp_49-60_Copy_Copy,3191,3166,Vsn=0.806 V; 4 samples,Vsn sweep 0.8..1.0 V; 101 points,PLANNED_R1
