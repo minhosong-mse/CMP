@@ -1,0 +1,37 @@
+{
+  "archive": "CMP_MAIN_MEB53_R1_FINAL_NOV23_20261123_220510.zip",
+  "archive_sha256": "3be0f42ee8f4025cabcd8ee2af766bd682938fe9a63f839235755e47ffe14e32",
+  "archive_bytes": 55341641,
+  "archive_entries": 214,
+  "native_zip_integrity": "PASS",
+  "mapped_entries": 31,
+  "R1_verified_node_keys": [
+    [
+      53,
+      358.15,
+      1
+    ],
+    [
+      53,
+      358.15,
+      5
+    ],
+    [
+      53,
+      368.15,
+      7
+    ]
+  ],
+  "R1_selected_nodes": {
+    "(358.15, 1)": "39",
+    "(358.15, 5)": "40",
+    "(368.15, 7)": "47"
+  },
+  "n_dc_points": 446,
+  "n_ivsn_points": 101,
+  "SDE_source_template_match": true,
+  "R1_PP_device_template_match": true,
+  "old_53_original_failed_preserved_external": true,
+  "full_native_mesh_tensor_equivalence": "NOT VERIFIED",
+  "user_note": "Only three new R1 endpoints accepted; do not reuse old CMP_final_Copy none statuses for unrelated 17 source-mapped accepted MEB53 nodes."
+}
