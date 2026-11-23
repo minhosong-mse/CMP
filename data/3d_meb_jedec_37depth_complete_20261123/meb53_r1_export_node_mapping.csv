@@ -1,0 +1,63 @@
+Project,MEB,TempK,RunMode,Node,GridNode,Category,Status
+CMP_eeeeeeee,24,368.15,1,44,3,RECOVERY,"|1795366417|done|localhost|9196
+local: 34605"
+CMP_eeeeeeee,36,368.15,1,151,129,RECOVERY,"|1795368438|done|localhost|2020
+local: 47973"
+CMP_eeeeeeee,44,233.15,1,159,155,RECOVERY,"|1795371218|done|localhost|2779
+local: 96482"
+CMP_eeeeeeee,44,368.15,1,177,155,RECOVERY,"|1795374412|done|localhost|3193
+local: 105629"
+CMP_eeeeeeee,44,368.15,5,178,155,RECOVERY,"|1795377023|done|localhost|2610
+local: 21835"
+CMP_eeeeeeee,45,358.15,1,197,181,RECOVERY,"|1795379532|done|localhost|2508
+local: 120732"
+CMP_eeeeeeee,48,368.15,7,232,207,RECOVERY,"|1795385056|done|localhost|5521
+local: 84363"
+CMP_eeeeeeee,49,358.15,1,249,233,RECOVERY,"|1795387453|done|localhost|2395
+local: 102147"
+CMP_eeeeeeee,49,358.15,7,252,233,RECOVERY,"|1795391420|done|localhost|3965
+local: 55388"
+CMP_eeeeeeee,49,368.15,7,258,233,RECOVERY,"|1795398582|done|localhost|7160
+local: 6744"
+CMP_final_Copy,53,233.15,0,135,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,233.15,1,136,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,233.15,5,137,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,233.15,6,138,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,233.15,7,139,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,300.0,0,141,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,300.0,1,142,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,300.0,5,143,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,300.0,6,144,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,300.0,7,145,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,358.15,0,147,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_eeeeeeee_53,53,358.15,1,39,128,NEW,"|1795432923|done|localhost|2019
+local: 101291"
+CMP_eeeeeeee_53,53,358.15,5,40,128,NEW,"|1795434860|done|localhost|1935
+local: 25862"
+CMP_final_Copy,53,358.15,6,150,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,358.15,7,151,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,368.15,0,153,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,368.15,1,154,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,368.15,5,155,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_final_Copy,53,368.15,6,156,132,NEW,"|1795163511|none|localhost|sdevice
+--"
+CMP_eeeeeeee_53,53,368.15,7,47,128,NEW,"|1795437956|done|localhost|3095
+local: 79157"
+CMP_eeeeeeee,60,358.15,1,275,259,RECOVERY,"|1795400346|done|localhost|1762
+local: 75852"
