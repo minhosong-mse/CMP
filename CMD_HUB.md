@@ -1,5 +1,21 @@
 # CMP TCAD CMD / Parameter Hub
 
+## Current mainline — 3D MEB DOE original executed SDE / SDevice (2026-11-23)
+
+The current CMP research lineage is **`3D-Sun-SADDLE-V1 / Flat upper S/D`**, not the historical 2D branch indexed below. The 37-depth original sweep used **non-R1** sources; later numerical recoveries are archived separately.
+
+| File | Purpose | Status |
+|---|---|---|
+| **[Original executed SDE, comment-cleaned](code/sde/3d_sun_saddle_v1/CMP_3D_MEB_DOE_ORIGINAL_dvs.cmd)** | Parameterized 3D saddle-fin geometry, doping, mesh and `@DBCAT_nm@` split | Verified against non-R1 native PP SDE from 35/40/53/54 nm |
+| **[Original executed SDevice, comment-cleaned](code/sdevice/3d_sun_saddle_v1/CMP_3D_MEB_DOE_ORIGINAL_des.cmd)** | RunModes 0/1/5/6/7, temperature split, DC/Hurkx ON–OFF/IVSN | Five original native PP SDevice branches verified; **32 threads** |
+| [Original-run evidence and exact PP checks](docs/progress/3d_meb_jedec_original_nonr1_executed_code_20261123.md) | SHA/PP source locations, parameters and how comments were safely removed | Documentation |
+| [Complete 740-node numerical dataset](data/3d_meb_jedec_37depth_complete_20261123/README.md) | 37 × 4 × 5 completed numerical endpoints | Scientific interpretation pending |
+| [Separate numerical R1 recovery CMD](code/sdevice/3d_sun_saddle_v1/CMP_3D_JEDEC_RECOVERY_R1_des.cmd) | Selected failed-node numerical retry **only** | **Not** the original execution source |
+
+**Original SWB matrix:** MEB `24..60 nm` (step 1); temperature `233.15/300/358.15/368.15 K`; modes `0,1,5,6,7`. SDE `CurveGrid=1`, `MeshCase=0`, `CadSeamCase=3`, `ARgate=6.0`, `Wfin_nm=17`, `JunctionRatio=0.4`, `RfilletFactor=1.0`, WF 4.8 eV, Hurkx OFF only for mode 6. The non-R1 source files retain executable `#if` statements, bias targets, and diagnostics; only unnecessary comments were removed. Historical notes below remain valid within their own **2D** scope, not as the present 3D mainline.
+
+---
+
 > **Current 2D research branch:** `B0-2D-PAPER-CAL / C7_4 / B_QF_HALF`; post-freeze 300 K MEB Atlas (working production MeshLevel 2).  
 > **Legacy history:** 기존 `B0-2D-Legacy / NonlocalPath` Run 0–7 인덱스는 아래에 내용 변경 없이 보존합니다.  
 > **Research status:** [HANDOFF](HANDOFF.md) · [PROJECT_TIMELINE](PROJECT_TIMELINE.md) · [Atlas Evidence](docs/progress/b0_2d_paper_cal_meb_atlas_300k_20261008.md)
