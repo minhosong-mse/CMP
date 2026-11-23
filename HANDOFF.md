@@ -1,5 +1,15 @@
 # CMP Research Handoff
 
+## 2026-11-23 — 35-depth 3D MEB DOE; 47 nm split-project export (PAUSED / SCIENTIFIC-PROVISIONAL)
+
+- **ACTIVE LINEAGE/STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`; 24–60 nm MEB × 233.15/300/358.15/368.15 K × modes 0/1/5/6/7 (740 targets); frozen geometry/mesh-policy/Hurkx (mode 6 OFF)/WF and source-method guardrails. No Sentaurus simulation performed in this QC session.
+- **LAST COMPLETED:** MAIN account 47 nm exported in three SWB projects; grid-level executed SDE PP and SDevice PP matched previous source templates. 20 native source/PLT mappings, **19/20 valid target endpoints**. Specifically 368.15 K Mode 7 `CMP_3D_Temp_36-48_Copy/n3347` reached VSN 1.0 V with exactly 101 points; 368.15 K Mode 6 `CMP_3D_Temp_36-48_Copy1_Copy/n3346` passed. 47 nm 233.15 K IVSN low-current KCL warning 3.27%; cumulative **24** cold relative-KCL warnings. Previously recovered 11 R1 conditions retained and not counted again.
+- **ACTIVE/BLOCKED:** 47 nm **368.15 K Mode 5 `CMP_3D_Temp_36-48_Copy1/n3345`** flagged Done but stopped at VG 0 V/VD 1.189584347 V, log Newton/MinStep failure; no valid other-project candidate in ZIP. Existing failed jobs unchanged: 27/358.15/M1 other n409; 40/358.15/M1 main n3156; 46/358.15/M1 main n3312; 58/358.15/M7 main n3315. Thus **5 pending R1 reruns**, none validated yet. **Unexported MEB 35 and 53 nm** only (40 jobs).
+- **CUMULATIVE COUNTS:** **35/37** MEB exported, **695/700** acquired endpoint-PASS (**695/740 campaign**), **135/140** full five-mode MEB×T rows, **45/740** not-yet-valid campaign endpoints (40 unexported + 5 incomplete). 47/368.15 Hurkx ON−OFF metric intentionally missing, other valid metrics retained.
+- **NEXT FIRST ACTION:** obtain MEB 35/53 ZIPs, and isolated R1 numerical-only rerun archives for five failed nodes; inspect actual terminal bias and original executed PP/log/PLT, preserve solver/provenance and deduplicate across projects. Do not infer success from SWB Done or file existence.
+- **EVIDENCE:** [35-depth master](data/3d_meb_jedec_35depth_20261123/README.md), [source manifest](data/3d_meb_jedec_35depth_20261123/SOURCE_MANIFEST.md), [QC checkpoint](docs/progress/3d_meb_jedec_35depth_checkpoint_20261123.md), [47 nm native extraction script](code/scripts/analysis/3d_meb_jedec_20261123/qc_meb47.py). Native ZIP and 47 nm original full DC/IVSN curve deltas remain external per D-005; prior GitHub snapshots/root README unchanged.
+- **GUARDRAILS:** assumed 10 fF integrated IVSN `t_est` not measured 1T1C retention; signed Hurkx ON−OFF proxy not pure GIDL; omitted SRH, cold-current KCL warnings and unverified binary mesh equality; no production design window, JEDEC compliance or final optimum claims.
+
 ## 2026-11-23 — 34-depth 3D MEB DOE (41 nm from other account) (PAUSED / SCIENTIFIC-PROVISIONAL)
 
 - **ACTIVE LINEAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`, 24–60 nm, 4T (233.15/300/358.15/368.15 K), 5 RunModes (0/1/5/6/7); keep current SDE, 3D mesh policy, Hurkx (mode 6 OFF), WF, and original device physics.
