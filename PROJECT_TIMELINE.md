@@ -20,6 +20,7 @@
 
 | Date / period | Stage / event | Status | Model lineage | Main result / decision | Evidence / source | Effect on next stage |
 |---|---|---|---|---|---|---|
+| 2026-11-25 | Final manuscript analysis and documentation close-out | Completed at manuscript-analysis scope; low-temperature result provisional | `3D-Sun-SADDLE-V1 / Flat upper S/D` | 45 nm equal-weight candidate; 51 nm constrained optimum; 47–56 nm relative window at three sampled non-cold temperatures, 50–56 nm provisional at all four; initial-screen intersection 47–51 nm / provisional 50–51 nm | [Final analysis](docs/research/final_manuscript_design_window_20261125.md) | Final report/presentation; separate future physical validation if requested |
 | 2026-11-23 | 37-depth × 4T × 5-mode source-data acquisition complete | **Numerical data acquisition completed; scientific interpretation provisional** | `3D-Sun-SADDLE-V1 / Flat upper S/D` | 24–60 nm MEB × 233.15/300/358.15/368.15 K × RunModes 0/1/5/6/7: **740/740 source-mapped numerically complete**, 148/148 five-mode metric rows. **19 historical numerical-only R1 recoveries**, 25 cold low-current KCL warnings retained; not a physical/JEDEC retention or design-optimum claim. | `data/3d_meb_jedec_37depth_complete_20261123/`; `docs/progress/3d_meb_jedec_37depth_numerical_data_complete_20261123.md` | Complete-temperature six-metric interpretation and relative design screening are next; physical/model and mesh validation require separate decisions |
 | 2026-08~09 | Simplified 2D BCAT mainline established and Run 0–3 methodology built | Completed | `B0-2D-Legacy` | B0 geometry, DC metric definitions, DC mesh policy, and a usable relative GIDL/BTBT path were established | `docs/progress/run00_baseline.md` through `run03_btbt_gidl_feasibility.md`; `docs/RUN_SHEET.md` | Enabled formal MEB screening under one controlled Legacy model |
 | 2026-08~09 | Formal MEB screening and mechanism correlation | Completed | `B0-2D-Legacy / NonlocalPath` | 31/36/41 nm screening established the deeper-MEB → lower project-internal GIDL direction; 5-level Cgd/field/GIDL correlation followed | `docs/progress/run04_meb_screening.md`; `docs/progress/run05_cov_gidl_correlation.md` | P1=41 nm became the initial screened-window candidate |
@@ -80,6 +81,8 @@ They must not be relabeled as PAPER-CAL results.
 ---
 
 ## Current Forward Path
+
+**2026-11-25 superseding note:** The final 3D mainline manuscript-stage screening and design-window analysis are completed within the specified model and criteria. See [final analysis](docs/research/final_manuscript_design_window_20261125.md) and [Handoff](HANDOFF.md). The following older forward-path text is retained as historical planning, not the active next task.
 
 ### Active
 

@@ -9,8 +9,10 @@ The current CMP research lineage is **`3D-Sun-SADDLE-V1 / Flat upper S/D`**, not
 | **[Original executed SDE, comment-cleaned](code/sde/3d_sun_saddle_v1/CMP_3D_MEB_DOE_ORIGINAL_dvs.cmd)** | Parameterized 3D saddle-fin geometry, doping, mesh and `@DBCAT_nm@` split | Verified against non-R1 native PP SDE from 35/40/53/54 nm |
 | **[Original executed SDevice, comment-cleaned](code/sdevice/3d_sun_saddle_v1/CMP_3D_MEB_DOE_ORIGINAL_des.cmd)** | RunModes 0/1/5/6/7, temperature split, DC/Hurkx ON–OFF/IVSN | Five original native PP SDevice branches verified; **32 threads** |
 | [Original-run evidence and exact PP checks](docs/progress/3d_meb_jedec_original_nonr1_executed_code_20261123.md) | SHA/PP source locations, parameters and how comments were safely removed | Documentation |
-| [Complete 740-node numerical dataset](data/3d_meb_jedec_37depth_complete_20261123/README.md) | 37 × 4 × 5 completed numerical endpoints | Scientific interpretation pending |
+| [Complete 740-node numerical dataset](data/3d_meb_jedec_37depth_complete_20261123/README.md) | 37 × 4 × 5 completed numerical endpoints | Final manuscript analysis complete within scope |
 | [Separate numerical R1 recovery CMD](code/sdevice/3d_sun_saddle_v1/CMP_3D_JEDEC_RECOVERY_R1_des.cmd) | Selected failed-node numerical retry **only** | **Not** the original execution source |
+
+**2026-11-25 update:** [Final manuscript design-window analysis](docs/research/final_manuscript_design_window_20261125.md). The selected 51 nm and relative windows do not imply physical retention validation. All execution and historical code records below are unchanged.
 
 **Original SWB matrix:** MEB `24..60 nm` (step 1); temperature `233.15/300/358.15/368.15 K`; modes `0,1,5,6,7`. SDE `CurveGrid=1`, `MeshCase=0`, `CadSeamCase=3`, `ARgate=6.0`, `Wfin_nm=17`, `JunctionRatio=0.4`, `RfilletFactor=1.0`, WF 4.8 eV, Hurkx OFF only for mode 6. The non-R1 source files retain executable `#if` statements, bias targets, and diagnostics; only unnecessary comments were removed. Historical notes below remain valid within their own **2D** scope, not as the present 3D mainline.
 

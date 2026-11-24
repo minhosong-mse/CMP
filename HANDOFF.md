@@ -1,5 +1,15 @@
 # CMP Research Handoff
 
+## 2026-11-25 — Final manuscript analysis and documentation close-out
+
+- **ACTIVE LINEAGE / STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`; final manuscript-stage analysis completed within stated model scope. 740/740 numerical endpoints, 148/148 metric rows; 19 numerical-only R1 recoveries; 25 cold KCL warnings retained.
+- **LAST COMPLETED:** Final English manuscript prepared and independent audit findings incorporated; [final analysis and claim boundaries](docs/research/final_manuscript_design_window_20261125.md). 300 K initial screening relative to 36 nm yields 44–51 nm; 51 nm selected by maximum estimated discharge time within constraints. Equal-weight alternative 45 nm. Same-temperature relative windows: 47–56 nm common at 300/358.15/368.15 K; 50–56 nm provisional across all four. Initial-screen intersection 47–51 nm / provisional 50–51 nm.
+- **NEXT FIRST ACTION:** Use the final research summary for final presentation/documentation. Follow-up simulations only if separately requested; no need to reopen completed numerical DOE or change criteria without explicit scientific decision.
+- **FROZEN / GUARDRAILS:** Preserve original 3D decks, numerical records, historical lineages and screening definitions. Estimated GIDL is signed Hurkx ON−OFF; assumed-10-fF IVSN discharge estimate is not actual retention. No absolute product/JEDEC, continuous-temperature or mesh-convergence claim. Low-temperature results remain provisional.
+- **READ NEXT:** [final analysis](docs/research/final_manuscript_design_window_20261125.md), [canonical dataset](data/3d_meb_jedec_37depth_complete_20261123/README.md), [CMD Hub](CMD_HUB.md), [Timeline](PROJECT_TIMELINE.md).
+- **HISTORY:** Prior entries below are retained for provenance; their then-current next actions may be superseded by this record.
+
+
 ## 2026-11-23 — Original non-R1 source code archived after 740-case acquisition (CODE ARCHIVED / SCIENTIFIC-PROVISIONAL)
 
 - **ACTIVE LINEAGE/STAGE:** `3D-Sun-SADDLE-V1 / Flat upper S/D`; original 37 MEB (24–60 nm) × four T × modes 0/1/5/6/7. **740/740 planned numerical endpoints PASS** after separately documented R1 recoveries. Physical interpretation and MEB design-range selection remain pending.

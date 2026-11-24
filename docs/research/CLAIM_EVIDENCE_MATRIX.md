@@ -1,5 +1,7 @@
 # CMP Claim-Evidence Matrix
 
+> **2026-11-25 current-mainline pointer:** This historical R0–R10 matrix is retained unchanged below. The final independent 3D saddle-fin manuscript-stage results, evidence and claim limits are documented in [final manuscript/design-window analysis](final_manuscript_design_window_20261125.md). Do not use legacy entries as authority for final 3D absolute metrics.
+
 > Scope: R0-R6.5 demonstrated evidence plus R7-R10 planned claims.
 
 | ID | Potential Claim | CMP Evidence | Literature Role | Status | Needed Next |
